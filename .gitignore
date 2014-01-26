@@ -2,11 +2,6 @@
 .settings/
 .project
 build/
-<<<<<<< HEAD
-doc/
-
-
-=======
 bin/
 doc/
->>>>>>> 9744fb7ee2829c0d5a2b3f5faaa81f52c7227782
+
