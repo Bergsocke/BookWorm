@@ -29,8 +29,10 @@ public class BookDB {
 	/**
 	 * Diese Methode baut die Datenbankverbindung zur Datenbank "book_database"
 	 * auf
+	 * 
+	 * @return connect
 	 */
-	public static void connectDB() {
+	public static Connection connectDB() {
 
 		try {
 			// Treiber wird geladen und die Regestrierung beim DriverManager
@@ -50,6 +52,8 @@ public class BookDB {
 							+ "Bitte prüfen Sie, ob der MySQL-Server läuft.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 		}
+
+		return connect;
 	}
 
 	/**
@@ -72,7 +76,7 @@ public class BookDB {
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = myPreparedStatement.executeQuery();
-			
+
 			while (myResultSet.next()) {
 				bookList.add(new Book(myResultSet.getString(1), myResultSet
 						.getString(2), myResultSet.getString(3), myResultSet
