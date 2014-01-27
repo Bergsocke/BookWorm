@@ -1,8 +1,8 @@
-package bookworm.databasePackage;
+package databasePackage;
 
 /**
- * Die Klasse "Book" ist für die Erfassung und Rückgabe des Inhalts der
- * einzelnen Bücher-Datensätze zuständig
+ * Die Klasse "Book" ist fÃ¼r die Erfassung und RÃ¼ckgabe des Inhalts der
+ * einzelnen BÃ¼cher-DatensÃ¤tze zustÃ¤ndig
  * 
  * @author Bergsocke
  * 
@@ -21,7 +21,7 @@ public class Book {
 	private String read;
 
 	/**
-	 * Konstruktor für den Zugriff auf alle Tabellenfelder
+	 * Konstruktor fï¿½r den Zugriff auf alle Tabellenfelder
 	 * 
 	 * @param id
 	 * @param isbn
@@ -50,7 +50,7 @@ public class Book {
 	}
 
 	/**
-	 * Konstruktor für die Neuerfassung von Büchern
+	 * Konstruktor fÃ¼r die Neuerfassung von BÃ¼chern
 	 * 
 	 * @param isbn
 	 * @param title

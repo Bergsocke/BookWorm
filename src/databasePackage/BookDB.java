@@ -1,7 +1,6 @@
-package bookworm.databasePackage;
+package databasePackage;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import javax.swing.JOptionPane;
 /**
  * Die Klasse "BookDB" stellte eine Verbindung zur MySQL-Datenbank
  * "book_database" her und bietet die Methoden zum Anzeigen, Suchen, Speichern
- * und Löschen von Datensätzen aus der Tabelle "books"
+ * und LÃ¶schen von DatensÃ¤tzen aus der Tabelle "books"
  * 
  * @author Bergsocke
  * 
@@ -22,40 +21,13 @@ public class BookDB {
 	private static Connection connect = null;
 	private static PreparedStatement myPreparedStatement = null;
 	private static ResultSet myResultSet = null;
-	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
+	// Variable, die anzeigen soll, ob das Speichern, Updaten oder LÃ¶schen eines
 	// Datensatzes erfolgreich war
 	public static int successful = 0;
 
-	/**
-	 * Diese Methode baut die Datenbankverbindung zur Datenbank "book_database"
-	 * auf
-	 */
-	public static Connection connectDB() {
-
-		try {
-			// Treiber wird geladen und die Regestrierung beim DriverManager
-			// erfolgt
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// DriverManager wird verwenden und die Verbindung zur DB wird
-			// aufgebaut
-			connect = DriverManager.getConnection(
-					"jdbc:mysql://localhost/book_database", "book_user",
-					"book_password");
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbankverbindung konnte nicht hergestellt werden. "
-							+ "Bitte prüfen Sie, ob der MySQL-Server läuft.",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
-		}
-		
-		return connect;
-	}
 
 	/**
-	 * Es werden alle Datensätze, die in der Tabelle "books" vorhanden sind,
+	 * Es werden alle DatensÃ¤tze, die in der Tabelle "books" vorhanden sind,
 	 * angezeigt
 	 * 
 	 * @return bookList
@@ -66,13 +38,13 @@ public class BookDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connectDB();
+			connect = ConnectionDatabase.connectDB();
 
-			// PreparedStatement für den SQL-Befehl
+			// PreparedStatement fÃ¼r den SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("SELECT * FROM book_database.books;");
 
-			// SQL-Befehl wird ausgeführt
+			// SQL-Befehl wird ausgefÃ¼hrt
 			myResultSet = myPreparedStatement.executeQuery();
 			
 			while (myResultSet.next()) {
@@ -86,7 +58,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
+					"Datenbankabfrage konnte nicht durchgefï¿½hrt werden.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 
 		} finally {
@@ -109,14 +81,14 @@ public class BookDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connectDB();
+			connect = ConnectionDatabase.connectDB();
 
-			// PreparedStatement für den SQL-Befehl
+			// PreparedStatement fÃ¼r den SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("SELECT * FROM book_database.books WHERE title LIKE '%"
 							+ bookTitle + "%';");
 
-			// SQL-Befehl wird ausgeführt
+			// SQL-Befehl wird ausgefÃ¼hrt
 			myResultSet = myPreparedStatement.executeQuery();
 
 			while (myResultSet.next()) {
@@ -130,7 +102,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
+					"Datenbankabfrage konnte nicht durchgefï¿½hrt werden.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 
 		} finally {
@@ -153,18 +125,18 @@ public class BookDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connectDB();
+			connect = ConnectionDatabase.connectDB();
 
-			// PreparedStatement für den SQL-Befehl
+			// PreparedStatement fÃ¼r den SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("SELECT * FROM book_database.books WHERE id LIKE "
 							+ bookID + ";");
 
-			// SQL-Befehl wird ausgeführt
+			// SQL-Befehl wird ausgefÃ¼hrt
 			myResultSet = myPreparedStatement.executeQuery();
 
 			// da das Select-Statement immer nur genau einen oder keinen
-			// Datensatz liefern kann, genügt hier diese Abfrage
+			// Datensatz liefern kann, genï¿½gt hier diese Abfrage
 			if (myResultSet.next()) {
 				foundBook = new Book(myResultSet.getString(1),
 						myResultSet.getString(2), myResultSet.getString(3),
@@ -176,7 +148,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
+					"Datenbankabfrage konnte nicht durchgefï¿½hrt werden.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 
 		} finally {
@@ -197,9 +169,9 @@ public class BookDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connectDB();
+			connect = ConnectionDatabase.connectDB();
 
-			// PreparedStatement für SQL-Befehl
+			// PreparedStatement fÃ¼r SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("INSERT INTO book_database.books VALUES(default,?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -212,7 +184,7 @@ public class BookDB {
 			myPreparedStatement.setString(7, bookToSave.getComment());
 			myPreparedStatement.setString(8, bookToSave.getRead());
 
-			// SQL-Befehl wird ausgeführt
+			// SQL-Befehl wird ausgefÃ¼hrt
 			successful = myPreparedStatement.executeUpdate();
 
 			// offene Verbindungen werden geschlossen
@@ -235,7 +207,7 @@ public class BookDB {
 	}
 
 	/**
-	 * Methode zum Ändern eines bereits vorhandenen Datensatzes in der Tabelle
+	 * Methode zum Ã„ndern eines bereits vorhandenen Datensatzes in der Tabelle
 	 * "books"
 	 * 
 	 * @param bookToUpdate
@@ -245,9 +217,9 @@ public class BookDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connectDB();
+			connect = ConnectionDatabase.connectDB();
 
-			// PreparedStatement für den SQL-Befehl
+			// PreparedStatement fÃ¼r den SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("UPDATE book_database.books SET isbn = '"
 							+ bookToUpdate.getIsbn() + "', title = '"
@@ -262,7 +234,7 @@ public class BookDB {
 							+ "', readb = '" + bookToUpdate.getRead()
 							+ "' WHERE id = " + bookToUpdate.getId() + ";");
 
-			// SQL-Befehl wird ausgeführt
+			// SQL-Befehl wird ausgefÃ¼hrt
 			successful = myPreparedStatement.executeUpdate();
 
 			// offene Verbindungen werden geschlossen
@@ -273,7 +245,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbank-Fehler beim Ändern eines Datensatzes", "Fehler",
+					"Datenbank-Fehler beim ï¿½ndern eines Datensatzes", "Fehler",
 					JOptionPane.ERROR_MESSAGE);
 			successful = 0;
 			closeConnections();
@@ -285,7 +257,7 @@ public class BookDB {
 	}
 
 	/**
-	 * Methode zum Löschen eines Datensatzes aus der Tabelle "books"
+	 * Methode zum LÃ¶schen eines Datensatzes aus der Tabelle "books"
 	 * 
 	 * @param bookID
 	 * @return successful
@@ -294,14 +266,14 @@ public class BookDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connectDB();
+			connect = ConnectionDatabase.connectDB();
 
-			// PreparedStatement für SQL-Befehl
+			// PreparedStatement fÃ¼r SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("DELETE FROM book_database.books WHERE id = "
 							+ bookID + ";");
 
-			// SQL-Befehl wird ausgeführt
+			// SQL-Befehl wird ausgefÃ¼hrt
 			successful = myPreparedStatement.executeUpdate();
 
 			// offene Verbindungen werden geschlossen
@@ -312,7 +284,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbank-Fehler beim Löschen eines Datensatzes",
+					"Datenbank-Fehler beim LÃ¶schen eines Datensatzes",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 			successful = 0;
 			closeConnections();
@@ -324,7 +296,7 @@ public class BookDB {
 	}
 
 	/**
-	 * Methode zum Schließen aller offenen Verbindungen
+	 * Methode zum SchlieÃŸen aller offenen Verbindungen
 	 */
 	public static void closeConnections() {
 		try {

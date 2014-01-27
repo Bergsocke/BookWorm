@@ -1,19 +1,19 @@
-package bookworm.viewPackage;
+package viewPackage;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import bookworm.databasePackage.Book;
+import databasePackage.Book;
 
 /**
- * Die Klasse "BookTable" ist für den Aufbau und den Inhalt der Büchertabelle
- * zuständig
+ * Die Klasse "BookTable" ist fÃ¼r den Aufbau und den Inhalt der BÃ¼chertabelle
+ * zustÃ¤ndig
  * 
  * @author Bergsocke
  * 
  */
-public class BookWormTable extends AbstractTableModel {
+public class BookTable extends AbstractTableModel {
 
 	private static final long serialVersionUID = 7055287075166243444L;
 
@@ -24,12 +24,12 @@ public class BookWormTable extends AbstractTableModel {
 	 * 
 	 * @param bookList
 	 */
-	public BookWormTable(List<Book> bookList) {
+	public BookTable(List<Book> bookList) {
 		this.bookList = bookList;
 	}
 
 	/**
-	 * Rückgabe der Spaltenanzahl der Büchertabelle
+	 * RÃ¼ckgabe der Spaltenanzahl der BÃ¼chertabelle
 	 */
 	public int getColumnCount() {
 		int columnCount = 9;
@@ -37,7 +37,7 @@ public class BookWormTable extends AbstractTableModel {
 	}
 
 	/**
-	 * Rückgabe der Anzahl der Datensätze, die sich in der Datenbank befinden
+	 * RÃ¼ckgabe der Anzahl der DatensÃ¤tze, die sich in der Datenbank befinden
 	 */
 	public int getRowCount() {
 		return bookList.size();
@@ -74,7 +74,7 @@ public class BookWormTable extends AbstractTableModel {
 	}
 
 	/**
-	 * Rückgabe des Inhalts der jeweiligen Tabellenzeile
+	 * RÃ¼ckgabe des Inhalts der jeweiligen Tabellenzeile
 	 */
 	public Object getValueAt(int row, int column) {
 

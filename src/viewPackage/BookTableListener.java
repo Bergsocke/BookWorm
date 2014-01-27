@@ -1,31 +1,31 @@
-package bookworm.viewPackage;
+package viewPackage;
 
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import bookworm.databasePackage.Book;
-import bookworm.databasePackage.BookDB;
+import databasePackage.Book;
+import databasePackage.BookDB;
 
 /**
  * Die Klasse "BookTableListener" reagiert auf die Auswahl des Users in der
- * Tabelle im WestPanel. Wenn in der Tabelle ein Datensatz ausgew‰hlt wurde,
+ * Tabelle im WestPanel. Wenn in der Tabelle ein Datensatz ausgew√§hlt wurde,
  * werden die entsprechenden Daten in den Textfeldern im EastPanel angezeigt.
  * 
  * @author Bergsocke
  * 
  */
-public class BookWormTableListener implements ListSelectionListener {
+public class BookTableListener implements ListSelectionListener {
 
-	BookWormGUI guiBook;
+	BookGUI guiBook;
 
 	/**
 	 * Konstruktor
 	 * 
 	 * @param guiBook
 	 */
-	public BookWormTableListener(BookWormGUI guiBook) {
+	public BookTableListener(BookGUI guiBook) {
 		this.guiBook = guiBook;
 	}
 
@@ -36,7 +36,6 @@ public class BookWormTableListener implements ListSelectionListener {
 			ListSelectionModel lsm = (ListSelectionModel) event.getSource();
 			if (lsm.isSelectionEmpty() == false) {
 				try {
-					BookDB.connectDB();
 					int selectedRow = lsm.getMinSelectionIndex();
 
 					String id = String.valueOf(guiBook.getBookTable()
@@ -63,7 +62,7 @@ public class BookWormTableListener implements ListSelectionListener {
 					guiBook.getReadCombo().setSelectedItem(
 							String.valueOf(myBook.getRead()));
 
-					// Button "lˆschen" wird sichtbar gesetzt
+					// Button "l√∂schen" wird sichtbar gesetzt
 					guiBook.getDeleteButton().setEnabled(true);
 
 				} catch (Exception e) {
@@ -71,7 +70,7 @@ public class BookWormTableListener implements ListSelectionListener {
 					JOptionPane
 							.showMessageDialog(
 									guiBook,
-									"Der ausgew‰hlter Datensatz kann nicht angezeigt werden",
+									"Der ausgew√§hlter Datensatz kann nicht angezeigt werden",
 									"Fehler", JOptionPane.ERROR_MESSAGE);
 				}
 			}
