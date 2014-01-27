@@ -1,4 +1,4 @@
-package bookDatabasePackage;
+package bookworm.databasePackage;
 
 /**
  * Die Klasse "Book" ist für die Erfassung und Rückgabe des Inhalts der

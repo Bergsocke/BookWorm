@@ -1,10 +1,10 @@
-package bookViewPackage;
+package bookworm.viewPackage;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import bookDatabasePackage.Book;
+import bookworm.databasePackage.Book;
 
 /**
  * Die Klasse "BookTable" ist für den Aufbau und den Inhalt der Büchertabelle
@@ -13,7 +13,7 @@ import bookDatabasePackage.Book;
  * @author Bergsocke
  * 
  */
-public class BookTable extends AbstractTableModel {
+public class BookWormTable extends AbstractTableModel {
 
 	private static final long serialVersionUID = 7055287075166243444L;
 
@@ -24,7 +24,7 @@ public class BookTable extends AbstractTableModel {
 	 * 
 	 * @param bookList
 	 */
-	public BookTable(List<Book> bookList) {
+	public BookWormTable(List<Book> bookList) {
 		this.bookList = bookList;
 	}
 

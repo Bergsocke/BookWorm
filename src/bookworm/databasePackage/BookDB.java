@@ -1,4 +1,4 @@
-package bookDatabasePackage;
+package bookworm.databasePackage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,4 @@
-package bookViewPackage;
+package bookworm.viewPackage;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
-import bookDatabasePackage.BookDB;
+import bookworm.databasePackage.BookDB;
 
 /**
  * Die Klasse "BookGUI" ist für den Aufbau der grafischen Oberfläche zuständig.
@@ -33,7 +33,7 @@ import bookDatabasePackage.BookDB;
  * 
  */
 
-public class BookGUI extends JFrame {
+public class BookWormGUI extends JFrame {
 
 	private static final long serialVersionUID = -4071792935538021823L;
 
@@ -110,7 +110,7 @@ public class BookGUI extends JFrame {
 
 		// Aufruf des Konstruktors der Klasse BookGUI und Zuweisung der
 		// Überschrift
-		BookGUI gui = new BookGUI("BÜCHERVERWALTUNG");
+		BookWormGUI gui = new BookWormGUI("BÜCHERVERWALTUNG");
 
 		// Fenstergröße wird automatisch an den Inhalt angepasst
 		gui.pack();
@@ -133,7 +133,7 @@ public class BookGUI extends JFrame {
 	 * 
 	 * @param frameTitle
 	 */
-	public BookGUI(String frameTitle) {
+	public BookWormGUI(String frameTitle) {
 
 		super(frameTitle);
 
@@ -167,22 +167,22 @@ public class BookGUI extends JFrame {
 		clearMenu = new JMenu("Neu");
 		clearMenuItem = new JMenuItem("Neuen Datensatz anlegen");
 		clearMenu.add(clearMenuItem);
-		clearMenuItem.addActionListener(new BookGUIActionListener(this));
+		clearMenuItem.addActionListener(new BookWormGUIActionListener(this));
 
 		saveMenu = new JMenu("Speichern");
 		saveMenuItem = new JMenuItem("Datensatz speichern");
 		saveMenu.add(saveMenuItem);
-		saveMenuItem.addActionListener(new BookGUIActionListener(this));
+		saveMenuItem.addActionListener(new BookWormGUIActionListener(this));
 
 		deleteMenu = new JMenu("Löschen");
 		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
-		deleteMenuItem.addActionListener(new BookGUIActionListener(this));
+		deleteMenuItem.addActionListener(new BookWormGUIActionListener(this));
 
 		helpMenu = new JMenu("Hilfe");
 		helpMenuItem = new JMenuItem("Über das Programm");
 		helpMenu.add(helpMenuItem);
-		helpMenuItem.addActionListener(new BookGUIActionListener(this));
+		helpMenuItem.addActionListener(new BookWormGUIActionListener(this));
 
 		// Hinzufügen der einzelnen Komponenten zur Menübar
 		bookMenuBar.add(clearMenu);
@@ -213,23 +213,23 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "suchen"
 		final Icon searchIcon = new ImageIcon(
-				BookGUI.class
+				BookWormGUI.class
 						.getResource("/bookViewPackage/images/searchIcon.png"));
 		searchButton = new JButton("suchen  ", searchIcon);
 		searchButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		searchButton.setBackground(Color.lightGray);
 		searchButton.setBorder(BorderFactory.createRaisedBevelBorder());
-		searchButton.addActionListener(new BookGUIActionListener(this));
+		searchButton.addActionListener(new BookWormGUIActionListener(this));
 
 		// Icon für den Buttton "alle anzeigen"
 		final Icon showAllIcon = new ImageIcon(
-				BookGUI.class
+				BookWormGUI.class
 						.getResource("/bookViewPackage/images/showAllIcon.png"));
 		allButton = new JButton(" alle anzeigen  ", showAllIcon);
 		allButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		allButton.setBackground(Color.lightGray);
 		allButton.setBorder(BorderFactory.createRaisedBevelBorder());
-		allButton.addActionListener(new BookGUIActionListener(this));
+		allButton.addActionListener(new BookWormGUIActionListener(this));
 
 		// Hinzufügen der einzelnen Komponenten zum NorthPanel
 		northPanel.add(searchLabel);
@@ -341,7 +341,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "neu"
 		final Icon newIcon = new ImageIcon(
-				BookGUI.class
+				BookWormGUI.class
 						.getResource("/bookViewPackage/images/newIcon.png"));
 		clearButton = new JButton("     neu", newIcon);
 		clearButton.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -351,11 +351,11 @@ public class BookGUI extends JFrame {
 		// Textfelder im EastPanel zurückgesetzt werden. Ein neuer Datensatz
 		// wird erst beim Klick auf den Button "speichern" in die Datenbank
 		// eingefügt. Der Button "löschen" soll deaktiviert werden.
-		clearButton.addActionListener(new BookGUIActionListener(this));
+		clearButton.addActionListener(new BookWormGUIActionListener(this));
 
 		// Icon für den Buttton "speichern"
 		final Icon saveIcon = new ImageIcon(
-				BookGUI.class
+				BookWormGUI.class
 						.getResource("/bookViewPackage/images/saveIcon.png"));
 		saveButton = new JButton("     speichern", saveIcon);
 		saveButton.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -363,11 +363,11 @@ public class BookGUI extends JFrame {
 		saveButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "speichern" geklickt wird, soll der Datensatz in
 		// die Datenbank gespeichert werden
-		saveButton.addActionListener(new BookGUIActionListener(this));
+		saveButton.addActionListener(new BookWormGUIActionListener(this));
 
 		// Icon für den Buttton "löschen"
 		final Icon deleteIcon = new ImageIcon(
-				BookGUI.class
+				BookWormGUI.class
 						.getResource("/bookViewPackage/images/deleteIcon.png"));
 		deleteButton = new JButton("     löschen", deleteIcon);
 		deleteButton.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -375,7 +375,7 @@ public class BookGUI extends JFrame {
 		deleteButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "löschen" geklickt wird, soll der Datensatz
 		// aus der Datenbank gelöscht werden
-		deleteButton.addActionListener(new BookGUIActionListener(this));
+		deleteButton.addActionListener(new BookWormGUIActionListener(this));
 		// Der Button "löschen" ist zu Beginn/beim Erscheinen des Fensters
 		// noch ncht auswählbar; er wird erst sichtbar, wenn ein Datensatz
 		// ausgewählt wurde
@@ -383,7 +383,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "Programm beenden"
 		final Icon closeIcon = new ImageIcon(
-				BookGUI.class
+				BookWormGUI.class
 						.getResource("/bookViewPackage/images/closeIcon.png"));
 		closeButton = new JButton(" Programm beenden", closeIcon);
 		closeButton.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -391,7 +391,7 @@ public class BookGUI extends JFrame {
 		closeButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "Programm beenden" geklickt wird, soll das
 		// Fenster geschlossen werden
-		closeButton.addActionListener(new BookGUIActionListener(this));
+		closeButton.addActionListener(new BookWormGUIActionListener(this));
 
 		// Dummy-Labels für Abstand zwischen der Tabelle und den Buttons
 		JLabel dummyLabel = new JLabel();
@@ -472,7 +472,7 @@ public class BookGUI extends JFrame {
 		// angezeigt
 		if (getSearchText().getText().matches("Bitte Suchbegriff eingeben")) {
 			// alle Datensätze werden angezeigt
-			bookTable = new JTable(new BookTable(BookDB.displayAll()));
+			bookTable = new JTable(new BookWormTable(BookDB.displayAll()));
 
 		} else {
 			// Damit bei Eingabe eines Suchbegriffes die Tabelle neu aufgebaut
@@ -482,7 +482,7 @@ public class BookGUI extends JFrame {
 			// in einer neu erstellten Tabelle angezeigt
 
 			this.getContentPane().remove(westPanel);
-			bookTable = new JTable(new BookTable(
+			bookTable = new JTable(new BookWormTable(
 					BookDB.findByTitle(getSearchText().getText())));
 		}
 
@@ -541,7 +541,7 @@ public class BookGUI extends JFrame {
 		// Selektion des Users abzufangen und den entsprechenden Datensatz in
 		// den Textfeldern des EastPanels anzuzeigen
 		bookTable.getSelectionModel().addListSelectionListener(
-				new BookTableListener(this));
+				new BookWormTableListener(this));
 	}
 
 	/**
@@ -552,7 +552,7 @@ public class BookGUI extends JFrame {
 	public void reloadWestTable() {
 
 		this.getContentPane().remove(westPanel);
-		bookTable = new JTable(new BookTable(BookDB.displayAll()));
+		bookTable = new JTable(new BookWormTable(BookDB.displayAll()));
 
 		// WestPanel aufbauen
 		this.createteWestTable();
