@@ -11,7 +11,7 @@ import databasePackage.Book;
 import databasePackage.BookDB;
 
 /**
- * Mit der Klasse "BookActionListener" werden die Aktionen f�r die Buttons
+ * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
  * "alle anzeigen", "suchen", "neu", "speichern", "löschen", "Programm beenden"
  * sowie für die MenüBarItems "Neuen Datensatz anlegen", "Datensatz speichern",
  * "Datensatz löschen" und "Über das Programm" der Klasse BookGUI festgelegt.
@@ -65,9 +65,9 @@ public class BookGUIActionListener implements ActionListener {
 			}
 		}
 
-		// Wenn auf den Button "neu" oder in der Men�bar auf
+		// Wenn auf den Button "neu" oder in der Menübar auf
 		// "Neuen Datensatz anlegen" geklickt wird , wird der Inhalt der
-		// Textfelder im EastPanel zur�ckgesetzt. Ein neuer Datensatz wird
+		// Textfelder im EastPanel zurückgesetzt. Ein neuer Datensatz wird
 		// erst beim Klick auf den Button "speichern" in die Datenbank
 		// eingefügt.
 		if (event.getSource() instanceof JButton
@@ -115,7 +115,7 @@ public class BookGUIActionListener implements ActionListener {
 			System.exit(0);
 		}
 
-		// Wenn in der Men�bar auf "Über das Programm" geklickt wird, wird ein
+		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
 		// Dialogfenster erzeugt
 		if (event.getSource() instanceof JMenuItem
 				&& event.getActionCommand().contains("Über das Programm")) {

@@ -58,7 +58,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgef�hrt werden.",
+					"Datenbankabfrage konnte nicht durchgeführt werden.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 
 		} finally {
@@ -102,7 +102,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgef�hrt werden.",
+					"Datenbankabfrage konnte nicht durchgeführt werden.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 
 		} finally {
@@ -136,7 +136,7 @@ public class BookDB {
 			myResultSet = myPreparedStatement.executeQuery();
 
 			// da das Select-Statement immer nur genau einen oder keinen
-			// Datensatz liefern kann, gen�gt hier diese Abfrage
+			// Datensatz liefern kann, genügt hier diese Abfrage
 			if (myResultSet.next()) {
 				foundBook = new Book(myResultSet.getString(1),
 						myResultSet.getString(2), myResultSet.getString(3),
@@ -148,7 +148,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgef�hrt werden.",
+					"Datenbankabfrage konnte nicht durchgeführt werden.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 
 		} finally {
@@ -245,7 +245,7 @@ public class BookDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbank-Fehler beim �ndern eines Datensatzes", "Fehler",
+					"Datenbank-Fehler beim Ändern eines Datensatzes", "Fehler",
 					JOptionPane.ERROR_MESSAGE);
 			successful = 0;
 			closeConnections();

@@ -26,7 +26,7 @@ import databasePackage.BookDB;
 
 
 /**
- * Die Klasse "BookGUI" ist f�r den Aufbau der grafischen Oberfläche zuständig.
+ * Die Klasse "BookGUI" ist für den Aufbau der grafischen Oberfläche zuständig.
  * Hier werden die einzelnen Komponenten des Fensters (Textfelder, ComboBoxen,
  * Bezeichungsfelder, Buttons und die Büchertabelle) festgelegt.
  * 
@@ -38,12 +38,12 @@ public class BookGUI extends JFrame {
 
 	private static final long serialVersionUID = -4071792935538021823L;
 
-	// Festlegung der Schriftart f�r die Bezeichnungsfelder und Buttons
+	// Festlegung der Schriftart für die Bezeichnungsfelder und Buttons
 	static String labelFont = "Verdana";
 	static int labelStyle = Font.BOLD;
 	static int labelSize = 12;
 
-	// Festlegung der Schriftart f�r die Textfelder und der Tabelle
+	// Festlegung der Schriftart für die Textfelder und der Tabelle
 	static String textFont = "Arial";
 	static int textStyle = Font.PLAIN;
 	static int textSize = 12;
@@ -148,7 +148,7 @@ public class BookGUI extends JFrame {
 	 */
 	private void initComponents() {
 
-		// MenuBar wird erzeugt
+		// MenüBar wird erzeugt
 		this.initMenuBar();
 
 		// North-, East-, und WestPanels werden erzeugt
@@ -176,7 +176,7 @@ public class BookGUI extends JFrame {
 		saveMenuItem.addActionListener(new BookGUIActionListener(this));
 
 		deleteMenu = new JMenu("Löschen");
-		deleteMenuItem = new JMenuItem("Ausgew�hlten Datensatz löschen");
+		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
 		deleteMenuItem.addActionListener(new BookGUIActionListener(this));
 
@@ -340,7 +340,7 @@ public class BookGUI extends JFrame {
 			readCombo.addItem(read[i]);
 		}
 
-		// Icon f�r den Buttton "neu"
+		// Icon für den Buttton "neu"
 		final Icon newIcon = new ImageIcon(
 				BookGUI.class
 						.getResource("/viewPackage/images/newIcon.png"));
@@ -349,12 +349,12 @@ public class BookGUI extends JFrame {
 		clearButton.setBackground(Color.lightGray);
 		clearButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// Wenn auf den Button "neu" geklickt wird, soll der Inhalt der
-		// Textfelder im EastPanel zur�ckgesetzt werden. Ein neuer Datensatz
+		// Textfelder im EastPanel zurückgesetzt werden. Ein neuer Datensatz
 		// wird erst beim Klick auf den Button "speichern" in die Datenbank
-		// eingef�gt. Der Button "löschen" soll deaktiviert werden.
+		// eingefügt. Der Button "löschen" soll deaktiviert werden.
 		clearButton.addActionListener(new BookGUIActionListener(this));
 
-		// Icon f�r den Buttton "speichern"
+		// Icon für den Buttton "speichern"
 		final Icon saveIcon = new ImageIcon(
 				BookGUI.class
 						.getResource("/viewPackage/images/saveIcon.png"));
@@ -366,7 +366,7 @@ public class BookGUI extends JFrame {
 		// die Datenbank gespeichert werden
 		saveButton.addActionListener(new BookGUIActionListener(this));
 
-		// Icon f�r den Buttton "löschen"
+		// Icon für den Buttton "löschen"
 		final Icon deleteIcon = new ImageIcon(
 				BookGUI.class
 						.getResource("/viewPackage/images/deleteIcon.png"));
@@ -394,7 +394,7 @@ public class BookGUI extends JFrame {
 		// Fenster geschlossen werden
 		closeButton.addActionListener(new BookGUIActionListener(this));
 
-		// Dummy-Labels f�r Abstand zwischen der Tabelle und den Buttons
+		// Dummy-Labels für Abstand zwischen der Tabelle und den Buttons
 		JLabel dummyLabel = new JLabel();
 		JLabel dummyLabel2 = new JLabel();
 		// Dummy-Labels für Abstand zwischen den Buttons und dem unteren

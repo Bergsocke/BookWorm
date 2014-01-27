@@ -21,7 +21,7 @@ public class Book {
 	private String read;
 
 	/**
-	 * Konstruktor f�r den Zugriff auf alle Tabellenfelder
+	 * Konstruktor für den Zugriff auf alle Tabellenfelder
 	 * 
 	 * @param id
 	 * @param isbn
