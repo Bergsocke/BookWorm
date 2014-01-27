@@ -1,10 +1,10 @@
-package testPackage;
+package bookworm.testPackage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import bookDatabasePackage.BookDB;
+import bookworm.databasePackage.BookDB;
 
 /**
  * Die Klasse "BookWormTest" dient zum Testen der Funktionalitäten

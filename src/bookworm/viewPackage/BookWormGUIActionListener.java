@@ -1,4 +1,4 @@
-package bookViewPackage;
+package bookworm.viewPackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import bookDatabasePackage.Book;
-import bookDatabasePackage.BookDB;
+import bookworm.databasePackage.Book;
+import bookworm.databasePackage.BookDB;
 
 /**
  * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
@@ -19,16 +19,16 @@ import bookDatabasePackage.BookDB;
  * @author Bergsocke
  * 
  */
-public class BookGUIActionListener implements ActionListener {
+public class BookWormGUIActionListener implements ActionListener {
 
-	BookGUI guiBook;
+	BookWormGUI guiBook;
 
 	/**
 	 * Konstruktor
 	 * 
 	 * @param guiBook
 	 */
-	public BookGUIActionListener(BookGUI guiBook) {
+	public BookWormGUIActionListener(BookWormGUI guiBook) {
 		this.guiBook = guiBook;
 	}
 

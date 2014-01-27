@@ -1,4 +1,4 @@
-package loginPackage;
+package bookworm.loginPackage;
 
 import java.awt.BorderLayout;
 
@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import bookViewPackage.BookGUI;
+import bookworm.viewPackage.BookWormGUI;
 
 /**
  * Die Klasse "LoginGUI" enthält die Main-Methode zum Starten der
@@ -137,7 +137,7 @@ public class LoginGUI extends JDialog {
 		// Benutzerdaten sind korrekt
 		if (numRow == 1) {
 			// Die Bücherverwaltung wird gestartet
-			BookGUI.letStarted();
+			BookWormGUI.letStarted();
 
 			// Offene Datenbank-Verbindungen werden geschlossen
 			LoginDB.closeConnections();

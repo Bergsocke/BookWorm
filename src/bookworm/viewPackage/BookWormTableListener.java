@@ -1,12 +1,12 @@
-package bookViewPackage;
+package bookworm.viewPackage;
 
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import bookDatabasePackage.Book;
-import bookDatabasePackage.BookDB;
+import bookworm.databasePackage.Book;
+import bookworm.databasePackage.BookDB;
 
 /**
  * Die Klasse "BookTableListener" reagiert auf die Auswahl des Users in der
@@ -16,16 +16,16 @@ import bookDatabasePackage.BookDB;
  * @author Bergsocke
  * 
  */
-public class BookTableListener implements ListSelectionListener {
+public class BookWormTableListener implements ListSelectionListener {
 
-	BookGUI guiBook;
+	BookWormGUI guiBook;
 
 	/**
 	 * Konstruktor
 	 * 
 	 * @param guiBook
 	 */
-	public BookTableListener(BookGUI guiBook) {
+	public BookWormTableListener(BookWormGUI guiBook) {
 		this.guiBook = guiBook;
 	}
 
