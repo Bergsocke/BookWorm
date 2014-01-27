@@ -1,4 +1,4 @@
-package a_loginPackage;
+package loginPackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

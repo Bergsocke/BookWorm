@@ -1,4 +1,4 @@
-package a_loginPackage;
+package loginPackage;
 
 import java.awt.BorderLayout;
 

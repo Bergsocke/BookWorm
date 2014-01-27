@@ -1,4 +1,4 @@
-package a_loginPackage;
+package loginPackage;
 
 /**
  * Die Klasse "LoginUser" repräsentiert den Benutzer, der sich einloggen möchte
