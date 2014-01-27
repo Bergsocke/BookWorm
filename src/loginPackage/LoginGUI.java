@@ -15,7 +15,7 @@ import viewPackage.BookGUI;
 
 /**
  * Die Klasse "LoginGUI" enthält die Main-Methode zum Starten der
- * Java-Applikation.
+ * Java-Applikation BookWorm.
  * 
  * Ein Login-Fenster wird erzeugt, in dem der Benutzer seinen Benutzernamen und
  * sein Passwort eingeben kann. Sind die eingegebenen Daten korrekt, wird die
@@ -57,8 +57,8 @@ public class LoginGUI extends JDialog {
 		// Konstruktor wird aufgerufen und ein Frame zugewiesen
 		LoginGUI myLogin = new LoginGUI(loginFrame);
 
-		// �berschrift
-		myLogin.setTitle("Anmeldung f�r die Bücherverwaltung");
+		// Überschrift
+		myLogin.setTitle("Anmeldung BookWorm");
 
 		// Fenstergröße wird gesetzt
 		myLogin.setSize(400, 300);
@@ -113,7 +113,7 @@ public class LoginGUI extends JDialog {
 		// geschlossen werden
 		breakButton.addActionListener(new LoginActionListener(this));
 
-		// Hinzuf�gen der einzelnen Komponenten zum Panel
+		// Hinzufügen der einzelnen Komponenten zum Panel
 		loginPanel.add(usernameLabel);
 		loginPanel.add(usernameText);
 		loginPanel.add(passwordLabel);
@@ -136,7 +136,7 @@ public class LoginGUI extends JDialog {
 		int numRow = LoginDB.login(myUser);
 		// Benutzerdaten sind korrekt
 		if (numRow == 1) {
-			// Die B�cherverwaltung wird gestartet
+			// Die Bücherverwaltung wird gestartet
 			BookGUI.letStarted();
 
 			// Offene Datenbank-Verbindungen werden geschlossen

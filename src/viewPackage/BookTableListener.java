@@ -70,7 +70,7 @@ public class BookTableListener implements ListSelectionListener {
 					JOptionPane
 							.showMessageDialog(
 									guiBook,
-									"Der ausgewählter Datensatz kann nicht angezeigt werden",
+									"Der ausgewählte Datensatz kann nicht angezeigt werden",
 									"Fehler", JOptionPane.ERROR_MESSAGE);
 				}
 			}
