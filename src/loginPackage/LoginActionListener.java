@@ -1,4 +1,4 @@
-package bookworm.loginPackage;
+package loginPackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
- * Mit der Klasse "LoginActionListener" werden die Aktionen für die Buttons
+ * Mit der Klasse "LoginActionListener" werden die Aktionen fÃ¼r die Buttons
  * "Login" und "Abbrechen" der Klasse LoginGUI festgelegt.
  * 
  * @author Bergsocke

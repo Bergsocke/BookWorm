@@ -1,15 +1,16 @@
-package bookworm.loginPackage;
+package loginPackage;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
+import databasePackage.ConnectionDatabase;
+
 /**
  * Die Klasse "LoginDB" stellte eine Verbindung zur MySQL-Datenbank
- * "book_management" her und prüft, ob die eingegebene
+ * "book_management" her und prÃ¼ft, ob die eingegebene
  * Benutzername/Password-Kombination in der Tabelle "users" vorhanden ist
  * 
  * @author Bergsocke
@@ -21,34 +22,9 @@ public class LoginDB {
 	private static PreparedStatement myPreparedStatement = null;
 	private static ResultSet myResultSet = null;
 
-	/**
-	 * Diese Methode baut die Datenbankverbindung zur Datenbank
-	 * "book_management" auf
-	 */
-	public static void connectDB() {
-
-		try {
-			// Treiber wird geladen und die Regestrierung beim DriverManager
-			// erfolgt
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// DriverManager wird verwenden und die Verbindung zur DB wird
-			// aufgebaut
-			connect = DriverManager.getConnection(
-					"jdbc:mysql://localhost/book_database", "book_user",
-					"book_password");
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbankverbindung konnte nicht hergestellt werden. Bitte prüfen Sie, "
-							+ "ob der MySQL-Server läuft.", "Fehler",
-					JOptionPane.ERROR_MESSAGE);
-		}
-	}
 
 	/**
-	 * Diese Methode prüft, ob die angegebene Benutzername/Password-Kombination
+	 * Diese Methode prÃ¼ft, ob die angegebene Benutzername/Password-Kombination
 	 * in der Tabelle "users" vorhanden ist
 	 * 
 	 * @param username
@@ -56,24 +32,24 @@ public class LoginDB {
 	 * @return numRows
 	 */
 	public static int login(LoginUser myUser) {
-		// Variable für Anzahl der gefundenen Datensätze
+		// Variable fÃ¼r Anzahl der gefundenen DatensÃ¤tze
 		int numRows = 0;
 
 		try {
 			// Datenbankverbindung herstellen
-			connectDB();
+			connect = ConnectionDatabase.connectDB();
 
-			// PreparedStatement für den SQL-Befehl
+			// PreparedStatement fÃ¼r den SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("SELECT COUNT(*) FROM book_database.users WHERE username = '"
 							+ myUser.getUsername()
 							+ "' AND userpassword = '"
 							+ myUser.getUserpassword() + "';");
 
-			// SQL-Befehl wird ausgeführt
+			// SQL-Befehl wird ausgefÃ¼hrt
 			myResultSet = myPreparedStatement.executeQuery();
 
-			// Anzahl der Datensätze ermitteln
+			// Anzahl der DatensÃ¤tze ermitteln
 			while (myResultSet.next()) {
 				numRows = myResultSet.getInt("count(*)");
 			}
@@ -81,7 +57,7 @@ public class LoginDB {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
+					"Datenbankabfrage konnte nicht durchgefÃ¼hrt werden.",
 					"Fehler", JOptionPane.ERROR_MESSAGE);
 
 		} finally {
@@ -93,7 +69,7 @@ public class LoginDB {
 	}
 
 	/**
-	 * Methode zum Schließen aller offenen Verbindungen
+	 * Methode zum SchlieÃŸen aller offenen Verbindungen
 	 */
 	public static void closeConnections() {
 		try {

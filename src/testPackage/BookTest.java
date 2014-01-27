@@ -1,61 +1,57 @@
-package bookworm.testPackage;
+package testPackage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import bookworm.databasePackage.BookDB;
+import databasePackage.ConnectionDatabase;
 
 /**
- * Die Klasse "BookWormTest" dient zum Testen der Funktionalit‰ten
- * (Consolenausgabe)
+ * Klasse mit Main-Methode zum Testen (Consolenausgabe)
+ * 
  */
-
-public class BookWormTest {
+public class BookTest {
 
 	private static Connection connect = null;
 	private static PreparedStatement myPreparedStatement = null;
 	private static ResultSet myResultSet = null;
 
 	/**
-	 * Main-Methode zum Starten
+	 * Main-Methode
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Verbindung zur Datenbank herstellen
-		connect = BookDB.connectDB();
-		// Alle vorhandenen Datens‰tze anzeigen
-		displayAllBooks();
+
+		displayAllTest();
 	}
 
 	/**
-	 * Zeigt alle Datens‰tze an, die in der Tabelle "books" vorhanden sind und
-	 * gibt diese auf der Console aus
+	 * Es werden alle vorhandenen Datens√§tze der Tabelle "books" angezeigt
 	 */
-	public static void displayAllBooks() {
-
+	public static void displayAllTest() {
 		try {
+			connect = ConnectionDatabase.connectDB();
+
+			// Alle Datens√§tze anzeigen
 			myPreparedStatement = connect
 					.prepareStatement("SELECT * FROM book_database.books;");
 			myResultSet = myPreparedStatement.executeQuery();
 
 			while (myResultSet.next()) {
-
 				int id = myResultSet.getInt(1);
 				String isbn = myResultSet.getString(2);
 				String title = myResultSet.getString(3);
 				String author = myResultSet.getString(4);
 				String publicationDate = myResultSet.getString(5);
-				String shortDescription = myResultSet.getString(6);
-				String comment = myResultSet.getString(7);
-				String format = myResultSet.getString(8);
+				String format = myResultSet.getString(6);
+				String shortDescription = myResultSet.getString(7);
+				String comment = myResultSet.getString(8);
 				String read = myResultSet.getString(9);
 
-				System.out.println(id + ": " + " " + isbn + ", " + title + ", "
-						+ author + ", " + publicationDate + ", "
-						+ shortDescription + ", " + " " + comment + ", " + ", "
-						+ format + ", " + ", " + read);
+				System.out.println(id + ": " + isbn + ", " + title + ", "
+						+ author + ", " + publicationDate + ", " + format + ", "
+						+ shortDescription + ", " + comment + ", " + read);
 			}
 
 		} catch (Exception e) {

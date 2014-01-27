@@ -1,7 +1,7 @@
-package bookworm.loginPackage;
+package loginPackage;
 
 /**
- * Die Klasse "LoginUser" repräsentiert den Benutzer, der sich einloggen möchte
+ * Die Klasse "LoginUser" repr#sentiert den Benutzer, der sich einloggen mÃ¶chte
  * 
  * @author Bergsocke
  * 

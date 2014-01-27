@@ -1,4 +1,4 @@
-package bookworm.loginPackage;
+package loginPackage;
 
 import java.awt.BorderLayout;
 
@@ -11,15 +11,15 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import bookworm.viewPackage.BookWormGUI;
+import viewPackage.BookGUI;
 
 /**
- * Die Klasse "LoginGUI" enthält die Main-Methode zum Starten der
+ * Die Klasse "LoginGUI" enthÃ¤lt die Main-Methode zum Starten der
  * Java-Applikation.
  * 
  * Ein Login-Fenster wird erzeugt, in dem der Benutzer seinen Benutzernamen und
  * sein Passwort eingeben kann. Sind die eingegebenen Daten korrekt, wird die
- * Bücherverwaltungs-GUI aufgebaut. Sind die eingegebenen Daten nicht korrekt,
+ * BÃ¼cherverwaltungs-GUI aufgebaut. Sind die eingegebenen Daten nicht korrekt,
  * wird eine entsprechende Meldung ausgegeben und der Benutzer kann erneut seine
  * Daten eingeben.
  * 
@@ -57,10 +57,10 @@ public class LoginGUI extends JDialog {
 		// Konstruktor wird aufgerufen und ein Frame zugewiesen
 		LoginGUI myLogin = new LoginGUI(loginFrame);
 
-		// Überschrift
-		myLogin.setTitle("Anmeldung für die Bücherverwaltung");
+		// ï¿½berschrift
+		myLogin.setTitle("Anmeldung fï¿½r die BÃ¼cherverwaltung");
 
-		// Fenstergröße wird gesetzt
+		// FenstergrÃ¶ÃŸe wird gesetzt
 		myLogin.setSize(400, 300);
 
 		// Positionierung am Desktop
@@ -113,7 +113,7 @@ public class LoginGUI extends JDialog {
 		// geschlossen werden
 		breakButton.addActionListener(new LoginActionListener(this));
 
-		// Hinzufügen der einzelnen Komponenten zum Panel
+		// Hinzufï¿½gen der einzelnen Komponenten zum Panel
 		loginPanel.add(usernameLabel);
 		loginPanel.add(usernameText);
 		loginPanel.add(passwordLabel);
@@ -126,8 +126,8 @@ public class LoginGUI extends JDialog {
 	}
 
 	/**
-	 * Diese Methode startet die Prüfung, ob die Benutzerdaten korrekt sind und
-	 * führt gegebenenfalls den Start der Bücherverwaltung durch
+	 * Diese Methode startet die PrÃ¼fung, ob die Benutzerdaten korrekt sind und
+	 * fÃ¼hrt gegebenenfalls den Start der BÃ¼cherverwaltung durch
 	 * 
 	 * @param myUser
 	 */
@@ -136,8 +136,8 @@ public class LoginGUI extends JDialog {
 		int numRow = LoginDB.login(myUser);
 		// Benutzerdaten sind korrekt
 		if (numRow == 1) {
-			// Die Bücherverwaltung wird gestartet
-			BookWormGUI.letStarted();
+			// Die Bï¿½cherverwaltung wird gestartet
+			BookGUI.letStarted();
 
 			// Offene Datenbank-Verbindungen werden geschlossen
 			LoginDB.closeConnections();

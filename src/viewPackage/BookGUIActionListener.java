@@ -1,4 +1,4 @@
-package bookworm.viewPackage;
+package viewPackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,28 +7,28 @@ import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import bookworm.databasePackage.Book;
-import bookworm.databasePackage.BookDB;
+import databasePackage.Book;
+import databasePackage.BookDB;
 
 /**
- * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
- * "alle anzeigen", "suchen", "neu", "speichern", "löschen", "Programm beenden"
- * sowie für die MenüBarItems "Neuen Datensatz anlegen", "Datensatz speichern",
- * "Datensatz löschen" und "Über das Programm" der Klasse BookGUI festgelegt.
+ * Mit der Klasse "BookActionListener" werden die Aktionen fï¿½r die Buttons
+ * "alle anzeigen", "suchen", "neu", "speichern", "lÃ¶schen", "Programm beenden"
+ * sowie fÃ¼r die MenÃ¼BarItems "Neuen Datensatz anlegen", "Datensatz speichern",
+ * "Datensatz lÃ¶schen" und "Ãœber das Programm" der Klasse BookGUI festgelegt.
  * 
  * @author Bergsocke
  * 
  */
-public class BookWormGUIActionListener implements ActionListener {
+public class BookGUIActionListener implements ActionListener {
 
-	BookWormGUI guiBook;
+	BookGUI guiBook;
 
 	/**
 	 * Konstruktor
 	 * 
 	 * @param guiBook
 	 */
-	public BookWormGUIActionListener(BookWormGUI guiBook) {
+	public BookGUIActionListener(BookGUI guiBook) {
 		this.guiBook = guiBook;
 	}
 
@@ -36,9 +36,9 @@ public class BookWormGUIActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 
 		// Wenn auf den Button "alle anzeigen" geklickt wird, werden
-		// alle Datensätze der Datenbank angezeigt (mit Hilfe der Methode
+		// alle DatensÃ¤tze der Datenbank angezeigt (mit Hilfe der Methode
 		// "createBookTable()" aus der Klasse BookGUI) und der Text im Suchfeld
-		// wird zurückgesetzt
+		// wird zurÃ¼ckgesetzt
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("alle anzeigen")) {
 			guiBook.createBookTable();
@@ -51,7 +51,7 @@ public class BookWormGUIActionListener implements ActionListener {
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("suchen")) {
 			guiBook.createBookTable();
-			// Suchbegriff wird zurückgesetzt
+			// Suchbegriff wird zurÃ¼ckgesetzt
 			guiBook.getSearchText().setText("");
 
 			// Wenn kein Datensatz gefunden wurde, wird eine entsprechende
@@ -65,11 +65,11 @@ public class BookWormGUIActionListener implements ActionListener {
 			}
 		}
 
-		// Wenn auf den Button "neu" oder in der Menübar auf
+		// Wenn auf den Button "neu" oder in der Menï¿½bar auf
 		// "Neuen Datensatz anlegen" geklickt wird , wird der Inhalt der
-		// Textfelder im EastPanel zurückgesetzt. Ein neuer Datensatz wird
+		// Textfelder im EastPanel zurï¿½ckgesetzt. Ein neuer Datensatz wird
 		// erst beim Klick auf den Button "speichern" in die Datenbank
-		// eingefügt.
+		// eingefÃ¼gt.
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("neu")) {
 			this.actionClear();
@@ -79,11 +79,11 @@ public class BookWormGUIActionListener implements ActionListener {
 			this.actionClear();
 		}
 
-		// Wenn auf den Button "speichern" oder in der Menübar auf
+		// Wenn auf den Button "speichern" oder in der MenÃ¼bar auf
 		// "Datensatz speichern" geklickt wird, wird ein bereits vorhandener
 		// Datensatz in der Datenbank upgedatet.
 		// Ist der Datensatz noch nicht in der Datenbank vorhanden, wird er in
-		// die Datenbank eingefügt.
+		// die Datenbank eingefÃ¼gt.
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("speichern")) {
 			this.actionSave();
@@ -93,15 +93,15 @@ public class BookWormGUIActionListener implements ActionListener {
 			this.actionSave();
 		}
 
-		// Wenn auf den Button "löschen" oder in der Menübar auf
-		// "Datensatz löschen" geklickt wird, wird der Datensatz aus der
-		// Datenbank gelöscht
+		// Wenn auf den Button "lÃ¶schen" oder in der MenÃ¼bar auf
+		// "Datensatz lÃ¶schen" geklickt wird, wird der Datensatz aus der
+		// Datenbank gelÃ¶scht
 		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("löschen")) {
+				&& event.getActionCommand().contains("lÃ¶schen")) {
 			this.actionDelete();
 		}
 		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Datensatz löschen")) {
+				&& event.getActionCommand().contains("Datensatz lÃ¶schen")) {
 			this.actionDelete();
 		}
 
@@ -115,10 +115,10 @@ public class BookWormGUIActionListener implements ActionListener {
 			System.exit(0);
 		}
 
-		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
+		// Wenn in der Menï¿½bar auf "Ãœber das Programm" geklickt wird, wird ein
 		// Dialogfenster erzeugt
 		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Über das Programm")) {
+				&& event.getActionCommand().contains("Ãœber das Programm")) {
 			// Folgende Meldung wird ausgegeben
 			JOptionPane.showMessageDialog(guiBook,
 					"Erstellt von Weinberger Eva, 2014", "",
@@ -127,22 +127,22 @@ public class BookWormGUIActionListener implements ActionListener {
 	}
 
 	/**
-	 * Wenn auf den Button "neu" oder in der Menübar auf
+	 * Wenn auf den Button "neu" oder in der MenÃ¼bar auf
 	 * "Neuen Datensatz anlegen" geklickt wird, wird der Inhalt der Textfelder
-	 * im EastPanel zurückgesetzt (mit Hilfe der Methode "resetTableEast()" aus
+	 * im EastPanel zurÃ¼ckgesetzt (mit Hilfe der Methode "resetTableEast()" aus
 	 * der Klasse "BookGUI"). Ein neuer Datensatz wird erst beim Klick auf den
-	 * Button "speichern" in die Datenbank eingefügt. Der Button "löschen" wird
+	 * Button "speichern" in die Datenbank eingefÃ¼gt. Der Button "lÃ¶schen" wird
 	 * deaktiviert.
 	 */
 	public void actionClear() {
-		// Alle Textfelder werden zurückgesetzt
+		// Alle Textfelder werden zurÃ¼ckgesetzt
 		guiBook.resetTableEast();
-		// Löschen-Button wird deaktiviert
+		// LÃ¶schen-Button wird deaktiviert
 		guiBook.getDeleteButton().setEnabled(false);
 	}
 
 	/**
-	 * Wenn auf den Button "speichern" oder in der Menübar auf
+	 * Wenn auf den Button "speichern" oder in der MenÃ¼bar auf
 	 * "Datensatz speichern" geklickt wird, wird ein bereits vorhandener
 	 * Datensatz in der Datenbank upgedatet bzw. wenn der Datensatz noch nicht
 	 * in der Datenbank vorhanden ist, wird er in die Datenbank gespeichert.
@@ -204,11 +204,11 @@ public class BookWormGUIActionListener implements ActionListener {
 			"Datensatz wurde erfolgreich gespeichert!", "",
 					JOptionPane.INFORMATION_MESSAGE);
 
-			// Alle Textfelder werden zurückgesetzt, damit weitere
-			// Datensätze eingegeben werden können
+			// Alle Textfelder werden zurÃ¼ckgesetzt, damit weitere
+			// DatensÃ¤tze eingegeben werden kÃ¶nnen
 			guiBook.resetTableEast();
 
-			// Suchbegriff wird zurückgesetzt
+			// Suchbegriff wird zurÃ¼ckgesetzt
 			guiBook.getSearchText().setText("");
 
 			// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
@@ -219,61 +219,61 @@ public class BookWormGUIActionListener implements ActionListener {
 					"Datensatz konnte nicht gespeichert werden!", "Fehler",
 					JOptionPane.ERROR_MESSAGE);
 
-			// Alle Textfelder werden zurückgesetzt, damit der Datensatz
+			// Alle Textfelder werden zurÃ¼ckgesetzt, damit der Datensatz
 			// erneut eingegeben werden kann
 			guiBook.resetTableEast();
 
-			// Suchbegriff wird zurückgesetzt
+			// Suchbegriff wird zurÃ¼ckgesetzt
 			guiBook.getSearchText().setText("");
 		}
 	}
 
 	/**
-	 * Wenn auf den Button "löschen" oder in der Menübar auf "Datensatz löschen"
-	 * geklickt wird, wird der Datensatz aus der Datenbank gelöscht
+	 * Wenn auf den Button "lÃ¶schen" oder in der MenÃ¼bar auf "Datensatz lÃ¶schen"
+	 * geklickt wird, wird der Datensatz aus der Datenbank gelÃ¶scht
 	 */
 	public void actionDelete() {
 		// Die Buch-ID des bereits vorhandenen Datensatzes wird ausgelesen
 		String BookID = guiBook.getBookIdText().getText();
 
-		// Es wird gefragt, ob der Datensatz wirklich gelöscht werden soll
+		// Es wird gefragt, ob der Datensatz wirklich gelÃ¶scht werden soll
 		int check = JOptionPane.showConfirmDialog(guiBook,
-				"Soll der Datensatz wirklich gelöscht werden?");
+				"Soll der Datensatz wirklich gelÃ¶scht werden?");
 
-		// Wird mit "Ja" bestätigt, wird der Datensatz gelöscht
+		// Wird mit "Ja" bestÃ¤tigt, wird der Datensatz gelÃ¶scht
 		if (check == 0) {
 			// Eine Verbindung zur Datenbank wird aufgebaut und der
-			// Datensatz wird aus der Datenbank gelöscht
+			// Datensatz wird aus der Datenbank gelÃ¶scht
 			BookDB.deleteBook(BookID);
 
-			// Wenn der Datensatz erfolgreich gelöscht wurde, wird eine
+			// Wenn der Datensatz erfolgreich gelÃ¶scht wurde, wird eine
 			// entsprechende Meldung ausgegeben
 			if (BookDB.successful == 1) {
 				// Die Tabelle im WestPanel wird neu aufgebaut, damit der
-				// gelöschte Datensatz nicht mehr angezeigt wird
+				// gelÃ¶schte Datensatz nicht mehr angezeigt wird
 				guiBook.reloadWestTable();
 
 				// Folgende Meldung wird ausgegeben
 				JOptionPane.showMessageDialog(guiBook,
-						"Datensatz wurde erfolgreich gelöscht!", " ",
+						"Datensatz wurde erfolgreich gelÃ¶scht!", " ",
 						JOptionPane.INFORMATION_MESSAGE);
 
-				// Der Text im Suchfeld wird zurückgesetzt
+				// Der Text im Suchfeld wird zurÃ¼ckgesetzt
 				guiBook.getSearchText().setText("");
-				// Alle Textfelder werden zurückgesetzt
+				// Alle Textfelder werden zurÃ¼ckgesetzt
 				guiBook.resetTableEast();
 
-				// Wenn der Datensatz nicht gelöscht werden konnte, wird eine
+				// Wenn der Datensatz nicht gelÃ¶scht werden konnte, wird eine
 				// entsprechende Meldung ausgegebe
 			} else {
 				// Folgende Meldung wird ausgegeben
 				JOptionPane.showMessageDialog(guiBook,
-						"Datensatz konnte nicht gelöscht werden!", "Fehler",
+						"Datensatz konnte nicht gelÃ¶scht werden!", "Fehler",
 						JOptionPane.ERROR_MESSAGE);
 
-				// Suchbegriff wird zurückgesetzt
+				// Suchbegriff wird zurÃ¼ckgesetzt
 				guiBook.getSearchText().setText("");
-				// Alle Textfelder werden zurückgesetzt
+				// Alle Textfelder werden zurÃ¼ckgesetzt
 				guiBook.resetTableEast();
 			}
 		}
