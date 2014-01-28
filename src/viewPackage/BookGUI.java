@@ -24,7 +24,6 @@ import javax.swing.ListSelectionModel;
 
 import databasePackage.BookDB;
 
-
 /**
  * Die Klasse "BookGUI" ist für den Aufbau der grafischen Oberfläche zuständig.
  * Hier werden die einzelnen Komponenten des Fensters (Textfelder, ComboBoxen,
@@ -79,6 +78,9 @@ public class BookGUI extends JFrame {
 
 	private JLabel shortDescriptionLabel;
 	private JTextArea shortDescriptionArea;
+
+	private JLabel categoryLabel;
+	private JComboBox<String> categoryCombo;
 
 	private JLabel commentLabel;
 	private JTextArea commentArea;
@@ -214,8 +216,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "suchen"
 		final Icon searchIcon = new ImageIcon(
-				BookGUI.class
-						.getResource("/viewPackage/images/searchIcon.png"));
+				BookGUI.class.getResource("/viewPackage/images/searchIcon.png"));
 		searchButton = new JButton("suchen  ", searchIcon);
 		searchButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		searchButton.setBackground(Color.lightGray);
@@ -251,8 +252,8 @@ public class BookGUI extends JFrame {
 
 		eastPanel = new JPanel();
 
-		// Layout für 13 Zeilen und 2 Spalten
-		eastPanel.setLayout(new GridLayout(13, 2));
+		// Layout für 14 Zeilen und 2 Spalten
+		eastPanel.setLayout(new GridLayout(14, 2));
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
@@ -298,7 +299,7 @@ public class BookGUI extends JFrame {
 		formatCombo.setBackground(Color.white);
 		formatCombo.setFont(new Font(textFont, textStyle, textSize));
 		// Festlegung des Inhalts der Combo-Box "formatCombo"
-		String[] format = { "", "Taschenbuch", "Gebundene Ausgabe", "Hörbuch",
+		String[] format = { "", "Taschenbuch", "Gebunden", "Hörbuch",
 				"Elektronisch", "unbekannt" };
 		for (int i = 0; i < format.length; i++) {
 			formatCombo.addItem(format[i]);
@@ -316,6 +317,17 @@ public class BookGUI extends JFrame {
 		shortDescriptionArea.setWrapStyleWord(true);
 		// Scrollbar soll zur Verfügung stehen
 		shortDescriptionScroll = new JScrollPane(shortDescriptionArea);
+
+		categoryLabel = new JLabel("Kategorie: ");
+		categoryLabel.setFont(new Font(labelFont, labelStyle, labelSize));
+		categoryCombo = new JComboBox<String>();
+		categoryCombo.setBackground(Color.white);
+		categoryCombo.setFont(new Font(textFont, textStyle, textSize));
+		// Festlegung des Inhalts der Combo-Box "categoryCombo"
+		String[] category = { "", "Roman", "Sachbuch", "Sonstiges" };
+		for (int i = 0; i < category.length; i++) {
+			categoryCombo.addItem(category[i]);
+		}
 
 		commentLabel = new JLabel("Kommentar: ");
 		commentLabel.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -342,8 +354,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "neu"
 		final Icon newIcon = new ImageIcon(
-				BookGUI.class
-						.getResource("/viewPackage/images/newIcon.png"));
+				BookGUI.class.getResource("/viewPackage/images/newIcon.png"));
 		clearButton = new JButton("     neu", newIcon);
 		clearButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		clearButton.setBackground(Color.lightGray);
@@ -356,8 +367,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "speichern"
 		final Icon saveIcon = new ImageIcon(
-				BookGUI.class
-						.getResource("/viewPackage/images/saveIcon.png"));
+				BookGUI.class.getResource("/viewPackage/images/saveIcon.png"));
 		saveButton = new JButton("     speichern", saveIcon);
 		saveButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		saveButton.setBackground(Color.lightGray);
@@ -368,8 +378,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "löschen"
 		final Icon deleteIcon = new ImageIcon(
-				BookGUI.class
-						.getResource("/viewPackage/images/deleteIcon.png"));
+				BookGUI.class.getResource("/viewPackage/images/deleteIcon.png"));
 		deleteButton = new JButton("     löschen", deleteIcon);
 		deleteButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		deleteButton.setBackground(Color.lightGray);
@@ -384,8 +393,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "Programm beenden"
 		final Icon closeIcon = new ImageIcon(
-				BookGUI.class
-						.getResource("/viewPackage/images/closeIcon.png"));
+				BookGUI.class.getResource("/viewPackage/images/closeIcon.png"));
 		closeButton = new JButton(" Programm beenden", closeIcon);
 		closeButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		closeButton.setBackground(Color.lightGray);
@@ -423,6 +431,9 @@ public class BookGUI extends JFrame {
 
 		eastPanel.add(shortDescriptionLabel);
 		eastPanel.add(shortDescriptionScroll);
+
+		eastPanel.add(categoryLabel);
+		eastPanel.add(categoryCombo);
 
 		eastPanel.add(commentLabel);
 		eastPanel.add(commentScroll);
@@ -531,8 +542,9 @@ public class BookGUI extends JFrame {
 		bookTable.getColumnModel().getColumn(4).setPreferredWidth(40);
 		bookTable.getColumnModel().getColumn(5).setPreferredWidth(90);
 		bookTable.getColumnModel().getColumn(6).setPreferredWidth(200);
-		bookTable.getColumnModel().getColumn(7).setPreferredWidth(200);
-		bookTable.getColumnModel().getColumn(8).setPreferredWidth(70);
+		bookTable.getColumnModel().getColumn(7).setPreferredWidth(40);
+		bookTable.getColumnModel().getColumn(8).setPreferredWidth(200);
+		bookTable.getColumnModel().getColumn(9).setPreferredWidth(70);
 
 		// Festlegung des Selektionsmodus - es darf nur eine Zeile ausgewählt
 		// werden
@@ -571,6 +583,7 @@ public class BookGUI extends JFrame {
 		this.getPublicationDateText().setText("");
 		this.getFormatCombo().setSelectedItem("");
 		this.getShortDescriptionArea().setText("");
+		this.getCategoryCombo().setSelectedItem("");
 		this.getCommentArea().setText("");
 		this.getReadCombo().setSelectedItem("");
 	}
@@ -632,6 +645,14 @@ public class BookGUI extends JFrame {
 
 	public void setShortDescriptionArea(JTextArea shortDescriptionArea) {
 		this.shortDescriptionArea = shortDescriptionArea;
+	}
+
+	public JComboBox<String> getCategoryCombo() {
+		return categoryCombo;
+	}
+
+	public void setCategoryCombo(JComboBox<String> categoryCombo) {
+		this.categoryCombo = categoryCombo;
 	}
 
 	public JTextArea getCommentArea() {

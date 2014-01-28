@@ -25,7 +25,6 @@ public class BookDB {
 	// Datensatzes erfolgreich war
 	public static int successful = 0;
 
-
 	/**
 	 * Es werden alle Datensätze, die in der Tabelle "books" vorhanden sind,
 	 * angezeigt
@@ -46,13 +45,14 @@ public class BookDB {
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = myPreparedStatement.executeQuery();
-			
+
 			while (myResultSet.next()) {
 				bookList.add(new Book(myResultSet.getString(1), myResultSet
 						.getString(2), myResultSet.getString(3), myResultSet
 						.getString(4), myResultSet.getString(5), myResultSet
 						.getString(6), myResultSet.getString(7), myResultSet
-						.getString(8), myResultSet.getString(9)));
+						.getString(8), myResultSet.getString(9), myResultSet
+						.getString(10)));
 			}
 
 		} catch (Exception e) {
@@ -96,7 +96,8 @@ public class BookDB {
 						.getString(2), myResultSet.getString(3), myResultSet
 						.getString(4), myResultSet.getString(5), myResultSet
 						.getString(6), myResultSet.getString(7), myResultSet
-						.getString(8), myResultSet.getString(9)));
+						.getString(8), myResultSet.getString(9), myResultSet
+						.getString(10)));
 			}
 
 		} catch (Exception e) {
@@ -142,7 +143,8 @@ public class BookDB {
 						myResultSet.getString(2), myResultSet.getString(3),
 						myResultSet.getString(4), myResultSet.getString(5),
 						myResultSet.getString(6), myResultSet.getString(7),
-						myResultSet.getString(8), myResultSet.getString(9));
+						myResultSet.getString(8), myResultSet.getString(9),
+						myResultSet.getString(10));
 			}
 
 		} catch (Exception e) {
@@ -173,7 +175,7 @@ public class BookDB {
 
 			// PreparedStatement für SQL-Befehl
 			myPreparedStatement = connect
-					.prepareStatement("INSERT INTO book_database.books VALUES(default,?, ?, ?, ?, ?, ?, ?, ?)");
+					.prepareStatement("INSERT INTO book_database.books VALUES(default,?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 			myPreparedStatement.setString(1, bookToSave.getIsbn());
 			myPreparedStatement.setString(2, bookToSave.getTitle());
@@ -181,8 +183,9 @@ public class BookDB {
 			myPreparedStatement.setString(4, bookToSave.getPublicationDate());
 			myPreparedStatement.setString(5, bookToSave.getFormat());
 			myPreparedStatement.setString(6, bookToSave.getShortDescription());
-			myPreparedStatement.setString(7, bookToSave.getComment());
-			myPreparedStatement.setString(8, bookToSave.getRead());
+			myPreparedStatement.setString(7, bookToSave.getCategory());
+			myPreparedStatement.setString(8, bookToSave.getComment());
+			myPreparedStatement.setString(9, bookToSave.getRead());
 
 			// SQL-Befehl wird ausgeführt
 			successful = myPreparedStatement.executeUpdate();
@@ -230,6 +233,7 @@ public class BookDB {
 							+ "', formatb = '" + bookToUpdate.getFormat()
 							+ "', shortDescription = '"
 							+ bookToUpdate.getShortDescription()
+							+ "', category = '" + bookToUpdate.getCategory()
 							+ "', commentb = '" + bookToUpdate.getComment()
 							+ "', readb = '" + bookToUpdate.getRead()
 							+ "' WHERE id = " + bookToUpdate.getId() + ";");

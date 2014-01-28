@@ -45,20 +45,31 @@ public class BookTableListener implements ListSelectionListener {
 
 					guiBook.getBookIdText().setText(
 							String.valueOf(myBook.getId()));
+					
 					guiBook.getIsbnText().setText(
 							String.valueOf(myBook.getIsbn()));
+					
 					guiBook.getTitleText().setText(
 							String.valueOf(myBook.getTitle()));
+					
 					guiBook.getAuthorText().setText(
 							String.valueOf(myBook.getAuthor()));
+					
 					guiBook.getPublicationDateText().setText(
 							String.valueOf(myBook.getPublicationDate()));
+					
 					guiBook.getFormatCombo().setSelectedItem(
 							String.valueOf(myBook.getFormat()));
+					
 					guiBook.getShortDescriptionArea().setText(
 							myBook.getShortDescription());
+					
+					guiBook.getCategoryCombo().setSelectedItem(
+							String.valueOf(myBook.getCategory()));
+					
 					guiBook.getCommentArea().setText(
 							String.valueOf(myBook.getComment()));
+					
 					guiBook.getReadCombo().setSelectedItem(
 							String.valueOf(myBook.getRead()));
 

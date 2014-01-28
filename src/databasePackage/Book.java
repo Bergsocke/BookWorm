@@ -17,6 +17,7 @@ public class Book {
 	private String publicationDate;
 	private String format;
 	private String shortDescription;
+	private String category;
 	private String comment;
 	private String read;
 
@@ -30,12 +31,13 @@ public class Book {
 	 * @param publicationDate
 	 * @param format
 	 * @param shortDescription
+	 * @param category
 	 * @param comment
 	 * @param read
 	 */
 	public Book(String id, String isbn, String title, String author,
 			String publicationDate, String format, String shortDescription,
-			String comment, String read) {
+			String category, String comment, String read) {
 
 		this.id = id;
 		this.isbn = isbn;
@@ -44,6 +46,7 @@ public class Book {
 		this.publicationDate = publicationDate;
 		this.format = format;
 		this.shortDescription = shortDescription;
+		this.category = category;
 		this.comment = comment;
 		this.read = read;
 
@@ -58,12 +61,13 @@ public class Book {
 	 * @param publicationDate
 	 * @param format
 	 * @param shortDescription
+	 * @param category
 	 * @param comment
 	 * @param read
 	 */
 	public Book(String isbn, String title, String author,
 			String publicationDate, String format, String shortDescription,
-			String comment, String read) {
+			String category, String comment, String read) {
 
 		this.isbn = isbn;
 		this.title = title;
@@ -71,6 +75,7 @@ public class Book {
 		this.publicationDate = publicationDate;
 		this.format = format;
 		this.shortDescription = shortDescription;
+		this.category = category;
 		this.comment = comment;
 		this.read = read;
 
@@ -133,6 +138,14 @@ public class Book {
 
 	public void setShortDescription(String shortDescription) {
 		this.shortDescription = shortDescription;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getComment() {

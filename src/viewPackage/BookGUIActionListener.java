@@ -159,6 +159,7 @@ public class BookGUIActionListener implements ActionListener {
 					String.valueOf(guiBook.getPublicationDateText().getText()),
 					String.valueOf(guiBook.getFormatCombo().getSelectedItem()),
 					String.valueOf(guiBook.getShortDescriptionArea().getText()),
+					String.valueOf(guiBook.getCategoryCombo().getSelectedItem()),
 					String.valueOf(guiBook.getCommentArea().getText()), String
 							.valueOf(guiBook.getReadCombo().getSelectedItem()));
 
@@ -182,6 +183,8 @@ public class BookGUIActionListener implements ActionListener {
 					.getSelectedItem()));
 			myBook.setShortDescription(guiBook.getShortDescriptionArea()
 					.getText());
+			myBook.setCategory(String.valueOf(guiBook.getCategoryCombo()
+					.getSelectedItem()));
 			myBook.setComment(guiBook.getCommentArea().getText());
 			myBook.setRead(String.valueOf(guiBook.getReadCombo()
 					.getSelectedItem()));
@@ -200,8 +203,7 @@ public class BookGUIActionListener implements ActionListener {
 
 			// Folgende Meldung wird ausgegeben
 			JOptionPane.showMessageDialog(guiBook,
-
-			"Datensatz wurde erfolgreich gespeichert!", "",
+					"Datensatz wurde erfolgreich gespeichert!", "",
 					JOptionPane.INFORMATION_MESSAGE);
 
 			// Alle Textfelder werden zurückgesetzt, damit weitere
