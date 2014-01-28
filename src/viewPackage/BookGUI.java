@@ -2,6 +2,7 @@ package viewPackage;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -122,7 +123,7 @@ public class BookGUI extends JFrame {
 		gui.setResizable(false);
 
 		// Positionierung am Desktop
-		gui.setLocation(200, 300);
+		gui.setLocation(100, 150);
 
 		// Window-Close-Funktion
 		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -500,7 +501,7 @@ public class BookGUI extends JFrame {
 
 		// WestPanel wird aufgebaut
 		this.createteWestTable();
-
+		
 		return bookTable;
 	}
 
@@ -511,22 +512,27 @@ public class BookGUI extends JFrame {
 	public void createteWestTable() {
 
 		westPanel = new JPanel();
-
+		
 		// Falls die Spalten zu breit für den verfügbaren Platz sind,
 		// soll eine Scrollbar zur Verfügung stehen
 		tableScroll = new JScrollPane(bookTable);
+		// Festlegung der Tabellengröße
+		tableScroll.setPreferredSize(new Dimension(890, 550));
+		// dem WestPanel zuweisen
 		westPanel.add(tableScroll);
 
 		// Hinzufügen des WestPanel zum Fenster
 		this.getContentPane().add(westPanel, BorderLayout.WEST);
 		// Sichtbar machen
 		this.setVisible(true);
-
+		
 		// Die automatische Größenausrichtung der Spaltenbreite der Tabelle wird
 		// ausgeschalten. Ansonsten kann eine bestimmte Spaltengröße nicht
 		// festgelegt werden; die Spaltenbreite würde sonst automatisch nach dem
 		// verfügbaren Platz festgelegt werden
 		bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
+		
 
 		// Festlegung der Schrifteigenschaften
 		bookTable.setFont(new Font(textFont, textStyle, textSize));
@@ -539,10 +545,10 @@ public class BookGUI extends JFrame {
 		bookTable.getColumnModel().getColumn(1).setPreferredWidth(120);
 		bookTable.getColumnModel().getColumn(2).setPreferredWidth(200);
 		bookTable.getColumnModel().getColumn(3).setPreferredWidth(150);
-		bookTable.getColumnModel().getColumn(4).setPreferredWidth(40);
+		bookTable.getColumnModel().getColumn(4).setPreferredWidth(90);
 		bookTable.getColumnModel().getColumn(5).setPreferredWidth(90);
 		bookTable.getColumnModel().getColumn(6).setPreferredWidth(200);
-		bookTable.getColumnModel().getColumn(7).setPreferredWidth(40);
+		bookTable.getColumnModel().getColumn(7).setPreferredWidth(70);
 		bookTable.getColumnModel().getColumn(8).setPreferredWidth(200);
 		bookTable.getColumnModel().getColumn(9).setPreferredWidth(70);
 
