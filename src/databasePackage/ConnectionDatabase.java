@@ -40,12 +40,12 @@ public class ConnectionDatabase {
 						JOptionPane.ERROR_MESSAGE);
 			}
 
-			String drivers = myProperties.getProperty("jdbc.driver");
+			String driver = myProperties.getProperty("jdbc.driver");
 			String connectionURL = myProperties.getProperty("jdbc.url");
 			String username = myProperties.getProperty("jdbc.username");
 			String password = myProperties.getProperty("jdbc.password");
 
-			Class.forName(drivers);
+			Class.forName(driver);
 
 			connect = DriverManager.getConnection(connectionURL, username,
 					password);

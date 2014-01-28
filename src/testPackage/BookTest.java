@@ -46,12 +46,13 @@ public class BookTest {
 				String publicationDate = myResultSet.getString(5);
 				String format = myResultSet.getString(6);
 				String shortDescription = myResultSet.getString(7);
-				String comment = myResultSet.getString(8);
-				String read = myResultSet.getString(9);
+				String category = myResultSet.getString(8);
+				String comment = myResultSet.getString(9);
+				String read = myResultSet.getString(10);
 
 				System.out.println(id + ": " + isbn + ", " + title + ", "
 						+ author + ", " + publicationDate + ", " + format + ", "
-						+ shortDescription + ", " + comment + ", " + read);
+						+ shortDescription + ", " + category +   ", " + comment + ", " + read);
 			}
 
 		} catch (Exception e) {

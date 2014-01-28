@@ -32,7 +32,7 @@ public class BookTable extends AbstractTableModel {
 	 * Rückgabe der Spaltenanzahl der Büchertabelle
 	 */
 	public int getColumnCount() {
-		int columnCount = 9;
+		int columnCount = 10;
 		return columnCount;
 	}
 
@@ -64,8 +64,10 @@ public class BookTable extends AbstractTableModel {
 		case 6:
 			return "Kurzbeschreibung";
 		case 7:
-			return "Kommentar";
+			return "Kategorie";
 		case 8:
+			return "Kommentar";
+		case 9:
 			return "gelesen";
 
 		default:
@@ -96,8 +98,10 @@ public class BookTable extends AbstractTableModel {
 		case 6:
 			return myBook.getShortDescription();
 		case 7:
-			return myBook.getComment();
+			return myBook.getCategory();
 		case 8:
+			return myBook.getComment();
+		case 9:
 			return myBook.getRead();
 
 		default:
