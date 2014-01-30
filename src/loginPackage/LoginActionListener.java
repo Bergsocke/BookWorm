@@ -1,4 +1,4 @@
-package loginPackage;
+package viewPackage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +7,8 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
+import databasePackage.LoginUser;
 
 /**
  * Mit der Klasse "LoginActionListener" werden die Aktionen für die Buttons
