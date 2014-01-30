@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>40</y>
+      <w>1050</w>
+      <h>600</h>
+    </coordinates>
+    <panel_attributes>databasePackage::Book
+--
+-id: String
+-isbn: String
+-title: String
+-author: String
+-publicationDate: String
+-format: String
+-shortDescription: String
+-category: String
+-comment: String
+-read: String
+--
++Book(String id, String isbn, String title, String author, String publicationDate, String format, String shortDescription, String category, String comment, String read): ctor
++Book(String isbn, String title, String author, String publicationDate, String format, String shortDescription, String category, String comment, String read): ctor
++getId(): String
++setId(String id): void
++getIsbn(): String
++setIsbn(String isbn): void
++getTitle(): String
++setTitle(String title): void
++getAuthor(): String
++setAuthor(String author): void
++getPublicationDate(): String
++setPublicationDate(String publicationDate): void
++getFormat(): String
++setFormat(String format): void
++getShortDescription(): String
++setShortDescription(String shortDescription): void
++getCategory(): String
++setCategory(String category): void
++getComment(): String
++setComment(String comment): void
++getRead(): String
++setRead(String read): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1070</x>
+      <y>40</y>
+      <w>330</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>databasePackage::BookDB
+--
+-connect = null: Connection
+-myPreparedStatement = null: PreparedStatement
+-myResultSet = null: ResultSet
++successful = 0: int
+--
++displayAll(): List&lt;Book&gt;
++findByTitle(String bookTitle): List&lt;Book&gt;
++findByID(String bookID): Book
++saveBook(Book bookToSave): int
++updateBook(Book bookToUpdate): int
++deleteBook(String bookID): int
++closeConnections(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1070</x>
+      <y>310</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>databasePackage::ConnectionDatabase
+--
+-connect = null: Connection
+--
++connectDB(): Connection
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>1140</y>
+      <w>360</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>loginPackage::LoginActionListener
+--
+~guiLogin: LoginGUI
+--
++LoginActionListener(LoginGUI guiLogin): ctor
++actionPerformed(ActionEvent event): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>390</x>
+      <y>980</y>
+      <w>370</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>loginPackage::LoginDB
+--
+-connect = null: Connection
+-myPreparedStatement = null: PreparedStatement
+-myResultSet = null: ResultSet
+--
++login(LoginUser myUser): int
++closeConnections(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>780</y>
+      <w>360</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>loginPackage::LoginGUI
+--
+-serialVersionUID = -6035816178550912787L: long
+-loginPanel: JPanel
+-loginButton: JButton
+-breakButton: JButton
+-usernameLabel: JLabel
+-usernameText: JTextField
+-passwordLabel: JLabel
+-passwordText: JPasswordField
+--
++LoginGUI(JFrame loginFrame): ctor
++main(String[] args): void
+-initLoginGUI(): void
++startLogin(LoginUser myUser): void
++closeLoginDialog(): void
++getUsernameText(): JTextField
++setUsernameText(JTextField usernameText): void
++getPasswordText(): JPasswordField
++setPasswordText(JPasswordField passwordText): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>390</x>
+      <y>780</y>
+      <w>370</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>loginPackage::LoginUser
+--
+-username: String
+-userpassword: String
+--
++LoginUser(String username, String userpassword): ctor
++getUsername(): String
++setUsername(String username): void
++getUserpassword(): String
++setUserpassword(String userpassword): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>3070</y>
+      <w>330</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>testPackage::BookTest
+--
+-connect = null: Connection
+-myPreparedStatement = null: PreparedStatement
+-myResultSet = null: ResultSet
+--
++main(String[] args): void
++displayAllTest(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>10</x>
+      <y>1320</y>
+      <w>420</w>
+      <h>1690</h>
+    </coordinates>
+    <panel_attributes>viewPackage::BookGUI
+--
+-serialVersionUID = -4071792935538021823L: long
+~labelFont = "Verdana": String
+~labelStyle = Font.BOLD: int
+~labelSize = 12: int
+~textFont = "Arial": String
+~textStyle = Font.PLAIN: int
+~textSize = 12: int
+-northPanel: JPanel
+-eastPanel: JPanel
+-westPanel: JPanel
+-searchLabel: JLabel
+-searchText: JTextField
+-searchButton: JButton
+-allButton: JButton
+-bookIdLabel: JLabel
+-bookIdText: JTextField
+-isbnLabel: JLabel
+-isbnText: JTextField
+-titleLabel: JLabel
+-titleText: JTextField
+-authorLabel: JLabel
+-authorText: JTextField
+-formatLabel: JLabel
+-formatCombo: JComboBox&lt;String&gt;
+-publicationDateLabel: JLabel
+-publicationDateText: JTextField
+-shortDescriptionLabel: JLabel
+-shortDescriptionArea: JTextArea
+-categoryLabel: JLabel
+-categoryCombo: JComboBox&lt;String&gt;
+-commentLabel: JLabel
+-commentArea: JTextArea
+-readLabel: JLabel
+-readCombo: JComboBox&lt;String&gt;
+-clearButton: JButton
+-saveButton: JButton
+-deleteButton: JButton
+-closeButton: JButton
+-bookTable: JTable
+-tableScroll: JScrollPane
+-shortDescriptionScroll: JScrollPane
+-commentScroll: JScrollPane
+-bookMenuBar: JMenuBar
+-clearMenu: JMenu
+-clearMenuItem: JMenuItem
+-saveMenu: JMenu
+-saveMenuItem: JMenuItem
+-deleteMenu: JMenu
+-deleteMenuItem: JMenuItem
+-helpMenu: JMenu
+-helpMenuItem: JMenuItem
+--
++BookGUI(String frameTitle): ctor
++letStarted(): void
+-initComponents(): void
++initMenuBar(): void
+-initComponentsNorth(): void
+-initComponentsEast(): void
+-initComponentsWest(): void
++createBookTable(): JTable
++createteWestTable(): void
++reloadWestTable(): void
++resetTableEast(): void
++getBookIdText(): JTextField
++setBookIdText(JTextField bookIdText): void
++getIsbnText(): JTextField
++setIsbnText(JTextField isbnText): void
++getTitleText(): JTextField
++setTitleText(JTextField titleText): void
++getAuthorText(): JTextField
++setAuthorText(JTextField authorText): void
++getFormatCombo(): JComboBox&lt;String&gt;
++setFormatCombo(JComboBox&lt;String&gt; formatCombo): void
++getPublicationDateText(): JTextField
++setPublicationDateText(JTextField publicationDateText): void
++getShortDescriptionArea(): JTextArea
++setShortDescriptionArea(JTextArea shortDescriptionArea): void
++getCategoryCombo(): JComboBox&lt;String&gt;
++setCategoryCombo(JComboBox&lt;String&gt; categoryCombo): void
++getCommentArea(): JTextArea
++setCommentArea(JTextArea commentArea): void
++getReadCombo(): JComboBox&lt;String&gt;
++setReadCombo(JComboBox&lt;String&gt; readCombo): void
++getSaveButton(): JButton
++setSaveButton(JButton saveButton): void
++getSearchText(): JTextField
++setSearchText(JTextField searchText): void
++getSearchButton(): JButton
++setSearchButton(JButton searchButton): void
++getAllButton(): JButton
++setAllButton(JButton allButton): void
++getNewButton(): JButton
++setNewButton(JButton newButton): void
++getBookTable(): JTable
++setBookTable(JTable bookTable): void
++getDeleteButton(): JButton
++setDeleteButton(JButton deleteButton): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>450</x>
+      <y>1320</y>
+      <w>330</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>viewPackage::BookGUIActionListener
+--
+~guiBook: BookGUI
+--
++BookGUIActionListener(BookGUI guiBook): ctor
++actionPerformed(ActionEvent event): void
++actionClear(): void
++actionSave(): void
++actionDelete(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>450</x>
+      <y>1500</y>
+      <w>330</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>viewPackage::BookTable
+--
+-serialVersionUID = 7055287075166243444L: long
++bookList: List&lt;Book&gt;
+--
++BookTable(List&lt;Book&gt; bookList): ctor
++getColumnCount(): int
++getRowCount(): int
++getColumnName(int spaltenNr): String
++getValueAt(int row, int column): Object
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>450</x>
+      <y>1700</y>
+      <w>330</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>viewPackage::BookTableListener
+--
+~guiBook: BookGUI
+--
++BookTableListener(BookGUI guiBook): ctor
++valueChanged(ListSelectionEvent event): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>1410</w>
+      <h>730</h>
+    </coordinates>
+    <panel_attributes>databasePackage
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>0</x>
+      <y>750</y>
+      <w>800</w>
+      <h>510</h>
+    </coordinates>
+    <panel_attributes>loginPackage
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>0</x>
+      <y>3040</y>
+      <w>350</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>testPackage
+bg=light_gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Package</type>
+    <coordinates>
+      <x>0</x>
+      <y>1280</y>
+      <w>880</w>
+      <h>1740</h>
+    </coordinates>
+    <panel_attributes>viewPackage
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
