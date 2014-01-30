@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import viewPackage.BookGUI;
+import databasePackage.LoginDB;
+import databasePackage.LoginUser;
 
 /**
  * Die Klasse "LoginGUI" enthält die Main-Methode zum Starten der
