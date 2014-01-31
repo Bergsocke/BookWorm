@@ -1,4 +1,4 @@
-package databasePackage;
+package model;
 
 /**
  * Die Klasse "Book" ist für die Erfassung und Rückgabe des Inhalts der

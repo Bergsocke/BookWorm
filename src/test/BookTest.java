@@ -1,10 +1,10 @@
-package testPackage;
+package test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import databasePackage.ConnectionDatabase;
+import model.ConnectionDatabase;
 
 /**
  * Klasse mit Main-Methode zum Testen (Consolenausgabe)
