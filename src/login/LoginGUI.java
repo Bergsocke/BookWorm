@@ -1,4 +1,4 @@
-package loginPackage;
+package login;
 
 import java.awt.BorderLayout;
 
@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import viewPackage.BookGUI;
+import view.BookGUI;
 
 /**
  * Die Klasse "LoginGUI" enthält die Main-Methode zum Starten der

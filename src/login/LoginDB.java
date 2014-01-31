@@ -1,4 +1,4 @@
-package loginPackage;
+package login;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
-import databasePackage.ConnectionDatabase;
+import model.ConnectionDatabase;
 
 /**
  * Die Klasse "LoginDB" stellte eine Verbindung zur MySQL-Datenbank

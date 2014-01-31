@@ -1,4 +1,4 @@
-package viewPackage;
+package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import databasePackage.Book;
-import databasePackage.BookDB;
+import model.Book;
+import model.BookDB;
 
 /**
  * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
@@ -48,6 +48,9 @@ public class BookGUIActionListener implements ActionListener {
 		// Wenn auf den Button "suchen" geklickt wird, wird in der Datenbank
 		// nach dem entsprechenden Buchtitel gesucht (mit Hilfe der Methode
 		// "createBookTable()" aus der Klasse BookGUI)
+		
+		// eigenes AL Objekt 
+		// instanceof Jbutton weg
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("suchen")) {
 			guiBook.createBookTable();

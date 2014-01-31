@@ -5,7 +5,7 @@
     <type>com.umlet.element.Actor</type>
     <coordinates>
       <x>0</x>
-      <y>220</y>
+      <y>280</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -17,10 +17,10 @@
   <element>
     <type>com.umlet.element.custom.Systemborder</type>
     <coordinates>
-      <x>130</x>
-      <y>70</y>
+      <x>150</x>
+      <y>60</y>
       <w>510</w>
-      <h>590</h>
+      <h>620</h>
     </coordinates>
     <panel_attributes>BookWorm
 </panel_attributes>
@@ -29,9 +29,9 @@
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>320</x>
-      <y>310</y>
-      <w>120</w>
+      <x>350</x>
+      <y>340</y>
+      <w>160</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Buch löschen
@@ -42,19 +42,19 @@ bg=light_gray</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>10</x>
-      <y>220</y>
-      <w>330</w>
-      <h>130</h>
+      <y>280</y>
+      <w>360</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>310;110;30;30</additional_attributes>
+    <additional_attributes>340;80;30;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>320</x>
-      <y>180</y>
-      <w>120</w>
+      <x>350</x>
+      <y>200</y>
+      <w>160</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Buch neu erfassen
@@ -65,19 +65,19 @@ bg=light_gray</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>10</x>
-      <y>170</y>
-      <w>330</w>
-      <h>100</h>
+      <y>190</y>
+      <w>360</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>310;30;30;80</additional_attributes>
+    <additional_attributes>340;30;30;120</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>320</x>
-      <y>240</y>
-      <w>120</w>
+      <x>350</x>
+      <y>270</y>
+      <w>160</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Buch ändern
@@ -88,18 +88,18 @@ bg=light_gray</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>10</x>
-      <y>220</y>
-      <w>330</w>
-      <h>70</h>
+      <y>270</y>
+      <w>360</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>310;50;30;30</additional_attributes>
+    <additional_attributes>340;30;30;40</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>280</x>
-      <y>390</y>
+      <x>340</x>
+      <y>420</y>
       <w>190</w>
       <h>60</h>
     </coordinates>
@@ -111,19 +111,19 @@ bg=pink</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>10</x>
-      <y>220</y>
-      <w>290</w>
-      <h>220</h>
+      <y>280</y>
+      <w>350</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>270;200;30;30</additional_attributes>
+    <additional_attributes>330;170;30;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>280</x>
-      <y>590</y>
-      <w>160</w>
+      <x>340</x>
+      <y>610</y>
+      <w>190</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>Alle Bücher anzeigen
@@ -134,20 +134,20 @@ bg=pink</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>10</x>
-      <y>220</y>
-      <w>290</w>
-      <h>410</h>
+      <y>280</y>
+      <w>350</w>
+      <h>370</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>270;390;30;30</additional_attributes>
+    <additional_attributes>330;350;30;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>320</x>
-      <y>490</y>
-      <w>150</w>
-      <h>50</h>
+      <x>390</x>
+      <y>510</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Bücherliste anzeigen
 fg=default
@@ -157,19 +157,19 @@ bg=pink</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>280</x>
-      <y>510</y>
+      <x>350</x>
+      <y>540</y>
       <w>142</w>
-      <h>100</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;includes&gt;&gt;</panel_attributes>
-    <additional_attributes>110;30;50;80</additional_attributes>
+    <additional_attributes>110;30;40;70</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Note</type>
     <coordinates>
-      <x>260</x>
+      <x>290</x>
       <y>0</y>
       <w>270</w>
       <h>50</h>
@@ -184,20 +184,20 @@ bg=yellow</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>320</x>
-      <y>420</y>
+      <x>390</x>
+      <y>450</y>
       <w>142</w>
-      <h>90</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;includes&gt;&gt;</panel_attributes>
-    <additional_attributes>100;70;60;30</additional_attributes>
+    <additional_attributes>100;60;50;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.UseCase</type>
     <coordinates>
-      <x>310</x>
-      <y>100</y>
+      <x>340</x>
+      <y>130</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -209,11 +209,34 @@ bg=green</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>10</x>
-      <y>100</y>
-      <w>320</w>
-      <h>170</h>
+      <y>130</y>
+      <w>350</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>300;30;30;150</additional_attributes>
+    <additional_attributes>330;30;30;180</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>340</x>
+      <y>70</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Anwender verwalten
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>10</x>
+      <y>70</y>
+      <w>350</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>330;30;30;240</additional_attributes>
   </element>
 </diagram>
