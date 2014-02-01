@@ -1,4 +1,4 @@
-package model;
+package model.user;
 
 /**
  * Die Klasse "User" repräsentiert den Anwender

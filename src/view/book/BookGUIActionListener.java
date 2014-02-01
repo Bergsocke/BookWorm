@@ -1,4 +1,4 @@
-package view;
+package view.book;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,9 +7,11 @@ import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import model.Book;
-import model.BookDB;
 import model.SQLDatabase;
+import model.book.Book;
+import model.book.BookDB;
+import view.InfoError;
+import view.InfoSuccess;
 
 /**
  * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons

@@ -1,9 +1,10 @@
-package model;
+package model.book;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.SQLDatabase;
 import view.InfoError;
 
 /**
