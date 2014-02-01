@@ -62,7 +62,7 @@ public class UserDB {
 	 * Methode zum Suchen nach der User-ID in der Tabelle "users"
 	 * 
 	 * @param userID
-	 * @return selectedBook
+	 * @return foundUser
 	 */
 	public static User findByID(String userID) {
 
@@ -95,6 +95,43 @@ public class UserDB {
 		}
 
 		return foundUser;
+	}
+	
+	/**
+	 * Methode zum Suchen nach dem Usernamen in der Tabelle "Users"
+	 * 
+	 * @param userName
+	 * @return userList
+	 */
+	public static List<User> findByUserName(String userName) {
+
+		List<User> userList = new ArrayList<User>();
+
+		try {
+			// Erforderlicher SQL-Befehl
+			String sqlStatement = "SELECT * FROM book_database.users WHERE username LIKE '%"
+					+ userName + "%';";
+
+			// SQL-Befehl wird ausgeführt
+			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+
+			while (myResultSet.next()) {
+				userList.add(new User(myResultSet.getString(1), myResultSet
+						.getString(2), myResultSet.getString(3)));
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
+			InfoError.showMessage(errorText);
+
+		} finally {
+			// offene Verbindungen werden geschlossen
+			SQLDatabase.closeConnections();
+		}
+
+		return userList;
 	}
 
 	/**
