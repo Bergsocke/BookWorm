@@ -41,8 +41,12 @@ public class BookGUIActionListener implements ActionListener {
 		// wird zurückgesetzt
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("alle anzeigen")) {
-			guiBook.createBookTable();
+			// Suchbegriff wird zurückgesetzt
 			guiBook.getSearchText().setText("");
+			guiBook.createBookTable();
+			
+			// EastTable wird zurückgesetzt
+			guiBook.resetTableEast();
 		}
 
 		// Wenn auf den Button "suchen" geklickt wird, wird in der Datenbank
@@ -54,8 +58,9 @@ public class BookGUIActionListener implements ActionListener {
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("suchen")) {
 			guiBook.createBookTable();
-			// Suchbegriff wird zurückgesetzt
-			guiBook.getSearchText().setText("");
+
+			// EastTable wird zurückgesetzt
+			guiBook.resetTableEast();
 
 			// Wenn kein Datensatz gefunden wurde, wird eine entsprechende
 			// Meldung ausgegeben
