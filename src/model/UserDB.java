@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.ErrorMessage;
+import view.InfoError;
 
 /**
  * Die Klasse "UserDB" stellte eine Verbindung zur MySQL-Datenbank
@@ -57,7 +57,7 @@ public class UserDB {
 			
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
-			ErrorMessage.showMessage(errorText);;
+			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -101,7 +101,7 @@ public class UserDB {
 			
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
-			ErrorMessage.showMessage(errorText);
+			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -143,7 +143,7 @@ public class UserDB {
 			
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Abspeichern eines Datensatzes";
-			ErrorMessage.showMessage(errorText);
+			InfoError.showMessage(errorText);
 
 			successful = 0;
 			closeConnections();
@@ -187,7 +187,7 @@ public class UserDB {
 
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Ändern eines Datensatzes";
-			ErrorMessage.showMessage(errorText);
+			InfoError.showMessage(errorText);
 
 			successful = 0;
 			closeConnections();
@@ -228,7 +228,7 @@ public class UserDB {
 
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Löschen eines Datensatzes";
-			ErrorMessage.showMessage(errorText);
+			InfoError.showMessage(errorText);
 
 			successful = 0;
 			closeConnections();
@@ -262,7 +262,7 @@ public class UserDB {
 			
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Verbindungen konnten nicht geschlossen werden";
-			ErrorMessage.showMessage(errorText);
+			InfoError.showMessage(errorText);
 		}
 	}
 

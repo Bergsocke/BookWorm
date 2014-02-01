@@ -6,7 +6,6 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -149,9 +148,12 @@ public class LoginGUI extends JDialog {
 		} else {
 			// Sind die eingegebenen Benutzerdaten nicht korrekt, wird eine
 			// entsprechende Meldung ausgegeben
-			JOptionPane.showMessageDialog(this,
-					"Benutzername oder Passwort ist falsch", "Fehler",
-					JOptionPane.ERROR_MESSAGE);
+			String errorText = "Benutzername oder Passwort ist falsch";
+			InfoError.showMessage(errorText);
+			
+			// Benutzername und Passwort-Feld werden zurückgesetzt
+			this.getUsernameText().setText("");
+			this.getPasswordText().setText("");
 		}
 	}
 

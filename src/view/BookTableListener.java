@@ -1,6 +1,5 @@
 package view;
 
-import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -78,11 +77,10 @@ public class BookTableListener implements ListSelectionListener {
 
 				} catch (Exception e) {
 					System.out.println(e.toString());
-					JOptionPane
-							.showMessageDialog(
-									guiBook,
-									"Der ausgewählte Datensatz kann nicht angezeigt werden",
-									"Fehler", JOptionPane.ERROR_MESSAGE);
+					// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+					String errorText = "Der ausgewählte Datensatz kann nicht angezeigt werden.";
+					InfoError.showMessage(errorText);
+
 				}
 			}
 		}

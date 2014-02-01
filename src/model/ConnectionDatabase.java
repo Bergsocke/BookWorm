@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-import javax.swing.JOptionPane;
+import view.InfoError;
 
 /**
  * Die Klasse "DatabaseConnection" stellte eine Verbindung zur MySQL-Datenbank
@@ -35,9 +35,9 @@ public class ConnectionDatabase {
 
 			} catch (Exception e) {
 				System.out.println(e.toString());
-				JOptionPane.showMessageDialog(null,
-						"database.properties wurde nicht gefunden.", "Fehler",
-						JOptionPane.ERROR_MESSAGE);
+
+				String errorText = "Die Datei \"database.properties\" konnte nicht gefunden werden!";
+				InfoError.showMessage(errorText);
 			}
 
 			String driver = myProperties.getProperty("jdbc.driver");
@@ -52,12 +52,13 @@ public class ConnectionDatabase {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbankverbindung konnte nicht hergestellt werden. "
-							+ "Bitte prüfen Sie, ob der MySQL-Server läuft.",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
+
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbankverbindung konnte nicht hergestellt werden. "
+					+ "Bitte prüfen Sie, ob der MySQL-Server läuft.";
+			InfoError.showMessage(errorText);
 		}
+
 		return connect;
 	}
-
 }
