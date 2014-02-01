@@ -1,11 +1,12 @@
-package view;
+package view.book;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import model.Book;
-import model.BookDB;
+import model.book.Book;
+import model.book.BookDB;
+import view.InfoError;
 
 /**
  * Die Klasse "BookTableListener" reagiert auf die Auswahl des Users in der

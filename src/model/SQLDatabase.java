@@ -10,7 +10,7 @@ import view.InfoError;
 
 /**
  * Die Klasse "SQLDatabase" stellte eine Verbindung zur MySQL-Datenbank
- * "book_database" her und führt die SQL-Befehle aus
+ * "book_database" her und führt die erforderlichen SQL-Befehle aus
  * 
  * @author Bergsocke
  * 

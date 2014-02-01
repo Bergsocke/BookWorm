@@ -1,4 +1,4 @@
-package model;
+package model.book;
 
 /**
  * Die Klasse "Book" ist für die Erfassung und Rückgabe des Inhalts der

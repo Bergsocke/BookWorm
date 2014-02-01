@@ -1,7 +1,9 @@
-package model;
+package model.login;
 
 import java.sql.ResultSet;
 
+import model.SQLDatabase;
+import model.user.User;
 import view.InfoError;
 
 /**

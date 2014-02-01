@@ -1,4 +1,4 @@
-package view;
+package view.user;
 
 /**
  * Die Klasse "UserGUI" ist für den Aufbau der grafischen Oberfläche zuständig.

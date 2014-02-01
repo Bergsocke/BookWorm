@@ -1,17 +1,15 @@
-package model;
+package model.user;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.SQLDatabase;
 import view.InfoError;
 
 /**
- * Die Klasse "UserDB" stellte eine Verbindung zur MySQL-Datenbank
- * "book_database" her und bietet die Methoden zum Anzeigen, Suchen, Speichern
- * und Löschen von Datensätzen der Tabelle "users"
+ * Die Klasse "UserDB" bietet die Methoden zum Anzeigen, Suchen, Speichern und
+ * Löschen von Datensätzen der Tabelle "users"
  * 
  * @author Bergsocke
  * 
@@ -19,8 +17,6 @@ import view.InfoError;
 
 public class UserDB {
 
-	private static Connection connect = null;
-	private static PreparedStatement myPreparedStatement = null;
 	private static ResultSet myResultSet = null;
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
@@ -37,15 +33,11 @@ public class UserDB {
 		List<User> userList = new ArrayList<User>();
 
 		try {
-			// Datenbankverbindung herstellen
-			connect = SQLDatabase.connectDB();
-
-			// PreparedStatement für den SQL-Befehl
-			myPreparedStatement = connect
-					.prepareStatement("SELECT * FROM book_database.users;");
+			// Erforderlicher SQL-Befehl
+			String sqlStatement = "SELECT * FROM book_database.users;";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = myPreparedStatement.executeQuery();
+			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
 
 			while (myResultSet.next()) {
 				userList.add(new User(myResultSet.getString(1), myResultSet
@@ -54,14 +46,13 @@ public class UserDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
 			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			closeConnections();
+			SQLDatabase.closeConnections();
 		}
 
 		return userList;
@@ -78,16 +69,12 @@ public class UserDB {
 		User foundUser = null;
 
 		try {
-			// Datenbankverbindung herstellen
-			connect = SQLDatabase.connectDB();
-
-			// PreparedStatement für den SQL-Befehl
-			myPreparedStatement = connect
-					.prepareStatement("SELECT * FROM book_database.users WHERE id LIKE "
-							+ userID + ";");
+			// Erforderlicher SQL-Befehl
+			String sqlStatement = "SELECT * FROM book_database.users WHERE id LIKE "
+					+ userID + ";";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = myPreparedStatement.executeQuery();
+			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
 
 			// da das Select-Statement immer nur genau einen oder keinen
 			// Datensatz liefern kann, genügt hier diese Abfrage
@@ -98,14 +85,13 @@ public class UserDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
 			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			closeConnections();
+			SQLDatabase.closeConnections();
 		}
 
 		return foundUser;
@@ -120,37 +106,28 @@ public class UserDB {
 	public static int saveBook(User userToSave) {
 
 		try {
-			// Datenbankverbindung herstellen
-			connect = SQLDatabase.connectDB();
-
-			// PreparedStatement für SQL-Befehl
-			myPreparedStatement = connect
-					.prepareStatement("INSERT INTO book_database.users VALUES('"
-							+ userToSave.getUserName()
-							+ "', md5('"
-							+ userToSave.getUserPassword() + "'));");
+			// Erforderlicher SQL-Befehl
+			String sqlStatement = "INSERT INTO book_database.users VALUES('"
+					+ userToSave.getUserName() + "', md5('"
+					+ userToSave.getUserPassword() + "'));";
 
 			// SQL-Befehl wird ausgeführt
-			successful = myPreparedStatement.executeUpdate();
-
-			// offene Verbindungen werden geschlossen
-			closeConnections();
+			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Abspeichern eines Datensatzes";
 			InfoError.showMessage(errorText);
 
 			successful = 0;
-			closeConnections();
 			return successful;
 
 		} finally {
-			closeConnections();
+			// offene Verbindungen werden geschlossen
+			SQLDatabase.closeConnections();
 		}
 	}
 
@@ -164,37 +141,28 @@ public class UserDB {
 	public static int updateBook(User userToUpdate) {
 
 		try {
-			// Datenbankverbindung herstellen
-			connect = SQLDatabase.connectDB();
-
-			// PreparedStatement für den SQL-Befehl
-			myPreparedStatement = connect
-					.prepareStatement("UPDATE book_database.users SET username = '"
-							+ userToUpdate.getUserName()
-							+ "', password = md5('"
-							+ userToUpdate.getUserPassword() + "'));");
+			// Erforderlicher SQL-Befehl
+			String sqlStatement = "UPDATE book_database.users SET username = '"
+					+ userToUpdate.getUserName() + "', password = md5('"
+					+ userToUpdate.getUserPassword() + "'));";
 
 			// SQL-Befehl wird ausgeführt
-			successful = myPreparedStatement.executeUpdate();
-
-			// offene Verbindungen werden geschlossen
-			closeConnections();
+			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Ändern eines Datensatzes";
 			InfoError.showMessage(errorText);
 
 			successful = 0;
-			closeConnections();
 			return successful;
 
 		} finally {
-			closeConnections();
+			// offene Verbindungen werden geschlossen
+			SQLDatabase.closeConnections();
 		}
 	}
 
@@ -207,62 +175,27 @@ public class UserDB {
 	public static int deleteBook(String userID) {
 
 		try {
-			// Datenbankverbindung herstellen
-			connect = SQLDatabase.connectDB();
-
-			// PreparedStatement für SQL-Befehl
-			myPreparedStatement = connect
-					.prepareStatement("DELETE FROM book_database.users WHERE id = "
-							+ userID + ";");
+			// Erforderlicher SQL-Befehl
+			String sqlStatement = "DELETE FROM book_database.users WHERE id = "
+					+ userID + ";";
 
 			// SQL-Befehl wird ausgeführt
-			successful = myPreparedStatement.executeUpdate();
-
-			// offene Verbindungen werden geschlossen
-			closeConnections();
+			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Löschen eines Datensatzes";
 			InfoError.showMessage(errorText);
 
 			successful = 0;
-			closeConnections();
 			return successful;
 
 		} finally {
-			closeConnections();
-		}
-	}
-
-	/**
-	 * Methode zum Schließen aller offenen Verbindungen
-	 */
-	public static void closeConnections() {
-		try {
-
-			if (myResultSet != null) {
-				myResultSet.close();
-			}
-
-			if (myPreparedStatement != null) {
-				myPreparedStatement.close();
-			}
-
-			if (connect != null) {
-				connect.close();
-			}
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			
-			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
-			String errorText = "Verbindungen konnten nicht geschlossen werden";
-			InfoError.showMessage(errorText);
+			// offene Verbindungen werden geschlossen
+			SQLDatabase.closeConnections();
 		}
 	}
 

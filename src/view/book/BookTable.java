@@ -1,10 +1,10 @@
-package view;
+package view.book;
 
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import model.Book;
+import model.book.Book;
 
 /**
  * Die Klasse "BookTable" ist für den Aufbau und den Inhalt der Büchertabelle
