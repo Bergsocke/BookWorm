@@ -1,12 +1,10 @@
-package login;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
-
-import model.ConnectionDatabase;
 
 /**
  * Die Klasse "LoginDB" stellte eine Verbindung zur MySQL-Datenbank
@@ -31,7 +29,7 @@ public class LoginDB {
 	 * @param userpassword
 	 * @return numRows
 	 */
-	public static int login(LoginUser myUser) {
+	public static int login(User myUser) {
 		// Variable für Anzahl der gefundenen Datensätze
 		int numRows = 0;
 
@@ -42,9 +40,9 @@ public class LoginDB {
 			// PreparedStatement für den SQL-Befehl
 			myPreparedStatement = connect
 					.prepareStatement("SELECT COUNT(*) FROM book_database.users WHERE username = '"
-							+ myUser.getUsername()
+							+ myUser.getUserName()
 							+ "' AND userpassword = '"
-							+ myUser.getUserpassword() + "';");
+							+ myUser.getUserPassword() + "';");
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = myPreparedStatement.executeQuery();

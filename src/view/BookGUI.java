@@ -217,7 +217,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "suchen"
 		final Icon searchIcon = new ImageIcon(
-				BookGUI.class.getResource("/viewPackage/images/searchIcon.png"));
+				BookGUI.class.getResource("/view/images/searchIcon.png"));
 		searchButton = new JButton("suchen  ", searchIcon);
 		searchButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		searchButton.setBackground(Color.lightGray);
@@ -227,7 +227,7 @@ public class BookGUI extends JFrame {
 		// Icon für den Buttton "alle anzeigen"
 		final Icon showAllIcon = new ImageIcon(
 				BookGUI.class
-						.getResource("/viewPackage/images/showAllIcon.png"));
+						.getResource("/view/images/showAllIcon.png"));
 		allButton = new JButton(" alle anzeigen  ", showAllIcon);
 		allButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		allButton.setBackground(Color.lightGray);
@@ -355,7 +355,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "neu"
 		final Icon newIcon = new ImageIcon(
-				BookGUI.class.getResource("/viewPackage/images/newIcon.png"));
+				BookGUI.class.getResource("/view/images/newIcon.png"));
 		clearButton = new JButton("     neu", newIcon);
 		clearButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		clearButton.setBackground(Color.lightGray);
@@ -368,7 +368,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "speichern"
 		final Icon saveIcon = new ImageIcon(
-				BookGUI.class.getResource("/viewPackage/images/saveIcon.png"));
+				BookGUI.class.getResource("/view/images/saveIcon.png"));
 		saveButton = new JButton("     speichern", saveIcon);
 		saveButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		saveButton.setBackground(Color.lightGray);
@@ -379,7 +379,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "löschen"
 		final Icon deleteIcon = new ImageIcon(
-				BookGUI.class.getResource("/viewPackage/images/deleteIcon.png"));
+				BookGUI.class.getResource("/view/images/deleteIcon.png"));
 		deleteButton = new JButton("     löschen", deleteIcon);
 		deleteButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		deleteButton.setBackground(Color.lightGray);
@@ -394,7 +394,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "Programm beenden"
 		final Icon closeIcon = new ImageIcon(
-				BookGUI.class.getResource("/viewPackage/images/closeIcon.png"));
+				BookGUI.class.getResource("/view/images/closeIcon.png"));
 		closeButton = new JButton(" Programm beenden", closeIcon);
 		closeButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		closeButton.setBackground(Color.lightGray);

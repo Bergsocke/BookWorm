@@ -1,4 +1,4 @@
-package login;
+package view;
 
 import java.awt.BorderLayout;
 
@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import view.BookGUI;
+import model.LoginDB;
+import model.User;
 
 /**
  * Die Klasse "LoginGUI" enthält die Main-Methode zum Starten der
@@ -105,13 +106,13 @@ public class LoginGUI extends JDialog {
 		loginButton.setBounds(96, 172, 109, 30);
 		// Wenn auf den Button "Login" geklickt wird, soll die Anmeldung
 		// erfolgen
-		loginButton.addActionListener(new LoginActionListener(this));
+		loginButton.addActionListener(new LoginGUIActionListener(this));
 
 		breakButton = new JButton("Abbrechen");
 		breakButton.setBounds(217, 171, 109, 30);
 		// Wenn auf den Button "Abbrechen" geklickt wird, soll das Login-Fenster
 		// geschlossen werden
-		breakButton.addActionListener(new LoginActionListener(this));
+		breakButton.addActionListener(new LoginGUIActionListener(this));
 
 		// Hinzufügen der einzelnen Komponenten zum Panel
 		loginPanel.add(usernameLabel);
@@ -131,7 +132,7 @@ public class LoginGUI extends JDialog {
 	 * 
 	 * @param myUser
 	 */
-	public void startLogin(LoginUser myUser) {
+	public void startLogin(User myUser) {
 
 		int numRow = LoginDB.login(myUser);
 		// Benutzerdaten sind korrekt

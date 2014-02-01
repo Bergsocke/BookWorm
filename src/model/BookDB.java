@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 /**
  * Die Klasse "BookDB" stellte eine Verbindung zur MySQL-Datenbank
  * "book_database" her und bietet die Methoden zum Anzeigen, Suchen, Speichern
- * und Löschen von Datensätzen aus der Tabelle "books"
+ * und Löschen von Datensätzen der Tabelle "books"
  * 
  * @author Bergsocke
  * 
