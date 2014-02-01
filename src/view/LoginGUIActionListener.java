@@ -1,4 +1,4 @@
-package login;
+package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +8,8 @@ import java.security.NoSuchAlgorithmException;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import model.User;
+
 /**
  * Mit der Klasse "LoginActionListener" werden die Aktionen für die Buttons
  * "Login" und "Abbrechen" der Klasse LoginGUI festgelegt.
@@ -15,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author Bergsocke
  * 
  */
-public class LoginActionListener implements ActionListener {
+public class LoginGUIActionListener implements ActionListener {
 
 	LoginGUI guiLogin;
 
@@ -24,7 +26,7 @@ public class LoginActionListener implements ActionListener {
 	 * 
 	 * @param guiLogin
 	 */
-	public LoginActionListener(LoginGUI guiLogin) {
+	public LoginGUIActionListener(LoginGUI guiLogin) {
 		this.guiLogin = guiLogin;
 	}
 
@@ -44,14 +46,14 @@ public class LoginActionListener implements ActionListener {
 				&& event.getActionCommand().contains("Login")) {
 
 			// Benutzername und Password werden eingelesen
-			LoginUser myUser = new LoginUser(String.valueOf(guiLogin
+			User myUser = new User(String.valueOf(guiLogin
 					.getUsernameText().getText()), String.valueOf(guiLogin
 					.getPasswordText().getPassword()));
 
 			// Password wird mit MD5 gehasht
 			try {
 				String algorithm = "md5";
-				String password = myUser.getUserpassword();
+				String password = myUser.getUserPassword();
 
 				// Algorithmus, der die Berechnungsfunktion implementiert
 				// (in diesem Fall md5)
@@ -68,7 +70,7 @@ public class LoginActionListener implements ActionListener {
 					hashPassword += String.format("%02x", b);
 
 				// gehashtes Password wird gesetzt
-				myUser.setUserpassword(hashPassword);
+				myUser.setUserPassword(hashPassword);
 
 			} catch (NoSuchAlgorithmException e) {
 				System.out.println(e.toString());
