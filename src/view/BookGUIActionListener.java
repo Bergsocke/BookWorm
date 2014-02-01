@@ -47,6 +47,8 @@ public class BookGUIActionListener implements ActionListener {
 			
 			// EastTable wird zurückgesetzt
 			guiBook.resetTableEast();
+			
+			guiBook.getDeleteButton().setEnabled(false);
 		}
 
 		// Wenn auf den Button "suchen" geklickt wird, wird in der Datenbank
@@ -61,6 +63,8 @@ public class BookGUIActionListener implements ActionListener {
 
 			// EastTable wird zurückgesetzt
 			guiBook.resetTableEast();
+			
+			guiBook.getDeleteButton().setEnabled(false);
 
 			// Wenn kein Datensatz gefunden wurde, wird eine entsprechende
 			// Meldung ausgegeben
