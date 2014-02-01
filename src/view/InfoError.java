@@ -3,17 +3,22 @@ package view;
 import javax.swing.JOptionPane;
 
 /**
- * Die Klasse "ErrorMessage" soll ein Dialogfenster ausgeben, das erscheint,
- * wenn eine Aktion nicht erfolgreich durchgeführt werden konnte.
+ * Die Klasse "InfoError" soll ein Dialogfenster ausgeben, das erscheint, wenn
+ * eine Aktion nicht erfolgreich durchgeführt werden konnte.
  * 
  * @author Bergsocke
  * 
  */
 
-public class ErrorMessage extends JOptionPane {
+public class InfoError extends JOptionPane {
 
 	private static final long serialVersionUID = 4074118514759731523L;
 
+	/**
+	 * Dialogfenster mit der entsprechenden Meldung
+	 * 
+	 * @param errorText
+	 */
 	public static void showMessage(String errorText) {
 		showMessageDialog(null, errorText, "Fehler", JOptionPane.ERROR_MESSAGE);
 	}

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javax.swing.JOptionPane;
+import view.InfoError;
 
 /**
  * Die Klasse "LoginDB" stellte eine Verbindung zur MySQL-Datenbank
@@ -54,9 +54,10 @@ public class LoginDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
+		
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
+			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -86,9 +87,11 @@ public class LoginDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Verbindungen konnten nicht geschlossen werden.", "Fehler",
-					JOptionPane.ERROR_MESSAGE);
+			
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Verbindungen konnten nicht geschlossen werden.";
+			InfoError.showMessage(errorText);
+
 		}
 	}
 }

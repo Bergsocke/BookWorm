@@ -41,30 +41,34 @@ public class BookGUIActionListener implements ActionListener {
 		// wird zurückgesetzt
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("alle anzeigen")) {
-			guiBook.createBookTable();
+			// Suchbegriff wird zurückgesetzt
 			guiBook.getSearchText().setText("");
+			guiBook.createBookTable();
+			
+			// EastTable wird zurückgesetzt
+			guiBook.resetTableEast();
 		}
 
 		// Wenn auf den Button "suchen" geklickt wird, wird in der Datenbank
 		// nach dem entsprechenden Buchtitel gesucht (mit Hilfe der Methode
 		// "createBookTable()" aus der Klasse BookGUI)
-		
-		// eigenes AL Objekt 
+
+		// eigenes AL Objekt
 		// instanceof Jbutton weg
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("suchen")) {
 			guiBook.createBookTable();
-			// Suchbegriff wird zurückgesetzt
-			guiBook.getSearchText().setText("");
+
+			// EastTable wird zurückgesetzt
+			guiBook.resetTableEast();
 
 			// Wenn kein Datensatz gefunden wurde, wird eine entsprechende
 			// Meldung ausgegeben
 			int row = guiBook.getBookTable().getModel().getRowCount();
 			if (row == 0) {
 				// Folgende Meldung wird ausgegeben
-				JOptionPane.showMessageDialog(guiBook,
-						"Es wurde kein Datensatz gefunden!", "",
-						JOptionPane.INFORMATION_MESSAGE);
+				String successText = "Es wurde kein Datensatz gefunden!";
+				InfoSuccess.showMessage(successText);
 			}
 		}
 
@@ -123,9 +127,8 @@ public class BookGUIActionListener implements ActionListener {
 		if (event.getSource() instanceof JMenuItem
 				&& event.getActionCommand().contains("Über das Programm")) {
 			// Folgende Meldung wird ausgegeben
-			JOptionPane.showMessageDialog(guiBook,
-					"Erstellt von Weinberger Eva, 2014", "",
-					JOptionPane.INFORMATION_MESSAGE);
+			String successText = "Erstellt von Weinberger Eva, 2014";
+			InfoSuccess.showMessage(successText);
 		}
 	}
 
@@ -205,9 +208,8 @@ public class BookGUIActionListener implements ActionListener {
 			guiBook.reloadWestTable();
 
 			// Folgende Meldung wird ausgegeben
-			JOptionPane.showMessageDialog(guiBook,
-					"Datensatz wurde erfolgreich gespeichert!", "",
-					JOptionPane.INFORMATION_MESSAGE);
+			String successText = "Datensatz wurde erfolgreich gespeichert!";
+			InfoSuccess.showMessage(successText);
 
 			// Alle Textfelder werden zurückgesetzt, damit weitere
 			// Datensätze eingegeben werden können
@@ -219,10 +221,9 @@ public class BookGUIActionListener implements ActionListener {
 			// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
 			// entsprechende Meldung ausgegeben
 		} else {
-			// Folgende Meldung wird ausgegeben
-			JOptionPane.showMessageDialog(guiBook,
-					"Datensatz konnte nicht gespeichert werden!", "Fehler",
-					JOptionPane.ERROR_MESSAGE);
+			// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
+			String errorText = "Datensatz konnte nicht gespeichert werden!";
+			InfoError.showMessage(errorText);
 
 			// Alle Textfelder werden zurückgesetzt, damit der Datensatz
 			// erneut eingegeben werden kann
@@ -259,9 +260,8 @@ public class BookGUIActionListener implements ActionListener {
 				guiBook.reloadWestTable();
 
 				// Folgende Meldung wird ausgegeben
-				JOptionPane.showMessageDialog(guiBook,
-						"Datensatz wurde erfolgreich gelöscht!", " ",
-						JOptionPane.INFORMATION_MESSAGE);
+				String successText = "Datensatz wurde erfolgreich gelöscht!";
+				InfoSuccess.showMessage(successText);
 
 				// Der Text im Suchfeld wird zurückgesetzt
 				guiBook.getSearchText().setText("");
@@ -271,10 +271,9 @@ public class BookGUIActionListener implements ActionListener {
 				// Wenn der Datensatz nicht gelöscht werden konnte, wird eine
 				// entsprechende Meldung ausgegebe
 			} else {
-				// Folgende Meldung wird ausgegeben
-				JOptionPane.showMessageDialog(guiBook,
-						"Datensatz konnte nicht gelöscht werden!", "Fehler",
-						JOptionPane.ERROR_MESSAGE);
+				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
+				String errorText = "Datensatz konnte nicht gelöscht werden!";
+				InfoError.showMessage(errorText);
 
 				// Suchbegriff wird zurückgesetzt
 				guiBook.getSearchText().setText("");

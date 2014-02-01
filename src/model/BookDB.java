@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
+import view.InfoError;
 
 /**
  * Die Klasse "BookDB" stellte eine Verbindung zur MySQL-Datenbank
@@ -57,9 +57,10 @@ public class BookDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
+
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
+			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -102,9 +103,10 @@ public class BookDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
+
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
+			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -149,9 +151,10 @@ public class BookDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbankabfrage konnte nicht durchgeführt werden.",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
+
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
+			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -197,9 +200,11 @@ public class BookDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbank-Fehler beim Abspeichern eines Datensatzes",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
+
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbank-Fehler beim Abspeichern eines Datensatzes.";
+			InfoError.showMessage(errorText);
+
 			successful = 0;
 			closeConnections();
 			return successful;
@@ -248,9 +253,11 @@ public class BookDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbank-Fehler beim Ändern eines Datensatzes", "Fehler",
-					JOptionPane.ERROR_MESSAGE);
+
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbank-Fehler beim Ändern eines Datensatzes.";
+			InfoError.showMessage(errorText);
+
 			successful = 0;
 			closeConnections();
 			return successful;
@@ -287,9 +294,11 @@ public class BookDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Datenbank-Fehler beim Löschen eines Datensatzes",
-					"Fehler", JOptionPane.ERROR_MESSAGE);
+			
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbank-Fehler beim Löschen eines Datensatzes.";
+			InfoError.showMessage(errorText);
+			
 			successful = 0;
 			closeConnections();
 			return successful;
@@ -319,9 +328,10 @@ public class BookDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			JOptionPane.showMessageDialog(null,
-					"Verbindungen konnten nicht geschlossen werden.", "Fehler",
-					JOptionPane.ERROR_MESSAGE);
+			
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Verbindungen konnten nicht geschlossen werden.";
+			InfoError.showMessage(errorText);
 		}
 	}
 }

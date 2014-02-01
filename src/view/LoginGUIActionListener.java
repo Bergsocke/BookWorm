@@ -6,7 +6,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 import model.User;
 
@@ -74,11 +73,10 @@ public class LoginGUIActionListener implements ActionListener {
 
 			} catch (NoSuchAlgorithmException e) {
 				System.out.println(e.toString());
-				JOptionPane
-						.showMessageDialog(
-								guiLogin,
-								"Das eingegebene Password konnte nicht gehasht werden.",
-								"Fehler", JOptionPane.ERROR_MESSAGE);
+				
+				// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+				String errorText = "Das eingegebene Password konnte nicht gehasht werden.";
+				InfoError.showMessage(errorText);
 			}
 
 			// Anmeldung wird versucht
