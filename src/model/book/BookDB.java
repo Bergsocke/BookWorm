@@ -107,7 +107,7 @@ public class BookDB {
 	 * Methode zum Suchen nach der Buch-ID in der Tabelle "books"
 	 * 
 	 * @param bookID
-	 * @return selectedBook
+	 * @return foundBook
 	 */
 	public static Book findByID(String bookID) {
 

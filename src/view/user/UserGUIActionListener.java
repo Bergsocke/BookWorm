@@ -15,6 +15,10 @@ import java.awt.event.ActionListener;
 
 public class UserGUIActionListener implements ActionListener {
 
+	public UserGUIActionListener(UserGUI userGUI) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		// TODO Auto-generated method stub
