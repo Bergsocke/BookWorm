@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import model.ConnectionDatabase;
+import model.SQLDatabase;
 
 /**
  * Klasse mit Main-Methode zum Testen (Consolenausgabe)
@@ -31,7 +31,7 @@ public class BookTest {
 	 */
 	public static void displayAllTest() {
 		try {
-			connect = ConnectionDatabase.connectDB();
+			connect = SQLDatabase.connectDB();
 
 			// Alle Datensätze anzeigen
 			myPreparedStatement = connect
@@ -51,8 +51,9 @@ public class BookTest {
 				String read = myResultSet.getString(10);
 
 				System.out.println(id + ": " + isbn + ", " + title + ", "
-						+ author + ", " + publicationDate + ", " + format + ", "
-						+ shortDescription + ", " + category +   ", " + comment + ", " + read);
+						+ author + ", " + publicationDate + ", " + format
+						+ ", " + shortDescription + ", " + category + ", "
+						+ comment + ", " + read);
 			}
 
 		} catch (Exception e) {

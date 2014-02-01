@@ -11,6 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import model.LoginDB;
+import model.SQLDatabase;
 import model.User;
 
 /**
@@ -140,7 +141,7 @@ public class LoginGUI extends JDialog {
 			BookGUI.letStarted();
 
 			// Offene Datenbank-Verbindungen werden geschlossen
-			LoginDB.closeConnections();
+			SQLDatabase.closeConnections();
 
 			// Login-Fenster wird geschlossen
 			this.closeLoginDialog();

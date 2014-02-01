@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import model.Book;
 import model.BookDB;
+import model.SQLDatabase;
 
 /**
  * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
@@ -121,7 +122,7 @@ public class BookGUIActionListener implements ActionListener {
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("Programm beenden")) {
 			// Offene Datenbank-Verbindungen werden geschlossen
-			BookDB.closeConnections();
+			SQLDatabase.closeConnections();
 
 			System.exit(0);
 		}

@@ -38,7 +38,7 @@ public class UserDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connect = ConnectionDatabase.connectDB();
+			connect = SQLDatabase.connectDB();
 
 			// PreparedStatement für den SQL-Befehl
 			myPreparedStatement = connect
@@ -79,7 +79,7 @@ public class UserDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connect = ConnectionDatabase.connectDB();
+			connect = SQLDatabase.connectDB();
 
 			// PreparedStatement für den SQL-Befehl
 			myPreparedStatement = connect
@@ -121,7 +121,7 @@ public class UserDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connect = ConnectionDatabase.connectDB();
+			connect = SQLDatabase.connectDB();
 
 			// PreparedStatement für SQL-Befehl
 			myPreparedStatement = connect
@@ -165,7 +165,7 @@ public class UserDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connect = ConnectionDatabase.connectDB();
+			connect = SQLDatabase.connectDB();
 
 			// PreparedStatement für den SQL-Befehl
 			myPreparedStatement = connect
@@ -208,7 +208,7 @@ public class UserDB {
 
 		try {
 			// Datenbankverbindung herstellen
-			connect = ConnectionDatabase.connectDB();
+			connect = SQLDatabase.connectDB();
 
 			// PreparedStatement für SQL-Befehl
 			myPreparedStatement = connect

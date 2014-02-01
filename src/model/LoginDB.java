@@ -1,14 +1,11 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import view.InfoError;
 
 /**
- * Die Klasse "LoginDB" stellte eine Verbindung zur MySQL-Datenbank
- * "book_management" her und prüft, ob die eingegebene
+ * Die Klasse "LoginDB" prüft, ob die eingegebene
  * Benutzername/Password-Kombination in der Tabelle "users" vorhanden ist
  * 
  * @author Bergsocke
@@ -16,8 +13,6 @@ import view.InfoError;
  */
 public class LoginDB {
 
-	private static Connection connect = null;
-	private static PreparedStatement myPreparedStatement = null;
 	private static ResultSet myResultSet = null;
 
 
@@ -25,8 +20,7 @@ public class LoginDB {
 	 * Diese Methode prüft, ob die angegebene Benutzername/Password-Kombination
 	 * in der Tabelle "users" vorhanden ist
 	 * 
-	 * @param username
-	 * @param userpassword
+	 * @param myUser
 	 * @return numRows
 	 */
 	public static int login(User myUser) {
@@ -34,18 +28,14 @@ public class LoginDB {
 		int numRows = 0;
 
 		try {
-			// Datenbankverbindung herstellen
-			connect = ConnectionDatabase.connectDB();
-
 			// PreparedStatement für den SQL-Befehl
-			myPreparedStatement = connect
-					.prepareStatement("SELECT COUNT(*) FROM book_database.users WHERE username = '"
-							+ myUser.getUserName()
-							+ "' AND userpassword = '"
-							+ myUser.getUserPassword() + "';");
+			String sqlStatement = "SELECT COUNT(*) FROM book_database.users WHERE username = '"
+					+ myUser.getUserName()
+					+ "' AND userpassword = '"
+					+ myUser.getUserPassword() + "';";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = myPreparedStatement.executeQuery();
+			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
 
 			// Anzahl der Datensätze ermitteln
 			while (myResultSet.next()) {
@@ -54,44 +44,15 @@ public class LoginDB {
 
 		} catch (Exception e) {
 			System.out.println(e.toString());
-		
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
 			InfoError.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			closeConnections();
+			SQLDatabase.closeConnections();
 		}
 
 		return numRows;
-	}
-
-	/**
-	 * Methode zum Schließen aller offenen Verbindungen
-	 */
-	public static void closeConnections() {
-		try {
-
-			if (myResultSet != null) {
-				myResultSet.close();
-			}
-
-			if (myPreparedStatement != null) {
-				myPreparedStatement.close();
-			}
-
-			if (connect != null) {
-				connect.close();
-			}
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			
-			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
-			String errorText = "Verbindungen konnten nicht geschlossen werden.";
-			InfoError.showMessage(errorText);
-
-		}
 	}
 }
