@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.swing.JButton;
-
 import model.user.User;
 import view.InfoError;
 
@@ -34,16 +32,14 @@ public class LoginGUIActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		// Wenn auf den Button "Abbrechen" geklickt wird, wird das Login-Fenster
 		// geschlossen
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("Abbrechen")) {
+		if (event.getActionCommand().contains("Abbrechen")) {
 
 			guiLogin.closeLoginDialog();
 		}
 
 		// Wenn auf den Button "Login" geklickt wird, wird die Anmeldung
 		// versucht
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("Login")) {
+			if (event.getActionCommand().contains("Login")) {
 
 			// Benutzername und Password werden eingelesen
 			User myUser = new User(String.valueOf(guiLogin.getUsernameText()

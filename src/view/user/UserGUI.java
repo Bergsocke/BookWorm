@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -156,39 +157,41 @@ public class UserGUI extends JFrame {
 		userMenuBar = new JMenuBar();
 
 		userMenuBar.setBackground(Color.orange);
+		
+		ActionListener myActionListener = new UserGUIActionListener(this);
 
 		clearMenu = new JMenu("Neu");
 		clearMenuItem = new JMenuItem("Neuen Datensatz anlegen");
 		clearMenu.add(clearMenuItem);
-		clearMenuItem.addActionListener(new UserGUIActionListener(this));
+		clearMenuItem.addActionListener(myActionListener);
 
 		saveMenu = new JMenu("Speichern");
 		saveMenuItem = new JMenuItem("Datensatz speichern");
 		saveMenu.add(saveMenuItem);
-		saveMenuItem.addActionListener(new UserGUIActionListener(this));
+		saveMenuItem.addActionListener(myActionListener);
 
 		deleteMenu = new JMenu("Löschen");
 		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
-		deleteMenuItem.addActionListener(new UserGUIActionListener(this));
+		deleteMenuItem.addActionListener(myActionListener);
 
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Bücherverwaltung wechseln");
 		changeMenu.add(changeMenuItem);
-		changeMenuItem.addActionListener(new UserGUIActionListener(this));
+		changeMenuItem.addActionListener(myActionListener);
 
 		logoutMenu = new JMenu("Abmelden");
 		logoutMenuItem = new JMenuItem("Benutzer abmelden");
 		closeMenuItem = new JMenuItem("Programm beenden");
 		logoutMenu.add(logoutMenuItem);
 		logoutMenu.add(closeMenuItem);
-		logoutMenuItem.addActionListener(new UserGUIActionListener(this));
-		closeMenuItem.addActionListener(new UserGUIActionListener(this));
+		logoutMenuItem.addActionListener(myActionListener);
+		closeMenuItem.addActionListener(myActionListener);
 
 		helpMenu = new JMenu("Hilfe");
 		helpMenuItem = new JMenuItem("Über das Programm");
 		helpMenu.add(helpMenuItem);
-		helpMenuItem.addActionListener(new UserGUIActionListener(this));
+		helpMenuItem.addActionListener(myActionListener);
 
 		// Hinzufügen der einzelnen Komponenten zur Menübar
 		userMenuBar.add(clearMenu);
@@ -210,6 +213,8 @@ public class UserGUI extends JFrame {
 	private void initComponentsNorth() {
 
 		northPanel = new JPanel();
+		
+		ActionListener myActionListener = new UserGUIActionListener(this);
 
 		searchLabel = new JLabel("Nach Anwender suchen: ");
 		searchLabel.setFont(new Font(textFont, labelStyle, 14));
@@ -226,7 +231,7 @@ public class UserGUI extends JFrame {
 		searchButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		searchButton.setBackground(Color.lightGray);
 		searchButton.setBorder(BorderFactory.createRaisedBevelBorder());
-		searchButton.addActionListener(new UserGUIActionListener(this));
+		searchButton.addActionListener(myActionListener);
 
 		// Icon für den Buttton "alle anzeigen"
 		final Icon showAllIcon = new ImageIcon(
@@ -235,7 +240,7 @@ public class UserGUI extends JFrame {
 		allButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		allButton.setBackground(Color.lightGray);
 		allButton.setBorder(BorderFactory.createRaisedBevelBorder());
-		allButton.addActionListener(new UserGUIActionListener(this));
+		allButton.addActionListener(myActionListener);
 
 		// Hinzufügen der einzelnen Komponenten zum NorthPanel
 		northPanel.add(searchLabel);
@@ -261,6 +266,8 @@ public class UserGUI extends JFrame {
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
+		
+		ActionListener myActionListener = new UserGUIActionListener(this);
 
 		userIDLabel = new JLabel("User-ID: ");
 		userIDLabel.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -304,10 +311,10 @@ public class UserGUI extends JFrame {
 			userRoleCombo.addItem(role[i]);
 		}
 
-		// Icon für den Buttton "neu"
+		// Icon für den Buttton "Neu"
 		final Icon newIcon = new ImageIcon(
 				BookGUI.class.getResource("/view/images/newIcon.png"));
-		clearButton = new JButton("     neu", newIcon);
+		clearButton = new JButton("     Neu", newIcon);
 		clearButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		clearButton.setBackground(Color.lightGray);
 		clearButton.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -315,7 +322,7 @@ public class UserGUI extends JFrame {
 		// Textfelder im EastPanel zurückgesetzt werden. Ein neuer Datensatz
 		// wird erst beim Klick auf den Button "speichern" in die Datenbank
 		// eingefügt.
-		clearButton.addActionListener(new UserGUIActionListener(this));
+		clearButton.addActionListener(myActionListener);
 
 		// Icon für den Buttton "speichern"
 		final Icon saveIcon = new ImageIcon(
@@ -326,7 +333,7 @@ public class UserGUI extends JFrame {
 		saveButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "speichern" geklickt wird, soll der Datensatz in
 		// die Datenbank gespeichert werden
-		saveButton.addActionListener(new UserGUIActionListener(this));
+		saveButton.addActionListener(myActionListener);
 
 		// Icon für den Buttton "löschen"
 		final Icon deleteIcon = new ImageIcon(
@@ -337,7 +344,7 @@ public class UserGUI extends JFrame {
 		deleteButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "löschen" geklickt wird, soll der Datensatz
 		// aus der Datenbank gelöscht werden
-		deleteButton.addActionListener(new UserGUIActionListener(this));
+		deleteButton.addActionListener(myActionListener);
 		// Der Button "löschen" ist zu Beginn/beim Erscheinen des Fensters
 		// noch nicht auswählbar; er wird erst sichtbar, wenn ein Datensatz
 		// ausgewählt wurde
@@ -351,7 +358,7 @@ public class UserGUI extends JFrame {
 		// bereits erfassten Anwender ein neues Passwort vergeben werden können;
 		// die Passwort-Änderung wird erst beim Klick auf den Button
 		// "Passwort setzen" durchgeführt
-		createPWButton.addActionListener(new UserGUIActionListener(this));
+		createPWButton.addActionListener(myActionListener);
 		// Der Button "Neues Passwort" ist zu Beginn/beim Erscheinen des
 		// Fensters noch nicht auswählbar; er wird erst sichtbar, wenn ein
 		// Datensatz ausgewählt wurde
@@ -363,7 +370,7 @@ public class UserGUI extends JFrame {
 		savePWButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "Passwort speichern" geklickt wird, soll das neu
 		// gesetzte Passwort in die Datenbank gespeichert werden
-		savePWButton.addActionListener(new UserGUIActionListener(this));
+		savePWButton.addActionListener(myActionListener);
 		// Der Button "Passwort setzen" ist zu Beginn/beim Erscheinen des
 		// Fensters noch nicht auswählbar; er wird erst sichtbar, wenn ein
 		// Datensatz ausgewählt wurde
@@ -378,7 +385,7 @@ public class UserGUI extends JFrame {
 		closeButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "Programm beenden" geklickt wird, soll das
 		// Fenster geschlossen werden
-		closeButton.addActionListener(new UserGUIActionListener(this));
+		closeButton.addActionListener(myActionListener);
 
 		// Dummy-Labels für Abstand zwischen der Tabelle und den Buttons
 		JLabel dummyLabel = new JLabel();

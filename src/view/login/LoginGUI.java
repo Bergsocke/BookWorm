@@ -1,6 +1,7 @@
 package view.login;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -93,6 +94,8 @@ public class LoginGUI extends JDialog {
 		loginPanel = new JPanel();
 
 		loginPanel.setLayout(null);
+		
+		ActionListener myActionListener = new LoginGUIActionListener(this);
 
 		usernameLabel = new JLabel("Benutzername:");
 		usernameLabel.setBounds(49, 90, 100, 30);
@@ -108,13 +111,13 @@ public class LoginGUI extends JDialog {
 		loginButton.setBounds(96, 172, 109, 30);
 		// Wenn auf den Button "Login" geklickt wird, soll die Anmeldung
 		// erfolgen
-		loginButton.addActionListener(new LoginGUIActionListener(this));
+		loginButton.addActionListener(myActionListener);
 
 		breakButton = new JButton("Abbrechen");
 		breakButton.setBounds(217, 171, 109, 30);
 		// Wenn auf den Button "Abbrechen" geklickt wird, soll das Login-Fenster
 		// geschlossen werden
-		breakButton.addActionListener(new LoginGUIActionListener(this));
+		breakButton.addActionListener(myActionListener);
 
 		// Hinzufügen der einzelnen Komponenten zum Panel
 		loginPanel.add(usernameLabel);

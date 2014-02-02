@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -172,39 +173,41 @@ public class BookGUI extends JFrame {
 	public void initMenuBar() {
 
 		bookMenuBar = new JMenuBar();
+		
+		ActionListener myActionListener = new BookGUIActionListener(this);
 
 		clearMenu = new JMenu("Neu");
 		clearMenuItem = new JMenuItem("Neuen Datensatz anlegen");
 		clearMenu.add(clearMenuItem);
-		clearMenuItem.addActionListener(new BookGUIActionListener(this));
+		clearMenuItem.addActionListener(myActionListener);
 
 		saveMenu = new JMenu("Speichern");
 		saveMenuItem = new JMenuItem("Datensatz speichern");
 		saveMenu.add(saveMenuItem);
-		saveMenuItem.addActionListener(new BookGUIActionListener(this));
+		saveMenuItem.addActionListener(myActionListener);
 
 		deleteMenu = new JMenu("Löschen");
 		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
-		deleteMenuItem.addActionListener(new BookGUIActionListener(this));
+		deleteMenuItem.addActionListener(myActionListener);
 
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Userverwaltung wechseln");
 		changeMenu.add(changeMenuItem);
-		changeMenuItem.addActionListener(new BookGUIActionListener(this));
+		changeMenuItem.addActionListener(myActionListener);
 
 		logoutMenu = new JMenu("Abmelden");
 		logoutMenuItem = new JMenuItem("Benutzer abmelden");
 		closeMenuItem = new JMenuItem("Programm beenden");
 		logoutMenu.add(logoutMenuItem);
 		logoutMenu.add(closeMenuItem);
-		logoutMenuItem.addActionListener(new BookGUIActionListener(this));
-		closeMenuItem.addActionListener(new BookGUIActionListener(this));
+		logoutMenuItem.addActionListener(myActionListener);
+		closeMenuItem.addActionListener(myActionListener);
 
 		helpMenu = new JMenu("Hilfe");
 		helpMenuItem = new JMenuItem("Über das Programm");
 		helpMenu.add(helpMenuItem);
-		helpMenuItem.addActionListener(new BookGUIActionListener(this));
+		helpMenuItem.addActionListener(myActionListener);
 
 		// Hinzufügen der einzelnen Komponenten zur Menübar
 		bookMenuBar.add(clearMenu);
@@ -226,6 +229,8 @@ public class BookGUI extends JFrame {
 	private void initComponentsNorth() {
 
 		northPanel = new JPanel();
+		
+		ActionListener myActionListener = new BookGUIActionListener(this);
 
 		searchLabel = new JLabel("Nach Buchtitel suchen: ");
 		searchLabel.setFont(new Font(textFont, labelStyle, 14));
@@ -242,7 +247,7 @@ public class BookGUI extends JFrame {
 		searchButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		searchButton.setBackground(Color.lightGray);
 		searchButton.setBorder(BorderFactory.createRaisedBevelBorder());
-		searchButton.addActionListener(new BookGUIActionListener(this));
+		searchButton.addActionListener(myActionListener);
 
 		// Icon für den Buttton "alle anzeigen"
 		final Icon showAllIcon = new ImageIcon(
@@ -251,7 +256,7 @@ public class BookGUI extends JFrame {
 		allButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		allButton.setBackground(Color.lightGray);
 		allButton.setBorder(BorderFactory.createRaisedBevelBorder());
-		allButton.addActionListener(new BookGUIActionListener(this));
+		allButton.addActionListener(myActionListener);
 
 		// Hinzufügen der einzelnen Komponenten zum NorthPanel
 		northPanel.add(searchLabel);
@@ -277,6 +282,8 @@ public class BookGUI extends JFrame {
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
+		
+		ActionListener myActionListener = new BookGUIActionListener(this);
 
 		bookIdLabel = new JLabel("Buch-ID: ");
 		bookIdLabel.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -372,10 +379,10 @@ public class BookGUI extends JFrame {
 			readCombo.addItem(read[i]);
 		}
 
-		// Icon für den Buttton "neu"
+		// Icon für den Buttton "Neu"
 		final Icon newIcon = new ImageIcon(
 				BookGUI.class.getResource("/view/images/newIcon.png"));
-		clearButton = new JButton("     neu", newIcon);
+		clearButton = new JButton("     Neu", newIcon);
 		clearButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		clearButton.setBackground(Color.lightGray);
 		clearButton.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -383,7 +390,7 @@ public class BookGUI extends JFrame {
 		// Textfelder im EastPanel zurückgesetzt werden. Ein neuer Datensatz
 		// wird erst beim Klick auf den Button "speichern" in die Datenbank
 		// eingefügt. Der Button "löschen" soll deaktiviert werden.
-		clearButton.addActionListener(new BookGUIActionListener(this));
+		clearButton.addActionListener(myActionListener);
 
 		// Icon für den Buttton "speichern"
 		final Icon saveIcon = new ImageIcon(
@@ -394,7 +401,7 @@ public class BookGUI extends JFrame {
 		saveButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "speichern" geklickt wird, soll der Datensatz in
 		// die Datenbank gespeichert werden
-		saveButton.addActionListener(new BookGUIActionListener(this));
+		saveButton.addActionListener(myActionListener);
 
 		// Icon für den Buttton "löschen"
 		final Icon deleteIcon = new ImageIcon(
@@ -405,7 +412,7 @@ public class BookGUI extends JFrame {
 		deleteButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "löschen" geklickt wird, soll der Datensatz
 		// aus der Datenbank gelöscht werden
-		deleteButton.addActionListener(new BookGUIActionListener(this));
+		deleteButton.addActionListener(myActionListener);
 		// Der Button "löschen" ist zu Beginn/beim Erscheinen des Fensters
 		// noch nicht auswählbar; er wird erst sichtbar, wenn ein Datensatz
 		// ausgewählt wurde
@@ -420,7 +427,7 @@ public class BookGUI extends JFrame {
 		closeButton.setBorder(BorderFactory.createRaisedBevelBorder());
 		// wenn auf den Button "Programm beenden" geklickt wird, soll das
 		// Fenster geschlossen werden
-		closeButton.addActionListener(new BookGUIActionListener(this));
+		closeButton.addActionListener(myActionListener);
 
 		// Dummy-Labels für Abstand zwischen der Tabelle und den Buttons
 		JLabel dummyLabel = new JLabel();
