@@ -31,7 +31,7 @@ public class LoginDB {
 
 		try {
 			// PreparedStatement für den SQL-Befehl
-			String sqlStatement = "SELECT COUNT(*) FROM book_database.users WHERE username = '"
+			String sqlStatement = "SELECT COUNT(*) FROM bookworm_database.users WHERE username = '"
 					+ myUser.getUserName()
 					+ "' AND userpassword = '"
 					+ myUser.getUserPassword() + "';";
