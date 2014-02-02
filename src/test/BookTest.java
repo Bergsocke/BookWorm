@@ -35,7 +35,7 @@ public class BookTest {
 
 			// Alle Datensätze anzeigen
 			myPreparedStatement = connect
-					.prepareStatement("SELECT * FROM book_database.books;");
+					.prepareStatement("SELECT * FROM bookworm_database.books;");
 			myResultSet = myPreparedStatement.executeQuery();
 
 			while (myResultSet.next()) {
