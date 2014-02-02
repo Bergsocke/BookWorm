@@ -41,7 +41,8 @@ public class UserDB {
 
 			while (myResultSet.next()) {
 				userList.add(new User(myResultSet.getString(1), myResultSet
-						.getString(2), myResultSet.getString(3)));
+						.getString(2), myResultSet.getString(3), myResultSet
+						.getString(4)));
 			}
 
 		} catch (Exception e) {
@@ -80,7 +81,8 @@ public class UserDB {
 			// Datensatz liefern kann, genügt hier diese Abfrage
 			if (myResultSet.next()) {
 				foundUser = new User(myResultSet.getString(1),
-						myResultSet.getString(2), myResultSet.getString(3));
+						myResultSet.getString(2), myResultSet.getString(3),
+						myResultSet.getString(4));
 			}
 
 		} catch (Exception e) {
@@ -89,10 +91,10 @@ public class UserDB {
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
 			InfoError.showMessage(errorText);
 
-		} finally {
+		} // finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
-		}
+			// SQLDatabase.closeConnections();
+		// }
 
 		return foundUser;
 	}
@@ -117,7 +119,8 @@ public class UserDB {
 
 			while (myResultSet.next()) {
 				userList.add(new User(myResultSet.getString(1), myResultSet
-						.getString(2), myResultSet.getString(3)));
+						.getString(2), myResultSet.getString(3), myResultSet
+						.getString(4)));
 			}
 
 		} catch (Exception e) {
@@ -147,7 +150,9 @@ public class UserDB {
 			String sqlStatement = "INSERT INTO bookworm_database.users VALUES (default, '"
 					+ userToSave.getUserName()
 					+ "', md5('"
-					+ userToSave.getUserPassword() + "'));";
+					+ userToSave.getUserPassword()
+					+ "'), '"
+					+ userToSave.getUserRole() + "');";
 
 			// SQL-Befehl wird ausgeführt
 			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
@@ -171,7 +176,7 @@ public class UserDB {
 
 	/**
 	 * Methode zum Ändern eines bereits vorhandenen Datensatzes in der Tabelle
-	 * "users"
+	 * "users" (das Passwort bleibt unverändert)
 	 * 
 	 * @param userToUpdate
 	 * @return successful
@@ -182,10 +187,52 @@ public class UserDB {
 			// Erforderlicher SQL-Befehl
 			String sqlStatement = "UPDATE bookworm_database.users SET username = '"
 					+ userToUpdate.getUserName()
+					+ "', userrole = '"
+					+ userToUpdate.getUserRole()
+					+ "' WHERE id ="
+					+ userToUpdate.getUserID() + ";";
+
+			// SQL-Befehl wird ausgeführt
+			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+
+			return successful;
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Datenbank-Fehler beim Ändern eines Datensatzes";
+			InfoError.showMessage(errorText);
+
+			successful = 0;
+			return successful;
+
+		} finally {
+			// offene Verbindungen werden geschlossen
+			SQLDatabase.closeConnections();
+		}
+	}
+
+	/**
+	 * Methode zum Ändern eines bereits vorhandenen Datensatzes in der Tabelle
+	 * "users" inklusive eines neuen Passworts
+	 * 
+	 * @param userToUpdate
+	 * @return successful
+	 */
+	public static int newPassword(User userToUpdate) {
+
+		try {
+			// Erforderlicher SQL-Befehl
+			String sqlStatement = "UPDATE bookworm_database.users SET username = '"
+					+ userToUpdate.getUserName()
 					+ "', userpassword = md5('"
 					+ userToUpdate.getUserPassword()
-					+ "') WHERE id = "
+					+ "')"
+					+ ", userrole = '"
+					+ userToUpdate.getUserRole()
+					+ "' WHERE id ="
 					+ userToUpdate.getUserID() + ";";
+			;
 
 			// SQL-Befehl wird ausgeführt
 			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
@@ -239,5 +286,4 @@ public class UserDB {
 			SQLDatabase.closeConnections();
 		}
 	}
-
 }

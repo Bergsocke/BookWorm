@@ -12,13 +12,15 @@ import model.book.Book;
 import model.book.BookDB;
 import view.InfoError;
 import view.InfoSuccess;
+import view.login.LoginGUI;
 import view.user.UserGUI;
 
 /**
  * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
  * "alle anzeigen", "suchen", "neu", "speichern", "löschen", "Programm beenden"
  * sowie für die MenüBarItems "Neuen Datensatz anlegen", "Datensatz speichern",
- * "Datensatz löschen" und "Über das Programm" der Klasse BookGUI festgelegt.
+ * "Datensatz löschen", "Zur Userverwaltung wechseln", "Benutzer abmelden",
+ * "Programm beenden" und "Über das Programm" der Klasse BookGUI festgelegt.
  * 
  * @author Bergsocke
  * 
@@ -117,14 +119,24 @@ public class BookGUIActionListener implements ActionListener {
 			this.actionDelete();
 		}
 
-		// Wenn auf den Button "Programm beenden" geklickt wird, werden alle
-		// offenen Verbindungen und das Fenster geschlossen
+		// Wenn auf den Button "Programm beenden" oder in der Menübar auf
+		// "Programm beenden" geklickt wird, wird das Programm beendet
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("Programm beenden")) {
-			// Offene Datenbank-Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			this.actionClose();
+		}
+		if (event.getSource() instanceof JMenuItem
+				&& event.getActionCommand().contains("Programm beenden")) {
+			this.actionClose();
+		}
 
-			System.exit(0);
+		// Wenn in der Menübar auf "Benutzer abmelden" geklickt wird, soll das
+		// Programm-Fenster geschlossen und das Login-Fenster für eine
+		// erneute Benutzer-Anmeldung geöffnet werden.
+		if (event.getSource() instanceof JMenuItem
+				&& event.getActionCommand().contains("Benutzer abmelden")) {
+			guiBook.setVisible(false);
+			LoginGUI.main(null);
 		}
 
 		// Wenn in der Menübar auf "Zur Userverwaltung wechseln" geklickt wird,
@@ -134,6 +146,7 @@ public class BookGUIActionListener implements ActionListener {
 						"Zur Userverwaltung wechseln")) {
 			// Bücherverwaltungs-GUI wird geschlossen
 			guiBook.setVisible(false);
+			// Userverwaltungs-GUI wrid aufgerufen
 			UserGUI.letStartedUserGUI();
 		}
 
@@ -169,7 +182,7 @@ public class BookGUIActionListener implements ActionListener {
 	 * in der Datenbank vorhanden ist, wird er in die Datenbank gespeichert.
 	 */
 	public void actionSave() {
-		// Ist die ID leer, wird ein neuer Datensatz angelegt und in die
+		// Ist die Buch-ID leer, wird ein neuer Datensatz angelegt und in die
 		// Datenbank gespeichert
 		if (guiBook.getBookIdText().getText().matches("")) {
 
@@ -296,5 +309,15 @@ public class BookGUIActionListener implements ActionListener {
 				guiBook.resetTableEast();
 			}
 		}
+	}
+
+	/**
+	 * Wenn auf den Button oder in der Menübar auf "Programm beenden" geklickt
+	 * wird, werden alle offenen Verbindungen und das Fenster geschlossen
+	 * 
+	 */
+	public void actionClose() {
+		SQLDatabase.closeConnections();
+		System.exit(0);
 	}
 }

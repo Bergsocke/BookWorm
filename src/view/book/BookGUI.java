@@ -109,6 +109,9 @@ public class BookGUI extends JFrame {
 	private JMenuItem deleteMenuItem;
 	private JMenu changeMenu;
 	private JMenuItem changeMenuItem;
+	private JMenu logoutMenu;
+	private JMenuItem logoutMenuItem;
+	private JMenuItem closeMenuItem;
 	private JMenu helpMenu;
 	private JMenuItem helpMenuItem;
 
@@ -184,11 +187,19 @@ public class BookGUI extends JFrame {
 		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
 		deleteMenuItem.addActionListener(new BookGUIActionListener(this));
-		
+
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Userverwaltung wechseln");
 		changeMenu.add(changeMenuItem);
 		changeMenuItem.addActionListener(new BookGUIActionListener(this));
+
+		logoutMenu = new JMenu("Abmelden");
+		logoutMenuItem = new JMenuItem("Benutzer abmelden");
+		closeMenuItem = new JMenuItem("Programm beenden");
+		logoutMenu.add(logoutMenuItem);
+		logoutMenu.add(closeMenuItem);
+		logoutMenuItem.addActionListener(new BookGUIActionListener(this));
+		closeMenuItem.addActionListener(new BookGUIActionListener(this));
 
 		helpMenu = new JMenu("Hilfe");
 		helpMenuItem = new JMenuItem("Über das Programm");
@@ -200,6 +211,7 @@ public class BookGUI extends JFrame {
 		bookMenuBar.add(saveMenu);
 		bookMenuBar.add(deleteMenu);
 		bookMenuBar.add(changeMenu);
+		bookMenuBar.add(logoutMenu);
 		bookMenuBar.add(helpMenu);
 
 		// Hinzufügen der Menübar zum Frame
@@ -234,8 +246,7 @@ public class BookGUI extends JFrame {
 
 		// Icon für den Buttton "alle anzeigen"
 		final Icon showAllIcon = new ImageIcon(
-				BookGUI.class
-						.getResource("/view/images/showAllIcon.png"));
+				BookGUI.class.getResource("/view/images/showAllIcon.png"));
 		allButton = new JButton(" alle anzeigen  ", showAllIcon);
 		allButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		allButton.setBackground(Color.lightGray);
@@ -396,7 +407,7 @@ public class BookGUI extends JFrame {
 		// aus der Datenbank gelöscht werden
 		deleteButton.addActionListener(new BookGUIActionListener(this));
 		// Der Button "löschen" ist zu Beginn/beim Erscheinen des Fensters
-		// noch ncht auswählbar; er wird erst sichtbar, wenn ein Datensatz
+		// noch nicht auswählbar; er wird erst sichtbar, wenn ein Datensatz
 		// ausgewählt wurde
 		deleteButton.setEnabled(false);
 
@@ -509,7 +520,7 @@ public class BookGUI extends JFrame {
 
 		// WestPanel wird aufgebaut
 		this.createteWestTable();
-		
+
 		return bookTable;
 	}
 
@@ -520,7 +531,7 @@ public class BookGUI extends JFrame {
 	public void createteWestTable() {
 
 		westPanel = new JPanel();
-		
+
 		// Falls die Spalten zu breit für den verfügbaren Platz sind,
 		// soll eine Scrollbar zur Verfügung stehen
 		tableScroll = new JScrollPane(bookTable);
@@ -533,14 +544,12 @@ public class BookGUI extends JFrame {
 		this.getContentPane().add(westPanel, BorderLayout.WEST);
 		// Sichtbar machen
 		this.setVisible(true);
-		
+
 		// Die automatische Größenausrichtung der Spaltenbreite der Tabelle wird
 		// ausgeschalten. Ansonsten kann eine bestimmte Spaltengröße nicht
 		// festgelegt werden; die Spaltenbreite würde sonst automatisch nach dem
 		// verfügbaren Platz festgelegt werden
 		bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
-		
 
 		// Festlegung der Schrifteigenschaften
 		bookTable.setFont(new Font(textFont, textStyle, textSize));

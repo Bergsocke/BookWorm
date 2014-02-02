@@ -10,6 +10,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -25,9 +26,9 @@ import model.user.UserDB;
 import view.book.BookGUI;
 
 /**
- * Die Klasse "UserGUI" ist für den Aufbau der grafischen Oberfläche zuständig.
- * Hier werden die einzelnen Komponenten des Fensters (Textfelder,
- * Bezeichungsfelder, Buttons und die Usertabelle) festgelegt.
+ * Die Klasse "UserGUI" ist für den Aufbau der grafischen Oberfläche der
+ * User-Verwaltung zuständig. Hier werden die einzelnen Komponenten des Fensters
+ * (Textfelder, Bezeichungsfelder, Buttons und die Usertabelle) festgelegt.
  * 
  * @author Bergsocke
  * 
@@ -67,9 +68,14 @@ public class UserGUI extends JFrame {
 	private JLabel userPasswordLabel;
 	private JTextField userPasswordText;
 
+	private JLabel userRoleLabel;
+	private JComboBox<String> userRoleCombo;
+
 	private JButton clearButton;
 	private JButton saveButton;
 	private JButton deleteButton;
+	private JButton createPWButton;
+	private JButton savePWButton;
 	private JButton closeButton;
 
 	private JTable userTable;
@@ -85,6 +91,9 @@ public class UserGUI extends JFrame {
 	private JMenuItem deleteMenuItem;
 	private JMenu changeMenu;
 	private JMenuItem changeMenuItem;
+	private JMenu logoutMenu;
+	private JMenuItem logoutMenuItem;
+	private JMenuItem closeMenuItem;
 	private JMenu helpMenu;
 	private JMenuItem helpMenuItem;
 
@@ -93,7 +102,7 @@ public class UserGUI extends JFrame {
 		// Aufruf des Konstruktors der Klasse UserGUI und Zuweisung der
 		// Überschrift
 		UserGUI gui = new UserGUI("BOOKWORM - USERVERWALTUNG");
-		
+
 		// Fenstergröße wird automatisch an den Inhalt angepasst
 		gui.pack();
 
@@ -101,8 +110,7 @@ public class UserGUI extends JFrame {
 		gui.setResizable(false);
 
 		// Positionierung am Desktop
-		gui.setLocation(400, 200);
-
+		gui.setLocation(200, 200);
 
 		// Window-Close-Funktion
 		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -146,7 +154,7 @@ public class UserGUI extends JFrame {
 	public void initMenuBar() {
 
 		userMenuBar = new JMenuBar();
-		
+
 		userMenuBar.setBackground(Color.orange);
 
 		clearMenu = new JMenu("Neu");
@@ -163,11 +171,19 @@ public class UserGUI extends JFrame {
 		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
 		deleteMenuItem.addActionListener(new UserGUIActionListener(this));
-		
+
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Bücherverwaltung wechseln");
 		changeMenu.add(changeMenuItem);
 		changeMenuItem.addActionListener(new UserGUIActionListener(this));
+
+		logoutMenu = new JMenu("Abmelden");
+		logoutMenuItem = new JMenuItem("Benutzer abmelden");
+		closeMenuItem = new JMenuItem("Programm beenden");
+		logoutMenu.add(logoutMenuItem);
+		logoutMenu.add(closeMenuItem);
+		logoutMenuItem.addActionListener(new UserGUIActionListener(this));
+		closeMenuItem.addActionListener(new UserGUIActionListener(this));
 
 		helpMenu = new JMenu("Hilfe");
 		helpMenuItem = new JMenuItem("Über das Programm");
@@ -179,6 +195,7 @@ public class UserGUI extends JFrame {
 		userMenuBar.add(saveMenu);
 		userMenuBar.add(deleteMenu);
 		userMenuBar.add(changeMenu);
+		userMenuBar.add(logoutMenu);
 		userMenuBar.add(helpMenu);
 
 		// Hinzufügen der Menübar zum Frame
@@ -188,13 +205,13 @@ public class UserGUI extends JFrame {
 	/**
 	 * Zuweisung von Inhalt und Form der einzelnen Komponenten, die im
 	 * North-Panel ausgegeben werden. Mit der Möglichkeit zur Suche nach einem
-	 * User bzw. zur Anzeige aller Datensätze
+	 * Anwendernamen bzw. zur Anzeige aller Datensätze
 	 */
 	private void initComponentsNorth() {
 
 		northPanel = new JPanel();
 
-		searchLabel = new JLabel("Nach User suchen: ");
+		searchLabel = new JLabel("Nach Anwender suchen: ");
 		searchLabel.setFont(new Font(textFont, labelStyle, 14));
 
 		searchText = new JTextField("Bitte Suchbegriff eingeben", 20);
@@ -239,8 +256,8 @@ public class UserGUI extends JFrame {
 
 		eastPanel = new JPanel();
 
-		// Layout für 7 Zeilen und 2 Spalten
-		eastPanel.setLayout(new GridLayout(7, 2));
+		// Layout für 9 Zeilen und 2 Spalten
+		eastPanel.setLayout(new GridLayout(9, 2));
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
@@ -252,10 +269,10 @@ public class UserGUI extends JFrame {
 		userIDText = new JTextField(25);
 		userIDText.setFont(new Font(textFont, textStyle, textSize));
 
-		// Nachdem die Buch-ID automatisch von der Datenbank vergeben wird, soll
-		// das Feld "Buch-ID" nicht bearbeitet werden können. Aus diesem Grund
+		// Nachdem die User-ID automatisch von der Datenbank vergeben wird, soll
+		// das Feld "User-ID" nicht bearbeitet werden können. Aus diesem Grund
 		// wird es auf nicht editierbar gesetzt. Aus diesem Feld wird beim
-		// Updaten, Speichern oder Löschen eines Datensatzes die Buch-ID
+		// Updaten, Speichern oder Löschen eines Datensatzes die User-ID
 		// ausgelesen
 		userIDText.setEditable(false);
 
@@ -264,10 +281,28 @@ public class UserGUI extends JFrame {
 		userNameText = new JTextField();
 		userNameText.setFont(new Font(textFont, textStyle, textSize));
 
+		// Nachdem das Userpasswort nicht als Klartext ausgelesen werden kann,
+		// soll das Feld "Userpasswort" nicht angezeigt werden. Damit
+		// soll verhindert werden, dass das gehashte Passwort nochmals gehasht
+		// in die Datenbank abgespeichert wird.
+		// Soll für einen Anwender ein neues Passwort vergeben werden, ist
+		// hierfür der Button "Neues Passwort" zu klicken.
 		userPasswordLabel = new JLabel("Userpassword: ");
 		userPasswordLabel.setFont(new Font(labelFont, labelStyle, labelSize));
 		userPasswordText = new JTextField();
 		userPasswordText.setFont(new Font(textFont, textStyle, textSize));
+		userPasswordText.setVisible(false);
+
+		userRoleLabel = new JLabel("Rolle: ");
+		userRoleLabel.setFont(new Font(labelFont, labelStyle, labelSize));
+		userRoleCombo = new JComboBox<String>();
+		userRoleCombo.setBackground(Color.white);
+		userRoleCombo.setFont(new Font(textFont, textStyle, textSize));
+		// Festlegung des Inhalts der Combo-Box "userRoleCombo"
+		String[] role = { "Anwender", "Gast", "Administrator" };
+		for (int i = 0; i < role.length; i++) {
+			userRoleCombo.addItem(role[i]);
+		}
 
 		// Icon für den Buttton "neu"
 		final Icon newIcon = new ImageIcon(
@@ -279,7 +314,7 @@ public class UserGUI extends JFrame {
 		// Wenn auf den Button "neu" geklickt wird, soll der Inhalt der
 		// Textfelder im EastPanel zurückgesetzt werden. Ein neuer Datensatz
 		// wird erst beim Klick auf den Button "speichern" in die Datenbank
-		// eingefügt. Der Button "löschen" soll deaktiviert werden.
+		// eingefügt.
 		clearButton.addActionListener(new UserGUIActionListener(this));
 
 		// Icon für den Buttton "speichern"
@@ -304,9 +339,35 @@ public class UserGUI extends JFrame {
 		// aus der Datenbank gelöscht werden
 		deleteButton.addActionListener(new UserGUIActionListener(this));
 		// Der Button "löschen" ist zu Beginn/beim Erscheinen des Fensters
-		// noch ncht auswählbar; er wird erst sichtbar, wenn ein Datensatz
+		// noch nicht auswählbar; er wird erst sichtbar, wenn ein Datensatz
 		// ausgewählt wurde
 		deleteButton.setEnabled(false);
+
+		createPWButton = new JButton("Neues Passwort");
+		createPWButton.setFont(new Font(labelFont, labelStyle, labelSize));
+		createPWButton.setBackground(Color.lightGray);
+		createPWButton.setBorder(BorderFactory.createRaisedBevelBorder());
+		// wenn auf den Button "Neues Passwort" geklickt wird, soll für einen
+		// bereits erfassten Anwender ein neues Passwort vergeben werden können;
+		// die Passwort-Änderung wird erst beim Klick auf den Button
+		// "Passwort setzen" durchgeführt
+		createPWButton.addActionListener(new UserGUIActionListener(this));
+		// Der Button "Neues Passwort" ist zu Beginn/beim Erscheinen des
+		// Fensters noch nicht auswählbar; er wird erst sichtbar, wenn ein
+		// Datensatz ausgewählt wurde
+		createPWButton.setEnabled(false);
+
+		savePWButton = new JButton("Passwort setzen");
+		savePWButton.setFont(new Font(labelFont, labelStyle, labelSize));
+		savePWButton.setBackground(Color.lightGray);
+		savePWButton.setBorder(BorderFactory.createRaisedBevelBorder());
+		// wenn auf den Button "Passwort speichern" geklickt wird, soll das neu
+		// gesetzte Passwort in die Datenbank gespeichert werden
+		savePWButton.addActionListener(new UserGUIActionListener(this));
+		// Der Button "Passwort setzen" ist zu Beginn/beim Erscheinen des
+		// Fensters noch nicht auswählbar; er wird erst sichtbar, wenn ein
+		// Datensatz ausgewählt wurde
+		savePWButton.setEnabled(false);
 
 		// Icon für den Buttton "Programm beenden"
 		final Icon closeIcon = new ImageIcon(
@@ -334,6 +395,9 @@ public class UserGUI extends JFrame {
 		eastPanel.add(userNameLabel);
 		eastPanel.add(userNameText);
 
+		eastPanel.add(userRoleLabel);
+		eastPanel.add(userRoleCombo);
+
 		eastPanel.add(userPasswordLabel);
 		eastPanel.add(userPasswordText);
 
@@ -344,6 +408,8 @@ public class UserGUI extends JFrame {
 		eastPanel.add(clearButton);
 		eastPanel.add(saveButton);
 		eastPanel.add(deleteButton);
+		eastPanel.add(createPWButton);
+		eastPanel.add(savePWButton);
 		eastPanel.add(closeButton);
 
 		// Dummy-Labels für Abstand zwischen den Buttons und dem unteren
@@ -360,7 +426,7 @@ public class UserGUI extends JFrame {
 	 * West-Panel ausgegeben werden.
 	 */
 	private void initComponentsWest() {
-		// Initailisierung der Büchertabelle. Nachdem auch von anderen
+		// Initailisierung der Usertabelle. Nachdem auch von anderen
 		// Teilen des Programms auf die Tabelle zugegriffen wird bzw.
 		// die Tabelle für die Suchfunktion neu aufgebaut werden muss,
 		// wird dieser Teil in eine eigene Methode geschrieben.
@@ -412,7 +478,7 @@ public class UserGUI extends JFrame {
 		// soll eine Scrollbar zur Verfügung stehen
 		tableScroll = new JScrollPane(userTable);
 		// Festlegung der Tabellengröße
-		tableScroll.setPreferredSize(new Dimension(450, 300));
+		tableScroll.setPreferredSize(new Dimension(600, 300));
 		// dem WestPanel zuweisen
 		westPanel.add(tableScroll);
 
@@ -436,7 +502,8 @@ public class UserGUI extends JFrame {
 		// Festlegung der Spaltenbreiten
 		userTable.getColumnModel().getColumn(0).setPreferredWidth(46);
 		userTable.getColumnModel().getColumn(1).setPreferredWidth(150);
-		userTable.getColumnModel().getColumn(2).setPreferredWidth(250);
+		userTable.getColumnModel().getColumn(2).setPreferredWidth(150);
+		userTable.getColumnModel().getColumn(3).setPreferredWidth(250);
 
 		// Festlegung des Selektionsmodus - es darf nur eine Zeile ausgewählt
 		// werden
@@ -476,7 +543,6 @@ public class UserGUI extends JFrame {
 	/**
 	 * Definition der Getter und Setter
 	 */
-	
 
 	public JButton getSaveButton() {
 		return saveButton;
@@ -504,6 +570,14 @@ public class UserGUI extends JFrame {
 
 	public void setUserPasswordText(JTextField userPasswordText) {
 		this.userPasswordText = userPasswordText;
+	}
+
+	public JComboBox<String> getUserRoleCombo() {
+		return userRoleCombo;
+	}
+
+	public void setUserRoleCombo(JComboBox<String> userRoleCombo) {
+		this.userRoleCombo = userRoleCombo;
 	}
 
 	public void setSaveButton(JButton saveButton) {
@@ -558,4 +632,19 @@ public class UserGUI extends JFrame {
 		this.deleteButton = deleteButton;
 	}
 
+	public JButton getCreatePWButton() {
+		return createPWButton;
+	}
+
+	public void setCreatePWButton(JButton createPWButton) {
+		this.createPWButton = createPWButton;
+	}
+
+	public JButton getSavePWButton() {
+		return savePWButton;
+	}
+
+	public void setSavePWButton(JButton savePWButton) {
+		this.savePWButton = savePWButton;
+	}
 }

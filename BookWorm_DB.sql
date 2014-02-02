@@ -7,7 +7,7 @@ INSERT INTO books VALUES (default, '978-3-8362-1507-7', 'Java 7 Mehr als eine In
 
 DROP TABLE IF EXISTS users
 
-CREATE TABLE users (id INT NOT NULL AUTO_INCREMENT, username VARCHAR(50), userpassword VARCHAR(90), PRIMARY KEY(id));
+CREATE TABLE users (id INT NOT NULL AUTO_INCREMENT, username VARCHAR(50), userpassword VARCHAR(90), userrole VARCHAR(20); PRIMARY KEY(id));
 
-INSERT INTO users (username, userpassword) VALUES('eva', md5('eva'));  
-INSERT INTO users (username, userpassword) VALUES('test', md5('test')); 
+INSERT INTO users (username, userpassword) VALUES('eva', md5('eva'), 'Administrator');  
+INSERT INTO users (username, userpassword) VALUES('test', md5('test'), 'Anwender'); 

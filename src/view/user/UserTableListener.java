@@ -49,11 +49,18 @@ public class UserTableListener implements ListSelectionListener {
 					guiUser.getUserNameText().setText(
 							String.valueOf(myUser.getUserName()));
 
-					guiUser.getUserPasswordText().setText(
-							String.valueOf(myUser.getUserPassword()));
+					// Das Passwort-Feld soll nicht angezeigt werden, um zu
+					// vermeiden, dass das bereits gehashte Passwort, nochmals
+					// gehasht in die Datenbank gespeichert wird
+					guiUser.getUserPasswordText().setVisible(false);
 
-					// Button "löschen" wird sichtbar gesetzt
+					guiUser.getUserRoleCombo().setSelectedItem(
+							String.valueOf(myUser.getUserRole()));
+
+					// Button "löschen" und "Neues Passwort" werden sichtbar
+					// gesetzt
 					guiUser.getDeleteButton().setEnabled(true);
+					guiUser.getCreatePWButton().setEnabled(true);
 
 				} catch (Exception e) {
 					System.out.println(e.toString());
