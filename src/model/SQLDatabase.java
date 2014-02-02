@@ -10,7 +10,7 @@ import view.InfoError;
 
 /**
  * Die Klasse "SQLDatabase" stellte eine Verbindung zur MySQL-Datenbank
- * "book_database" her und führt die erforderlichen SQL-Befehle aus
+ * "bookworm_database" her und führt die erforderlichen SQL-Befehle aus
  * 
  * @author Bergsocke
  * 
@@ -25,8 +25,8 @@ public class SQLDatabase {
 	public static int successful = 0;
 
 	/**
-	 * Diese Methode baut die Datenbankverbindung zur Datenbank "book_database"
-	 * auf
+	 * Diese Methode baut die Datenbankverbindung zur Datenbank
+	 * "bookworm_database" auf
 	 * 
 	 * @return connect
 	 */

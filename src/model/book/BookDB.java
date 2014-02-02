@@ -8,9 +8,8 @@ import model.SQLDatabase;
 import view.InfoError;
 
 /**
- * Die Klasse "BookDB" stellte eine Verbindung zur MySQL-Datenbank
- * "book_database" her und bietet die Methoden zum Anzeigen, Suchen, Speichern
- * und Löschen von Datensätzen der Tabelle "books"
+ * Die Klasse "BookDB" bietet die Methoden zum Anzeigen, Suchen, Speichern und
+ * Löschen von Datensätzen der Tabelle "books"
  * 
  * @author Bergsocke
  * 
@@ -34,7 +33,7 @@ public class BookDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM book_database.books;";
+			String sqlStatement = "SELECT * FROM bookworm_database.books;";
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
@@ -74,7 +73,7 @@ public class BookDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM book_database.books WHERE title LIKE '%"
+			String sqlStatement = "SELECT * FROM bookworm_database.books WHERE title LIKE '%"
 					+ bookTitle + "%';";
 
 			// SQL-Befehl wird ausgeführt
@@ -115,7 +114,7 @@ public class BookDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM book_database.books WHERE id LIKE "
+			String sqlStatement = "SELECT * FROM bookworm_database.books WHERE id LIKE "
 					+ bookID + ";";
 
 			// SQL-Befehl wird ausgeführt
@@ -156,7 +155,7 @@ public class BookDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "INSERT INTO book_database.books (isbn, title, author, "
+			String sqlStatement = "INSERT INTO bookworm_database.books (isbn, title, author, "
 					+ "publicationDate, formatb, shortDescription, category, "
 					+ "commentb, readb) VALUES ('"
 					+ bookToSave.getIsbn()
@@ -209,7 +208,7 @@ public class BookDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "UPDATE book_database.books SET isbn = '"
+			String sqlStatement = "UPDATE bookworm_database.books SET isbn = '"
 					+ bookToUpdate.getIsbn() + "', title = '"
 					+ bookToUpdate.getTitle() + "', author = '"
 					+ bookToUpdate.getAuthor() + "', publicationDate = '"
@@ -251,7 +250,7 @@ public class BookDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "DELETE FROM book_database.books WHERE id = "
+			String sqlStatement = "DELETE FROM bookworm_database.books WHERE id = "
 					+ bookID + ";";
 
 			// SQL-Befehl wird ausgeführt

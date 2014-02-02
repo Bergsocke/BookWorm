@@ -34,7 +34,7 @@ public class UserDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM book_database.users;";
+			String sqlStatement = "SELECT * FROM bookworm_database.users;";
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
@@ -70,7 +70,7 @@ public class UserDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM book_database.users WHERE id LIKE "
+			String sqlStatement = "SELECT * FROM bookworm_database.users WHERE id LIKE "
 					+ userID + ";";
 
 			// SQL-Befehl wird ausgeführt
@@ -109,7 +109,7 @@ public class UserDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM book_database.users WHERE username LIKE '%"
+			String sqlStatement = "SELECT * FROM bookworm_database.users WHERE username LIKE '%"
 					+ userName + "%';";
 
 			// SQL-Befehl wird ausgeführt
@@ -144,7 +144,7 @@ public class UserDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "INSERT INTO book_database.users VALUES (default, '"
+			String sqlStatement = "INSERT INTO bookworm_database.users VALUES (default, '"
 					+ userToSave.getUserName()
 					+ "', md5('"
 					+ userToSave.getUserPassword() + "'));";
@@ -180,7 +180,7 @@ public class UserDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "UPDATE book_database.users SET username = '"
+			String sqlStatement = "UPDATE bookworm_database.users SET username = '"
 					+ userToUpdate.getUserName()
 					+ "', userpassword = md5('"
 					+ userToUpdate.getUserPassword()
@@ -217,7 +217,7 @@ public class UserDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "DELETE FROM book_database.users WHERE id = "
+			String sqlStatement = "DELETE FROM bookworm_database.users WHERE id = "
 					+ userID + ";";
 
 			// SQL-Befehl wird ausgeführt
