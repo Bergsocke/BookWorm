@@ -181,8 +181,10 @@ public class UserDB {
 		try {
 			// Erforderlicher SQL-Befehl
 			String sqlStatement = "UPDATE book_database.users SET username = '"
-					+ userToUpdate.getUserName() + "', userpassword = md5('"
-					+ userToUpdate.getUserPassword() + "') WHERE id = "
+					+ userToUpdate.getUserName()
+					+ "', userpassword = md5('"
+					+ userToUpdate.getUserPassword()
+					+ "') WHERE id = "
 					+ userToUpdate.getUserID() + ";";
 
 			// SQL-Befehl wird ausgeführt

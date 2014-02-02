@@ -156,8 +156,8 @@ public class BookDB {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "INSERT INTO book_database.books (isbn, title, author, " +
-					"publicationDate, formatb, shortDescription, category, "
+			String sqlStatement = "INSERT INTO book_database.books (isbn, title, author, "
+					+ "publicationDate, formatb, shortDescription, category, "
 					+ "commentb, readb) VALUES ('"
 					+ bookToSave.getIsbn()
 					+ "', '"
@@ -177,7 +177,7 @@ public class BookDB {
 					+ "', '"
 					+ bookToSave.getRead()
 					+ "');";
-			
+
 			// SQL-Befehl wird ausgeführt
 			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
 
