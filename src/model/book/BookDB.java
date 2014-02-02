@@ -8,9 +8,8 @@ import model.SQLDatabase;
 import view.InfoError;
 
 /**
- * Die Klasse "BookDB" stellte eine Verbindung zur MySQL-Datenbank
- * "book_database" her und bietet die Methoden zum Anzeigen, Suchen, Speichern
- * und Löschen von Datensätzen der Tabelle "books"
+ * Die Klasse "BookDB" bietet die Methoden zum Anzeigen, Suchen, Speichern und
+ * Löschen von Datensätzen der Tabelle "books"
  * 
  * @author Bergsocke
  * 
