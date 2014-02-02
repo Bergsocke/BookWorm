@@ -127,9 +127,20 @@ public class UserGUIActionListener implements ActionListener {
 						String.valueOf(guiUser.getUserRoleCombo()
 								.getSelectedItem()));
 
-				// Eine Verbindung zur Datenbank wird aufgebaut und der neue
-				// Datensatz wird in die Datenbank gespeichert
-				UserDB.saveUser(myUser);
+				// Wird der Benutzername leer gelassen, wird der Datenbank nicht
+				// abgespeichert. Es wird eine entsprechende Meldung ausgegeben.
+				if (myUser.getUserName().equals("")) {
+					// Ein Dialogfenster mit folgender Meldung soll erzeugt
+					// werden
+					String errorText = "Bitte Benutzernamen eingeben.";
+					InfoError.showMessage(errorText);
+					return;
+
+				} else {
+					// Eine Verbindung zur Datenbank wird aufgebaut und der neue
+					// Datensatz wird in die Datenbank gespeichert
+					UserDB.saveUser(myUser);
+				}
 
 			} else {
 				// Die eingegebenen Daten des bereits vorhandenen Datensatzes
@@ -145,9 +156,21 @@ public class UserGUIActionListener implements ActionListener {
 				myUser.setUserRole(String.valueOf(guiUser.getUserRoleCombo()
 						.getSelectedItem()));
 
-				// Eine Verbindung zur Datenbank wird aufgebaut und der
-				// Datensatz wird in die Datenbank gespeichert
-				UserDB.updateUser(myUser);
+				// Wird der Benutzername gelöscht und nicht neu eingegeben, wird
+				// der Datenbank nicht abgespeichert. Es wird eine entsprechende
+				// Meldung ausgegeben.
+				if (myUser.getUserName().equals("")) {
+					// Ein Dialogfenster mit folgender Meldung soll erzeugt
+					// werden
+					String errorText = "Bitte Benutzernamen eingeben.";
+					InfoError.showMessage(errorText);
+					return;
+
+				} else {
+					// Eine Verbindung zur Datenbank wird aufgebaut und der
+					// Datensatz wird in die Datenbank gespeichert
+					UserDB.updateUser(myUser);
+				}
 			}
 
 			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
@@ -247,12 +270,12 @@ public class UserGUIActionListener implements ActionListener {
 			}
 		}
 
-		// wenn auf den Button "Neues Passwort" geklickt wird, soll für einen
+		// wenn auf den Button "Passwort vergeben" geklickt wird, soll für einen
 		// bereits erfassten Anwender ein neues Passwort vergeben werden können;
 		// Das Passwort-Textfeld wird sichtbar und der Button "Passwort setzen"
 		// (zum Speichern des neuen Passworts) wird aktiv gesetzt.
 		// Der Button "speichern" wird inaktiv.
-		if (event.getActionCommand().contains("Neues Passwort")) {
+		if (event.getActionCommand().contains("Passwort vergeben")) {
 			guiUser.getUserPasswordText().setVisible(true);
 			guiUser.getUserPasswordText().setText("");
 

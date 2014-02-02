@@ -157,7 +157,7 @@ public class UserGUI extends JFrame {
 		userMenuBar = new JMenuBar();
 
 		userMenuBar.setBackground(Color.orange);
-		
+
 		ActionListener myActionListener = new UserGUIActionListener(this);
 
 		clearMenu = new JMenu("Neu");
@@ -213,7 +213,7 @@ public class UserGUI extends JFrame {
 	private void initComponentsNorth() {
 
 		northPanel = new JPanel();
-		
+
 		ActionListener myActionListener = new UserGUIActionListener(this);
 
 		searchLabel = new JLabel("Nach Anwender suchen: ");
@@ -266,7 +266,7 @@ public class UserGUI extends JFrame {
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
-		
+
 		ActionListener myActionListener = new UserGUIActionListener(this);
 
 		userIDLabel = new JLabel("User-ID: ");
@@ -461,12 +461,10 @@ public class UserGUI extends JFrame {
 			// wird nach dem entsprechenden Suchbegriff gesucht (im
 			// Datenbankfeld "username") und am Ende werden die Suchergebnisse
 			// in einer neu erstellten Tabelle angezeigt
-
 			this.getContentPane().remove(westPanel);
 			userTable = new JTable(new UserTable(
 					UserDB.findByUserName(getSearchText().getText())));
 		}
-
 		// WestPanel wird aufgebaut
 		this.createteWestTable();
 

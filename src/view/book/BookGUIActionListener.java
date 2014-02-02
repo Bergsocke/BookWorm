@@ -116,9 +116,22 @@ public class BookGUIActionListener implements ActionListener {
 						String.valueOf(guiBook.getCommentArea().getText()),
 						String.valueOf(guiBook.getReadCombo().getSelectedItem()));
 
-				// Eine Verbindung zur Datenbank wird aufgebaut und der neue
-				// Datensatz wird in die Datenbank gespeichert
-				BookDB.saveBook(myBook);
+				// Wird der Buch-Titel und der Autor nicht eingegeben, wird der
+				// Datenbank nicht abgespeichert. Es wird eine entsprechende
+				// Meldung ausgegeben.
+				if (myBook.getTitle().equals("")
+						& myBook.getAuthor().equals("")) {
+					// Ein Dialogfenster mit folgender Meldung soll erzeugt
+					// werden
+					String errorText = "Bitte Buch-Titel und Autor eingeben.";
+					InfoError.showMessage(errorText);
+					return;
+
+				} else {
+					// Eine Verbindung zur Datenbank wird aufgebaut und der neue
+					// Datensatz wird in die Datenbank gespeichert
+					BookDB.saveBook(myBook);
+				}
 
 			} else {
 				// Die eingegebenen Daten des bereits vorhandenen Datensatzes
@@ -142,9 +155,22 @@ public class BookGUIActionListener implements ActionListener {
 				myBook.setRead(String.valueOf(guiBook.getReadCombo()
 						.getSelectedItem()));
 
-				// Eine Verbindung zur Datenbank wird aufgebaut und der
-				// Datensatz wird in die Datenbank gespeichert
-				BookDB.updateBook(myBook);
+				// Wird der Buch-Titel und der Autor gelöscht, wird der
+				// Datenbank nicht abgespeichert. Es wird eine entsprechende
+				// Meldung ausgegeben.
+				if (myBook.getTitle().equals("")
+						& myBook.getAuthor().equals("")) {
+					// Ein Dialogfenster mit folgender Meldung soll erzeugt
+					// werden
+					String errorText = "Bitte Buch-Titel und Autor eingeben.";
+					InfoError.showMessage(errorText);
+					return;
+
+				} else {
+					// Eine Verbindung zur Datenbank wird aufgebaut und der
+					// Datensatz wird in die Datenbank gespeichert
+					BookDB.updateBook(myBook);
+				}
 			}
 
 			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
