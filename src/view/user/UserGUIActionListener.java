@@ -3,8 +3,6 @@ package view.user;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import model.SQLDatabase;
@@ -49,8 +47,7 @@ public class UserGUIActionListener implements ActionListener {
 		// wird zurückgesetzt. Die Button "löschen", "Neues Passwort" und
 		// "Passwort setzen" sollen erst aktiviert werden, wenn ein Datensatz
 		// ausgewählt wurde.
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("alle anzeigen")) {
+		if (event.getActionCommand().contains("alle anzeigen")) {
 			// Suchbegriff wird zurückgesetzt
 			guiUser.getSearchText().setText("");
 			guiUser.createUserTable();
@@ -58,6 +55,8 @@ public class UserGUIActionListener implements ActionListener {
 			// EastTable wird zurückgesetzt
 			guiUser.resetTableEast();
 
+			// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
+			// werden deaktiviert
 			guiUser.getDeleteButton().setEnabled(false);
 			guiUser.getCreatePWButton().setEnabled(false);
 			guiUser.getSavePWButton().setEnabled(false);
@@ -69,8 +68,7 @@ public class UserGUIActionListener implements ActionListener {
 		// "createUserTable()" aus der Klasse UserGUI).
 		// Die Button "löschen", "Neues Passwort" und "Passwort setzen" sollen
 		// erst aktiviert werden, wenn ein Datensatz ausgewählt wurde.
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("suchen")) {
+		if (event.getActionCommand().contains("suchen")) {
 			guiUser.createUserTable();
 
 			// EastTable wird zurückgesetzt
@@ -91,17 +89,26 @@ public class UserGUIActionListener implements ActionListener {
 		}
 
 		// Wenn auf den Button "neu" oder in der Menübar auf
-		// "Neuen Datensatz anlegen" geklickt wird , wird der Inhalt der
-		// Textfelder im EastPanel zurückgesetzt. Ein neuer Datensatz wird
-		// erst beim Klick auf den Button "speichern" in die Datenbank
-		// eingefügt.
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("neu")) {
-			this.actionClear();
-		}
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Neuen Datensatz anlegen")) {
-			this.actionClear();
+		// "Neuen Datensatz anlegen" geklickt wird, wird der Inhalt der
+		// Textfelder im EastPanel zurückgesetzt (mit Hilfe der Methode
+		// "resetTableEast()" aus der Klasse "UserGUI"). Ein neuer Datensatz
+		// wird erst beim Klick auf den Button "speichern" in die Datenbank
+		// eingefügt. Die Button "löschen", "Neues Passwort" und
+		// "Passwort setzen" werden deaktiviert. Der Button "speichern" wird
+		// aktiviert.
+		if (event.getActionCommand().contains("Neu")) {
+			// Alle Textfelder werden zurückgesetzt
+			guiUser.resetTableEast();
+			// Passwortfeld wird für die Eingabe aktiviert
+			guiUser.getUserPasswordText().setVisible(true);
+
+			// Button "löschen", "Neues Passwort" und "Passwort setzen" werden
+			// deaktiviert.
+			guiUser.getDeleteButton().setEnabled(false);
+			guiUser.getCreatePWButton().setEnabled(false);
+			guiUser.getSavePWButton().setEnabled(false);
+			// Button "speichern" wird aktiviert
+			guiUser.getSaveButton().setEnabled(true);
 		}
 
 		// Wenn auf den Button "speichern" oder in der Menübar auf
@@ -109,25 +116,135 @@ public class UserGUIActionListener implements ActionListener {
 		// Datensatz in der Datenbank upgedatet.
 		// Ist der Datensatz noch nicht in der Datenbank vorhanden, wird er in
 		// die Datenbank eingefügt.
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("speichern")) {
-			this.actionSave();
-		}
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Datensatz speichern")) {
-			this.actionSave();
+		if (event.getActionCommand().contains("speichern")) {
+			// Ist die User-ID leer, wird ein neuer Datensatz angelegt und in
+			// die Datenbank gespeichert
+			if (guiUser.getUserIDText().getText().matches("")) {
+
+				User myUser = new User(String.valueOf(guiUser.getUserNameText()
+						.getText()), String.valueOf(guiUser
+						.getUserPasswordText().getText()),
+						String.valueOf(guiUser.getUserRoleCombo()
+								.getSelectedItem()));
+
+				// Eine Verbindung zur Datenbank wird aufgebaut und der neue
+				// Datensatz wird in die Datenbank gespeichert
+				UserDB.saveUser(myUser);
+
+			} else {
+				// Die eingegebenen Daten des bereits vorhandenen Datensatzes
+				// werden eingelesen. Der Button "Neues Passwort" wird
+				// aktiviert.
+				guiUser.getCreatePWButton().setEnabled(true);
+
+				String userID = guiUser.getUserIDText().getText();
+
+				User myUser = UserDB.findByID(userID);
+
+				myUser.setUserName(guiUser.getUserNameText().getText());
+				myUser.setUserRole(String.valueOf(guiUser.getUserRoleCombo()
+						.getSelectedItem()));
+
+				// Eine Verbindung zur Datenbank wird aufgebaut und der
+				// Datensatz wird in die Datenbank gespeichert
+				UserDB.updateUser(myUser);
+			}
+
+			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
+			// entsprechende Meldung ausgegeben
+			if (UserDB.successful == 1) {
+				// Die Tabelle im WestPanel wird neu aufgebaut, damit der
+				// neu angelegte Datensatz gleich angezeigt wird
+				guiUser.reloadWestTable();
+
+				// Folgende Meldung wird ausgegeben
+				String successText = "Datensatz wurde erfolgreich gespeichert!";
+				InfoSuccess.showMessage(successText);
+
+				// Alle Textfelder werden zurückgesetzt, damit weitere
+				// Datensätze eingegeben werden können
+				guiUser.resetTableEast();
+
+				// Suchbegriff wird zurückgesetzt
+				guiUser.getSearchText().setText("");
+
+				// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
+				// entsprechende Meldung ausgegeben
+			} else {
+				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
+				String errorText = "Datensatz konnte nicht gespeichert werden!";
+				InfoError.showMessage(errorText);
+
+				// Alle Textfelder werden zurückgesetzt, damit der Datensatz
+				// erneut eingegeben werden kann
+				guiUser.resetTableEast();
+
+				// Suchbegriff wird zurückgesetzt
+				guiUser.getSearchText().setText("");
+			}
 		}
 
 		// Wenn auf den Button "löschen" oder in der Menübar auf
 		// "Datensatz löschen" geklickt wird, wird der Datensatz aus der
-		// Datenbank gelöscht
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("löschen")) {
-			this.actionDelete();
-		}
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Datensatz löschen")) {
-			this.actionDelete();
+		// Datenbank gelöscht.
+		// Die Button "löschen", "Neues Passwort" und "Passwort setzen" werden
+		// deaktiviert
+		if (event.getActionCommand().contains("löschen")) {
+			// Die User-ID des bereits vorhandenen Datensatzes wird ausgelesen
+			String userID = guiUser.getUserIDText().getText();
+
+			// Es wird gefragt, ob der Datensatz wirklich gelöscht werden soll
+			int check = JOptionPane.showConfirmDialog(guiUser,
+					"Soll der Datensatz wirklich gelöscht werden?");
+
+			// Wird mit "Ja" bestätigt, wird der Datensatz gelöscht
+			if (check == 0) {
+				// Eine Verbindung zur Datenbank wird aufgebaut und der
+				// Datensatz wird aus der Datenbank gelöscht
+				UserDB.deleteUser(userID);
+
+				// Wenn der Datensatz erfolgreich gelöscht wurde, wird eine
+				// entsprechende Meldung ausgegeben
+				if (UserDB.successful == 1) {
+					// Die Tabelle im WestPanel wird neu aufgebaut, damit der
+					// gelöschte Datensatz nicht mehr angezeigt wird
+					guiUser.reloadWestTable();
+
+					// Folgende Meldung wird ausgegeben
+					String successText = "Datensatz wurde erfolgreich gelöscht!";
+					InfoSuccess.showMessage(successText);
+
+					// Der Text im Suchfeld wird zurückgesetzt
+					guiUser.getSearchText().setText("");
+					// Alle Textfelder werden zurückgesetzt
+					guiUser.resetTableEast();
+
+					// Die Button "löschen", "Neues Passwort" und
+					// "Passwort setzen" werden deaktiviert
+					guiUser.getDeleteButton().setEnabled(false);
+					guiUser.getCreatePWButton().setEnabled(false);
+					guiUser.getSavePWButton().setEnabled(false);
+
+					// Wenn der Datensatz nicht gelöscht werden konnte, wird
+					// eine entsprechende Meldung ausgegebe
+				} else {
+					// Ein Dialogfenster mit folgender Meldung soll erzeugt
+					// werden
+					String errorText = "Datensatz konnte nicht gelöscht werden!";
+					InfoError.showMessage(errorText);
+
+					// Suchbegriff wird zurückgesetzt
+					guiUser.getSearchText().setText("");
+					// Alle Textfelder werden zurückgesetzt
+					guiUser.resetTableEast();
+
+					// Die Button "löschen", "Neues Passwort" und
+					// "Passwort setzen" werden deaktiviert
+					guiUser.getDeleteButton().setEnabled(false);
+					guiUser.getCreatePWButton().setEnabled(false);
+					guiUser.getSavePWButton().setEnabled(false);
+				}
+			}
 		}
 
 		// wenn auf den Button "Neues Passwort" geklickt wird, soll für einen
@@ -135,16 +252,7 @@ public class UserGUIActionListener implements ActionListener {
 		// Das Passwort-Textfeld wird sichtbar und der Button "Passwort setzen"
 		// (zum Speichern des neuen Passworts) wird aktiv gesetzt.
 		// Der Button "speichern" wird inaktiv.
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("Neues Passwort")) {
-			guiUser.getUserPasswordText().setVisible(true);
-			guiUser.getUserPasswordText().setText("");
-
-			guiUser.getSavePWButton().setEnabled(true);
-			guiUser.getSaveButton().setEnabled(false);
-		}
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Neues Passwort")) {
+		if (event.getActionCommand().contains("Neues Passwort")) {
 			guiUser.getUserPasswordText().setVisible(true);
 			guiUser.getUserPasswordText().setText("");
 
@@ -155,285 +263,105 @@ public class UserGUIActionListener implements ActionListener {
 		// Wenn auf den Button "Passwort setzen" oder in der Menübar auf
 		// "Passwort setzen" geklickt wird, wird das neu gesetzte Passwort in
 		// die Datenbank gespeichert
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("Passwort setzen")) {
-			this.actionNewPassword();
-
-		}
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Passwort setzen")) {
-			this.actionNewPassword();
-		}
-
-		// Wenn auf den Button "Programm beenden" oder in der Menübar auf
-		// "Programm beenden" geklickt wird, wird das Programm beendet
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("Programm beenden")) {
-			this.actionClose();
-		}
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Programm beenden")) {
-			this.actionClose();
-		}
-
-		// Wenn in der Menübar auf "Benutzer abmelden" geklickt wird, soll das
-		// Programm-Fenster geschlossen und das Login-Fenster für eine
-		// erneute Benutzer-Anmeldung geöffnet werden.
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Benutzer abmelden")) {
-			guiUser.setVisible(false);
-			LoginGUI.main(null);
-		}
-
-		// Wenn in der Menübar auf "Zur Bücherverwaltung wechseln" geklickt
-		// wird, wird die Bücherverwaltungs-GUI aufgerufen
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains(
-						"Zur Bücherverwaltung wechseln")) {
-			// Userverwaltungs-GUI wird geschlossen
-			guiUser.setVisible(false);
-			// Bücherververwaltungs-GUI wird aufgerufen
-			BookGUI.letStartedBookGUI();
-		}
-		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
-		// Dialogfenster erzeugt
-		if (event.getSource() instanceof JMenuItem
-				&& event.getActionCommand().contains("Über das Programm")) {
-			// Folgende Meldung wird ausgegeben
-			String successText = "Erstellt von Weinberger Eva, 2014";
-			InfoSuccess.showMessage(successText);
-		}
-	}
-
-	/**
-	 * Wenn auf den Button "neu" oder in der Menübar auf
-	 * "Neuen Datensatz anlegen" geklickt wird, wird der Inhalt der Textfelder
-	 * im EastPanel zurückgesetzt (mit Hilfe der Methode "resetTableEast()" aus
-	 * der Klasse "UserGUI"). Ein neuer Datensatz wird erst beim Klick auf den
-	 * Button "speichern" in die Datenbank eingefügt. Die Button "speichern",
-	 * "löschen", "Neues Passwort" und "Passwort setzen" werden deaktiviert.
-	 */
-	public void actionClear() {
-		// Alle Textfelder werden zurückgesetzt
-		guiUser.resetTableEast();
-		// Passwortfeld für die Eingabe aktivieren
-		guiUser.getUserPasswordText().setVisible(true);
-		// Löschen- und PasswortVergeben-Buttons werden deaktiviert
-		guiUser.getSaveButton().setEnabled(true);
-		guiUser.getDeleteButton().setEnabled(false);
-		guiUser.getCreatePWButton().setEnabled(false);
-		guiUser.getSavePWButton().setEnabled(false);
-	}
-
-	/**
-	 * Wenn auf den Button "speichern" oder in der Menübar auf
-	 * "Datensatz speichern" geklickt wird, wird ein bereits vorhandener
-	 * Datensatz in der Datenbank upgedatet bzw. wenn der Datensatz noch nicht
-	 * in der Datenbank vorhanden ist, wird er in die Datenbank gespeichert.
-	 */
-	public void actionSave() {
-		// Ist die User-ID leer, wird ein neuer Datensatz angelegt und in die
-		// Datenbank gespeichert
-		if (guiUser.getUserIDText().getText().matches("")) {
-
-			User myUser = new User(String.valueOf(guiUser.getUserNameText()
-					.getText()), String.valueOf(guiUser.getUserPasswordText()
-					.getText()), String.valueOf(guiUser.getUserRoleCombo()
-					.getSelectedItem()));
-
-			// Eine Verbindung zur Datenbank wird aufgebaut und der neue
-			// Datensatz wird in die Datenbank gespeichert
-			UserDB.saveUser(myUser);
-
-		} else {
-			// Die eingegebenen Daten des bereits vorhandenen Datensatzes
-			// werden eingelesen. Der Button "Neues Passwort" wird aktiviert.
-			guiUser.getCreatePWButton().setEnabled(true);
-
+		if (event.getActionCommand().contains("Passwort setzen")) {
+			// Die User-ID des bereits vorhandenen Datensatzes wird ausgelesen
 			String userID = guiUser.getUserIDText().getText();
 
 			User myUser = UserDB.findByID(userID);
 
+			// Die eingegebenen Daten werden eingelesen
 			myUser.setUserName(guiUser.getUserNameText().getText());
+			myUser.setUserPassword(guiUser.getUserPasswordText().getText());
 			myUser.setUserRole(String.valueOf(guiUser.getUserRoleCombo()
 					.getSelectedItem()));
 
 			// Eine Verbindung zur Datenbank wird aufgebaut und der
 			// Datensatz wird in die Datenbank gespeichert
-			UserDB.updateUser(myUser);
-		}
+			UserDB.newPassword(myUser);
 
-		// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
-		// entsprechende Meldung ausgegeben
-		if (UserDB.successful == 1) {
-			// Die Tabelle im WestPanel wird neu aufgebaut, damit der
-			// neu angelegte Datensatz gleich angezeigt wird
-			guiUser.reloadWestTable();
-
-			// Folgende Meldung wird ausgegeben
-			String successText = "Datensatz wurde erfolgreich gespeichert!";
-			InfoSuccess.showMessage(successText);
-
-			// Alle Textfelder werden zurückgesetzt, damit weitere
-			// Datensätze eingegeben werden können
-			guiUser.resetTableEast();
-
-			// Suchbegriff wird zurückgesetzt
-			guiUser.getSearchText().setText("");
-
-			// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
-			// entsprechende Meldung ausgegeben
-		} else {
-			// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
-			String errorText = "Datensatz konnte nicht gespeichert werden!";
-			InfoError.showMessage(errorText);
-
-			// Alle Textfelder werden zurückgesetzt, damit der Datensatz
-			// erneut eingegeben werden kann
-			guiUser.resetTableEast();
-
-			// Suchbegriff wird zurückgesetzt
-			guiUser.getSearchText().setText("");
-		}
-	}
-
-	/**
-	 * Wenn auf den Button "löschen" oder in der Menübar auf "Datensatz löschen"
-	 * geklickt wird, wird der Datensatz aus der Datenbank gelöscht
-	 */
-	public void actionDelete() {
-		// Die User-ID des bereits vorhandenen Datensatzes wird ausgelesen
-		String userID = guiUser.getUserIDText().getText();
-
-		// Es wird gefragt, ob der Datensatz wirklich gelöscht werden soll
-		int check = JOptionPane.showConfirmDialog(guiUser,
-				"Soll der Datensatz wirklich gelöscht werden?");
-
-		// Wird mit "Ja" bestätigt, wird der Datensatz gelöscht
-		if (check == 0) {
-			// Eine Verbindung zur Datenbank wird aufgebaut und der
-			// Datensatz wird aus der Datenbank gelöscht
-			UserDB.deleteUser(userID);
-
-			// Wenn der Datensatz erfolgreich gelöscht wurde, wird eine
+			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
 			// entsprechende Meldung ausgegeben
 			if (UserDB.successful == 1) {
 				// Die Tabelle im WestPanel wird neu aufgebaut, damit der
-				// gelöschte Datensatz nicht mehr angezeigt wird
+				// neu angelegte Datensatz gleich angezeigt wird
 				guiUser.reloadWestTable();
 
 				// Folgende Meldung wird ausgegeben
-				String successText = "Datensatz wurde erfolgreich gelöscht!";
+				String successText = "Datensatz wurde erfolgreich gespeichert!";
 				InfoSuccess.showMessage(successText);
 
-				// Der Text im Suchfeld wird zurückgesetzt
-				guiUser.getSearchText().setText("");
-				// Alle Textfelder werden zurückgesetzt
+				// Alle Textfelder werden zurückgesetzt, damit weitere
+				// Datensätze eingegeben werden können
 				guiUser.resetTableEast();
-
-				// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
-				// werden deaktiviert
-				guiUser.getDeleteButton().setEnabled(false);
-				guiUser.getCreatePWButton().setEnabled(false);
-				guiUser.getSavePWButton().setEnabled(false);
-
-				// Wenn der Datensatz nicht gelöscht werden konnte, wird eine
-				// entsprechende Meldung ausgegebe
-			} else {
-				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
-				String errorText = "Datensatz konnte nicht gelöscht werden!";
-				InfoError.showMessage(errorText);
 
 				// Suchbegriff wird zurückgesetzt
 				guiUser.getSearchText().setText("");
-				// Alle Textfelder werden zurückgesetzt
-				guiUser.resetTableEast();
 
 				// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
-				// werden deaktiviert
-				guiUser.getDeleteButton().setEnabled(false);
+				// werden deaktiviert. Der Button "Speichern" wird wieder
+				// aktiviert.
 				guiUser.getCreatePWButton().setEnabled(false);
 				guiUser.getSavePWButton().setEnabled(false);
+				guiUser.getDeleteButton().setEnabled(false);
+				guiUser.getSaveButton().setEnabled(true);
+
+				// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
+				// entsprechende Meldung ausgegeben
+			} else {
+				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
+				String errorText = "Datensatz konnte nicht gespeichert werden!";
+				InfoError.showMessage(errorText);
+
+				// Alle Textfelder werden zurückgesetzt, damit der Datensatz
+				// erneut eingegeben werden kann
+				guiUser.resetTableEast();
+
+				// Suchbegriff wird zurückgesetzt
+				guiUser.getSearchText().setText("");
+
+				// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
+				// werden deaktiviert. Der Button "Speichern" wird wieder
+				// aktiviert.
+				guiUser.getCreatePWButton().setEnabled(false);
+				guiUser.getSavePWButton().setEnabled(false);
+				guiUser.getDeleteButton().setEnabled(false);
+				guiUser.getSaveButton().setEnabled(true);
 			}
 		}
-	}
 
-	/**
-	 * wenn auf den Button "Neues Passwort" geklickt wird, soll für einen
-	 * bereits erfassten Anwender ein neues Passwort vergeben werden können
-	 */
-	public void actionNewPassword() {
-		// Die User-ID des bereits vorhandenen Datensatzes wird ausgelesen
-		String userID = guiUser.getUserIDText().getText();
+		// Wenn auf den Button "Programm beenden" oder in der Menübar auf
+		// "Programm beenden" geklickt wird, werden alle offenen Verbindungen
+		// und das Fenster geschlossen
+		if (event.getActionCommand().contains("Programm beenden")) {
+			SQLDatabase.closeConnections();
+			System.exit(0);
+		}
 
-		User myUser = UserDB.findByID(userID);
+		// Wenn in der Menübar auf "Benutzer abmelden" geklickt wird, soll das
+		// Programm-Fenster geschlossen und das Login-Fenster für eine
+		// erneute Benutzer-Anmeldung geöffnet werden.
+		if (event.getActionCommand().contains("Benutzer abmelden")) {
+			// Userverwaltungs-GUI wird beendet
+			guiUser.setVisible(false);
+			// Login-GUI wird gestartet
+			LoginGUI.main(null);
+		}
 
-		// Die eingegebenen Daten werden eingelesen
-		myUser.setUserName(guiUser.getUserNameText().getText());
-		myUser.setUserPassword(guiUser.getUserPasswordText().getText());
-		myUser.setUserRole(String.valueOf(guiUser.getUserRoleCombo()
-				.getSelectedItem()));
+		// Wenn in der Menübar auf "Zur Bücherverwaltung wechseln" geklickt
+		// wird, wird die Bücherverwaltungs-GUI aufgerufen
+		if (event.getActionCommand().contains("Zur Bücherverwaltung wechseln")) {
+			// Userverwaltungs-GUI wird beendet
+			guiUser.setVisible(false);
+			// Bücherververwaltungs-GUI wird gestartet
+			BookGUI.letStartedBookGUI();
+		}
 
-		// Eine Verbindung zur Datenbank wird aufgebaut und der
-		// Datensatz wird in die Datenbank gespeichert
-		UserDB.newPassword(myUser);
-
-		// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
-		// entsprechende Meldung ausgegeben
-		if (UserDB.successful == 1) {
-			// Die Tabelle im WestPanel wird neu aufgebaut, damit der
-			// neu angelegte Datensatz gleich angezeigt wird
-			guiUser.reloadWestTable();
-
+		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
+		// Dialogfenster erzeugt
+		if (event.getActionCommand().contains("Über das Programm")) {
 			// Folgende Meldung wird ausgegeben
-			String successText = "Datensatz wurde erfolgreich gespeichert!";
+			String successText = "Erstellt von Weinberger Eva, 2014";
 			InfoSuccess.showMessage(successText);
-
-			// Alle Textfelder werden zurückgesetzt, damit weitere
-			// Datensätze eingegeben werden können
-			guiUser.resetTableEast();
-
-			// Suchbegriff wird zurückgesetzt
-			guiUser.getSearchText().setText("");
-
-			// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
-			// werden deaktiviert. Der Button "Speichern" wird wieder aktiviert.
-			guiUser.getCreatePWButton().setEnabled(false);
-			guiUser.getSavePWButton().setEnabled(false);
-			guiUser.getDeleteButton().setEnabled(false);
-			guiUser.getSaveButton().setEnabled(true);
-
-			// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
-			// entsprechende Meldung ausgegeben
-		} else {
-			// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
-			String errorText = "Datensatz konnte nicht gespeichert werden!";
-			InfoError.showMessage(errorText);
-
-			// Alle Textfelder werden zurückgesetzt, damit der Datensatz
-			// erneut eingegeben werden kann
-			guiUser.resetTableEast();
-
-			// Suchbegriff wird zurückgesetzt
-			guiUser.getSearchText().setText("");
-
-			// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
-			// werden deaktiviert. Der Button "Speichern" wird wieder aktiviert.
-			guiUser.getCreatePWButton().setEnabled(false);
-			guiUser.getSavePWButton().setEnabled(false);
-			guiUser.getDeleteButton().setEnabled(false);
-			guiUser.getSaveButton().setEnabled(true);
 		}
 	}
-
-	/**
-	 * Wenn auf den Button oder in der Menübar auf "Programm beenden" geklickt
-	 * wird, werden alle offenen Verbindungen und das Fenster geschlossen
-	 * 
-	 */
-	public void actionClose() {
-		SQLDatabase.closeConnections();
-		System.exit(0);
-	}
-
 }
