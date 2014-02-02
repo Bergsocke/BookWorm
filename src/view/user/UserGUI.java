@@ -93,7 +93,7 @@ public class UserGUI extends JFrame {
 		// Aufruf des Konstruktors der Klasse UserGUI und Zuweisung der
 		// Überschrift
 		UserGUI gui = new UserGUI("BOOKWORM - USERVERWALTUNG");
-
+		
 		// Fenstergröße wird automatisch an den Inhalt angepasst
 		gui.pack();
 
@@ -146,6 +146,8 @@ public class UserGUI extends JFrame {
 	public void initMenuBar() {
 
 		userMenuBar = new JMenuBar();
+		
+		userMenuBar.setBackground(Color.orange);
 
 		clearMenu = new JMenu("Neu");
 		clearMenuItem = new JMenuItem("Neuen Datensatz anlegen");
@@ -211,8 +213,8 @@ public class UserGUI extends JFrame {
 
 		// Icon für den Buttton "alle anzeigen"
 		final Icon showAllIcon = new ImageIcon(
-				BookGUI.class.getResource("/view/images/showAllIcon.png"));
-		allButton = new JButton(" alle anzeigen  ", showAllIcon);
+				BookGUI.class.getResource("/view/images/peopleIcon.png"));
+		allButton = new JButton("alle anzeigen  ", showAllIcon);
 		allButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		allButton.setBackground(Color.lightGray);
 		allButton.setBorder(BorderFactory.createRaisedBevelBorder());
