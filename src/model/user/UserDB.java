@@ -96,7 +96,7 @@ public class UserDB {
 
 		return foundUser;
 	}
-	
+
 	/**
 	 * Methode zum Suchen nach dem Usernamen in der Tabelle "Users"
 	 * 
@@ -140,12 +140,13 @@ public class UserDB {
 	 * @param userToSave
 	 * @return successful
 	 */
-	public static int saveBook(User userToSave) {
+	public static int saveUser(User userToSave) {
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "INSERT INTO book_database.users VALUES('"
-					+ userToSave.getUserName() + "', md5('"
+			String sqlStatement = "INSERT INTO book_database.users VALUES (default, '"
+					+ userToSave.getUserName()
+					+ "', md5('"
 					+ userToSave.getUserPassword() + "'));";
 
 			// SQL-Befehl wird ausgeführt
@@ -175,13 +176,14 @@ public class UserDB {
 	 * @param userToUpdate
 	 * @return successful
 	 */
-	public static int updateBook(User userToUpdate) {
+	public static int updateUser(User userToUpdate) {
 
 		try {
 			// Erforderlicher SQL-Befehl
 			String sqlStatement = "UPDATE book_database.users SET username = '"
-					+ userToUpdate.getUserName() + "', password = md5('"
-					+ userToUpdate.getUserPassword() + "'));";
+					+ userToUpdate.getUserName() + "', userpassword = md5('"
+					+ userToUpdate.getUserPassword() + "') WHERE id = "
+					+ userToUpdate.getUserID() + ";";
 
 			// SQL-Befehl wird ausgeführt
 			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
@@ -209,7 +211,7 @@ public class UserDB {
 	 * @param userID
 	 * @return successful
 	 */
-	public static int deleteBook(String userID) {
+	public static int deleteUser(String userID) {
 
 		try {
 			// Erforderlicher SQL-Befehl

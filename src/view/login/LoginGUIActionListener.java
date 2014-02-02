@@ -46,42 +46,47 @@ public class LoginGUIActionListener implements ActionListener {
 				&& event.getActionCommand().contains("Login")) {
 
 			// Benutzername und Password werden eingelesen
-			User myUser = new User(String.valueOf(guiLogin
-					.getUsernameText().getText()), String.valueOf(guiLogin
-					.getPasswordText().getPassword()));
+			User myUser = new User(String.valueOf(guiLogin.getUsernameText()
+					.getText()), String.valueOf(guiLogin.getPasswordText()
+					.getPassword()));
 
 			// Password wird mit MD5 gehasht
-			try {
-				String algorithm = "md5";
-				String password = myUser.getUserPassword();
+			String hashPassword = passwordHash(myUser);
 
-				// Algorithmus, der die Berechnungsfunktion implementiert
-				// (in diesem Fall md5)
-				MessageDigest myMessageDigest = MessageDigest
-						.getInstance(algorithm);
-
-				// Hashwert wird berechnet
-				byte[] digest = myMessageDigest.digest(password.getBytes());
-
-				// Hashwert wird einem String zugewiesen
-				String hashPassword = "";
-				for (byte b : digest)
-					// "%02x" -> konvertiert Bytes in Hexadecimal
-					hashPassword += String.format("%02x", b);
-
-				// gehashtes Password wird gesetzt
-				myUser.setUserPassword(hashPassword);
-
-			} catch (NoSuchAlgorithmException e) {
-				System.out.println(e.toString());
-				
-				// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
-				String errorText = "Das eingegebene Password konnte nicht gehasht werden.";
-				InfoError.showMessage(errorText);
-			}
+			// gehashtes Password wird gesetzt
+			myUser.setUserPassword(hashPassword);
 
 			// Anmeldung wird versucht
 			guiLogin.startLogin(myUser);
 		}
+	}
+
+	public static String passwordHash(User myUser) {
+
+		String algorithm = "md5";
+		String password = myUser.getUserPassword();
+		String hashPassword = "";
+
+		MessageDigest myMessageDigest;
+		try {
+			// Algorithmus, der die Berechnungsfunktion implementiert
+			// (in diesem Fall md5)
+			myMessageDigest = MessageDigest.getInstance(algorithm);
+			// Hashwert wird berechnet
+			byte[] digest = myMessageDigest.digest(password.getBytes());
+
+			// Hashwert wird einem String zugewiesen
+			for (byte b : digest)
+				// "%02x" -> konvertiert Bytes in Hexadecimal
+				hashPassword += String.format("%02x", b);
+
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println(e.toString());
+			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+			String errorText = "Das eingegebene Password konnte nicht gehasht werden.";
+			InfoError.showMessage(errorText);
+		}
+
+		return hashPassword;
 	}
 }

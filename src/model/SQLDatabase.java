@@ -70,7 +70,7 @@ public class SQLDatabase {
 	}
 
 	/**
-	 * Diese Methode führt die SQL-Befehle zum Anzeigen der Datensätzen aus
+	 * Diese Methode führt die SQL-Befehle zum Anzeigen von Datensätzen aus
 	 * 
 	 * @param sqlStatement
 	 * @return myResultSet

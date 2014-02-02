@@ -83,10 +83,12 @@ public class UserGUI extends JFrame {
 	private JMenuItem saveMenuItem;
 	private JMenu deleteMenu;
 	private JMenuItem deleteMenuItem;
+	private JMenu changeMenu;
+	private JMenuItem changeMenuItem;
 	private JMenu helpMenu;
 	private JMenuItem helpMenuItem;
 
-	public static void letStarted() {
+	public static void letStartedUserGUI() {
 
 		// Aufruf des Konstruktors der Klasse UserGUI und Zuweisung der
 		// Überschrift
@@ -99,7 +101,8 @@ public class UserGUI extends JFrame {
 		gui.setResizable(false);
 
 		// Positionierung am Desktop
-		gui.setLocation(100, 150);
+		gui.setLocation(400, 200);
+
 
 		// Window-Close-Funktion
 		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -158,6 +161,11 @@ public class UserGUI extends JFrame {
 		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
 		deleteMenuItem.addActionListener(new UserGUIActionListener(this));
+		
+		changeMenu = new JMenu("Wechseln");
+		changeMenuItem = new JMenuItem("Zur Bücherverwaltung wechseln");
+		changeMenu.add(changeMenuItem);
+		changeMenuItem.addActionListener(new UserGUIActionListener(this));
 
 		helpMenu = new JMenu("Hilfe");
 		helpMenuItem = new JMenuItem("Über das Programm");
@@ -168,6 +176,7 @@ public class UserGUI extends JFrame {
 		userMenuBar.add(clearMenu);
 		userMenuBar.add(saveMenu);
 		userMenuBar.add(deleteMenu);
+		userMenuBar.add(changeMenu);
 		userMenuBar.add(helpMenu);
 
 		// Hinzufügen der Menübar zum Frame
@@ -238,7 +247,7 @@ public class UserGUI extends JFrame {
 		userIDLabel.setFont(new Font(labelFont, labelStyle, labelSize));
 		// Festlegung der Länge des Textfeldes, die anderen Textfelder werden
 		// dann ebenfalls an diese Größe angepasst
-		userIDText = new JTextField(20);
+		userIDText = new JTextField(25);
 		userIDText.setFont(new Font(textFont, textStyle, textSize));
 
 		// Nachdem die Buch-ID automatisch von der Datenbank vergeben wird, soll
@@ -401,7 +410,7 @@ public class UserGUI extends JFrame {
 		// soll eine Scrollbar zur Verfügung stehen
 		tableScroll = new JScrollPane(userTable);
 		// Festlegung der Tabellengröße
-		tableScroll.setPreferredSize(new Dimension(890, 550));
+		tableScroll.setPreferredSize(new Dimension(450, 300));
 		// dem WestPanel zuweisen
 		westPanel.add(tableScroll);
 
@@ -423,9 +432,9 @@ public class UserGUI extends JFrame {
 		userTable.setRowHeight(20);
 
 		// Festlegung der Spaltenbreiten
-		userTable.getColumnModel().getColumn(0).setPreferredWidth(40);
-		userTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-		userTable.getColumnModel().getColumn(2).setPreferredWidth(200);
+		userTable.getColumnModel().getColumn(0).setPreferredWidth(46);
+		userTable.getColumnModel().getColumn(1).setPreferredWidth(150);
+		userTable.getColumnModel().getColumn(2).setPreferredWidth(250);
 
 		// Festlegung des Selektionsmodus - es darf nur eine Zeile ausgewählt
 		// werden
@@ -531,12 +540,12 @@ public class UserGUI extends JFrame {
 		this.clearButton = newButton;
 	}
 
-	public JTable getBookTable() {
+	public JTable getUserTable() {
 		return userTable;
 	}
 
-	public void setBookTable(JTable bookTable) {
-		this.userTable = bookTable;
+	public void setUserTable(JTable UserTable) {
+		this.userTable = UserTable;
 	}
 
 	public JButton getDeleteButton() {

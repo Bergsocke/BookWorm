@@ -140,7 +140,7 @@ public class LoginGUI extends JDialog {
 		// Benutzerdaten sind korrekt
 		if (numRow == 1) {
 			// Die Bücherverwaltung wird gestartet
-			BookGUI.letStarted();
+			BookGUI.letStartedBookGUI();
 
 			// Offene Datenbank-Verbindungen werden geschlossen
 			SQLDatabase.closeConnections();
@@ -153,7 +153,7 @@ public class LoginGUI extends JDialog {
 			// entsprechende Meldung ausgegeben
 			String errorText = "Benutzername oder Passwort ist falsch";
 			InfoError.showMessage(errorText);
-			
+
 			// Benutzername und Passwort-Feld werden zurückgesetzt
 			this.getUsernameText().setText("");
 			this.getPasswordText().setText("");

@@ -12,6 +12,7 @@ import model.book.Book;
 import model.book.BookDB;
 import view.InfoError;
 import view.InfoSuccess;
+import view.user.UserGUI;
 
 /**
  * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
@@ -47,26 +48,23 @@ public class BookGUIActionListener implements ActionListener {
 			// Suchbegriff wird zurückgesetzt
 			guiBook.getSearchText().setText("");
 			guiBook.createBookTable();
-			
+
 			// EastTable wird zurückgesetzt
 			guiBook.resetTableEast();
-			
+
 			guiBook.getDeleteButton().setEnabled(false);
 		}
 
 		// Wenn auf den Button "suchen" geklickt wird, wird in der Datenbank
 		// nach dem entsprechenden Buchtitel gesucht (mit Hilfe der Methode
 		// "createBookTable()" aus der Klasse BookGUI)
-
-		// eigenes AL Objekt
-		// instanceof Jbutton weg
 		if (event.getSource() instanceof JButton
 				&& event.getActionCommand().contains("suchen")) {
 			guiBook.createBookTable();
 
 			// EastTable wird zurückgesetzt
 			guiBook.resetTableEast();
-			
+
 			guiBook.getDeleteButton().setEnabled(false);
 
 			// Wenn kein Datensatz gefunden wurde, wird eine entsprechende
@@ -127,6 +125,16 @@ public class BookGUIActionListener implements ActionListener {
 			SQLDatabase.closeConnections();
 
 			System.exit(0);
+		}
+
+		// Wenn in der Menübar auf "Zur Userverwaltung wechseln" geklickt wird,
+		// wird die Userverwaltungs-GUI aufgerufen
+		if (event.getSource() instanceof JMenuItem
+				&& event.getActionCommand().contains(
+						"Zur Userverwaltung wechseln")) {
+			// Bücherverwaltungs-GUI wird geschlossen
+			guiBook.setVisible(false);
+			UserGUI.letStartedUserGUI();
 		}
 
 		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
