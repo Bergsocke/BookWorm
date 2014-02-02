@@ -107,10 +107,12 @@ public class BookGUI extends JFrame {
 	private JMenuItem saveMenuItem;
 	private JMenu deleteMenu;
 	private JMenuItem deleteMenuItem;
+	private JMenu changeMenu;
+	private JMenuItem changeMenuItem;
 	private JMenu helpMenu;
 	private JMenuItem helpMenuItem;
 
-	public static void letStarted() {
+	public static void letStartedBookGUI() {
 
 		// Aufruf des Konstruktors der Klasse BookGUI und Zuweisung der
 		// Überschrift
@@ -182,6 +184,11 @@ public class BookGUI extends JFrame {
 		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
 		deleteMenu.add(deleteMenuItem);
 		deleteMenuItem.addActionListener(new BookGUIActionListener(this));
+		
+		changeMenu = new JMenu("Wechseln");
+		changeMenuItem = new JMenuItem("Zur Userverwaltung wechseln");
+		changeMenu.add(changeMenuItem);
+		changeMenuItem.addActionListener(new BookGUIActionListener(this));
 
 		helpMenu = new JMenu("Hilfe");
 		helpMenuItem = new JMenuItem("Über das Programm");
@@ -192,6 +199,7 @@ public class BookGUI extends JFrame {
 		bookMenuBar.add(clearMenu);
 		bookMenuBar.add(saveMenu);
 		bookMenuBar.add(deleteMenu);
+		bookMenuBar.add(changeMenu);
 		bookMenuBar.add(helpMenu);
 
 		// Hinzufügen der Menübar zum Frame

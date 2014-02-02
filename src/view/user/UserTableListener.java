@@ -38,7 +38,7 @@ public class UserTableListener implements ListSelectionListener {
 				try {
 					int selectedRow = lsm.getMinSelectionIndex();
 
-					String id = String.valueOf(guiUser.getBookTable()
+					String id = String.valueOf(guiUser.getUserTable()
 							.getModel().getValueAt(selectedRow, 0));
 
 					User myUser = UserDB.findByID(id);
