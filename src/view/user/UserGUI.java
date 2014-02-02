@@ -84,12 +84,6 @@ public class UserGUI extends JFrame {
 	private JScrollPane tableScroll;
 
 	private JMenuBar userMenuBar;
-	private JMenu clearMenu;
-	private JMenuItem clearMenuItem;
-	private JMenu saveMenu;
-	private JMenuItem saveMenuItem;
-	private JMenu deleteMenu;
-	private JMenuItem deleteMenuItem;
 	private JMenu changeMenu;
 	private JMenuItem changeMenuItem;
 	private JMenu logoutMenu;
@@ -160,21 +154,6 @@ public class UserGUI extends JFrame {
 
 		ActionListener myActionListener = new UserGUIActionListener(this);
 
-		clearMenu = new JMenu("Neu");
-		clearMenuItem = new JMenuItem("Neuen Datensatz anlegen");
-		clearMenu.add(clearMenuItem);
-		clearMenuItem.addActionListener(myActionListener);
-
-		saveMenu = new JMenu("Speichern");
-		saveMenuItem = new JMenuItem("Datensatz speichern");
-		saveMenu.add(saveMenuItem);
-		saveMenuItem.addActionListener(myActionListener);
-
-		deleteMenu = new JMenu("Löschen");
-		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
-		deleteMenu.add(deleteMenuItem);
-		deleteMenuItem.addActionListener(myActionListener);
-
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Bücherverwaltung wechseln");
 		changeMenu.add(changeMenuItem);
@@ -194,9 +173,6 @@ public class UserGUI extends JFrame {
 		helpMenuItem.addActionListener(myActionListener);
 
 		// Hinzufügen der einzelnen Komponenten zur Menübar
-		userMenuBar.add(clearMenu);
-		userMenuBar.add(saveMenu);
-		userMenuBar.add(deleteMenu);
 		userMenuBar.add(changeMenu);
 		userMenuBar.add(logoutMenu);
 		userMenuBar.add(helpMenu);
@@ -350,7 +326,7 @@ public class UserGUI extends JFrame {
 		// ausgewählt wurde
 		deleteButton.setEnabled(false);
 
-		createPWButton = new JButton("Neues Passwort");
+		createPWButton = new JButton("Passwort vergeben");
 		createPWButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		createPWButton.setBackground(Color.lightGray);
 		createPWButton.setBorder(BorderFactory.createRaisedBevelBorder());
