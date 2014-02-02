@@ -32,7 +32,7 @@ public class UserTable extends AbstractTableModel {
 	 * Rückgabe der Spaltenanzahl der Usertabelle
 	 */
 	public int getColumnCount() {
-		int columnCount = 3;
+		int columnCount = 4;
 		return columnCount;
 	}
 
@@ -54,6 +54,8 @@ public class UserTable extends AbstractTableModel {
 		case 1:
 			return "Username";
 		case 2:
+			return "Rolle";
+		case 3:
 			return "Password";
 		default:
 			return null;
@@ -73,6 +75,8 @@ public class UserTable extends AbstractTableModel {
 		case 1:
 			return myUser.getUserName();
 		case 2:
+			return myUser.getUserRole();
+		case 3:
 			return myUser.getUserPassword();
 		default:
 			return null;

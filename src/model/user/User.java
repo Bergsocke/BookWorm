@@ -12,9 +12,10 @@ public class User {
 	private String userID;
 	private String userName;
 	private String userPassword;
+	private String userRole;
 
 	/**
-	 * Konstruktor für die Neuerfassung von Anwendern
+	 * Konstruktor für Login von Anwendern
 	 * 
 	 * @param userName
 	 * @param userPassword
@@ -25,16 +26,32 @@ public class User {
 	}
 
 	/**
+	 * Konstruktor für die Neuerfassung von Anwendern
+	 * 
+	 * @param userName
+	 * @param userPassword
+	 * @param userRole
+	 */
+	public User(String userName, String userPassword, String userRole) {
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.userRole = userRole;
+	}
+
+	/**
 	 * Konstruktur für den Zugriff auf alle Tabellenfelder
 	 * 
 	 * @param userID
 	 * @param userName
 	 * @param userPassword
+	 * @param userRole
 	 */
-	public User(String userID, String userName, String userPassword) {
+	public User(String userID, String userName, String userPassword,
+			String userRole) {
 		this.userID = userID;
 		this.userName = userName;
 		this.userPassword = userPassword;
+		this.userRole = userRole;
 	}
 
 	/**
@@ -64,4 +81,11 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
+	public String getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
+	}
 }
