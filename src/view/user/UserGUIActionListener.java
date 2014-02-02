@@ -88,8 +88,7 @@ public class UserGUIActionListener implements ActionListener {
 			}
 		}
 
-		// Wenn auf den Button "neu" oder in der Menübar auf
-		// "Neuen Datensatz anlegen" geklickt wird, wird der Inhalt der
+		// Wenn auf den Button "neu" geklickt wird, wird der Inhalt der
 		// Textfelder im EastPanel zurückgesetzt (mit Hilfe der Methode
 		// "resetTableEast()" aus der Klasse "UserGUI"). Ein neuer Datensatz
 		// wird erst beim Klick auf den Button "speichern" in die Datenbank
@@ -111,9 +110,8 @@ public class UserGUIActionListener implements ActionListener {
 			guiUser.getSaveButton().setEnabled(true);
 		}
 
-		// Wenn auf den Button "speichern" oder in der Menübar auf
-		// "Datensatz speichern" geklickt wird, wird ein bereits vorhandener
-		// Datensatz in der Datenbank upgedatet.
+		// Wenn auf den Button "speichern" geklickt wird, wird ein bereits
+		// vorhandener Datensatz in der Datenbank upgedatet.
 		// Ist der Datensatz noch nicht in der Datenbank vorhanden, wird er in
 		// die Datenbank eingefügt.
 		if (event.getActionCommand().contains("speichern")) {
@@ -184,32 +182,28 @@ public class UserGUIActionListener implements ActionListener {
 				String successText = "Datensatz wurde erfolgreich gespeichert!";
 				InfoSuccess.showMessage(successText);
 
-				// Alle Textfelder werden zurückgesetzt, damit weitere
-				// Datensätze eingegeben werden können
-				guiUser.resetTableEast();
-
-				// Suchbegriff wird zurückgesetzt
-				guiUser.getSearchText().setText("");
-
 				// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
 				// entsprechende Meldung ausgegeben
 			} else {
 				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
 				String errorText = "Datensatz konnte nicht gespeichert werden!";
 				InfoError.showMessage(errorText);
-
-				// Alle Textfelder werden zurückgesetzt, damit der Datensatz
-				// erneut eingegeben werden kann
-				guiUser.resetTableEast();
-
-				// Suchbegriff wird zurückgesetzt
-				guiUser.getSearchText().setText("");
 			}
+
+			// Alle Textfelder werden zurückgesetzt, damit weitere
+			// Datensätze eingegeben werden können
+			guiUser.resetTableEast();
+
+			// Suchbegriff wird zurückgesetzt
+			guiUser.getSearchText().setText("");
+
+			// Selektion in der Usertabelle wird aufgehoben
+			guiUser.getUserTable().putClientProperty(
+					"terminateEditOnFocusLost", Boolean.TRUE);
 		}
 
-		// Wenn auf den Button "löschen" oder in der Menübar auf
-		// "Datensatz löschen" geklickt wird, wird der Datensatz aus der
-		// Datenbank gelöscht.
+		// Wenn auf den Button "löschen" geklickt wird, wird der Datensatz aus
+		// der Datenbank gelöscht.
 		// Die Button "löschen", "Neues Passwort" und "Passwort setzen" werden
 		// deaktiviert
 		if (event.getActionCommand().contains("löschen")) {
@@ -237,17 +231,6 @@ public class UserGUIActionListener implements ActionListener {
 					String successText = "Datensatz wurde erfolgreich gelöscht!";
 					InfoSuccess.showMessage(successText);
 
-					// Der Text im Suchfeld wird zurückgesetzt
-					guiUser.getSearchText().setText("");
-					// Alle Textfelder werden zurückgesetzt
-					guiUser.resetTableEast();
-
-					// Die Button "löschen", "Neues Passwort" und
-					// "Passwort setzen" werden deaktiviert
-					guiUser.getDeleteButton().setEnabled(false);
-					guiUser.getCreatePWButton().setEnabled(false);
-					guiUser.getSavePWButton().setEnabled(false);
-
 					// Wenn der Datensatz nicht gelöscht werden konnte, wird
 					// eine entsprechende Meldung ausgegebe
 				} else {
@@ -256,17 +239,17 @@ public class UserGUIActionListener implements ActionListener {
 					String errorText = "Datensatz konnte nicht gelöscht werden!";
 					InfoError.showMessage(errorText);
 
-					// Suchbegriff wird zurückgesetzt
-					guiUser.getSearchText().setText("");
-					// Alle Textfelder werden zurückgesetzt
-					guiUser.resetTableEast();
-
-					// Die Button "löschen", "Neues Passwort" und
-					// "Passwort setzen" werden deaktiviert
-					guiUser.getDeleteButton().setEnabled(false);
-					guiUser.getCreatePWButton().setEnabled(false);
-					guiUser.getSavePWButton().setEnabled(false);
 				}
+				// Der Text im Suchfeld wird zurückgesetzt
+				guiUser.getSearchText().setText("");
+				// Alle Textfelder werden zurückgesetzt
+				guiUser.resetTableEast();
+
+				// Die Button "löschen", "Neues Passwort" und
+				// "Passwort setzen" werden deaktiviert
+				guiUser.getDeleteButton().setEnabled(false);
+				guiUser.getCreatePWButton().setEnabled(false);
+				guiUser.getSavePWButton().setEnabled(false);
 			}
 		}
 
@@ -274,18 +257,18 @@ public class UserGUIActionListener implements ActionListener {
 		// bereits erfassten Anwender ein neues Passwort vergeben werden können;
 		// Das Passwort-Textfeld wird sichtbar und der Button "Passwort setzen"
 		// (zum Speichern des neuen Passworts) wird aktiv gesetzt.
-		// Der Button "speichern" wird inaktiv.
+		// Die Button "speichern" und "Passwort setzen" werden deaktiviert.
 		if (event.getActionCommand().contains("Passwort vergeben")) {
 			guiUser.getUserPasswordText().setVisible(true);
 			guiUser.getUserPasswordText().setText("");
 
 			guiUser.getSavePWButton().setEnabled(true);
 			guiUser.getSaveButton().setEnabled(false);
+			guiUser.getCreatePWButton().setEnabled(false);
 		}
 
-		// Wenn auf den Button "Passwort setzen" oder in der Menübar auf
-		// "Passwort setzen" geklickt wird, wird das neu gesetzte Passwort in
-		// die Datenbank gespeichert
+		// Wenn auf den Button "Passwort setzen" geklickt wird, wird das neu
+		// gesetzte Passwort in die Datenbank gespeichert
 		if (event.getActionCommand().contains("Passwort setzen")) {
 			// Die User-ID des bereits vorhandenen Datensatzes wird ausgelesen
 			String userID = guiUser.getUserIDText().getText();
@@ -313,43 +296,31 @@ public class UserGUIActionListener implements ActionListener {
 				String successText = "Datensatz wurde erfolgreich gespeichert!";
 				InfoSuccess.showMessage(successText);
 
-				// Alle Textfelder werden zurückgesetzt, damit weitere
-				// Datensätze eingegeben werden können
-				guiUser.resetTableEast();
-
-				// Suchbegriff wird zurückgesetzt
-				guiUser.getSearchText().setText("");
-
-				// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
-				// werden deaktiviert. Der Button "Speichern" wird wieder
-				// aktiviert.
-				guiUser.getCreatePWButton().setEnabled(false);
-				guiUser.getSavePWButton().setEnabled(false);
-				guiUser.getDeleteButton().setEnabled(false);
-				guiUser.getSaveButton().setEnabled(true);
-
 				// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
 				// entsprechende Meldung ausgegeben
 			} else {
 				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
 				String errorText = "Datensatz konnte nicht gespeichert werden!";
 				InfoError.showMessage(errorText);
-
-				// Alle Textfelder werden zurückgesetzt, damit der Datensatz
-				// erneut eingegeben werden kann
-				guiUser.resetTableEast();
-
-				// Suchbegriff wird zurückgesetzt
-				guiUser.getSearchText().setText("");
-
-				// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
-				// werden deaktiviert. Der Button "Speichern" wird wieder
-				// aktiviert.
-				guiUser.getCreatePWButton().setEnabled(false);
-				guiUser.getSavePWButton().setEnabled(false);
-				guiUser.getDeleteButton().setEnabled(false);
-				guiUser.getSaveButton().setEnabled(true);
 			}
+
+			// Alle Textfelder der East-Tabelle werden zurückgesetzt
+			guiUser.resetTableEast();
+
+			// Suchbegriff wird zurückgesetzt
+			guiUser.getSearchText().setText("");
+
+			// Selektion in der Usertabelle wird aufgehoben
+			guiUser.getUserTable().putClientProperty(
+					"terminateEditOnFocusLost", Boolean.TRUE);
+
+			// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
+			// werden deaktiviert. Der Button "Speichern" wird wieder
+			// aktiviert.
+			guiUser.getCreatePWButton().setEnabled(false);
+			guiUser.getSavePWButton().setEnabled(false);
+			guiUser.getDeleteButton().setEnabled(false);
+			guiUser.getSaveButton().setEnabled(true);
 		}
 
 		// Wenn auf den Button "Programm beenden" oder in der Menübar auf

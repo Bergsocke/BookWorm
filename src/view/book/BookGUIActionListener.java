@@ -184,27 +184,24 @@ public class BookGUIActionListener implements ActionListener {
 				String successText = "Datensatz wurde erfolgreich gespeichert!";
 				InfoSuccess.showMessage(successText);
 
-				// Alle Textfelder werden zurückgesetzt, damit weitere
-				// Datensätze eingegeben werden können
-				guiBook.resetTableEast();
-
-				// Suchbegriff wird zurückgesetzt
-				guiBook.getSearchText().setText("");
-
 				// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
 				// entsprechende Meldung ausgegeben
 			} else {
 				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
 				String errorText = "Datensatz konnte nicht gespeichert werden!";
 				InfoError.showMessage(errorText);
-
-				// Alle Textfelder werden zurückgesetzt, damit der Datensatz
-				// erneut eingegeben werden kann
-				guiBook.resetTableEast();
-
-				// Suchbegriff wird zurückgesetzt
-				guiBook.getSearchText().setText("");
 			}
+
+			// Alle Textfelder werden zurückgesetzt, damit weitere
+			// Datensätze eingegeben werden können
+			guiBook.resetTableEast();
+
+			// Suchbegriff wird zurückgesetzt
+			guiBook.getSearchText().setText("");
+
+			// Selektion in der Usertabelle wird aufgehoben
+			guiBook.getBookTable().putClientProperty(
+					"terminateEditOnFocusLost", Boolean.TRUE);
 		}
 
 		// Wenn auf den Button "löschen" oder in der Menübar auf
@@ -235,11 +232,6 @@ public class BookGUIActionListener implements ActionListener {
 					String successText = "Datensatz wurde erfolgreich gelöscht!";
 					InfoSuccess.showMessage(successText);
 
-					// Der Text im Suchfeld wird zurückgesetzt
-					guiBook.getSearchText().setText("");
-					// Alle Textfelder werden zurückgesetzt
-					guiBook.resetTableEast();
-
 					// Wenn der Datensatz nicht gelöscht werden konnte, wird
 					// eine
 					// entsprechende Meldung ausgegebe
@@ -248,12 +240,13 @@ public class BookGUIActionListener implements ActionListener {
 					// werden
 					String errorText = "Datensatz konnte nicht gelöscht werden!";
 					InfoError.showMessage(errorText);
-
-					// Suchbegriff wird zurückgesetzt
-					guiBook.getSearchText().setText("");
-					// Alle Textfelder werden zurückgesetzt
-					guiBook.resetTableEast();
 				}
+
+				// Der Text im Suchfeld wird zurückgesetzt
+				guiBook.getSearchText().setText("");
+				// Alle Textfelder werden zurückgesetzt
+				guiBook.resetTableEast();
+
 			}
 		}
 
