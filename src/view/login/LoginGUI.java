@@ -148,14 +148,13 @@ public class LoginGUI extends JDialog implements KeyListener {
 		// in der Tabelle "users" vorhanden ist
 		int numRow = LoginDB.login(myUser);
 
-		// es werden die kompletten Anwenderdaten eingelesen (ID, Name,
-		// Password,
-		// Rolle)
-		User loginUser = LoginDB.loginuser(myUser);
-
 		// Wenn die Benutzerdaten korrekt sind, wird die Bücherverwaltung
 		// gestartet
 		if (numRow == 1) {
+
+			// es werden die kompletten Anwenderdaten eingelesen (ID, Name,
+			// Password, Rolle)
+			User loginUser = LoginDB.loginuser(myUser);
 
 			// Die Bücherverwaltung wird gestartet
 			BookGUI.letStartedBookGUI(loginUser);
