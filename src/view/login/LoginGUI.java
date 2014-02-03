@@ -103,12 +103,14 @@ public class LoginGUI extends JDialog implements KeyListener {
 		usernameLabel.setBounds(49, 90, 100, 30);
 		usernameText = new JTextField();
 		usernameText.setBounds(165, 95, 100, 20);
+		// Wenn die Enter-Taste geklickt wird, wird der Button "Login" ausgelöst
 		usernameText.addKeyListener(this);
 
 		passwordLabel = new JLabel("Passwort:");
 		passwordLabel.setBounds(51, 125, 100, 30);
 		passwordText = new JPasswordField();
 		passwordText.setBounds(164, 128, 100, 20);
+		// Wenn die Enter-Taste geklickt wird, wird der Button "Login" ausgelöst
 		passwordText.addKeyListener(this);
 
 		loginButton = new JButton("Login");
@@ -137,17 +139,26 @@ public class LoginGUI extends JDialog implements KeyListener {
 
 	/**
 	 * Diese Methode startet die Prüfung, ob die Benutzerdaten korrekt sind und
-	 * führt gegebenenfalls den Start der Bücherverwaltung durch
+	 * führt, wenn die Daten korrekt sind, den Start der Bücherverwaltung durch
 	 * 
 	 * @param myUser
 	 */
 	public void startLogin(User myUser) {
-
+		// es wird geprüft, ob die angegebene Benutzername/Password-Kombination
+		// in der Tabelle "users" vorhanden ist
 		int numRow = LoginDB.login(myUser);
-		// Benutzerdaten sind korrekt
+
+		// es werden die kompletten Anwenderdaten eingelesen (ID, Name,
+		// Password,
+		// Rolle)
+		User loginUser = LoginDB.loginuser(myUser);
+
+		// Wenn die Benutzerdaten korrekt sind, wird die Bücherverwaltung
+		// gestartet
 		if (numRow == 1) {
+
 			// Die Bücherverwaltung wird gestartet
-			BookGUI.letStartedBookGUI();
+			BookGUI.letStartedBookGUI(loginUser);
 
 			// Offene Datenbank-Verbindungen werden geschlossen
 			SQLDatabase.closeConnections();
@@ -176,6 +187,29 @@ public class LoginGUI extends JDialog implements KeyListener {
 	}
 
 	/**
+	 * KeyActionListener
+	 * 
+	 * wird die Enter-Taste gedrückt, soll der Button "Login" ausgelöst werden
+	 */
+	@Override
+	public void keyPressed(KeyEvent event) {
+		// Wenn die Taste "Enter" gedrückt wird, wird die Anmeldung versucht
+		if (KeyEvent.VK_ENTER == event.getKeyCode()) {
+			loginButton.doClick();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	/**
 	 * Definition der Getter und Setter
 	 */
 	public JTextField getUsernameText() {
@@ -192,32 +226,5 @@ public class LoginGUI extends JDialog implements KeyListener {
 
 	public void setPasswordText(JPasswordField passwordText) {
 		this.passwordText = passwordText;
-	}
-
-	public JButton getLoginButton() {
-		return loginButton;
-	}
-
-	public void setLoginButton(JButton loginButton) {
-		this.loginButton = loginButton;
-	}
-
-	// Wird die Taste "Enter" gedrückt, soll die Anmeldung erfolgen
-	@Override
-	public void keyPressed(KeyEvent event) {
-		// Wenn die Taste "Enter" gedrückt wird, wird die Anmeldung versucht
-		if (KeyEvent.VK_ENTER == event.getKeyCode()) {
-			loginButton.doClick();
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		
 	}
 }

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import model.SQLDatabase;
 import model.book.Book;
 import model.book.BookDB;
+import model.user.User;
 import view.InfoError;
 import view.InfoSuccess;
 import view.login.LoginGUI;
@@ -27,14 +28,16 @@ import view.user.UserGUI;
 public class BookGUIActionListener implements ActionListener {
 
 	BookGUI guiBook;
+	User loginUser;
 
 	/**
 	 * Konstruktor
 	 * 
 	 * @param guiBook
 	 */
-	public BookGUIActionListener(BookGUI guiBook) {
+	public BookGUIActionListener(BookGUI guiBook, User loginUser) {
 		this.guiBook = guiBook;
+		this.loginUser = loginUser;
 	}
 
 	@Override
@@ -78,8 +81,7 @@ public class BookGUIActionListener implements ActionListener {
 			}
 		}
 
-		// Wenn auf den Button "neu" oder in der Menübar auf
-		// "Neuen Datensatz anlegen" geklickt wird, wird der Inhalt der
+		// Wenn auf den Button "neu" geklickt wird, wird der Inhalt der
 		// Textfelder im EastPanel zurückgesetzt (mit Hilfe der Methode
 		// "resetTableEast()" aus der Klasse "BookGUI"). Ein neuer Datensatz
 		// wird erst beim Klick auf den Button "speichern" in die Datenbank
@@ -91,11 +93,10 @@ public class BookGUIActionListener implements ActionListener {
 			guiBook.getDeleteButton().setEnabled(false);
 		}
 
-		// Wenn auf den Button "speichern" oder in der Menübar auf
-		// "Datensatz speichern" geklickt wird, wird ein bereits vorhandener
-		// Datensatz in der Datenbank upgedatet bzw. wenn der Datensatz noch
-		// nicht in der Datenbank vorhanden ist, wird er in die Datenbank
-		// eingefügt.
+		// Wenn auf den Button "speichern" geklickt wird, wird ein bereits
+		// vorhandener Datensatz in der Datenbank upgedatet bzw. wenn der
+		// Datensatz noch nicht in der Datenbank vorhanden ist, wird er in die
+		// Datenbank eingefügt.
 		if (event.getActionCommand().contains("speichern")) {
 			// Ist die Buch-ID leer, wird ein neuer Datensatz angelegt und in
 			// die Datenbank gespeichert
@@ -204,9 +205,8 @@ public class BookGUIActionListener implements ActionListener {
 					"terminateEditOnFocusLost", Boolean.TRUE);
 		}
 
-		// Wenn auf den Button "löschen" oder in der Menübar auf
-		// "Datensatz löschen" geklickt wird, wird der Datensatz aus der
-		// Datenbank gelöscht
+		// Wenn auf den Button "löschen" geklickt wird, wird der Datensatz aus
+		// der Datenbank gelöscht
 		if (event.getActionCommand().contains("löschen")) {
 			// Die Buch-ID des bereits vorhandenen Datensatzes wird ausgelesen
 			String BookID = guiBook.getBookIdText().getText();
@@ -246,7 +246,6 @@ public class BookGUIActionListener implements ActionListener {
 				guiBook.getSearchText().setText("");
 				// Alle Textfelder werden zurückgesetzt
 				guiBook.resetTableEast();
-
 			}
 		}
 
@@ -258,6 +257,15 @@ public class BookGUIActionListener implements ActionListener {
 			System.exit(0);
 		}
 
+		// Wenn in der Menübar auf "Zur Userverwaltung wechseln" geklickt wird,
+		// wird die Userverwaltungs-GUI aufgerufen
+		if (event.getActionCommand().contains("Zur Userverwaltung wechseln")) {
+			// Bücherverwaltungs-GUI wird beendet
+			guiBook.setVisible(false);
+			// Userverwaltungs-GUI wird gestartet
+			UserGUI.letStartedUserGUI(loginUser);
+		}
+
 		// Wenn in der Menübar auf "Benutzer abmelden" geklickt wird, soll das
 		// Programm-Fenster geschlossen und das Login-Fenster für eine
 		// erneute Benutzer-Anmeldung geöffnet werden.
@@ -266,23 +274,6 @@ public class BookGUIActionListener implements ActionListener {
 			guiBook.setVisible(false);
 			// Login-GUI wird gestartet
 			LoginGUI.main(null);
-		}
-
-		// Wenn in der Menübar auf "Zur Userverwaltung wechseln" geklickt wird,
-		// wird die Userverwaltungs-GUI aufgerufen
-		if (event.getActionCommand().contains("Zur Userverwaltung wechseln")) {
-			// Bücherverwaltungs-GUI wird beendet
-			guiBook.setVisible(false);
-			// Userverwaltungs-GUI wird gestartet
-			UserGUI.letStartedUserGUI();
-		}
-
-		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
-		// Dialogfenster erzeugt
-		if (event.getActionCommand().contains("Über das Programm")) {
-			// Folgende Meldung wird ausgegeben
-			String successText = "Erstellt von Weinberger Eva, 2014";
-			InfoSuccess.showMessage(successText);
 		}
 	}
 }
