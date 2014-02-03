@@ -2,6 +2,8 @@ package view.login;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -30,7 +32,7 @@ import view.book.BookGUI;
  * @author Bergsocke
  * 
  */
-public class LoginGUI extends JDialog {
+public class LoginGUI extends JDialog implements KeyListener {
 
 	private static final long serialVersionUID = -6035816178550912787L;
 
@@ -94,18 +96,20 @@ public class LoginGUI extends JDialog {
 		loginPanel = new JPanel();
 
 		loginPanel.setLayout(null);
-		
+
 		ActionListener myActionListener = new LoginGUIActionListener(this);
 
 		usernameLabel = new JLabel("Benutzername:");
 		usernameLabel.setBounds(49, 90, 100, 30);
 		usernameText = new JTextField();
 		usernameText.setBounds(165, 95, 100, 20);
+		usernameText.addKeyListener(this);
 
 		passwordLabel = new JLabel("Passwort:");
 		passwordLabel.setBounds(51, 125, 100, 30);
 		passwordText = new JPasswordField();
 		passwordText.setBounds(164, 128, 100, 20);
+		passwordText.addKeyListener(this);
 
 		loginButton = new JButton("Login");
 		loginButton.setBounds(96, 172, 109, 30);
@@ -190,4 +194,30 @@ public class LoginGUI extends JDialog {
 		this.passwordText = passwordText;
 	}
 
+	public JButton getLoginButton() {
+		return loginButton;
+	}
+
+	public void setLoginButton(JButton loginButton) {
+		this.loginButton = loginButton;
+	}
+
+	// Wird die Taste "Enter" gedrückt, soll die Anmeldung erfolgen
+	@Override
+	public void keyPressed(KeyEvent event) {
+		// Wenn die Taste "Enter" gedrückt wird, wird die Anmeldung versucht
+		if (KeyEvent.VK_ENTER == event.getKeyCode()) {
+			loginButton.doClick();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
+	}
 }
