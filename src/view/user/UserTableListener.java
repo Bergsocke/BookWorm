@@ -38,8 +38,18 @@ public class UserTableListener implements ListSelectionListener {
 				try {
 					int selectedRow = lsm.getMinSelectionIndex();
 
-					String id = String.valueOf(guiUser.getUserTable()
-							.getModel().getValueAt(selectedRow, 0));
+					// da in der Tabelle die Autosortierung mit
+					// setAutoCreateRowSorter(true) gesetzt wurde, ist die
+					// Convertierung notwendig, damit die korrekte Zeile/Spalte
+					// ausgewählt wird
+					String id = String
+							.valueOf(guiUser
+									.getUserTable()
+									.getModel()
+									.getValueAt(
+											guiUser.getUserTable()
+													.convertRowIndexToModel(
+															selectedRow), 0));
 
 					User myUser = UserDB.findByID(id);
 

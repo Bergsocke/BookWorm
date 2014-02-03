@@ -92,8 +92,14 @@ public class UserGUI extends JFrame {
 	private JMenuItem closeMenuItem;
 	private JMenu helpMenu;
 	private JMenuItem helpMenuItem;
-	
+
 	private User loginUser;
+
+	/**
+	 * Die Userverwaltungs-GUI wird aufgebaut
+	 * 
+	 * @param loginUser
+	 */
 
 	public static void letStartedUserGUI(User loginUser) {
 
@@ -121,11 +127,12 @@ public class UserGUI extends JFrame {
 	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten)
 	 * 
 	 * @param frameTitle
+	 * @param loginUser
 	 */
 	public UserGUI(String frameTitle, User loginUser) {
 
 		super(frameTitle);
-		
+
 		this.loginUser = loginUser;
 
 		// Initialisierung der Fenster-Komponenten
@@ -157,7 +164,8 @@ public class UserGUI extends JFrame {
 
 		userMenuBar.setBackground(Color.orange);
 
-		ActionListener myActionListener = new UserGUIActionListener(this, loginUser);
+		ActionListener myActionListener = new UserGUIActionListener(this,
+				loginUser);
 
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Bücherverwaltung wechseln");
@@ -195,7 +203,8 @@ public class UserGUI extends JFrame {
 
 		northPanel = new JPanel();
 
-		ActionListener myActionListener = new UserGUIActionListener(this, loginUser);
+		ActionListener myActionListener = new UserGUIActionListener(this,
+				loginUser);
 
 		searchLabel = new JLabel("Nach Anwender suchen: ");
 		searchLabel.setFont(new Font(textFont, labelStyle, 14));
@@ -248,7 +257,8 @@ public class UserGUI extends JFrame {
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
 
-		ActionListener myActionListener = new UserGUIActionListener(this, loginUser);
+		ActionListener myActionListener = new UserGUIActionListener(this,
+				loginUser);
 
 		userIDLabel = new JLabel("User-ID: ");
 		userIDLabel.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -330,7 +340,7 @@ public class UserGUI extends JFrame {
 		// noch nicht auswählbar; er wird erst sichtbar, wenn ein Datensatz
 		// ausgewählt wurde
 		deleteButton.setEnabled(false);
-		
+
 		// Icon für den Buttton "Passwort vergeben"
 		final Icon passwordNewIcon = new ImageIcon(
 				BookGUI.class.getResource("/view/images/passwordNewIcon.png"));
@@ -347,7 +357,7 @@ public class UserGUI extends JFrame {
 		// Fensters noch nicht auswählbar; er wird erst sichtbar, wenn ein
 		// Datensatz ausgewählt wurde
 		createPWButton.setEnabled(false);
-		
+
 		// Icon für den Buttton "Passwort vergeben"
 		final Icon passwordSetIcon = new ImageIcon(
 				BookGUI.class.getResource("/view/images/passwordSetIcon.png"));
@@ -484,6 +494,9 @@ public class UserGUI extends JFrame {
 		// festgelegt werden; die Spaltenbreite würde sonst automatisch nach dem
 		// verfügbaren Platz festgelegt werden
 		userTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+		// Autosortierung wird gesetzt
+		userTable.setAutoCreateRowSorter(true);
 
 		// Festlegung der Schrifteigenschaften
 		userTable.setFont(new Font(textFont, textStyle, textSize));
@@ -647,6 +660,5 @@ public class UserGUI extends JFrame {
 	public void setLoginUser(User loginUser) {
 		this.loginUser = loginUser;
 	}
-	
-	
+
 }

@@ -113,6 +113,11 @@ public class BookGUI extends JFrame {
 
 	private User loginUser;
 
+	/**
+	 * Bücherverwaltung-GUI wird aufgebaut
+	 * 
+	 * @param loginUser
+	 */
 	public static void letStartedBookGUI(User loginUser) {
 
 		// Aufruf des Konstruktors der Klasse BookGUI und Zuweisung der
@@ -140,6 +145,7 @@ public class BookGUI extends JFrame {
 	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten)
 	 * 
 	 * @param frameTitle
+	 * @param loginUser
 	 */
 	public BookGUI(String frameTitle, User loginUser) {
 
@@ -551,6 +557,9 @@ public class BookGUI extends JFrame {
 		// festgelegt werden; die Spaltenbreite würde sonst automatisch nach dem
 		// verfügbaren Platz festgelegt werden
 		bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+		// Autosortierung wird gesetzt
+		bookTable.setAutoCreateRowSorter(true);
 
 		// Festlegung der Schrifteigenschaften
 		bookTable.setFont(new Font(textFont, textStyle, textSize));
