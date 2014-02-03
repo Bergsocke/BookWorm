@@ -34,6 +34,7 @@ public class BookGUIActionListener implements ActionListener {
 	 * Konstruktor
 	 * 
 	 * @param guiBook
+	 * @param loginUser
 	 */
 	public BookGUIActionListener(BookGUI guiBook, User loginUser) {
 		this.guiBook = guiBook;
@@ -274,6 +275,14 @@ public class BookGUIActionListener implements ActionListener {
 			guiBook.setVisible(false);
 			// Login-GUI wird gestartet
 			LoginGUI.main(null);
+		}
+
+		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
+		// Dialogfenster erzeugt
+		if (event.getActionCommand().contains("Über das Programm")) {
+			// Folgende Meldung wird ausgegeben
+			String successText = "Erstellt von Weinberger Eva, 2014";
+			InfoSuccess.showMessage(successText);
 		}
 	}
 }

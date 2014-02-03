@@ -38,38 +38,48 @@ public class BookTableListener implements ListSelectionListener {
 				try {
 					int selectedRow = lsm.getMinSelectionIndex();
 
-					String id = String.valueOf(guiBook.getBookTable()
-							.getModel().getValueAt(selectedRow, 0));
+					// da in der Tabelle die Autosortierung mit
+					// setAutoCreateRowSorter(true) gesetzt wurde, ist die
+					// Convertierung notwendig, damit die korrekte Zeile/Spalte
+					// ausgewählt wird
+					String id = String
+							.valueOf(guiBook
+									.getBookTable()
+									.getModel()
+									.getValueAt(
+											guiBook.getBookTable()
+													.convertRowIndexToModel(
+															selectedRow), 0));
 
 					Book myBook = BookDB.findByID(id);
 
 					guiBook.getBookIdText().setText(
 							String.valueOf(myBook.getId()));
-					
+
 					guiBook.getIsbnText().setText(
 							String.valueOf(myBook.getIsbn()));
-					
+
 					guiBook.getTitleText().setText(
 							String.valueOf(myBook.getTitle()));
-					
+
 					guiBook.getAuthorText().setText(
 							String.valueOf(myBook.getAuthor()));
-					
+
 					guiBook.getPublicationDateText().setText(
 							String.valueOf(myBook.getPublicationDate()));
-					
+
 					guiBook.getFormatCombo().setSelectedItem(
 							String.valueOf(myBook.getFormat()));
-					
+
 					guiBook.getShortDescriptionArea().setText(
 							myBook.getShortDescription());
-					
+
 					guiBook.getCategoryCombo().setSelectedItem(
 							String.valueOf(myBook.getCategory()));
-					
+
 					guiBook.getCommentArea().setText(
 							String.valueOf(myBook.getComment()));
-					
+
 					guiBook.getReadCombo().setSelectedItem(
 							String.valueOf(myBook.getRead()));
 
@@ -78,7 +88,8 @@ public class BookTableListener implements ListSelectionListener {
 
 				} catch (Exception e) {
 					System.out.println(e.toString());
-					// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
+					// Ein Dialogfenster mit entsprechender Meldung soll erzeugt
+					// werden
 					String errorText = "Der ausgewählte Datensatz kann nicht angezeigt werden.";
 					InfoError.showMessage(errorText);
 

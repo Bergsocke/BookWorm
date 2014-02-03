@@ -34,6 +34,7 @@ public class UserGUIActionListener implements ActionListener {
 	 * Konstruktor
 	 * 
 	 * @param guiUser
+	 * @param loginUser
 	 */
 	public UserGUIActionListener(UserGUI guiUser, User loginUser) {
 		this.guiUser = guiUser;

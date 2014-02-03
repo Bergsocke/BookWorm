@@ -21,19 +21,19 @@ public class LoginDB {
 	 * Diese Methode prüft, ob die angegebene Benutzername/Password-Kombination
 	 * in der Tabelle "users" vorhanden ist
 	 * 
-	 * @param myUser
+	 * @param loginUser
 	 * @return numRows
 	 */
-	public static int login(User myUser) {
+	public static int login(User loginUser) {
 		// Variable für Anzahl der gefundenen Datensätze
 		int numRows = 0;
 
 		try {
 			// PreparedStatement für den SQL-Befehl
 			String sqlStatement = "SELECT COUNT(*) FROM bookworm_database.users WHERE username = '"
-					+ myUser.getUserName()
+					+ loginUser.getUserName()
 					+ "' AND userpassword = '"
-					+ myUser.getUserPassword() + "';";
+					+ loginUser.getUserPassword() + "';";
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
@@ -58,21 +58,21 @@ public class LoginDB {
 	}
 
 	/**
-	 * Diese Methode liest die kompletten Anwenderdaten ein (ID, Name, Passwort,
+	 * Diese Methode liest die kompletten Daten des Anwenders aus (ID, Name, Passwort,
 	 * Rolle)
 	 * 
-	 * @param myUser
+	 * @param loginUser
 	 * @return foundUser
 	 */
-	public static User loginuser(User myUser) {
+	public static User loginuser(User loginUser) {
 		User foundUser = null;
 
 		try {
 			// PreparedStatement für den SQL-Befehl
 			String sqlStatement = "SELECT * FROM bookworm_database.users WHERE username = '"
-					+ myUser.getUserName()
+					+ loginUser.getUserName()
 					+ "' AND userpassword = '"
-					+ myUser.getUserPassword() + "';";
+					+ loginUser.getUserPassword() + "';";
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
