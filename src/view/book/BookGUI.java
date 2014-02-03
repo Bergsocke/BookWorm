@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
 import model.book.BookDB;
+import model.user.User;
 
 /**
  * Die Klasse "BookGUI" ist für den Aufbau der grafischen Oberfläche zuständig.
@@ -110,11 +111,13 @@ public class BookGUI extends JFrame {
 	private JMenu helpMenu;
 	private JMenuItem helpMenuItem;
 
-	public static void letStartedBookGUI() {
+	private User loginUser;
+
+	public static void letStartedBookGUI(User loginUser) {
 
 		// Aufruf des Konstruktors der Klasse BookGUI und Zuweisung der
 		// Überschrift
-		BookGUI gui = new BookGUI("BOOKWORM - BÜCHERVERWALTUNG");
+		BookGUI gui = new BookGUI("BOOKWORM - BÜCHERVERWALTUNG", loginUser);
 
 		// Fenstergröße wird automatisch an den Inhalt angepasst
 		gui.pack();
@@ -130,6 +133,7 @@ public class BookGUI extends JFrame {
 
 		// Fenster wird auf sichtbar gesetzt
 		gui.setVisible(true);
+
 	}
 
 	/**
@@ -137,9 +141,11 @@ public class BookGUI extends JFrame {
 	 * 
 	 * @param frameTitle
 	 */
-	public BookGUI(String frameTitle) {
+	public BookGUI(String frameTitle, User loginUser) {
 
 		super(frameTitle);
+
+		this.loginUser = loginUser;
 
 		// Initialisierung der Fenster-Komponenten
 		this.initComponents();
@@ -167,13 +173,23 @@ public class BookGUI extends JFrame {
 	public void initMenuBar() {
 
 		bookMenuBar = new JMenuBar();
-		
-		ActionListener myActionListener = new BookGUIActionListener(this);
+
+		ActionListener myActionListener = new BookGUIActionListener(this,
+				loginUser);
 
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Userverwaltung wechseln");
 		changeMenu.add(changeMenuItem);
 		changeMenuItem.addActionListener(myActionListener);
+		// Da nur Administratoren Zugriff auf die Userverwaltung haben
+		// sollen, wird abgefragt, ob der angemeldete Anwender die Rolle
+		// "Administrator" hat. Wenn ja, wird das MenuItem
+		// "Zur Userverwaltung wechseln" aktiv gesetzt
+		if (loginUser.getUserRole().contains("Administrator")) {
+			changeMenu.setEnabled(true);
+		} else {
+			changeMenuItem.setEnabled(false);
+		}
 
 		logoutMenu = new JMenu("Abmelden");
 		logoutMenuItem = new JMenuItem("Benutzer abmelden");
@@ -205,8 +221,9 @@ public class BookGUI extends JFrame {
 	private void initComponentsNorth() {
 
 		northPanel = new JPanel();
-		
-		ActionListener myActionListener = new BookGUIActionListener(this);
+
+		ActionListener myActionListener = new BookGUIActionListener(this,
+				loginUser);
 
 		searchLabel = new JLabel("Nach Buchtitel suchen: ");
 		searchLabel.setFont(new Font(textFont, labelStyle, 14));
@@ -258,8 +275,9 @@ public class BookGUI extends JFrame {
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
-		
-		ActionListener myActionListener = new BookGUIActionListener(this);
+
+		ActionListener myActionListener = new BookGUIActionListener(this,
+				loginUser);
 
 		bookIdLabel = new JLabel("Buch-ID: ");
 		bookIdLabel.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -733,4 +751,11 @@ public class BookGUI extends JFrame {
 		this.deleteButton = deleteButton;
 	}
 
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
 }

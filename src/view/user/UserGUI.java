@@ -23,6 +23,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 
+import model.user.User;
 import model.user.UserDB;
 import view.book.BookGUI;
 
@@ -91,12 +92,14 @@ public class UserGUI extends JFrame {
 	private JMenuItem closeMenuItem;
 	private JMenu helpMenu;
 	private JMenuItem helpMenuItem;
+	
+	private User loginUser;
 
-	public static void letStartedUserGUI() {
+	public static void letStartedUserGUI(User loginUser) {
 
 		// Aufruf des Konstruktors der Klasse UserGUI und Zuweisung der
 		// Überschrift
-		UserGUI gui = new UserGUI("BOOKWORM - USERVERWALTUNG");
+		UserGUI gui = new UserGUI("BOOKWORM - USERVERWALTUNG", loginUser);
 
 		// Fenstergröße wird automatisch an den Inhalt angepasst
 		gui.pack();
@@ -119,9 +122,11 @@ public class UserGUI extends JFrame {
 	 * 
 	 * @param frameTitle
 	 */
-	public UserGUI(String frameTitle) {
+	public UserGUI(String frameTitle, User loginUser) {
 
 		super(frameTitle);
+		
+		this.loginUser = loginUser;
 
 		// Initialisierung der Fenster-Komponenten
 		this.initComponents();
@@ -152,7 +157,7 @@ public class UserGUI extends JFrame {
 
 		userMenuBar.setBackground(Color.orange);
 
-		ActionListener myActionListener = new UserGUIActionListener(this);
+		ActionListener myActionListener = new UserGUIActionListener(this, loginUser);
 
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Bücherverwaltung wechseln");
@@ -190,7 +195,7 @@ public class UserGUI extends JFrame {
 
 		northPanel = new JPanel();
 
-		ActionListener myActionListener = new UserGUIActionListener(this);
+		ActionListener myActionListener = new UserGUIActionListener(this, loginUser);
 
 		searchLabel = new JLabel("Nach Anwender suchen: ");
 		searchLabel.setFont(new Font(textFont, labelStyle, 14));
@@ -243,7 +248,7 @@ public class UserGUI extends JFrame {
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
 
-		ActionListener myActionListener = new UserGUIActionListener(this);
+		ActionListener myActionListener = new UserGUIActionListener(this, loginUser);
 
 		userIDLabel = new JLabel("User-ID: ");
 		userIDLabel.setFont(new Font(labelFont, labelStyle, labelSize));
@@ -325,8 +330,11 @@ public class UserGUI extends JFrame {
 		// noch nicht auswählbar; er wird erst sichtbar, wenn ein Datensatz
 		// ausgewählt wurde
 		deleteButton.setEnabled(false);
-
-		createPWButton = new JButton("Passwort vergeben");
+		
+		// Icon für den Buttton "Passwort vergeben"
+		final Icon passwordNewIcon = new ImageIcon(
+				BookGUI.class.getResource("/view/images/passwordNewIcon.png"));
+		createPWButton = new JButton("Passwort vergeben", passwordNewIcon);
 		createPWButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		createPWButton.setBackground(Color.lightGray);
 		createPWButton.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -339,8 +347,11 @@ public class UserGUI extends JFrame {
 		// Fensters noch nicht auswählbar; er wird erst sichtbar, wenn ein
 		// Datensatz ausgewählt wurde
 		createPWButton.setEnabled(false);
-
-		savePWButton = new JButton("Passwort setzen");
+		
+		// Icon für den Buttton "Passwort vergeben"
+		final Icon passwordSetIcon = new ImageIcon(
+				BookGUI.class.getResource("/view/images/passwordSetIcon.png"));
+		savePWButton = new JButton("Passwort setzen", passwordSetIcon);
 		savePWButton.setFont(new Font(labelFont, labelStyle, labelSize));
 		savePWButton.setBackground(Color.lightGray);
 		savePWButton.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -628,4 +639,14 @@ public class UserGUI extends JFrame {
 	public void setSavePWButton(JButton savePWButton) {
 		this.savePWButton = savePWButton;
 	}
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+	public void setLoginUser(User loginUser) {
+		this.loginUser = loginUser;
+	}
+	
+	
 }

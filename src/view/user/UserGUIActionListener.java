@@ -28,14 +28,16 @@ import view.login.LoginGUI;
 public class UserGUIActionListener implements ActionListener {
 
 	UserGUI guiUser;
+	User loginUser;
 
 	/**
 	 * Konstruktor
 	 * 
 	 * @param guiUser
 	 */
-	public UserGUIActionListener(UserGUI guiUser) {
+	public UserGUIActionListener(UserGUI guiUser, User loginUser) {
 		this.guiUser = guiUser;
+		this.loginUser = loginUser;
 	}
 
 	@Override
@@ -331,6 +333,15 @@ public class UserGUIActionListener implements ActionListener {
 			System.exit(0);
 		}
 
+		// Wenn in der Menübar auf "Zur Bücherverwaltung wechseln" geklickt
+		// wird, wird die Bücherverwaltungs-GUI aufgerufen
+		if (event.getActionCommand().contains("Zur Bücherverwaltung wechseln")) {
+			// Userverwaltungs-GUI wird beendet
+			guiUser.setVisible(false);
+			// Bücherververwaltungs-GUI wird gestartet
+			BookGUI.letStartedBookGUI(loginUser);
+		}
+
 		// Wenn in der Menübar auf "Benutzer abmelden" geklickt wird, soll das
 		// Programm-Fenster geschlossen und das Login-Fenster für eine
 		// erneute Benutzer-Anmeldung geöffnet werden.
@@ -339,15 +350,6 @@ public class UserGUIActionListener implements ActionListener {
 			guiUser.setVisible(false);
 			// Login-GUI wird gestartet
 			LoginGUI.main(null);
-		}
-
-		// Wenn in der Menübar auf "Zur Bücherverwaltung wechseln" geklickt
-		// wird, wird die Bücherverwaltungs-GUI aufgerufen
-		if (event.getActionCommand().contains("Zur Bücherverwaltung wechseln")) {
-			// Userverwaltungs-GUI wird beendet
-			guiUser.setVisible(false);
-			// Bücherververwaltungs-GUI wird gestartet
-			BookGUI.letStartedBookGUI();
 		}
 
 		// Wenn in der Menübar auf "Über das Programm" geklickt wird, wird ein
