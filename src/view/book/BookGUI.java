@@ -102,12 +102,6 @@ public class BookGUI extends JFrame {
 	private JScrollPane commentScroll;
 
 	private JMenuBar bookMenuBar;
-	private JMenu clearMenu;
-	private JMenuItem clearMenuItem;
-	private JMenu saveMenu;
-	private JMenuItem saveMenuItem;
-	private JMenu deleteMenu;
-	private JMenuItem deleteMenuItem;
 	private JMenu changeMenu;
 	private JMenuItem changeMenuItem;
 	private JMenu logoutMenu;
@@ -176,21 +170,6 @@ public class BookGUI extends JFrame {
 		
 		ActionListener myActionListener = new BookGUIActionListener(this);
 
-		clearMenu = new JMenu("Neu");
-		clearMenuItem = new JMenuItem("Neuen Datensatz anlegen");
-		clearMenu.add(clearMenuItem);
-		clearMenuItem.addActionListener(myActionListener);
-
-		saveMenu = new JMenu("Speichern");
-		saveMenuItem = new JMenuItem("Datensatz speichern");
-		saveMenu.add(saveMenuItem);
-		saveMenuItem.addActionListener(myActionListener);
-
-		deleteMenu = new JMenu("Löschen");
-		deleteMenuItem = new JMenuItem("Ausgewählten Datensatz löschen");
-		deleteMenu.add(deleteMenuItem);
-		deleteMenuItem.addActionListener(myActionListener);
-
 		changeMenu = new JMenu("Wechseln");
 		changeMenuItem = new JMenuItem("Zur Userverwaltung wechseln");
 		changeMenu.add(changeMenuItem);
@@ -210,9 +189,6 @@ public class BookGUI extends JFrame {
 		helpMenuItem.addActionListener(myActionListener);
 
 		// Hinzufügen der einzelnen Komponenten zur Menübar
-		bookMenuBar.add(clearMenu);
-		bookMenuBar.add(saveMenu);
-		bookMenuBar.add(deleteMenu);
 		bookMenuBar.add(changeMenu);
 		bookMenuBar.add(logoutMenu);
 		bookMenuBar.add(helpMenu);

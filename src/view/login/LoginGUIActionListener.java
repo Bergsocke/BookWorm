@@ -39,7 +39,7 @@ public class LoginGUIActionListener implements ActionListener {
 
 		// Wenn auf den Button "Login" geklickt wird, wird die Anmeldung
 		// versucht
-			if (event.getActionCommand().contains("Login")) {
+		if (event.getActionCommand().contains("Login")) {
 
 			// Benutzername und Password werden eingelesen
 			User myUser = new User(String.valueOf(guiLogin.getUsernameText()
