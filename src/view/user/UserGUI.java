@@ -297,7 +297,7 @@ public class UserGUI extends JFrame {
 		userRoleCombo.setBackground(Color.white);
 		userRoleCombo.setFont(new Font(textFont, textStyle, textSize));
 		// Festlegung des Inhalts der Combo-Box "userRoleCombo"
-		String[] role = { "Anwender", "Gast", "Administrator" };
+		String[] role = { "Anwender", "Administrator" };
 		for (int i = 0; i < role.length; i++) {
 			userRoleCombo.addItem(role[i]);
 		}
