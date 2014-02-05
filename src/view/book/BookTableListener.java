@@ -18,7 +18,7 @@ import view.InfoError;
  */
 public class BookTableListener implements ListSelectionListener {
 
-	BookGUI guiBook;
+	private BookGUI guiBook;
 
 	/**
 	 * Konstruktor

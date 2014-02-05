@@ -17,7 +17,7 @@ import view.InfoError;
  */
 public class LoginGUIActionListener implements ActionListener {
 
-	LoginGUI guiLogin;
+	private LoginGUI guiLogin;
 
 	/**
 	 * Konstruktor
@@ -33,15 +33,14 @@ public class LoginGUIActionListener implements ActionListener {
 		// Wenn auf den Button "Abbrechen" geklickt wird, wird das Login-Fenster
 		// geschlossen
 		if (event.getActionCommand().contains("Abbrechen")) {
-
 			guiLogin.closeLoginDialog();
 		}
 
 		// Wenn auf den Button "Login" geklickt wird, wird die Anmeldung
 		// versucht
 		if (event.getActionCommand().contains("Login")) {
-
-			// Benutzername und Password werden eingelesen
+			// Der eingegebene Benutzername und das eingegebene Password werden
+			// eingelesen
 			User myUser = new User(String.valueOf(guiLogin.getUsernameText()
 					.getText()), String.valueOf(guiLogin.getPasswordText()
 					.getPassword()));

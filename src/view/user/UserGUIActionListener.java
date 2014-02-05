@@ -27,8 +27,11 @@ import view.login.LoginGUI;
 
 public class UserGUIActionListener implements ActionListener {
 
-	UserGUI guiUser;
-	User loginUser;
+	private UserGUI guiUser;
+	private User loginUser;
+	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
+	// Datensatzes erfolgreich war
+	private int successful = 0;
 
 	/**
 	 * Konstruktor
@@ -140,7 +143,7 @@ public class UserGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der neue
 					// Datensatz wird in die Datenbank gespeichert
-					UserDB.saveUser(myUser);
+					successful = UserDB.saveUser(myUser);
 				}
 
 			} else {
@@ -170,13 +173,13 @@ public class UserGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der
 					// Datensatz wird in die Datenbank gespeichert
-					UserDB.updateUser(myUser);
+					successful = UserDB.updateUser(myUser);
 				}
 			}
 
 			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
 			// entsprechende Meldung ausgegeben
-			if (UserDB.successful == 1) {
+			if (successful == 1) {
 				// Die Tabelle im WestPanel wird neu aufgebaut, damit der
 				// neu angelegte Datensatz gleich angezeigt wird
 				guiUser.reloadWestTable();
@@ -221,11 +224,11 @@ public class UserGUIActionListener implements ActionListener {
 			if (check == 0) {
 				// Eine Verbindung zur Datenbank wird aufgebaut und der
 				// Datensatz wird aus der Datenbank gelöscht
-				UserDB.deleteUser(userID);
+				successful = UserDB.deleteUser(userID);
 
 				// Wenn der Datensatz erfolgreich gelöscht wurde, wird eine
 				// entsprechende Meldung ausgegeben
-				if (UserDB.successful == 1) {
+				if (successful == 1) {
 					// Die Tabelle im WestPanel wird neu aufgebaut, damit der
 					// gelöschte Datensatz nicht mehr angezeigt wird
 					guiUser.reloadWestTable();
@@ -286,11 +289,11 @@ public class UserGUIActionListener implements ActionListener {
 
 			// Eine Verbindung zur Datenbank wird aufgebaut und der
 			// Datensatz wird in die Datenbank gespeichert
-			UserDB.newPassword(myUser);
+			successful = UserDB.newPassword(myUser);
 
 			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
 			// entsprechende Meldung ausgegeben
-			if (UserDB.successful == 1) {
+			if (successful == 1) {
 				// Die Tabelle im WestPanel wird neu aufgebaut, damit der
 				// neu angelegte Datensatz gleich angezeigt wird
 				guiUser.reloadWestTable();

@@ -22,7 +22,7 @@ public class SQLDatabase {
 	private static ResultSet myResultSet = null;
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
-	public static int successful = 0;
+	private static int successful = 0;
 
 	/**
 	 * Diese Methode baut die Datenbankverbindung zur Datenbank

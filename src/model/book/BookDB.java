@@ -19,7 +19,7 @@ public class BookDB {
 	private static ResultSet myResultSet = null;
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
-	public static int successful = 0;
+	private static int successful = 0;
 
 	/**
 	 * Es werden alle Datensätze, die in der Tabelle "books" vorhanden sind,
@@ -271,5 +271,5 @@ public class BookDB {
 			// offene Verbindungen werden geschlossen
 			SQLDatabase.closeConnections();
 		}
-	}
+	}	
 }
