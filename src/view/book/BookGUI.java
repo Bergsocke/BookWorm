@@ -176,7 +176,7 @@ public class BookGUI extends JFrame {
 	 * Zuweisung des Inhalts der einzelnen Komponenten, die in der MenüBar
 	 * ausgegeben werden.
 	 */
-	public void initMenuBar() {
+	private void initMenuBar() {
 
 		bookMenuBar = new JMenuBar();
 
@@ -535,7 +535,7 @@ public class BookGUI extends JFrame {
 	 * WestPanel wird aufgebaut. Weiters wird das Layout der Tabelle im
 	 * WestPanel festgelegt.
 	 */
-	public void createteWestTable() {
+	private void createteWestTable() {
 
 		westPanel = new JPanel();
 

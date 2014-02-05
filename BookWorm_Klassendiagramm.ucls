@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="false" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="model.login.LoginDB" project="BookWorm" 
+    file="/BookWorm/src/model/login/LoginDB.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="190" x="784" y="3553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="model.user.User" project="BookWorm" file="/BookWorm/src/model/user/User.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="340" width="201" x="1209" y="3843"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="model.user.UserDB" project="BookWorm" file="/BookWorm/src/model/user/UserDB.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="250" width="225" x="1611" y="3553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="view.login.LoginGUI" project="BookWorm" 
+    file="/BookWorm/src/view/login/LoginGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="430" width="301" x="826" y="201"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="view.login.LoginGUIActionListener" project="BookWorm" 
+    file="/BookWorm/src/view/login/LoginGUIActionListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="215" x="912" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="view.user.UserGUI" project="BookWorm" file="/BookWorm/src/view/user/UserGUI.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1456" width="301" x="1530" y="201"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="view.user.UserGUIActionListener" project="BookWorm" 
+    file="/BookWorm/src/view/user/UserGUIActionListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="238" x="1530" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="view.user.UserTable" project="BookWorm" 
+    file="/BookWorm/src/view/user/UserTable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="301" x="1209" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="view.user.UserTableListener" project="BookWorm" 
+    file="/BookWorm/src/view/user/UserTableListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="239" x="1571" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="view.InfoError" project="BookWorm" file="/BookWorm/src/view/InfoError.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="296" x="1058" y="4909"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="view.InfoSuccess" project="BookWorm" file="/BookWorm/src/view/InfoSuccess.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="301" x="464" y="201"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="model.book.Book" project="BookWorm" file="/BookWorm/src/model/book/Book.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="646" width="432" x="84" y="4223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="model.book.BookDB" project="BookWorm" file="/BookWorm/src/model/book/BookDB.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="191" x="464" y="3843"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="model.SQLDatabase" project="BookWorm" file="/BookWorm/src/model/SQLDatabase.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="232" width="300" x="716" y="4223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="view.book.BookGUI" project="BookWorm" file="/BookWorm/src/view/book/BookGUI.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1816" width="301" x="401" y="1697"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="view.book.BookGUIActionListener" project="BookWorm" 
+    file="/BookWorm/src/view/book/BookGUIActionListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="124" width="244" x="403" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="view.book.BookTable" project="BookWorm" 
+    file="/BookWorm/src/view/book/BookTable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="297" x="84" y="3553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="view.book.BookTableListener" project="BookWorm" 
+    file="/BookWorm/src/view/book/BookTableListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="106" width="239" x="442" y="3553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="19">    
+    <bendpoint x="433" y="201"/>    
+    <bendpoint x="732" y="1697"/>    
+    <bendpoint x="732" y="3553"/>    
+    <bendpoint x="732" y="3843"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="21">    
+    <bendpoint x="1025" y="3843"/>    
+    <bendpoint x="1046" y="4223"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="22">    
+    <bendpoint x="1580" y="3553"/>    
+    <bendpoint x="1580" y="3843"/>    
+    <bendpoint x="1580" y="4223"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="23">    
+    <bendpoint x="685" y="3843"/>    
+    <bendpoint x="685" y="4223"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="26">    
+    <bendpoint x="814" y="1697"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="27">    
+    <bendpoint x="391" y="201"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="28" name="guiBook"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="30">    
+    <bendpoint x="1109" y="3553"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="31">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="32">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="33" name="guiUser"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="36">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="37">    
+    <bendpoint x="32" y="201"/>    
+    <bendpoint x="32" y="1697"/>    
+    <bendpoint x="32" y="3553"/>    
+    <bendpoint x="32" y="3843"/>    
+    <bendpoint x="32" y="4223"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="38">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="39">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="40">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="41">    
+    <bendpoint x="272" y="3843"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="42">    
+    <bendpoint x="1157" y="201"/>    
+    <bendpoint x="881" y="1697"/>    
+    <bendpoint x="1046" y="3553"/>    
+    <bendpoint x="1046" y="3843"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="43">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="44" name="guiLogin"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="46">    
+    <bendpoint x="1088" y="3553"/>    
+    <bendpoint x="1088" y="3843"/>    
+    <bendpoint x="1088" y="4223"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="47">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="48">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="49" name="guiBook"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="51">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="52">    
+    <bendpoint x="1559" y="3553"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="53">    
+    <bendpoint x="412" y="201"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="54">    
+    <bendpoint x="753" y="1697"/>    
+    <bendpoint x="753" y="3553"/>    
+    <bendpoint x="753" y="3843"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="55">    
+    <bendpoint x="795" y="201"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="56">    
+    <bendpoint x="1601" y="3843"/>    
+    <bendpoint x="1601" y="4223"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="57">    
+    <bendpoint x="93" y="3843"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="58" name="bookList"/>      
+      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="60">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="62">    
+    <bendpoint x="860" y="1697"/>    
+    <bendpoint x="1025" y="3553"/>    
+    <bendpoint x="1067" y="3843"/>    
+    <bendpoint x="1067" y="4223"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="63">    
+    <bendpoint x="1882" y="201"/>    
+    <bendpoint x="1882" y="1697"/>    
+    <bendpoint x="1882" y="3553"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="64" name="loginUser"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="66">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="67">    
+    <bendpoint x="1540" y="1697"/>    
+    <bendpoint x="1538" y="3553"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="68" name="loginUser"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="70">    
+    <bendpoint x="53" y="201"/>    
+    <bendpoint x="53" y="1697"/>    
+    <bendpoint x="53" y="3553"/>    
+    <bendpoint x="53" y="3843"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="71">    
+    <bendpoint x="1903" y="201"/>    
+    <bendpoint x="1903" y="1697"/>    
+    <bendpoint x="1903" y="3553"/>    
+    <bendpoint x="1903" y="3843"/>    
+    <bendpoint x="1903" y="4223"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="72">    
+    <bendpoint x="1157" y="1697"/>    
+    <bendpoint x="1157" y="3553"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="73">    
+    <bendpoint x="1861" y="201"/>    
+    <bendpoint x="1861" y="1697"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="74">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="76">    
+    <bendpoint x="711" y="3553"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="77">    
+    <bendpoint x="1173" y="3843"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="78">    
+    <bendpoint x="664" y="4223"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="79">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="80">    
+    <bendpoint x="370" y="201"/>    
+    <bendpoint x="370" y="1697"/>    
+    <bendpoint x="411" y="3553"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="81">    
+    <bendpoint x="1178" y="201"/>    
+    <bendpoint x="1178" y="1697"/>    
+    <bendpoint x="1178" y="3553"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="82" name="loginUser"/>      
+      <multiplicity id="83" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="84">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="85">    
+    <bendpoint x="1840" y="1697"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="86">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="87">    
+    <bendpoint x="774" y="3843"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="88">    
+    <bendpoint x="1004" y="3553"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="89" name="loginUser"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="92" name="guiUser"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="94">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <association id="95">    
+    <bendpoint x="1218" y="3553"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="96" name="userList"/>      
+      <multiplicity id="97" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
