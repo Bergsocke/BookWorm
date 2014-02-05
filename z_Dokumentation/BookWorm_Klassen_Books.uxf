@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="12.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>20</x>
-      <y>230</y>
-      <w>1050</w>
-      <h>600</h>
+      <x>322</x>
+      <y>0</y>
+      <w>735</w>
+      <h>399</h>
     </coordinates>
     <panel_attributes>model.book::Book
 --
@@ -44,17 +44,17 @@
 +setComment(String comment): void
 +getRead(): String
 +setRead(String read): void
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1080</x>
-      <y>230</y>
-      <w>270</w>
-      <h>190</h>
+      <x>973</x>
+      <y>420</y>
+      <w>189</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>model.book::BookDB
 --
@@ -67,35 +67,17 @@
 +saveBook(Book bookToSave): int
 +updateBook(Book bookToUpdate): int
 +deleteBook(String bookID): int
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>20</x>
-      <y>890</y>
-      <w>220</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>model.login::LoginDB
---
--myResultSet = null: ResultSet
---
-+login(User loginUser): int
-+loginuser(User loginUser): User
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>20</x>
-      <y>0</y>
-      <w>330</w>
-      <h>190</h>
+      <x>868</x>
+      <y>784</y>
+      <w>231</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>model::SQLDatabase
 --
@@ -108,71 +90,17 @@
 +executeSQLQuery(String sqlStatement): ResultSet
 +executeSQLUpdate(String sqlStatement): int
 +closeConnections(): void
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>20</x>
-      <y>1040</y>
-      <w>530</w>
-      <h>310</h>
-    </coordinates>
-    <panel_attributes>model.user::User
---
--userID: String
--userName: String
--userPassword: String
--userRole: String
---
-+User(String userName, String userPassword): ctor
-+User(String userName, String userPassword, String userRole): ctor
-+User(String userID, String userName, String userPassword, String userRole): ctor
-+getUserID(): String
-+setUserID(String userID): void
-+getUserName(): String
-+setUserName(String userName): void
-+getUserPassword(): String
-+setUserPassword(String userPassword): void
-+getUserRole(): String
-+setUserRole(String userRole): void
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>560</x>
-      <y>1040</y>
-      <w>320</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>model.user::UserDB
---
--myResultSet = null: ResultSet
--successful = 0: int
---
-+displayAll(): List&lt;User&gt;
-+findByID(String userID): User
-+findByUserName(String userName): List&lt;User&gt;
-+saveUser(User userToSave): int
-+updateUser(User userToUpdate): int
-+newPassword(User userToUpdate): int
-+deleteUser(String userID): int
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>20</x>
-      <y>1560</y>
-      <w>420</w>
-      <h>1720</h>
+      <x>7</x>
+      <y>0</y>
+      <w>294</w>
+      <h>1113</h>
     </coordinates>
     <panel_attributes>view.book::BookGUI
 --
@@ -275,17 +203,17 @@
 +setDeleteButton(JButton deleteButton): void
 +getLoginUser(): User
 +setLoginUser(User loginUser): void
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>790</x>
-      <y>1560</y>
-      <w>420</w>
-      <h>140</h>
+      <x>637</x>
+      <y>427</y>
+      <w>294</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>view.book::BookGUIActionListener
 --
@@ -295,17 +223,17 @@
 --
 +BookGUIActionListener(BookGUI guiBook, User loginUser): ctor
 +actionPerformed(ActionEvent event): void
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>450</x>
-      <y>1560</y>
-      <w>330</w>
-      <h>180</h>
+      <x>315</x>
+      <y>616</y>
+      <w>231</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>view.book::BookTable
 --
@@ -317,17 +245,17 @@
 +getRowCount(): int
 +getColumnName(int spaltenNr): String
 +getValueAt(int row, int column): Object
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>1220</x>
-      <y>1560</y>
-      <w>310</w>
-      <h>110</h>
+      <x>315</x>
+      <y>784</y>
+      <w>217</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>view.book::BookTableListener
 --
@@ -335,249 +263,326 @@
 --
 +BookTableListener(BookGUI guiBook): ctor
 +valueChanged(ListSelectionEvent event): void
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>20</x>
-      <y>1410</y>
-      <w>330</w>
-      <h>90</h>
+      <x>875</x>
+      <y>574</y>
+      <w>231</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>view::InfoError
 --
 -serialVersionUID = 4074118514759731523L: long
 --
 +showMessage(String errorText): void
---
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>360</x>
-      <y>1410</y>
-      <w>340</w>
-      <h>90</h>
+      <x>315</x>
+      <y>504</y>
+      <w>238</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>view::InfoSuccess
 --
 -serialVersionUID = -8551295904949148610L: long
 --
 +showMessage(String successText): void
---
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1043</x>
+      <y>525</y>
+      <w>34</w>
+      <h>62</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>21;21;21;49</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1057</x>
+      <y>525</y>
+      <w>83</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>70;21;21;259</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>980</x>
+      <y>378</y>
+      <w>34</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>21;42;21;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>280</x>
+      <y>441</y>
+      <w>370</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>357;21;21;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>280</x>
+      <y>637</y>
+      <w>48</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>35;21;21;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>532</x>
+      <y>462</y>
+      <w>118</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>105;21;21;77</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>728</x>
+      <y>378</y>
+      <w>34</w>
+      <h>62</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>21;49;21;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>875</x>
+      <y>497</y>
+      <w>34</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>21;21;21;77</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>910</x>
+      <y>476</y>
+      <w>76</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>21;21;63;21</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>833</x>
+      <y>497</y>
+      <w>69</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>21;21;56;287</additional_attributes>
+  </element>
+  <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>20</x>
-      <y>3340</y>
-      <w>360</w>
-      <h>400</h>
+      <x>833</x>
+      <y>973</y>
+      <w>245</w>
+      <h>259</h>
     </coordinates>
     <panel_attributes>view.login::LoginGUI
 --
--serialVersionUID = -6035816178550912787L: long
--loginPanel: JPanel
--loginButton: JButton
--breakButton: JButton
--usernameLabel: JLabel
--usernameText: JTextField
--passwordLabel: JLabel
--passwordText: JPasswordField
+-serialVersionUID: long
+-loginPanel: javax.swing.JPanel
+-loginButton: javax.swing.JButton
+-breakButton: javax.swing.JButton
+-usernameLabel: javax.swing.JLabel
+-usernameText: javax.swing.JTextField
+-passwordLabel: javax.swing.JLabel
+-passwordText: javax.swing.JPasswordField
 --
-+LoginGUI(JFrame loginFrame): ctor
-+main(String[] args): void
++main(java.lang.String[]): void
++LoginGUI(javax.swing.JFrame): ctor
 -initLoginGUI(): void
-+startLogin(User myUser): void
++startLogin(model.user.User): void
 +closeLoginDialog(): void
-+keyPressed(KeyEvent event): void
-+keyReleased(KeyEvent e): void
-+keyTyped(KeyEvent e): void
-+getUsernameText(): JTextField
-+setUsernameText(JTextField usernameText): void
-+getPasswordText(): JPasswordField
-+setPasswordText(JPasswordField passwordText): void
---
++keyPressed(java.awt.event.KeyEvent): void
++keyReleased(java.awt.event.KeyEvent): void
++keyTyped(java.awt.event.KeyEvent): void
++getUsernameText(): javax.swing.JTextField
++setUsernameText(javax.swing.JTextField): void
++getPasswordText(): javax.swing.JPasswordField
++setPasswordText(javax.swing.JPasswordField): void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>390</x>
-      <y>3340</y>
-      <w>330</w>
-      <h>120</h>
+      <x>819</x>
+      <y>497</y>
+      <w>41</w>
+      <h>489</h>
     </coordinates>
-    <panel_attributes>view.login::LoginGUIActionListener
---
--guiLogin: LoginGUI
---
-+LoginGUIActionListener(LoginGUI guiLogin): ctor
-+actionPerformed(ActionEvent event): void
-+passwordHash(User myUser): String
---
+    <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>21;21;28;476</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>280</x>
+      <y>784</y>
+      <w>48</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>35;21;21;21</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>20</x>
-      <y>3800</y>
-      <w>420</w>
-      <h>1380</h>
+      <x>574</x>
+      <y>546</y>
+      <w>238</w>
+      <h>903</h>
     </coordinates>
     <panel_attributes>view.user::UserGUI
 --
--serialVersionUID = -2334577762951716368L: long
--labelFont = "Verdana": String
--labelStyle = Font.BOLD: int
--labelSize = 12: int
--textFont = "Arial": String
--textStyle = Font.PLAIN: int
--textSize = 12: int
--northPanel: JPanel
--eastPanel: JPanel
--westPanel: JPanel
--searchLabel: JLabel
--searchText: JTextField
--searchButton: JButton
--allButton: JButton
--userIDLabel: JLabel
--userIDText: JTextField
--userNameLabel: JLabel
--userNameText: JTextField
--userPasswordLabel: JLabel
--userPasswordText: JTextField
--userRoleLabel: JLabel
--userRoleCombo: JComboBox&lt;String&gt;
--clearButton: JButton
--saveButton: JButton
--deleteButton: JButton
--createPWButton: JButton
--savePWButton: JButton
--closeButton: JButton
--userTable: JTable
--tableScroll: JScrollPane
--userMenuBar: JMenuBar
--changeMenu: JMenu
--changeMenuItem: JMenuItem
--logoutMenu: JMenu
--logoutMenuItem: JMenuItem
--closeMenuItem: JMenuItem
--helpMenu: JMenu
--helpMenuItem: JMenuItem
--loginUser: User
+-serialVersionUID: long
+-labelFont: java.lang.String
+-labelStyle: int
+-labelSize: int
+-textFont: java.lang.String
+-textStyle: int
+-textSize: int
+-northPanel: javax.swing.JPanel
+-eastPanel: javax.swing.JPanel
+-westPanel: javax.swing.JPanel
+-searchLabel: javax.swing.JLabel
+-searchText: javax.swing.JTextField
+-searchButton: javax.swing.JButton
+-allButton: javax.swing.JButton
+-userIDLabel: javax.swing.JLabel
+-userIDText: javax.swing.JTextField
+-userNameLabel: javax.swing.JLabel
+-userNameText: javax.swing.JTextField
+-userPasswordLabel: javax.swing.JLabel
+-userPasswordText: javax.swing.JTextField
+-userRoleLabel: javax.swing.JLabel
+-userRoleCombo: javax.swing.JComboBox
+-clearButton: javax.swing.JButton
+-saveButton: javax.swing.JButton
+-deleteButton: javax.swing.JButton
+-createPWButton: javax.swing.JButton
+-savePWButton: javax.swing.JButton
+-closeButton: javax.swing.JButton
+-userTable: javax.swing.JTable
+-tableScroll: javax.swing.JScrollPane
+-userMenuBar: javax.swing.JMenuBar
+-changeMenu: javax.swing.JMenu
+-changeMenuItem: javax.swing.JMenuItem
+-logoutMenu: javax.swing.JMenu
+-logoutMenuItem: javax.swing.JMenuItem
+-closeMenuItem: javax.swing.JMenuItem
+-helpMenu: javax.swing.JMenu
+-helpMenuItem: javax.swing.JMenuItem
+-loginUser: model.user.User
 --
-+UserGUI(String frameTitle, User loginUser): ctor
-+letStartedUserGUI(User loginUser): void
+~UserGUI(): ctor
++letStartedUserGUI(model.user.User): void
++UserGUI(java.lang.String, model.user.User): ctor
 -initComponents(): void
 -initMenuBar(): void
 -initComponentsNorth(): void
 -initComponentsEast(): void
 -initComponentsWest(): void
-+createUserTable(): JTable
++createUserTable(): javax.swing.JTable
 -createteWestTable(): void
 +reloadWestTable(): void
 +resetTableEast(): void
-+getSaveButton(): JButton
-+getUserIDText(): JTextField
-+setUserIDText(JTextField userIDText): void
-+getUserNameText(): JTextField
-+setUserNameText(JTextField userNameText): void
-+getUserPasswordText(): JTextField
-+setUserPasswordText(JTextField userPasswordText): void
-+getUserRoleCombo(): JComboBox&lt;String&gt;
-+setUserRoleCombo(JComboBox&lt;String&gt; userRoleCombo): void
-+setSaveButton(JButton saveButton): void
-+getSearchText(): JTextField
-+setSearchText(JTextField searchText): void
-+getSearchButton(): JButton
-+setSearchButton(JButton searchButton): void
-+getAllButton(): JButton
-+setAllButton(JButton allButton): void
-+getNewButton(): JButton
-+setNewButton(JButton newButton): void
-+getUserTable(): JTable
-+setUserTable(JTable UserTable): void
-+getDeleteButton(): JButton
-+setDeleteButton(JButton deleteButton): void
-+getCreatePWButton(): JButton
-+setCreatePWButton(JButton createPWButton): void
-+getSavePWButton(): JButton
-+setSavePWButton(JButton savePWButton): void
-+getLoginUser(): User
-+setLoginUser(User loginUser): void
---
++getSaveButton(): javax.swing.JButton
++getUserIDText(): javax.swing.JTextField
++setUserIDText(javax.swing.JTextField): void
++getUserNameText(): javax.swing.JTextField
++setUserNameText(javax.swing.JTextField): void
++getUserPasswordText(): javax.swing.JTextField
++setUserPasswordText(javax.swing.JTextField): void
++getUserRoleCombo(): javax.swing.JComboBox
++setUserRoleCombo(javax.swing.JComboBox): void
++setSaveButton(javax.swing.JButton): void
++getSearchText(): javax.swing.JTextField
++setSearchText(javax.swing.JTextField): void
++getSearchButton(): javax.swing.JButton
++setSearchButton(javax.swing.JButton): void
++getAllButton(): javax.swing.JButton
++setAllButton(javax.swing.JButton): void
++getNewButton(): javax.swing.JButton
++setNewButton(javax.swing.JButton): void
++getUserTable(): javax.swing.JTable
++setUserTable(javax.swing.JTable): void
++getDeleteButton(): javax.swing.JButton
++setDeleteButton(javax.swing.JButton): void
++getCreatePWButton(): javax.swing.JButton
++setCreatePWButton(javax.swing.JButton): void
++getSavePWButton(): javax.swing.JButton
++setSavePWButton(javax.swing.JButton): void
++getLoginUser(): model.user.User
++setLoginUser(model.user.User): void
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Class</type>
+    <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>800</x>
-      <y>3800</y>
-      <w>420</w>
-      <h>140</h>
+      <x>630</x>
+      <y>497</y>
+      <w>34</w>
+      <h>62</h>
     </coordinates>
-    <panel_attributes>view.user::UserGUIActionListener
---
--guiUser: UserGUI
--loginUser: User
--successful = 0: int
---
-+UserGUIActionListener(UserGUI guiUser, User loginUser): ctor
-+actionPerformed(ActionEvent event): void
---
+    <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>450</x>
-      <y>3800</y>
-      <w>340</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>view.user::UserTable
---
--serialVersionUID = -6307716510674042079L: long
--userList: List&lt;User&gt;
---
-+UserTable(List&lt;User&gt; userList): ctor
-+getColumnCount(): int
-+getRowCount(): int
-+getColumnName(int spaltenNr): String
-+getValueAt(int row, int column): Object
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>1230</x>
-      <y>3800</y>
-      <w>310</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>view.user::UserTableListener
---
--guiUser: UserGUI
---
-+UserTableListener(UserGUI guiUser): ctor
-+valueChanged(ListSelectionEvent event): void
---
-</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>21;21;21;49</additional_attributes>
   </element>
 </diagram>

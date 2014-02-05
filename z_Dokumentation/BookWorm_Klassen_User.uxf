@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>496</x>
+      <y>0</y>
+      <w>264</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>model::SQLDatabase
+--
+-connect = null: Connection
+-myPreparedStatement = null: PreparedStatement
+-myResultSet = null: ResultSet
+-successful = 0: int
+--
+-connectDB(): Connection
++executeSQLQuery(String sqlStatement): ResultSet
++executeSQLUpdate(String sqlStatement): int
++closeConnections(): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>496</x>
+      <y>800</y>
+      <w>264</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>view::InfoError
+--
+-serialVersionUID = 4074118514759731523L: long
+--
++showMessage(String errorText): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>496</x>
+      <y>888</y>
+      <w>272</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>view::InfoSuccess
+--
+-serialVersionUID = -8551295904949148610L: long
+--
++showMessage(String successText): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>792</x>
+      <y>640</y>
+      <w>288</w>
+      <h>304</h>
+    </coordinates>
+    <panel_attributes>view.login::LoginGUI
+--
+-serialVersionUID = -6035816178550912787L: long
+-loginPanel: JPanel
+-loginButton: JButton
+-breakButton: JButton
+-usernameLabel: JLabel
+-usernameText: JTextField
+-passwordLabel: JLabel
+-passwordText: JPasswordField
+--
++LoginGUI(JFrame loginFrame): ctor
++main(String[] args): void
+-initLoginGUI(): void
++startLogin(User myUser): void
++closeLoginDialog(): void
++keyPressed(KeyEvent event): void
++keyReleased(KeyEvent e): void
++keyTyped(KeyEvent e): void
++getUsernameText(): JTextField
++setUsernameText(JTextField usernameText): void
++getPasswordText(): JPasswordField
++setPasswordText(JPasswordField passwordText): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>120</x>
+      <y>0</y>
+      <w>336</w>
+      <h>1056</h>
+    </coordinates>
+    <panel_attributes>view.user::UserGUI
+--
+-serialVersionUID = -2334577762951716368L: long
+-labelFont = "Verdana": String
+-labelStyle = Font.BOLD: int
+-labelSize = 12: int
+-textFont = "Arial": String
+-textStyle = Font.PLAIN: int
+-textSize = 12: int
+-northPanel: JPanel
+-eastPanel: JPanel
+-westPanel: JPanel
+-searchLabel: JLabel
+-searchText: JTextField
+-searchButton: JButton
+-allButton: JButton
+-userIDLabel: JLabel
+-userIDText: JTextField
+-userNameLabel: JLabel
+-userNameText: JTextField
+-userPasswordLabel: JLabel
+-userPasswordText: JTextField
+-userRoleLabel: JLabel
+-userRoleCombo: JComboBox&lt;String&gt;
+-clearButton: JButton
+-saveButton: JButton
+-deleteButton: JButton
+-createPWButton: JButton
+-savePWButton: JButton
+-closeButton: JButton
+-userTable: JTable
+-tableScroll: JScrollPane
+-userMenuBar: JMenuBar
+-changeMenu: JMenu
+-changeMenuItem: JMenuItem
+-logoutMenu: JMenu
+-logoutMenuItem: JMenuItem
+-closeMenuItem: JMenuItem
+-helpMenu: JMenu
+-helpMenuItem: JMenuItem
+-loginUser: User
+--
++UserGUI(String frameTitle, User loginUser): ctor
++letStartedUserGUI(User loginUser): void
+-initComponents(): void
+-initMenuBar(): void
+-initComponentsNorth(): void
+-initComponentsEast(): void
+-initComponentsWest(): void
++createUserTable(): JTable
+-createteWestTable(): void
++reloadWestTable(): void
++resetTableEast(): void
++getSaveButton(): JButton
++getUserIDText(): JTextField
++setUserIDText(JTextField userIDText): void
++getUserNameText(): JTextField
++setUserNameText(JTextField userNameText): void
++getUserPasswordText(): JTextField
++setUserPasswordText(JTextField userPasswordText): void
++getUserRoleCombo(): JComboBox&lt;String&gt;
++setUserRoleCombo(JComboBox&lt;String&gt; userRoleCombo): void
++setSaveButton(JButton saveButton): void
++getSearchText(): JTextField
++setSearchText(JTextField searchText): void
++getSearchButton(): JButton
++setSearchButton(JButton searchButton): void
++getAllButton(): JButton
++setAllButton(JButton allButton): void
++getNewButton(): JButton
++setNewButton(JButton newButton): void
++getUserTable(): JTable
++setUserTable(JTable UserTable): void
++getDeleteButton(): JButton
++setDeleteButton(JButton deleteButton): void
++getCreatePWButton(): JButton
++setCreatePWButton(JButton createPWButton): void
++getSavePWButton(): JButton
++setSavePWButton(JButton savePWButton): void
++getLoginUser(): User
++setLoginUser(User loginUser): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>496</x>
+      <y>456</y>
+      <w>336</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>view.user::UserGUIActionListener
+--
+-guiUser: UserGUI
+-loginUser: User
+-successful = 0: int
+--
++UserGUIActionListener(UserGUI guiUser, User loginUser): ctor
++actionPerformed(ActionEvent event): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>496</x>
+      <y>664</y>
+      <w>272</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>view.user::UserTable
+--
+-serialVersionUID = -6307716510674042079L: long
+-userList: List&lt;User&gt;
+--
++UserTable(List&lt;User&gt; userList): ctor
++getColumnCount(): int
++getRowCount(): int
++getColumnName(int spaltenNr): String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>496</x>
+      <y>976</y>
+      <w>248</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>view.user::UserTableListener
+--
+-guiUser: UserGUI
+--
++UserTableListener(UserGUI guiUser): ctor
++valueChanged(ListSelectionEvent event): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>856</x>
+      <y>0</y>
+      <w>256</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>model.user::UserDB
+--
+-myResultSet = null: ResultSet
+-successful = 0: int
+--
++displayAll(): List&lt;User&gt;
++findByID(String userID): User
++findByUserName(String userName): List&lt;User&gt;
++saveUser(User userToSave): int
++updateUser(User userToUpdate): int
++newPassword(User userToUpdate): int
++deleteUser(String userID): int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>496</x>
+      <y>168</y>
+      <w>424</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>model.user::User
+--
+-userID: String
+-userName: String
+-userPassword: String
+-userRole: String
+--
++User(String userName, String userPassword): ctor
++User(String userName, String userPassword, String userRole): ctor
++User(String userID, String userName, String userPassword, String userRole): ctor
++getUserID(): String
++setUserID(String userID): void
++getUserName(): String
++setUserName(String userName): void
++getUserPassword(): String
++setUserPassword(String userPassword): void
++getUserRole(): String
++setUserRole(String userRole): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1136</x>
+      <y>8</y>
+      <w>336</w>
+      <h>1312</h>
+    </coordinates>
+    <panel_attributes>view.book::BookGUI
+--
+-serialVersionUID = -4071792935538021823L: long
+-labelFont = "Verdana": String
+-labelStyle = Font.BOLD: int
+-labelSize = 12: int
+-textFont = "Arial": String
+-textStyle = Font.PLAIN: int
+-textSize = 12: int
+-northPanel: JPanel
+-eastPanel: JPanel
+-westPanel: JPanel
+-searchLabel: JLabel
+-searchText: JTextField
+-searchButton: JButton
+-allButton: JButton
+-bookIdLabel: JLabel
+-bookIdText: JTextField
+-isbnLabel: JLabel
+-isbnText: JTextField
+-titleLabel: JLabel
+-titleText: JTextField
+-authorLabel: JLabel
+-authorText: JTextField
+-formatLabel: JLabel
+-formatCombo: JComboBox&lt;String&gt;
+-publicationDateLabel: JLabel
+-publicationDateText: JTextField
+-shortDescriptionLabel: JLabel
+-shortDescriptionArea: JTextArea
+-categoryLabel: JLabel
+-categoryCombo: JComboBox&lt;String&gt;
+-commentLabel: JLabel
+-commentArea: JTextArea
+-readLabel: JLabel
+-readCombo: JComboBox&lt;String&gt;
+-clearButton: JButton
+-saveButton: JButton
+-deleteButton: JButton
+-closeButton: JButton
+-bookTable: JTable
+-tableScroll: JScrollPane
+-shortDescriptionScroll: JScrollPane
+-commentScroll: JScrollPane
+-bookMenuBar: JMenuBar
+-changeMenu: JMenu
+-changeMenuItem: JMenuItem
+-logoutMenu: JMenu
+-logoutMenuItem: JMenuItem
+-closeMenuItem: JMenuItem
+-helpMenu: JMenu
+-helpMenuItem: JMenuItem
+-loginUser: User
+--
++BookGUI(String frameTitle, User loginUser): ctor
++letStartedBookGUI(User loginUser): void
+-initComponents(): void
+-initMenuBar(): void
+-initComponentsNorth(): void
+-initComponentsEast(): void
+-initComponentsWest(): void
++createBookTable(): JTable
+-createteWestTable(): void
++reloadWestTable(): void
++resetTableEast(): void
++getBookIdText(): JTextField
++setBookIdText(JTextField bookIdText): void
++getIsbnText(): JTextField
++setIsbnText(JTextField isbnText): void
++getTitleText(): JTextField
++setTitleText(JTextField titleText): void
++getAuthorText(): JTextField
++setAuthorText(JTextField authorText): void
++getFormatCombo(): JComboBox&lt;String&gt;
++setFormatCombo(JComboBox&lt;String&gt; formatCombo): void
++getPublicationDateText(): JTextField
++setPublicationDateText(JTextField publicationDateText): void
++getShortDescriptionArea(): JTextArea
++setShortDescriptionArea(JTextArea shortDescriptionArea): void
++getCategoryCombo(): JComboBox&lt;String&gt;
++setCategoryCombo(JComboBox&lt;String&gt; categoryCombo): void
++getCommentArea(): JTextArea
++setCommentArea(JTextArea commentArea): void
++getReadCombo(): JComboBox&lt;String&gt;
++setReadCombo(JComboBox&lt;String&gt; readCombo): void
++getSaveButton(): JButton
++setSaveButton(JButton saveButton): void
++getSearchText(): JTextField
++setSearchText(JTextField searchText): void
++getSearchButton(): JButton
++setSearchButton(JButton searchButton): void
++getAllButton(): JButton
++setAllButton(JButton allButton): void
++getNewButton(): JButton
++setNewButton(JButton newButton): void
++getBookTable(): JTable
++setBookTable(JTable bookTable): void
++getDeleteButton(): JButton
++setDeleteButton(JButton deleteButton): void
++getLoginUser(): User
++setLoginUser(User loginUser): void
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
