@@ -56,7 +56,7 @@ main
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>BookTable
+    <panel_attributes>bookTable
 :JTable</panel_attributes>
     <additional_attributes/>
   </element>
@@ -94,7 +94,7 @@ createBookTable
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>:BookGui</panel_attributes>
+    <panel_attributes>gui:BookGui</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -142,7 +142,7 @@ displayAll()
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>:BookGui</panel_attributes>
+    <panel_attributes>gui:BookGui</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -283,7 +283,7 @@ fg=gray</panel_attributes>
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>:BookGui</panel_attributes>
+    <panel_attributes>gui:BookGui</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -318,7 +318,7 @@ fg=gray</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 deleteBook
-(BookID)
+(bookID)
 </panel_attributes>
     <additional_attributes>140;50;30;50</additional_attributes>
   </element>
@@ -343,7 +343,7 @@ return successful
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>:BookGui</panel_attributes>
+    <panel_attributes>gui:BookGui</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -695,7 +695,7 @@ fg=orange</panel_attributes>
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>:BookGui</panel_attributes>
+    <panel_attributes>gui:BookGui</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

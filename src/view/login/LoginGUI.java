@@ -61,19 +61,19 @@ public class LoginGUI extends JDialog implements KeyListener {
 		JFrame loginFrame = new JFrame();
 
 		// Konstruktor wird aufgerufen und ein Frame zugewiesen
-		LoginGUI myLogin = new LoginGUI(loginFrame);
+		LoginGUI gui = new LoginGUI(loginFrame);
 
 		// Überschrift
-		myLogin.setTitle("Anmeldung BookWorm");
+		gui.setTitle("Anmeldung BookWorm");
 
 		// Fenstergröße wird gesetzt
-		myLogin.setSize(400, 300);
+		gui.setSize(400, 300);
 
 		// Positionierung am Desktop
-		myLogin.setLocation(600, 300);
+		gui.setLocation(600, 300);
 
 		// Sichtbar machen
-		myLogin.setVisible(true);
+		gui.setVisible(true);
 	}
 
 	/**
