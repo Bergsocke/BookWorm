@@ -30,7 +30,7 @@ public class SQLDatabase {
 	 * 
 	 * @return connect
 	 */
-	public static Connection connectDB() {
+	private static Connection connectDB() {
 
 		try {
 			Properties myProperties = new Properties();

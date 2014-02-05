@@ -1,0 +1,10 @@
+[Box: ::model.book - ::model.book::Book]
+X=20
+Y=40
+
+[Diagram: ::model.book]
+OffsetX=0
+OffsetY=0
+Visibility=0
+ShowAssoc=1
+
