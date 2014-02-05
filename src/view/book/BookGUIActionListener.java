@@ -3,7 +3,6 @@ package view.book;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import model.SQLDatabase;
@@ -18,17 +17,20 @@ import view.user.UserGUI;
 /**
  * Mit der Klasse "BookActionListener" werden die Aktionen für die Buttons
  * "alle anzeigen", "suchen", "neu", "speichern", "löschen", "Programm beenden"
- * sowie für die MenüBarItems "Neuen Datensatz anlegen", "Datensatz speichern",
- * "Datensatz löschen", "Zur Userverwaltung wechseln", "Benutzer abmelden",
- * "Programm beenden" und "Über das Programm" der Klasse BookGUI festgelegt.
+ * sowie für die MenüBarItems "Zur Userverwaltung wechseln",
+ * "Benutzer abmelden", "Programm beenden" und "Über das Programm" der Klasse
+ * BookGUI festgelegt.
  * 
  * @author Bergsocke
  * 
  */
 public class BookGUIActionListener implements ActionListener {
 
-	BookGUI guiBook;
-	User loginUser;
+	private BookGUI guiBook;
+	private User loginUser;
+	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
+	// Datensatzes erfolgreich war
+	private int successful = 0;
 
 	/**
 	 * Konstruktor
@@ -48,28 +50,26 @@ public class BookGUIActionListener implements ActionListener {
 		// alle Datensätze der Datenbank angezeigt (mit Hilfe der Methode
 		// "createBookTable()" aus der Klasse BookGUI) und der Text im Suchfeld
 		// wird zurückgesetzt
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("alle anzeigen")) {
+		if (event.getActionCommand().contains("alle anzeigen")) {
 			// Suchbegriff wird zurückgesetzt
 			guiBook.getSearchText().setText("");
 			guiBook.createBookTable();
 
 			// EastTable wird zurückgesetzt
 			guiBook.resetTableEast();
-
+			// Button "löschen" wird deaktiviert
 			guiBook.getDeleteButton().setEnabled(false);
 		}
 
 		// Wenn auf den Button "suchen" geklickt wird, wird in der Datenbank
 		// nach dem entsprechenden Buchtitel gesucht (mit Hilfe der Methode
 		// "createBookTable()" aus der Klasse BookGUI)
-		if (event.getSource() instanceof JButton
-				&& event.getActionCommand().contains("suchen")) {
+		if (event.getActionCommand().contains("suchen")) {
 			guiBook.createBookTable();
 
 			// EastTable wird zurückgesetzt
 			guiBook.resetTableEast();
-
+			// Button "löschen" wird deaktiviert
 			guiBook.getDeleteButton().setEnabled(false);
 
 			// Wenn kein Datensatz gefunden wurde, wird eine entsprechende
@@ -132,7 +132,7 @@ public class BookGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der neue
 					// Datensatz wird in die Datenbank gespeichert
-					BookDB.saveBook(myBook);
+					successful = BookDB.saveBook(myBook);
 				}
 
 			} else {
@@ -171,13 +171,13 @@ public class BookGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der
 					// Datensatz wird in die Datenbank gespeichert
-					BookDB.updateBook(myBook);
+					successful = BookDB.updateBook(myBook);
 				}
 			}
 
 			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
 			// entsprechende Meldung ausgegeben
-			if (BookDB.successful == 1) {
+			if (successful == 1) {
 				// Die Tabelle im WestPanel wird neu aufgebaut, damit der
 				// neu angelegte Datensatz gleich angezeigt wird
 				guiBook.reloadWestTable();
@@ -220,11 +220,11 @@ public class BookGUIActionListener implements ActionListener {
 			if (check == 0) {
 				// Eine Verbindung zur Datenbank wird aufgebaut und der
 				// Datensatz wird aus der Datenbank gelöscht
-				BookDB.deleteBook(BookID);
+				successful = BookDB.deleteBook(BookID);
 
 				// Wenn der Datensatz erfolgreich gelöscht wurde, wird eine
 				// entsprechende Meldung ausgegeben
-				if (BookDB.successful == 1) {
+				if (successful == 1) {
 					// Die Tabelle im WestPanel wird neu aufgebaut, damit der
 					// gelöschte Datensatz nicht mehr angezeigt wird
 					guiBook.reloadWestTable();
@@ -234,8 +234,7 @@ public class BookGUIActionListener implements ActionListener {
 					InfoSuccess.showMessage(successText);
 
 					// Wenn der Datensatz nicht gelöscht werden konnte, wird
-					// eine
-					// entsprechende Meldung ausgegebe
+					// eine entsprechende Meldung ausgegebe
 				} else {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
@@ -267,9 +266,9 @@ public class BookGUIActionListener implements ActionListener {
 			UserGUI.letStartedUserGUI(loginUser);
 		}
 
-		// Wenn in der Menübar auf "Benutzer abmelden" geklickt wird, soll das
+		// Wenn in der Menübar auf "Benutzer abmelden" geklickt wird, wird das
 		// Programm-Fenster geschlossen und das Login-Fenster für eine
-		// erneute Benutzer-Anmeldung geöffnet werden.
+		// erneute Benutzer-Anmeldung geöffnet
 		if (event.getActionCommand().contains("Benutzer abmelden")) {
 			// Bücherverwaltungs-GUI wird beendet
 			guiBook.setVisible(false);

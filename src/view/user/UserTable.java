@@ -17,7 +17,7 @@ public class UserTable extends AbstractTableModel {
 
 	private static final long serialVersionUID = -6307716510674042079L;
 
-	public List<User> userList;
+	private List<User> userList;
 
 	/**
 	 * Konstruktor

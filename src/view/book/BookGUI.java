@@ -41,14 +41,14 @@ public class BookGUI extends JFrame {
 	private static final long serialVersionUID = -4071792935538021823L;
 
 	// Festlegung der Schriftart für die Bezeichnungsfelder und Buttons
-	static String labelFont = "Verdana";
-	static int labelStyle = Font.BOLD;
-	static int labelSize = 12;
+	private static String labelFont = "Verdana";
+	private static int labelStyle = Font.BOLD;
+	private static int labelSize = 12;
 
 	// Festlegung der Schriftart für die Textfelder und der Tabelle
-	static String textFont = "Arial";
-	static int textStyle = Font.PLAIN;
-	static int textSize = 12;
+	private static String textFont = "Arial";
+	private static int textStyle = Font.PLAIN;
+	private static int textSize = 12;
 
 	// Deklaration der erforderlichen Komponenten
 	private JPanel northPanel;

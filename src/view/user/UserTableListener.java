@@ -18,7 +18,7 @@ import view.InfoError;
  */
 public class UserTableListener implements ListSelectionListener {
 
-	UserGUI guiUser;
+	private UserGUI guiUser;
 
 	/**
 	 * Konstruktor

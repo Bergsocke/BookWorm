@@ -7,7 +7,7 @@ import model.user.User;
 import view.InfoError;
 
 /**
- * Die Klasse "LoginDB" prüft, ob die eingegebene
+ * Die Klasse "LoginDB" prüft, ob die vom Anwender eingegebene
  * Benutzername/Password-Kombination in der Tabelle "users" vorhanden ist
  * 
  * @author Bergsocke
@@ -18,7 +18,7 @@ public class LoginDB {
 	private static ResultSet myResultSet = null;
 
 	/**
-	 * Diese Methode prüft, ob die angegebene Benutzername/Password-Kombination
+	 * Diese Methode prüft, ob die eingegebene Benutzername/Password-Kombination
 	 * in der Tabelle "users" vorhanden ist
 	 * 
 	 * @param loginUser
@@ -58,8 +58,8 @@ public class LoginDB {
 	}
 
 	/**
-	 * Diese Methode liest die kompletten Daten des Anwenders aus (ID, Name, Passwort,
-	 * Rolle)
+	 * Diese Methode liest die kompletten Daten des Anwenders aus (ID, Name,
+	 * Passwort, Rolle)
 	 * 
 	 * @param loginUser
 	 * @return foundUser
