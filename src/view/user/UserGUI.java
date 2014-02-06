@@ -96,6 +96,22 @@ public class UserGUI extends JFrame {
 	private User loginUser;
 
 	/**
+	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten)
+	 * 
+	 * @param frameTitle
+	 * @param loginUser
+	 */
+	public UserGUI(String frameTitle, User loginUser) {
+
+		super(frameTitle);
+
+		this.loginUser = loginUser;
+
+		// Initialisierung der Fenster-Komponenten
+		this.initComponents();
+	}
+
+	/**
 	 * Die Userverwaltungs-GUI wird aufgebaut
 	 * 
 	 * @param loginUser
@@ -121,22 +137,6 @@ public class UserGUI extends JFrame {
 
 		// Fenster wird auf sichtbar gesetzt
 		gui.setVisible(true);
-	}
-
-	/**
-	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten)
-	 * 
-	 * @param frameTitle
-	 * @param loginUser
-	 */
-	public UserGUI(String frameTitle, User loginUser) {
-
-		super(frameTitle);
-
-		this.loginUser = loginUser;
-
-		// Initialisierung der Fenster-Komponenten
-		this.initComponents();
 	}
 
 	/**

@@ -49,6 +49,17 @@ public class LoginGUI extends JDialog implements KeyListener {
 	private JPasswordField passwordText;
 
 	/**
+	 * Konstruktor
+	 * 
+	 * @param loginFrame
+	 */
+	public LoginGUI(JFrame loginFrame) {
+		super(loginFrame);
+		// Aufbau des Login-Fensters
+		initLoginGUI();
+	}
+
+	/**
 	 * Die Main-Methode zum Starten der Java-Applikation
 	 * 
 	 * Ein Anmeldefenster wird erzeugt, in dem der Benutzer seine Benutzerdaten
@@ -74,17 +85,6 @@ public class LoginGUI extends JDialog implements KeyListener {
 
 		// Sichtbar machen
 		gui.setVisible(true);
-	}
-
-	/**
-	 * Konstruktor
-	 * 
-	 * @param loginFrame
-	 */
-	public LoginGUI(JFrame loginFrame) {
-		super(loginFrame);
-		// Aufbau des Login-Fensters
-		initLoginGUI();
 	}
 
 	/**

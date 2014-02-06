@@ -114,6 +114,22 @@ public class BookGUI extends JFrame {
 	private User loginUser;
 
 	/**
+	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten)
+	 * 
+	 * @param frameTitle
+	 * @param loginUser
+	 */
+	public BookGUI(String frameTitle, User loginUser) {
+
+		super(frameTitle);
+
+		this.loginUser = loginUser;
+
+		// Initialisierung der Fenster-Komponenten
+		this.initComponents();
+	}
+
+	/**
 	 * Bücherverwaltung-GUI wird aufgebaut
 	 * 
 	 * @param loginUser
@@ -138,23 +154,6 @@ public class BookGUI extends JFrame {
 
 		// Fenster wird auf sichtbar gesetzt
 		gui.setVisible(true);
-
-	}
-
-	/**
-	 * Konstruktur (Fensterbeschriftung und Initialisierung der Komponenten)
-	 * 
-	 * @param frameTitle
-	 * @param loginUser
-	 */
-	public BookGUI(String frameTitle, User loginUser) {
-
-		super(frameTitle);
-
-		this.loginUser = loginUser;
-
-		// Initialisierung der Fenster-Komponenten
-		this.initComponents();
 	}
 
 	/**
