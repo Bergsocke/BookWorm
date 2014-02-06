@@ -76,13 +76,13 @@ deleteBook
     <coordinates>
       <x>120</x>
       <y>290</y>
-      <w>210</w>
+      <w>250</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 return successful
 </panel_attributes>
-    <additional_attributes>30;50;190;50</additional_attributes>
+    <additional_attributes>30;50;230;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqDestroyMark</type>
