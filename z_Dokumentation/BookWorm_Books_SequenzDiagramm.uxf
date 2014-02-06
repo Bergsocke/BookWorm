@@ -118,7 +118,7 @@ createBookTable
     </coordinates>
     <panel_attributes>BookWorm Start &amp;
 Alle Bücher anzeigen
-fg=orange</panel_attributes>
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -261,7 +261,7 @@ return successful
       <h>430</h>
     </coordinates>
     <panel_attributes>Buch löschen
-fg=gray</panel_attributes>
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -625,7 +625,7 @@ delete
       <h>430</h>
     </coordinates>
     <panel_attributes>Buch ändern
-fg=gray</panel_attributes>
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -684,7 +684,7 @@ update
       <h>460</h>
     </coordinates>
     <panel_attributes>Buch suchen
-fg=orange</panel_attributes>
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -910,7 +910,7 @@ return bookTable
       <h>420</h>
     </coordinates>
     <panel_attributes>Buch neu erfassen
-fg=gray</panel_attributes>
+fg=magenta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

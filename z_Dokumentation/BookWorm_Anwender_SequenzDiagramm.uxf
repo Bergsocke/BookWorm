@@ -607,7 +607,7 @@ findByUserName
       <h>450</h>
     </coordinates>
     <panel_attributes>Anwender suchen
-fg=orange</panel_attributes>
+fg=#3c7a00</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1189,7 +1189,7 @@ displayAll()
       <h>420</h>
     </coordinates>
     <panel_attributes>Alle Anwender anzeigen
-fg=orange</panel_attributes>
+fg=#3c7a00</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
