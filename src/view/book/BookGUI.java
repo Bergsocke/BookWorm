@@ -96,6 +96,8 @@ public class BookGUI extends JFrame {
 	private JButton deleteButton;
 	private JButton closeButton;
 
+	private JLabel necessary;
+
 	private JTable bookTable;
 
 	private JScrollPane tableScroll;
@@ -275,8 +277,8 @@ public class BookGUI extends JFrame {
 
 		eastPanel = new JPanel();
 
-		// Layout für 14 Zeilen und 2 Spalten
-		eastPanel.setLayout(new GridLayout(14, 2));
+		// Layout für 15 Zeilen und 2 Spalten
+		eastPanel.setLayout(new GridLayout(15, 2));
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
@@ -303,7 +305,7 @@ public class BookGUI extends JFrame {
 		isbnText = new JTextField();
 		isbnText.setFont(new Font(textFont, textStyle, textSize));
 
-		titleLabel = new JLabel("Buch-Titel: ");
+		titleLabel = new JLabel("Buch-Titel: *");
 		titleLabel.setFont(new Font(labelFont, labelStyle, labelSize));
 		titleText = new JTextField();
 		titleText.setFont(new Font(textFont, textStyle, textSize));
@@ -436,6 +438,9 @@ public class BookGUI extends JFrame {
 		JLabel dummyLabel3 = new JLabel();
 		JLabel dummyLabel4 = new JLabel();
 
+		necessary = new JLabel("* Pflichteingabe");
+		necessary.setFont(new Font(labelFont, labelStyle, 10));
+
 		// Hinzufügen der einzelnen Komponenten zum EastPanel
 		eastPanel.add(bookIdLabel);
 		eastPanel.add(bookIdText);
@@ -475,6 +480,8 @@ public class BookGUI extends JFrame {
 		eastPanel.add(saveButton);
 		eastPanel.add(deleteButton);
 		eastPanel.add(closeButton);
+
+		eastPanel.add(necessary);
 
 		// Dummy-Labels für Abstand zwischen den Buttons und dem unteren
 		// Fensterrand

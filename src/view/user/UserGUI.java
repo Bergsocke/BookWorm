@@ -80,6 +80,8 @@ public class UserGUI extends JFrame {
 	private JButton savePWButton;
 	private JButton closeButton;
 
+	private JLabel necessary;
+
 	private JTable userTable;
 
 	private JScrollPane tableScroll;
@@ -251,8 +253,8 @@ public class UserGUI extends JFrame {
 
 		eastPanel = new JPanel();
 
-		// Layout für 9 Zeilen und 2 Spalten
-		eastPanel.setLayout(new GridLayout(9, 2));
+		// Layout für 10 Zeilen und 2 Spalten
+		eastPanel.setLayout(new GridLayout(10, 2));
 
 		// Unsichtbarer Rahmen wird gesetzt, um Abstand zum Frame zu bekommen
 		eastPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 15));
@@ -274,7 +276,7 @@ public class UserGUI extends JFrame {
 		// ausgelesen
 		userIDText.setEditable(false);
 
-		userNameLabel = new JLabel("Username: ");
+		userNameLabel = new JLabel("Username: *");
 		userNameLabel.setFont(new Font(labelFont, labelStyle, labelSize));
 		userNameText = new JTextField();
 		userNameText.setFont(new Font(textFont, textStyle, textSize));
@@ -392,6 +394,9 @@ public class UserGUI extends JFrame {
 		JLabel dummyLabel3 = new JLabel();
 		JLabel dummyLabel4 = new JLabel();
 
+		necessary = new JLabel("* Pflichteingabe");
+		necessary.setFont(new Font(labelFont, labelStyle, 10));
+
 		// Hinzufügen der einzelnen Komponenten zum EastPanel
 		eastPanel.add(userIDLabel);
 		eastPanel.add(userIDText);
@@ -415,6 +420,8 @@ public class UserGUI extends JFrame {
 		eastPanel.add(createPWButton);
 		eastPanel.add(savePWButton);
 		eastPanel.add(closeButton);
+
+		eastPanel.add(necessary);
 
 		// Dummy-Labels für Abstand zwischen den Buttons und dem unteren
 		// Fensterrand

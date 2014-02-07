@@ -133,7 +133,7 @@ public class UserGUIActionListener implements ActionListener {
 
 				// Wird der Benutzername leer gelassen, wird der Datenbank nicht
 				// abgespeichert. Es wird eine entsprechende Meldung ausgegeben.
-				if (myUser.getUserName().equals("")) {
+				if (myUser.getUserName().matches("")) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
 					String errorText = "Bitte Benutzernamen eingeben.";

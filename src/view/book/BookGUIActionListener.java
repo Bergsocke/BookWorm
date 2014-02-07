@@ -118,11 +118,9 @@ public class BookGUIActionListener implements ActionListener {
 						String.valueOf(guiBook.getCommentArea().getText()),
 						String.valueOf(guiBook.getReadCombo().getSelectedItem()));
 
-				// Wird der Buch-Titel und der Autor nicht eingegeben, wird der
-				// Datenbank nicht abgespeichert. Es wird eine entsprechende
-				// Meldung ausgegeben.
-				if (myBook.getTitle().equals("")
-						& myBook.getAuthor().equals("")) {
+				// Wird der Buch-Titel, wird der Datenbank nicht abgespeichert.
+				// Es wird eine entsprechende Meldung ausgegeben.
+				if (myBook.getTitle().matches("")) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
 					String errorText = "Bitte Buch-Titel und Autor eingeben.";
