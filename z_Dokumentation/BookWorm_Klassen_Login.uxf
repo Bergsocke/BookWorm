@@ -4,17 +4,17 @@
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>592</x>
+      <x>576</x>
       <y>320</y>
       <w>176</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>model.login::LoginDB
 --
--myResultSet = null: ResultSet
+_-myResultSet = null: ResultSet_
 --
-+login(User loginUser): int
-+loginuser(User loginUser): User
+_+login(User loginUser): int_
+_+loginuser(User loginUser): User_
 bg=#3c7a00
 
 </panel_attributes>
@@ -23,29 +23,29 @@ bg=#3c7a00
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>352</x>
+      <x>336</x>
       <y>72</y>
       <w>264</w>
       <h>136</h>
     </coordinates>
     <panel_attributes>model::SQLDatabase
 --
--connect = null: Connection
--myPreparedStatement = null: PreparedStatement
--myResultSet = null: ResultSet
--successful = 0: int
+_-connect = null: Connection_
+_-myPreparedStatement = null: PreparedStatement_
+_-myResultSet = null: ResultSet_
+_-successful = 0: int_
 --
--connectDB(): Connection
-+executeSQLQuery(String sqlStatement): ResultSet
-+executeSQLUpdate(String sqlStatement): int
-+closeConnections(): void
+_-connectDB(): Connection_
+_+executeSQLQuery(String sqlStatement): ResultSet_
+_+executeSQLUpdate(String sqlStatement): int_
+_+closeConnections(): void_
 bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>16</x>
+      <x>0</x>
       <y>552</y>
       <w>424</w>
       <h>232</h>
@@ -74,14 +74,14 @@ bg=yellow</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>16</x>
+      <x>0</x>
       <y>8</y>
       <w>288</w>
       <h>296</h>
     </coordinates>
     <panel_attributes>view.login::LoginGUI
 --
--serialVersionUID = -6035816178550912787L: long
+_-serialVersionUID = -6035816178550912787L: long_
 -loginPanel: JPanel
 -loginButton: JButton
 -breakButton: JButton
@@ -91,7 +91,7 @@ bg=yellow</panel_attributes>
 -passwordText: JPasswordField
 --
 +LoginGUI(JFrame loginFrame): ctor
-+main(String[] args): void
+_+main(String[] args): void_
 -initLoginGUI(): void
 +startLogin(User myUser): void
 +closeLoginDialog(): void
@@ -109,7 +109,7 @@ bg=#3c7a00
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>48</x>
+      <x>32</x>
       <y>336</y>
       <w>264</w>
       <h>88</h>
@@ -129,7 +129,7 @@ bg=#3c7a00
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>160</x>
+      <x>144</x>
       <y>280</y>
       <w>40</w>
       <h>72</h>
@@ -140,7 +140,7 @@ bg=#3c7a00
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>280</x>
+      <x>264</x>
       <y>232</y>
       <w>328</w>
       <h>112</h>
@@ -151,7 +151,7 @@ bg=#3c7a00
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>280</x>
+      <x>264</x>
       <y>136</y>
       <w>88</w>
       <h>40</h>
@@ -162,20 +162,20 @@ bg=#3c7a00
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>776</x>
+      <x>760</x>
       <y>8</y>
       <w>328</w>
       <h>1304</h>
     </coordinates>
     <panel_attributes>view.book::BookGUI
 --
--serialVersionUID = -4071792935538021823L: long
--labelFont = "Verdana": String
--labelStyle = Font.BOLD: int
--labelSize = 12: int
--textFont = "Arial": String
--textStyle = Font.PLAIN: int
--textSize = 12: int
+_-serialVersionUID = -4071792935538021823L: long_
+_-labelFont = "Verdana": String_
+_-labelStyle = Font.BOLD: int_
+_-labelSize = 12: int_
+_-textFont = "Arial": String_
+_-textStyle = Font.PLAIN: int_
+_-textSize = 12: int_
 -northPanel: JPanel
 -eastPanel: JPanel
 -westPanel: JPanel
@@ -222,7 +222,7 @@ bg=#3c7a00
 -loginUser: User
 --
 +BookGUI(String frameTitle, User loginUser): ctor
-+letStartedBookGUI(User loginUser): void
+_+letStartedBookGUI(User loginUser): void_
 -initComponents(): void
 -initMenuBar(): void
 -initComponentsNorth(): void
@@ -274,7 +274,7 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>280</x>
+      <x>264</x>
       <y>24</y>
       <w>512</w>
       <h>40</h>
@@ -285,7 +285,7 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>576</x>
+      <x>560</x>
       <y>184</y>
       <w>40</w>
       <h>152</h>
@@ -296,7 +296,7 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>96</x>
+      <x>80</x>
       <y>400</y>
       <w>40</w>
       <h>168</h>
@@ -307,7 +307,7 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>280</x>
+      <x>264</x>
       <y>264</y>
       <w>88</w>
       <h>104</h>
@@ -318,7 +318,7 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>560</x>
+      <x>544</x>
       <y>352</y>
       <w>48</w>
       <h>40</h>
@@ -329,23 +329,23 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>320</x>
+      <x>304</x>
       <y>352</y>
       <w>264</w>
       <h>64</h>
     </coordinates>
     <panel_attributes>view::InfoError
 --
--serialVersionUID = 4074118514759731523L: long
+_-serialVersionUID = 4074118514759731523L: long_
 --
-+showMessage(String errorText): void
+_+showMessage(String errorText): void_
 bg=whitey</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>376</x>
+      <x>360</x>
       <y>368</y>
       <w>280</w>
       <h>200</h>
@@ -356,7 +356,7 @@ bg=whitey</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>16</x>
+      <x>0</x>
       <y>280</y>
       <w>40</w>
       <h>288</h>
@@ -367,7 +367,7 @@ bg=whitey</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>288</x>
+      <x>272</x>
       <y>376</y>
       <w>48</w>
       <h>40</h>
