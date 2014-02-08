@@ -164,7 +164,7 @@ public class UserGUI extends JFrame {
 
 		userMenuBar = new JMenuBar();
 
-		userMenuBar.setBackground(Color.orange);
+		userMenuBar.setBackground(Color.GREEN.darker());
 
 		ActionListener myActionListener = new UserGUIActionListener(this,
 				loginUser);

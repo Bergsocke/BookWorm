@@ -195,7 +195,7 @@ public class BookGUI extends JFrame {
 		if (loginUser.getUserRole().contains("Administrator")) {
 			changeMenu.setEnabled(true);
 		} else {
-			changeMenuItem.setEnabled(false);
+			changeMenu.setVisible(false);
 		}
 
 		logoutMenu = new JMenu("Abmelden");
