@@ -39,7 +39,7 @@ bg=#3c7a00
 +executeSQLQuery(String sqlStatement): ResultSet
 +executeSQLUpdate(String sqlStatement): int
 +closeConnections(): void
-bg=light_gray</panel_attributes>
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -268,7 +268,7 @@ bg=#3c7a00
 +setDeleteButton(JButton deleteButton): void
 +getLoginUser(): User
 +setLoginUser(User loginUser): void
-bg=pink</panel_attributes>
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -339,7 +339,7 @@ bg=pink</panel_attributes>
 -serialVersionUID = 4074118514759731523L: long
 --
 +showMessage(String errorText): void
-bg=light_gray</panel_attributes>
+bg=whitey</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

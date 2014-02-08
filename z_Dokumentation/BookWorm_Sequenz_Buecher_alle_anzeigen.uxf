@@ -118,7 +118,7 @@ createBookTable
     </coordinates>
     <panel_attributes>BookWorm Start &amp;
 Alle Bücher anzeigen
-fg=magenta</panel_attributes>
+fg=dark_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
