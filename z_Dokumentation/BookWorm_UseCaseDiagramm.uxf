@@ -35,7 +35,7 @@
       <h>50</h>
     </coordinates>
     <panel_attributes>Buch löschen
-bg=pink</panel_attributes>
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -58,7 +58,7 @@ bg=pink</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>Buch neu erfassen
-bg=pink</panel_attributes>
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -81,7 +81,7 @@ bg=pink</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>Buch ändern
-bg=pink</panel_attributes>
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -104,7 +104,7 @@ bg=pink</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>Buch suchen
-bg=pink</panel_attributes>
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -127,7 +127,7 @@ bg=pink</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>Alle Bücher anzeigen
-bg=pink</panel_attributes>
+bg=light_gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
