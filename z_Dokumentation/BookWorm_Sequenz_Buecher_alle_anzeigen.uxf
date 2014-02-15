@@ -5,9 +5,9 @@
     <type>com.umlet.element.custom.SeqObjectActive</type>
     <coordinates>
       <x>100</x>
-      <y>130</y>
+      <y>140</y>
       <w>20</w>
-      <h>270</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -16,7 +16,7 @@
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>80</x>
-      <y>70</y>
+      <y>80</y>
       <w>50</w>
       <h>80</h>
     </coordinates>
@@ -27,7 +27,7 @@
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>10</x>
-      <y>90</y>
+      <y>100</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
@@ -41,42 +41,42 @@ main
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>270</x>
-      <y>140</y>
+      <y>80</y>
       <w>50</w>
-      <h>260</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;240</additional_attributes>
+    <additional_attributes>30;30;30;70</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>260</x>
-      <y>130</y>
+      <x>250</x>
+      <y>70</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>bookTable
-:JTable</panel_attributes>
+:BookTable</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>410</x>
-      <y>190</y>
+      <x>430</x>
+      <y>80</y>
       <w>50</w>
-      <h>210</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;190;30;30</additional_attributes>
+    <additional_attributes>30;140;30;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>90</x>
-      <y>100</y>
-      <w>190</w>
+      <y>120</y>
+      <w>220</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
@@ -84,13 +84,13 @@ createBookTable
 
 
 </panel_attributes>
-    <additional_attributes>170;50;30;50</additional_attributes>
+    <additional_attributes>200;50;30;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
       <x>60</x>
-      <y>60</y>
+      <y>70</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -100,8 +100,8 @@ createBookTable
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>390</x>
-      <y>180</y>
+      <x>410</x>
+      <y>70</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -112,9 +112,9 @@ createBookTable
     <type>com.umlet.element.custom.InteractionFrame</type>
     <coordinates>
       <x>30</x>
-      <y>0</y>
-      <w>620</w>
-      <h>420</h>
+      <y>10</y>
+      <w>700</w>
+      <h>460</h>
     </coordinates>
     <panel_attributes>BookWorm Start &amp;
 Alle Bücher anzeigen
@@ -125,20 +125,20 @@ fg=dark_gray</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>90</x>
-      <y>150</y>
-      <w>320</w>
+      <y>190</y>
+      <w>380</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 displayAll()
 </panel_attributes>
-    <additional_attributes>300;50;30;50</additional_attributes>
+    <additional_attributes>360;50;30;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.SeqDestroyMark</type>
     <coordinates>
-      <x>430</x>
-      <y>370</y>
+      <x>450</x>
+      <y>410</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -149,7 +149,7 @@ displayAll()
     <type>com.umlet.element.custom.SeqDestroyMark</type>
     <coordinates>
       <x>290</x>
-      <y>370</y>
+      <y>410</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -159,31 +159,31 @@ displayAll()
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>410</x>
-      <y>200</y>
-      <w>180</w>
+      <x>440</x>
+      <y>210</y>
+      <w>200</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 select
 </panel_attributes>
-    <additional_attributes>160;50;30;50</additional_attributes>
+    <additional_attributes>180;50;30;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>540</x>
-      <y>90</y>
+      <x>600</x>
+      <y>100</y>
       <w>50</w>
-      <h>330</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;310</additional_attributes>
+    <additional_attributes>30;30;30;140</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>270</x>
+      <x>280</x>
       <y>270</y>
       <w>190</w>
       <h>70</h>
@@ -195,39 +195,129 @@ return bookList</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>410</x>
-      <y>260</y>
-      <w>180</w>
+      <x>440</x>
+      <y>270</y>
+      <w>200</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 
 </panel_attributes>
-    <additional_attributes>30;30;160;30</additional_attributes>
+    <additional_attributes>30;30;180;30</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>90</x>
       <y>300</y>
-      <w>230</w>
+      <w>220</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 return bookTable
 </panel_attributes>
-    <additional_attributes>30;50;210;50</additional_attributes>
+    <additional_attributes>30;50;200;50</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.custom.Database</type>
     <coordinates>
-      <x>530</x>
-      <y>60</y>
+      <x>590</x>
+      <y>70</y>
       <w>80</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>BookWorm
 Database</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>90</x>
+      <y>170</y>
+      <w>220</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+
+</panel_attributes>
+    <additional_attributes>30;30;200;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqDestroyMark</type>
+    <coordinates>
+      <x>620</x>
+      <y>410</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>290</x>
+      <y>150</y>
+      <w>20</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>450</x>
+      <y>220</y>
+      <w>20</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.SeqObjectActive</type>
+    <coordinates>
+      <x>620</x>
+      <y>240</y>
+      <w>20</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>270</x>
+      <y>340</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30;30;30;80</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>430</x>
+      <y>310</y>
+      <w>50</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30;30;30;110</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>600</x>
+      <y>290</y>
+      <w>50</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30;30;30;130</additional_attributes>
   </element>
 </diagram>
