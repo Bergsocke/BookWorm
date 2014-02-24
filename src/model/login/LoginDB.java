@@ -47,7 +47,7 @@ public class LoginDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
-			InfoError.showMessage(errorText);
+			new InfoError().showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -89,7 +89,7 @@ public class LoginDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
-			InfoError.showMessage(errorText);
+			new InfoError().showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen

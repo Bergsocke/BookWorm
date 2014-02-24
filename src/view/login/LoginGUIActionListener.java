@@ -79,7 +79,7 @@ public class LoginGUIActionListener implements ActionListener {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Das eingegebene Password konnte nicht gehasht werden.";
-			InfoError.showMessage(errorText);
+			new InfoError().showMessage(errorText);
 		}
 
 		return hashPassword;

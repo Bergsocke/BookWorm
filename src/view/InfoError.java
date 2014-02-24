@@ -19,7 +19,7 @@ public class InfoError extends JOptionPane {
 	 * 
 	 * @param errorText
 	 */
-	public static void showMessage(String errorText) {
+	public void showMessage(String errorText) {
 		showMessageDialog(null, errorText, "Fehler", JOptionPane.ERROR_MESSAGE);
 	}
 

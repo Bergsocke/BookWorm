@@ -91,7 +91,7 @@ public class BookTableListener implements ListSelectionListener {
 					// Ein Dialogfenster mit entsprechender Meldung soll erzeugt
 					// werden
 					String errorText = "Der ausgewählte Datensatz kann nicht angezeigt werden.";
-					InfoError.showMessage(errorText);
+					new InfoError().showMessage(errorText);
 
 				}
 			}
