@@ -169,7 +169,7 @@ public class LoginGUI extends JDialog implements KeyListener {
 			// Sind die eingegebenen Benutzerdaten nicht korrekt, wird eine
 			// entsprechende Meldung ausgegeben
 			String errorText = "Benutzername oder Passwort ist falsch";
-			InfoError.showMessage(errorText);
+			new InfoError().showMessage(errorText);
 
 			// Benutzername und Passwort-Feld werden zurückgesetzt
 			this.getUsernameText().setText("");

@@ -31,6 +31,9 @@ public class BookGUIActionListener implements ActionListener {
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
 	private int successful = 0;
+	// Dialogfenster
+	private InfoError errorMessage = new InfoError();
+	private InfoSuccess successMessage = new InfoSuccess();
 
 	/**
 	 * Konstruktor
@@ -78,7 +81,7 @@ public class BookGUIActionListener implements ActionListener {
 			if (row == 0) {
 				// Folgende Meldung wird ausgegeben
 				String successText = "Es wurde kein Datensatz gefunden!";
-				InfoSuccess.showMessage(successText);
+				successMessage.showMessage(successText);
 			}
 		}
 
@@ -124,7 +127,7 @@ public class BookGUIActionListener implements ActionListener {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
 					String errorText = "Bitte den Buch-Titel eingeben.";
-					InfoError.showMessage(errorText);
+					errorMessage.showMessage(errorText);
 					return;
 
 				} else {
@@ -159,7 +162,7 @@ public class BookGUIActionListener implements ActionListener {
 				// abgespeichert. Es wird eine entsprechende Meldung ausgegeben.
 				if (myBook.getTitle().trim().isEmpty()) {
 					String errorText = "Bitte den Buch-Titel eingeben.";
-					InfoError.showMessage(errorText);
+					errorMessage.showMessage(errorText);
 					return;
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der
@@ -177,14 +180,14 @@ public class BookGUIActionListener implements ActionListener {
 
 				// Folgende Meldung wird ausgegeben
 				String successText = "Datensatz wurde erfolgreich gespeichert!";
-				InfoSuccess.showMessage(successText);
+				successMessage.showMessage(successText);
 
 				// Wenn der Datensatz nicht gespeichert werden konnte, wird eine
 				// entsprechende Meldung ausgegeben
 			} else {
 				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
 				String errorText = "Datensatz konnte nicht gespeichert werden!";
-				InfoError.showMessage(errorText);
+				errorMessage.showMessage(errorText);;
 			}
 
 			// Alle Textfelder werden zurückgesetzt, damit weitere
@@ -224,7 +227,8 @@ public class BookGUIActionListener implements ActionListener {
 
 					// Folgende Meldung wird ausgegeben
 					String successText = "Datensatz wurde erfolgreich gelöscht!";
-					InfoSuccess.showMessage(successText);
+					new InfoSuccess().showMessage(successText);
+					successMessage.showMessage(successText);
 
 					// Wenn der Datensatz nicht gelöscht werden konnte, wird
 					// eine entsprechende Meldung ausgegebe
@@ -232,7 +236,7 @@ public class BookGUIActionListener implements ActionListener {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
 					String errorText = "Datensatz konnte nicht gelöscht werden!";
-					InfoError.showMessage(errorText);
+					errorMessage.showMessage(errorText);
 				}
 
 				// Der Text im Suchfeld wird zurückgesetzt
@@ -274,7 +278,7 @@ public class BookGUIActionListener implements ActionListener {
 		if (event.getActionCommand().contains("Über das Programm")) {
 			// Folgende Meldung wird ausgegeben
 			String successText = "Erstellt von Weinberger Eva, 2014";
-			InfoSuccess.showMessage(successText);
+			successMessage.showMessage(successText);
 		}
 	}
 }

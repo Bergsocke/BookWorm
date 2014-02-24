@@ -23,6 +23,8 @@ public class SQLDatabase {
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
 	private static int successful = 0;
+	// Dialogfenster
+	private static InfoError errorMessage = new InfoError();
 
 	/**
 	 * Diese Methode baut die Datenbankverbindung zur Datenbank
@@ -44,7 +46,7 @@ public class SQLDatabase {
 				System.out.println(e.toString());
 
 				String errorText = "Die Datei \"database.properties\" konnte nicht gefunden werden!";
-				InfoError.showMessage(errorText);
+				errorMessage.showMessage(errorText);
 			}
 
 			String driver = myProperties.getProperty("jdbc.driver");
@@ -63,7 +65,7 @@ public class SQLDatabase {
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankverbindung konnte nicht hergestellt werden. "
 					+ "Bitte prüfen Sie, ob der MySQL-Server läuft.";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 		}
 
 		return connect;
@@ -91,7 +93,7 @@ public class SQLDatabase {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage Fehler!";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 		}
 
 		return myResultSet;
@@ -120,7 +122,7 @@ public class SQLDatabase {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage Fehler!";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 		}
 
 		return successful;
@@ -149,7 +151,7 @@ public class SQLDatabase {
 
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Verbindungen konnten nicht geschlossen werden.";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 		}
 	}
 }

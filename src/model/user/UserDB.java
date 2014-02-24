@@ -21,6 +21,8 @@ public class UserDB {
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
 	private static int successful = 0;
+	// Dialogfenster
+	private static InfoError errorMessage = new InfoError();
 
 	/**
 	 * Es werden alle Datensätze, die in der Tabelle "users" vorhanden sind,
@@ -49,7 +51,7 @@ public class UserDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -89,7 +91,7 @@ public class UserDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -127,7 +129,7 @@ public class UserDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbankabfrage konnte nicht durchgeführt werden.";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 
 		} finally {
 			// offene Verbindungen werden geschlossen
@@ -163,7 +165,7 @@ public class UserDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Abspeichern eines Datensatzes";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 
 			successful = 0;
 			return successful;
@@ -201,7 +203,7 @@ public class UserDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Ändern eines Datensatzes";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 
 			successful = 0;
 			return successful;
@@ -243,7 +245,7 @@ public class UserDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Ändern eines Datensatzes";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 
 			successful = 0;
 			return successful;
@@ -276,7 +278,7 @@ public class UserDB {
 			System.out.println(e.toString());
 			// Ein Dialogfenster mit entsprechender Meldung soll erzeugt werden
 			String errorText = "Datenbank-Fehler beim Löschen eines Datensatzes";
-			InfoError.showMessage(errorText);
+			errorMessage.showMessage(errorText);
 
 			successful = 0;
 			return successful;

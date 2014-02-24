@@ -19,7 +19,7 @@ public class InfoSuccess extends JOptionPane {
 	 * 
 	 * @param successText
 	 */
-	public static void showMessage(String successText) {
+	public void showMessage(String successText) {
 		showMessageDialog(null, successText, "",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
