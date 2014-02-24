@@ -147,7 +147,7 @@ public class BookGUI extends JFrame {
 		gui.pack();
 
 		// Fenstergröße soll nicht verändert werden können
-		gui.setResizable(true);
+		gui.setResizable(false);
 
 		// Positionierung am Desktop
 		gui.setLocation(100, 150);
@@ -571,7 +571,7 @@ public class BookGUI extends JFrame {
 		westPanel.add(tableScroll);
 
 		// Hinzufügen des WestPanel zum Fenster
-		this.getContentPane().add(westPanel, BorderLayout.CENTER);
+		this.getContentPane().add(westPanel, BorderLayout.WEST);
 		// Sichtbar machen
 		this.setVisible(true);
 
