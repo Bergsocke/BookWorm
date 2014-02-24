@@ -456,12 +456,15 @@ public class UserGUI extends JFrame {
 	 */
 	public JTable createUserTable() {
 
+		// Datenbankverbindung
+		UserDB myUserDB = new UserDB();
+
 		// Bei der erstmaligen Initialisierung des Fensters gibt es noch keine
 		// Darstellungsprobleme mit der Tabelle. Es werden alle Datensätze
 		// angezeigt
 		if (getSearchText().getText().matches("Bitte Suchbegriff eingeben")) {
 			// alle Datensätze werden angezeigt
-			userTable = new JTable(new UserTable(UserDB.displayAll()));
+			userTable = new JTable(new UserTable(myUserDB.displayAll()));
 
 		} else {
 			// Damit bei Eingabe eines Suchbegriffes die Tabelle neu aufgebaut
@@ -471,7 +474,7 @@ public class UserGUI extends JFrame {
 			// in einer neu erstellten Tabelle angezeigt
 			this.getContentPane().remove(westPanel);
 			userTable = new JTable(new UserTable(
-					UserDB.findByUserName(getSearchText().getText())));
+					myUserDB.findByUserName(getSearchText().getText())));
 		}
 		// WestPanel wird aufgebaut
 		this.createteWestTable();
@@ -540,7 +543,7 @@ public class UserGUI extends JFrame {
 	public void reloadWestTable() {
 
 		this.getContentPane().remove(westPanel);
-		userTable = new JTable(new UserTable(UserDB.displayAll()));
+		userTable = new JTable(new UserTable(new UserDB().displayAll()));
 
 		// WestPanel aufbauen
 		this.createteWestTable();

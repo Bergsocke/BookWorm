@@ -17,12 +17,14 @@ import view.InfoError;
 
 public class UserDB {
 
-	private static ResultSet myResultSet = null;
+	private ResultSet myResultSet = null;
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
-	private static int successful = 0;
+	private int successful = 0;
 	// Dialogfenster
-	private static InfoError errorMessage = new InfoError();
+	private InfoError errorMessage = new InfoError();
+	// Datenbankverbindung
+	private SQLDatabase mySQLDatabase = new SQLDatabase();
 
 	/**
 	 * Es werden alle Datensätze, die in der Tabelle "users" vorhanden sind,
@@ -30,7 +32,7 @@ public class UserDB {
 	 * 
 	 * @return userList
 	 */
-	public static List<User> displayAll() {
+	public List<User> displayAll() {
 
 		List<User> userList = new ArrayList<User>();
 
@@ -39,7 +41,7 @@ public class UserDB {
 			String sqlStatement = "SELECT * FROM bookworm_database.users;";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			while (myResultSet.next()) {
 				userList.add(new User(myResultSet.getString(1), myResultSet
@@ -55,7 +57,7 @@ public class UserDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return userList;
@@ -67,7 +69,7 @@ public class UserDB {
 	 * @param userID
 	 * @return foundUser
 	 */
-	public static User findByID(String userID) {
+	public User findByID(String userID) {
 
 		User foundUser = null;
 
@@ -77,7 +79,7 @@ public class UserDB {
 					+ userID + ";";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			// da das Select-Statement immer nur genau einen oder keinen
 			// Datensatz liefern kann, genügt hier diese Abfrage
@@ -95,7 +97,7 @@ public class UserDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return foundUser;
@@ -107,7 +109,7 @@ public class UserDB {
 	 * @param userName
 	 * @return userList
 	 */
-	public static List<User> findByUserName(String userName) {
+	public List<User> findByUserName(String userName) {
 
 		List<User> userList = new ArrayList<User>();
 
@@ -117,7 +119,7 @@ public class UserDB {
 					+ userName + "%';";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			while (myResultSet.next()) {
 				userList.add(new User(myResultSet.getString(1), myResultSet
@@ -133,7 +135,7 @@ public class UserDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return userList;
@@ -145,7 +147,7 @@ public class UserDB {
 	 * @param userToSave
 	 * @return successful
 	 */
-	public static int saveUser(User userToSave) {
+	public int saveUser(User userToSave) {
 
 		try {
 			// Erforderlicher SQL-Befehl
@@ -157,7 +159,7 @@ public class UserDB {
 					+ userToSave.getUserRole() + "');";
 
 			// SQL-Befehl wird ausgeführt
-			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+			successful = mySQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
@@ -172,7 +174,7 @@ public class UserDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 	}
 
@@ -183,7 +185,7 @@ public class UserDB {
 	 * @param userToUpdate
 	 * @return successful
 	 */
-	public static int updateUser(User userToUpdate) {
+	public int updateUser(User userToUpdate) {
 
 		try {
 			// Erforderlicher SQL-Befehl
@@ -195,7 +197,7 @@ public class UserDB {
 					+ userToUpdate.getUserID() + ";";
 
 			// SQL-Befehl wird ausgeführt
-			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+			successful = mySQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
@@ -210,7 +212,7 @@ public class UserDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 	}
 
@@ -221,7 +223,7 @@ public class UserDB {
 	 * @param userToUpdate
 	 * @return successful
 	 */
-	public static int newPassword(User userToUpdate) {
+	public int newPassword(User userToUpdate) {
 
 		try {
 			// Erforderlicher SQL-Befehl
@@ -237,7 +239,7 @@ public class UserDB {
 			;
 
 			// SQL-Befehl wird ausgeführt
-			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+			successful = mySQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
@@ -252,7 +254,7 @@ public class UserDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 	}
 
@@ -262,7 +264,7 @@ public class UserDB {
 	 * @param userID
 	 * @return successful
 	 */
-	public static int deleteUser(String userID) {
+	public int deleteUser(String userID) {
 
 		try {
 			// Erforderlicher SQL-Befehl
@@ -270,7 +272,7 @@ public class UserDB {
 					+ userID + ";";
 
 			// SQL-Befehl wird ausgeführt
-			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+			successful = mySQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
@@ -285,7 +287,7 @@ public class UserDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 	}
 }

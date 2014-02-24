@@ -17,14 +17,14 @@ import view.InfoError;
  */
 public class SQLDatabase {
 
-	private static Connection connect = null;
-	private static PreparedStatement myPreparedStatement = null;
-	private static ResultSet myResultSet = null;
+	private Connection connect = null;
+	private PreparedStatement myPreparedStatement = null;
+	private ResultSet myResultSet = null;
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
-	private static int successful = 0;
+	private int successful = 0;
 	// Dialogfenster
-	private static InfoError errorMessage = new InfoError();
+	private InfoError errorMessage = new InfoError();
 
 	/**
 	 * Diese Methode baut die Datenbankverbindung zur Datenbank
@@ -32,7 +32,7 @@ public class SQLDatabase {
 	 * 
 	 * @return connect
 	 */
-	private static Connection connectDB() {
+	private Connection connectDB() {
 
 		try {
 			Properties myProperties = new Properties();
@@ -77,7 +77,7 @@ public class SQLDatabase {
 	 * @param sqlStatement
 	 * @return myResultSet
 	 */
-	public static ResultSet executeSQLQuery(String sqlStatement) {
+	public ResultSet executeSQLQuery(String sqlStatement) {
 
 		try {
 			// Datenbankverbindung herstellen
@@ -106,7 +106,7 @@ public class SQLDatabase {
 	 * @param sqlStatement
 	 * @return successful
 	 */
-	public static int executeSQLUpdate(String sqlStatement) {
+	public int executeSQLUpdate(String sqlStatement) {
 
 		try {
 			// Datenbankverbindung herstellen
@@ -131,7 +131,7 @@ public class SQLDatabase {
 	/**
 	 * Methode zum Schließen aller offenen Verbindungen
 	 */
-	public static void closeConnections() {
+	public void closeConnections() {
 		try {
 
 			if (myResultSet != null) {

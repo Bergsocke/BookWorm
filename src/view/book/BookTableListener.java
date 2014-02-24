@@ -51,7 +51,7 @@ public class BookTableListener implements ListSelectionListener {
 													.convertRowIndexToModel(
 															selectedRow), 0));
 
-					Book myBook = BookDB.findByID(id);
+					Book myBook = new BookDB().findByID(id);
 
 					guiBook.getBookIdText().setText(
 							String.valueOf(myBook.getId()));

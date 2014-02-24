@@ -51,7 +51,7 @@ public class UserTableListener implements ListSelectionListener {
 													.convertRowIndexToModel(
 															selectedRow), 0));
 
-					User myUser = UserDB.findByID(id);
+					User myUser = new UserDB().findByID(id);
 
 					guiUser.getUserIDText().setText(
 							String.valueOf(myUser.getUserID()));

@@ -35,6 +35,8 @@ public class UserGUIActionListener implements ActionListener {
 	// Dialogfenster
 	private InfoError errorMessage = new InfoError();
 	private InfoSuccess successMessage = new InfoSuccess();
+	// Datenbankverbindung
+	UserDB myUserDB = new UserDB();
 
 	/**
 	 * Konstruktor
@@ -147,7 +149,7 @@ public class UserGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der neue
 					// Datensatz wird in die Datenbank gespeichert
-					successful = UserDB.saveUser(myUser);
+					successful = myUserDB.saveUser(myUser);
 				}
 
 			} else {
@@ -158,7 +160,7 @@ public class UserGUIActionListener implements ActionListener {
 
 				String userID = guiUser.getUserIDText().getText();
 
-				User myUser = UserDB.findByID(userID);
+				User myUser = myUserDB.findByID(userID);
 
 				myUser.setUserName(guiUser.getUserNameText().getText());
 				myUser.setUserRole(String.valueOf(guiUser.getUserRoleCombo()
@@ -177,7 +179,7 @@ public class UserGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der
 					// Datensatz wird in die Datenbank gespeichert
-					successful = UserDB.updateUser(myUser);
+					successful = myUserDB.updateUser(myUser);
 				}
 			}
 
@@ -228,7 +230,7 @@ public class UserGUIActionListener implements ActionListener {
 			if (check == 0) {
 				// Eine Verbindung zur Datenbank wird aufgebaut und der
 				// Datensatz wird aus der Datenbank gelöscht
-				successful = UserDB.deleteUser(userID);
+				successful = myUserDB.deleteUser(userID);
 
 				// Wenn der Datensatz erfolgreich gelöscht wurde, wird eine
 				// entsprechende Meldung ausgegeben
@@ -283,7 +285,7 @@ public class UserGUIActionListener implements ActionListener {
 			// Die User-ID des bereits vorhandenen Datensatzes wird ausgelesen
 			String userID = guiUser.getUserIDText().getText();
 
-			User myUser = UserDB.findByID(userID);
+			User myUser = myUserDB.findByID(userID);
 
 			// Die eingegebenen Daten werden eingelesen
 			myUser.setUserName(guiUser.getUserNameText().getText());
@@ -293,7 +295,7 @@ public class UserGUIActionListener implements ActionListener {
 
 			// Eine Verbindung zur Datenbank wird aufgebaut und der
 			// Datensatz wird in die Datenbank gespeichert
-			successful = UserDB.newPassword(myUser);
+			successful = myUserDB.newPassword(myUser);
 
 			// Wenn der Datensatz erfolgreich gespeichert wurde, wird eine
 			// entsprechende Meldung ausgegeben
@@ -337,7 +339,7 @@ public class UserGUIActionListener implements ActionListener {
 		// "Programm beenden" geklickt wird, werden alle offenen Verbindungen
 		// und das Fenster geschlossen
 		if (event.getActionCommand().contains("Programm beenden")) {
-			SQLDatabase.closeConnections();
+			new SQLDatabase().closeConnections();
 			System.exit(0);
 		}
 
