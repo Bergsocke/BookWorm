@@ -21,7 +21,7 @@ _+executeSQLQuery(String sqlStatement): ResultSet_
 _+executeSQLUpdate(String sqlStatement): int_
 _+closeConnections(): void_
 
-bg=#FFCCFF
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -39,7 +39,7 @@ _-serialVersionUID = 4074118514759731523L: long_
 --
 _+showMessage(String errorText): void_
 
-bg=#FFCCFF
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -57,7 +57,7 @@ _-serialVersionUID = -8551295904949148610L: long_
 --
 _+showMessage(String successText): void_
 
-bg=#FFCCFF
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -323,8 +323,8 @@ bg=light_gray</panel_attributes>
     <coordinates>
       <x>273</x>
       <y>7</y>
-      <w>679</w>
-      <h>28</h>
+      <w>685</w>
+      <h>34</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>

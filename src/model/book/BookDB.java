@@ -62,19 +62,33 @@ public class BookDB {
 	}
 
 	/**
-	 * Methode zum Suchen nach dem Buchtitel in der Tabelle "books"
+	 * Methode zum Suchen nach einem bestimmten Suchkriterium (Autor, Buchtitel,
+	 * Kategorie, ISBN) in der Tabelle "books"
 	 * 
-	 * @param bookTitle
+	 * @param searchKey
+	 * @param searchText
 	 * @return bookList
 	 */
-	public static List<Book> findByTitle(String bookTitle) {
+	public static List<Book> findBook(String searchKey, String searchText) {
 
 		List<Book> bookList = new ArrayList<Book>();
+		String key = "";
+		
+		// SQL-Tabellenspalte
+		if (searchKey == "Autor") {
+			key = "author";
+		} else if (searchKey == "Buchtitel") {
+			key = "title";
+		} else if (searchKey == "Kategorie") {
+			key = "category";
+		} else if (searchKey == "ISBN") {
+			key = "isbn";
+		}
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM bookworm_database.books WHERE title LIKE '%"
-					+ bookTitle + "%';";
+			String sqlStatement = "SELECT * FROM bookworm_database.books WHERE "
+					+ key + " LIKE '%" + searchText + "%';";
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
@@ -271,5 +285,5 @@ public class BookDB {
 			// offene Verbindungen werden geschlossen
 			SQLDatabase.closeConnections();
 		}
-	}	
+	}
 }

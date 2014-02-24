@@ -58,6 +58,7 @@ public class BookGUI extends JFrame {
 	private JLabel searchLabel;
 	private JTextField searchText;
 	private JButton searchButton;
+	private JComboBox<String> searchCombo;
 
 	private JButton allButton;
 
@@ -146,7 +147,7 @@ public class BookGUI extends JFrame {
 		gui.pack();
 
 		// Fenstergröße soll nicht verändert werden können
-		gui.setResizable(false);
+		gui.setResizable(true);
 
 		// Positionierung am Desktop
 		gui.setLocation(100, 150);
@@ -232,8 +233,18 @@ public class BookGUI extends JFrame {
 		ActionListener myActionListener = new BookGUIActionListener(this,
 				loginUser);
 
-		searchLabel = new JLabel("Nach Buchtitel suchen: ");
-		searchLabel.setFont(new Font(textFont, labelStyle, 14));
+		searchLabel = new JLabel("Suchkriterium auswählen ");
+		searchLabel.setFont(new Font(textFont, labelStyle, textSize));
+
+		searchCombo = new JComboBox<String>();
+		searchCombo.setBackground(Color.white);
+		searchCombo.setFont(new Font(textFont, textStyle, textSize));
+		// Festlegung des Inhalts der Combo-Box "searchCombo"
+		String[] search = { "Buchtitel", "Autor", "Kategorie", "ISBN" };
+		for (int i = 0; i < search.length; i++) {
+			searchCombo.addItem(search[i]);
+		}
+		searchCombo.addActionListener(myActionListener);
 
 		searchText = new JTextField("Bitte Suchbegriff eingeben", 20);
 		searchText.setFont(new Font(textFont, textStyle, textSize));
@@ -260,6 +271,7 @@ public class BookGUI extends JFrame {
 
 		// Hinzufügen der einzelnen Komponenten zum NorthPanel
 		northPanel.add(searchLabel);
+		northPanel.add(searchCombo);
 		northPanel.add(searchText);
 		northPanel.add(searchButton);
 		northPanel.add(allButton);
@@ -522,13 +534,18 @@ public class BookGUI extends JFrame {
 		} else {
 			// Damit bei Eingabe eines Suchbegriffes die Tabelle neu aufgebaut
 			// wird, wird sie zunächst einmal aus dem WestPanel entfernt, danach
-			// wird nach dem entsprechenden Suchbegriff gesucht (im
-			// Datenbankfeld "title") und am Ende werden die Suchergebnisse
-			// in einer neu erstellten Tabelle angezeigt
+			// wird nach dem entsprechenden Suchbegriff gesucht und am Ende
+			// werden die Suchergebnisse in einer neu erstellten Tabelle
+			// angezeigt
 
 			this.getContentPane().remove(westPanel);
-			bookTable = new JTable(new BookTable(
-					BookDB.findByTitle(getSearchText().getText())));
+
+			// Einlesen des Suchkriteriums (Buchtitel, Autor, Kategorie, ISBN)
+			String searchKey = String.valueOf(this.getSearchCombo()
+					.getSelectedItem());
+
+			bookTable = new JTable(new BookTable(BookDB.findBook(searchKey,
+					getSearchText().getText())));
 		}
 
 		// WestPanel wird aufgebaut
@@ -554,7 +571,7 @@ public class BookGUI extends JFrame {
 		westPanel.add(tableScroll);
 
 		// Hinzufügen des WestPanel zum Fenster
-		this.getContentPane().add(westPanel, BorderLayout.WEST);
+		this.getContentPane().add(westPanel, BorderLayout.CENTER);
 		// Sichtbar machen
 		this.setVisible(true);
 
@@ -564,7 +581,7 @@ public class BookGUI extends JFrame {
 		// verfügbaren Platz festgelegt werden
 		bookTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-		// Autosortierung wird gesetzt
+		// Autosortierung wird aktiviert
 		bookTable.setAutoCreateRowSorter(true);
 
 		// Festlegung der Schrifteigenschaften
@@ -720,6 +737,14 @@ public class BookGUI extends JFrame {
 
 	public JTextField getSearchText() {
 		return searchText;
+	}
+
+	public JComboBox<String> getSearchCombo() {
+		return searchCombo;
+	}
+
+	public void setSearchCombo(JComboBox<String> searchCombo) {
+		this.searchCombo = searchCombo;
 	}
 
 	public void setSearchText(JTextField searchText) {

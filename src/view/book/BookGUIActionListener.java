@@ -62,7 +62,7 @@ public class BookGUIActionListener implements ActionListener {
 		}
 
 		// Wenn auf den Button "suchen" geklickt wird, wird in der Datenbank
-		// nach dem entsprechenden Buchtitel gesucht (mit Hilfe der Methode
+		// nach dem entsprechenden Suchkriterium gesucht (mit Hilfe der Methode
 		// "createBookTable()" aus der Klasse BookGUI)
 		if (event.getActionCommand().contains("suchen")) {
 			guiBook.createBookTable();
@@ -123,7 +123,7 @@ public class BookGUIActionListener implements ActionListener {
 				if (myBook.getTitle().matches("")) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
-					String errorText = "Bitte Buch-Titel und Autor eingeben.";
+					String errorText = "Bitte den Buch-Titel eingeben.";
 					InfoError.showMessage(errorText);
 					return;
 
@@ -162,7 +162,7 @@ public class BookGUIActionListener implements ActionListener {
 						& myBook.getAuthor().equals("")) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
-					String errorText = "Bitte Buch-Titel und Autor eingeben.";
+					String errorText = "Bitte den Buch-Titel eingeben.";
 					InfoError.showMessage(errorText);
 					return;
 

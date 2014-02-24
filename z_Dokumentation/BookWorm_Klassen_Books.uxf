@@ -89,7 +89,7 @@ _-connectDB(): Connection_
 _+executeSQLQuery(String sqlStatement): ResultSet_
 _+executeSQLUpdate(String sqlStatement): int_
 _+closeConnections(): void_
-bg=#FFCCFF</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -163,7 +163,7 @@ bg=light_gray</panel_attributes>
 _-serialVersionUID = 4074118514759731523L: long_
 --
 _+showMessage(String errorText): void_
-bg=#FFCCFF</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -179,7 +179,7 @@ bg=#FFCCFF</panel_attributes>
 _-serialVersionUID = -8551295904949148610L: long_
 --
 _+showMessage(String successText): void_
-bg=#FFCCFF</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -342,8 +342,8 @@ bg=#3c7a00
     <coordinates>
       <x>658</x>
       <y>945</y>
-      <w>34</w>
-      <h>125</h>
+      <w>28</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -489,8 +489,8 @@ bg=yellow</panel_attributes>
     <coordinates>
       <x>252</x>
       <y>1015</y>
-      <w>69</w>
-      <h>132</h>
+      <w>63</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
@@ -513,8 +513,8 @@ bg=yellow</panel_attributes>
     <coordinates>
       <x>525</x>
       <y>945</y>
-      <w>97</w>
-      <h>202</h>
+      <w>91</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
