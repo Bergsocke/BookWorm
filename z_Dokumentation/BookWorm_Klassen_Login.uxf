@@ -39,7 +39,7 @@ _-connectDB(): Connection_
 _+executeSQLQuery(String sqlStatement): ResultSet_
 _+executeSQLUpdate(String sqlStatement): int_
 _+closeConnections(): void_
-bg=#FFCCFF</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -339,7 +339,7 @@ bg=light_gray</panel_attributes>
 _-serialVersionUID = 4074118514759731523L: long_
 --
 _+showMessage(String errorText): void_
-bg=#FFCCFF</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
