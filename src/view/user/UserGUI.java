@@ -327,6 +327,10 @@ public class UserGUI extends JFrame {
 		// wenn auf den Button "speichern" geklickt wird, soll der Datensatz in
 		// die Datenbank gespeichert werden
 		saveButton.addActionListener(myActionListener);
+		// Der Button "speichern" ist zu Beginn/beim Erscheinen des Fensters
+		// noch nicht auswählbar; er wird erst sichtbar, wenn ein Datensatz
+		// ausgewählt oder der Button "Neu" geklickt wurde
+		saveButton.setEnabled(false);
 
 		// Icon für den Buttton "löschen"
 		final Icon deleteIcon = new ImageIcon(
