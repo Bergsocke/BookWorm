@@ -144,9 +144,12 @@ public class LoginGUI extends JDialog implements KeyListener {
 	 * @param myUser
 	 */
 	public void startLogin(User myUser) {
+		//Datenbankverbindung
+		LoginDB myLoginDB = new LoginDB();
+		
 		// es wird geprüft, ob die angegebene Benutzername/Password-Kombination
 		// in der Tabelle "users" vorhanden ist
-		int numRow = LoginDB.login(myUser);
+		int numRow = myLoginDB.login(myUser);
 
 		// Wenn die Benutzerdaten korrekt sind, wird die Bücherverwaltung
 		// gestartet
@@ -154,13 +157,13 @@ public class LoginGUI extends JDialog implements KeyListener {
 
 			// es werden die kompletten Anwenderdaten eingelesen (ID, Name,
 			// Password, Rolle)
-			User loginUser = LoginDB.loginuser(myUser);
+			User loginUser = myLoginDB.loginuser(myUser);
 
 			// Die Bücherverwaltung wird gestartet
 			BookGUI.letStartedBookGUI(loginUser);
 
 			// Offene Datenbank-Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			new SQLDatabase().closeConnections();
 
 			// Login-Fenster wird geschlossen
 			this.closeLoginDialog();

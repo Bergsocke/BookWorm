@@ -34,6 +34,8 @@ public class BookGUIActionListener implements ActionListener {
 	// Dialogfenster
 	private InfoError errorMessage = new InfoError();
 	private InfoSuccess successMessage = new InfoSuccess();
+	// Datenbankverbindung
+	BookDB myBookDB = new BookDB();
 
 	/**
 	 * Konstruktor
@@ -121,7 +123,8 @@ public class BookGUIActionListener implements ActionListener {
 						String.valueOf(guiBook.getCommentArea().getText()),
 						String.valueOf(guiBook.getReadCombo().getSelectedItem()));
 
-				// Wird der Buch-Titel nicht eingegeben, wird der Datenbank nicht abgespeichert.
+				// Wird der Buch-Titel nicht eingegeben, wird der Datenbank
+				// nicht abgespeichert.
 				// Es wird eine entsprechende Meldung ausgegeben.
 				if (myBook.getTitle().trim().isEmpty()) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
@@ -133,7 +136,7 @@ public class BookGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der neue
 					// Datensatz wird in die Datenbank gespeichert
-					successful = BookDB.saveBook(myBook);
+					successful = myBookDB.saveBook(myBook);
 				}
 
 			} else {
@@ -141,7 +144,7 @@ public class BookGUIActionListener implements ActionListener {
 				// werden eingelesen
 				String BookID = guiBook.getBookIdText().getText();
 
-				Book myBook = BookDB.findByID(BookID);
+				Book myBook = myBookDB.findByID(BookID);
 
 				myBook.setIsbn(guiBook.getIsbnText().getText());
 				myBook.setTitle(guiBook.getTitleText().getText());
@@ -167,7 +170,7 @@ public class BookGUIActionListener implements ActionListener {
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der
 					// Datensatz wird in die Datenbank gespeichert
-					successful = BookDB.updateBook(myBook);
+					successful = myBookDB.updateBook(myBook);
 				}
 			}
 
@@ -187,7 +190,8 @@ public class BookGUIActionListener implements ActionListener {
 			} else {
 				// Ein Dialogfenster mit folgender Meldung soll erzeugt werden
 				String errorText = "Datensatz konnte nicht gespeichert werden!";
-				errorMessage.showMessage(errorText);;
+				errorMessage.showMessage(errorText);
+				;
 			}
 
 			// Alle Textfelder werden zurückgesetzt, damit weitere
@@ -216,7 +220,7 @@ public class BookGUIActionListener implements ActionListener {
 			if (check == 0) {
 				// Eine Verbindung zur Datenbank wird aufgebaut und der
 				// Datensatz wird aus der Datenbank gelöscht
-				successful = BookDB.deleteBook(BookID);
+				successful = myBookDB.deleteBook(BookID);
 
 				// Wenn der Datensatz erfolgreich gelöscht wurde, wird eine
 				// entsprechende Meldung ausgegeben
@@ -250,7 +254,7 @@ public class BookGUIActionListener implements ActionListener {
 		// "Programm beenden" geklickt wird, werden alle offenen Verbindungen
 		// und das Fenster geschlossen
 		if (event.getActionCommand().contains("Programm beenden")) {
-			SQLDatabase.closeConnections();
+			new SQLDatabase().closeConnections();
 			System.exit(0);
 		}
 

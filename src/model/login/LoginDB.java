@@ -15,7 +15,9 @@ import view.InfoError;
  */
 public class LoginDB {
 
-	private static ResultSet myResultSet = null;
+	private ResultSet myResultSet = null;
+	// Datenbankverbindung
+	private SQLDatabase mySQLDatabase = new SQLDatabase();
 
 	/**
 	 * Diese Methode prüft, ob die eingegebene Benutzername/Password-Kombination
@@ -24,7 +26,7 @@ public class LoginDB {
 	 * @param loginUser
 	 * @return numRows
 	 */
-	public static int login(User loginUser) {
+	public int login(User loginUser) {
 		// Variable für Anzahl der gefundenen Datensätze
 		int numRows = 0;
 
@@ -36,7 +38,7 @@ public class LoginDB {
 					+ loginUser.getUserPassword() + "';";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			// Anzahl der Datensätze ermitteln
 			while (myResultSet.next()) {
@@ -51,7 +53,7 @@ public class LoginDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return numRows;
@@ -64,7 +66,7 @@ public class LoginDB {
 	 * @param loginUser
 	 * @return foundUser
 	 */
-	public static User loginuser(User loginUser) {
+	public User loginuser(User loginUser) {
 		User foundUser = null;
 
 		try {
@@ -75,7 +77,7 @@ public class LoginDB {
 					+ loginUser.getUserPassword() + "';";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			// da das Select-Statement immer nur genau einen oder keinen
 			// Datensatz liefern kann, genügt hier diese Abfrage
@@ -93,7 +95,7 @@ public class LoginDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return foundUser;

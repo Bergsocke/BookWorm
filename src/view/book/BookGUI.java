@@ -524,12 +524,15 @@ public class BookGUI extends JFrame {
 	 */
 	public JTable createBookTable() {
 
+		// Datenbankverbindung
+		BookDB myBookDB = new BookDB();
+
 		// Bei der erstmaligen Initialisierung des Fensters gibt es noch keine
 		// Darstellungsprobleme mit der Tabelle. Es werden alle Datensätze
 		// angezeigt
 		if (getSearchText().getText().matches("Bitte Suchbegriff eingeben")) {
 			// alle Datensätze werden angezeigt
-			bookTable = new JTable(new BookTable(BookDB.displayAll()));
+			bookTable = new JTable(new BookTable(myBookDB.displayAll()));
 
 		} else {
 			// Damit bei Eingabe eines Suchbegriffes die Tabelle neu aufgebaut
@@ -544,7 +547,7 @@ public class BookGUI extends JFrame {
 			String searchKey = String.valueOf(this.getSearchCombo()
 					.getSelectedItem());
 
-			bookTable = new JTable(new BookTable(BookDB.findBook(searchKey,
+			bookTable = new JTable(new BookTable(myBookDB.findBook(searchKey,
 					getSearchText().getText())));
 		}
 
@@ -621,7 +624,7 @@ public class BookGUI extends JFrame {
 	public void reloadWestTable() {
 
 		this.getContentPane().remove(westPanel);
-		bookTable = new JTable(new BookTable(BookDB.displayAll()));
+		bookTable = new JTable(new BookTable(new BookDB().displayAll()));
 
 		// WestPanel aufbauen
 		this.createteWestTable();

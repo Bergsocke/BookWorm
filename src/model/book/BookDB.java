@@ -16,12 +16,14 @@ import view.InfoError;
  */
 public class BookDB {
 
-	private static ResultSet myResultSet = null;
+	private ResultSet myResultSet = null;
+	// Datenbankverbindung
+	private SQLDatabase mySQLDatabase = new SQLDatabase();
 	// Variable, die anzeigen soll, ob das Speichern, Updaten oder Löschen eines
 	// Datensatzes erfolgreich war
-	private static int successful = 0;
+	private int successful = 0;
 	// Dialogfenster
-	private static InfoError errorMessage = new InfoError();
+	private InfoError errorMessage = new InfoError();
 
 	/**
 	 * Es werden alle Datensätze, die in der Tabelle "books" vorhanden sind,
@@ -29,7 +31,7 @@ public class BookDB {
 	 * 
 	 * @return bookList
 	 */
-	public static List<Book> displayAll() {
+	public List<Book> displayAll() {
 
 		List<Book> bookList = new ArrayList<Book>();
 
@@ -38,7 +40,7 @@ public class BookDB {
 			String sqlStatement = "SELECT * FROM bookworm_database.books;";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			while (myResultSet.next()) {
 				bookList.add(new Book(myResultSet.getString(1), myResultSet
@@ -57,7 +59,7 @@ public class BookDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return bookList;
@@ -71,7 +73,7 @@ public class BookDB {
 	 * @param searchText
 	 * @return bookList
 	 */
-	public static List<Book> findBook(String searchKey, String searchText) {
+	public List<Book> findBook(String searchKey, String searchText) {
 
 		List<Book> bookList = new ArrayList<Book>();
 		String key = "";
@@ -93,7 +95,7 @@ public class BookDB {
 					+ key + " LIKE '%" + searchText + "%';";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			while (myResultSet.next()) {
 				bookList.add(new Book(myResultSet.getString(1), myResultSet
@@ -112,7 +114,7 @@ public class BookDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return bookList;
@@ -124,7 +126,7 @@ public class BookDB {
 	 * @param bookID
 	 * @return foundBook
 	 */
-	public static Book findByID(String bookID) {
+	public Book findByID(String bookID) {
 
 		Book foundBook = null;
 
@@ -134,7 +136,7 @@ public class BookDB {
 					+ bookID + ";";
 
 			// SQL-Befehl wird ausgeführt
-			myResultSet = SQLDatabase.executeSQLQuery(sqlStatement);
+			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);
 
 			// da das Select-Statement immer nur genau einen oder keinen
 			// Datensatz liefern kann, genügt hier diese Abfrage
@@ -155,7 +157,7 @@ public class BookDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 
 		return foundBook;
@@ -167,7 +169,7 @@ public class BookDB {
 	 * @param bookToSave
 	 * @return successful
 	 */
-	public static int saveBook(Book bookToSave) {
+	public int saveBook(Book bookToSave) {
 
 		try {
 			// Erforderlicher SQL-Befehl
@@ -194,7 +196,7 @@ public class BookDB {
 					+ "');";
 
 			// SQL-Befehl wird ausgeführt
-			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+			successful = mySQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
@@ -209,7 +211,7 @@ public class BookDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 	}
 
@@ -220,7 +222,7 @@ public class BookDB {
 	 * @param bookToUpdate
 	 * @return successful
 	 */
-	public static int updateBook(Book bookToUpdate) {
+	public int updateBook(Book bookToUpdate) {
 
 		try {
 			// Erforderlicher SQL-Befehl
@@ -237,7 +239,7 @@ public class BookDB {
 					+ bookToUpdate.getId() + ";";
 
 			// SQL-Befehl wird ausgeführt
-			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+			successful = mySQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
@@ -252,7 +254,7 @@ public class BookDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 	}
 
@@ -262,7 +264,7 @@ public class BookDB {
 	 * @param bookID
 	 * @return successful
 	 */
-	public static int deleteBook(String bookID) {
+	public int deleteBook(String bookID) {
 
 		try {
 			// Erforderlicher SQL-Befehl
@@ -270,7 +272,7 @@ public class BookDB {
 					+ bookID + ";";
 
 			// SQL-Befehl wird ausgeführt
-			successful = SQLDatabase.executeSQLUpdate(sqlStatement);
+			successful = mySQLDatabase.executeSQLUpdate(sqlStatement);
 
 			return successful;
 
@@ -285,7 +287,7 @@ public class BookDB {
 
 		} finally {
 			// offene Verbindungen werden geschlossen
-			SQLDatabase.closeConnections();
+			mySQLDatabase.closeConnections();
 		}
 	}
 }
