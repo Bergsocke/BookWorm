@@ -67,9 +67,10 @@ public class UserTableListener implements ListSelectionListener {
 					guiUser.getUserRoleCombo().setSelectedItem(
 							String.valueOf(myUser.getUserRole()));
 
-					// Button "löschen" und "Neues Passwort" werden sichtbar
-					// gesetzt
+					// Button "löschen", "speichern" und "Neues Passwort" werden
+					// sichtbar gesetzt
 					guiUser.getDeleteButton().setEnabled(true);
+					guiUser.getSaveButton().setEnabled(true);
 					guiUser.getCreatePWButton().setEnabled(true);
 
 				} catch (Exception e) {

@@ -101,7 +101,7 @@ public class BookGUIActionListener implements ActionListener {
 		if (event.getActionCommand().contains("speichern")) {
 			// Ist die Buch-ID leer, wird ein neuer Datensatz angelegt und in
 			// die Datenbank gespeichert
-			if (guiBook.getBookIdText().getText().matches("")) {
+			if (guiBook.getBookIdText().getText().trim().isEmpty()) {
 
 				Book myBook = new Book(
 						String.valueOf(guiBook.getIsbnText().getText()),
@@ -118,9 +118,9 @@ public class BookGUIActionListener implements ActionListener {
 						String.valueOf(guiBook.getCommentArea().getText()),
 						String.valueOf(guiBook.getReadCombo().getSelectedItem()));
 
-				// Wird der Buch-Titel, wird der Datenbank nicht abgespeichert.
+				// Wird der Buch-Titel nicht eingegeben, wird der Datenbank nicht abgespeichert.
 				// Es wird eine entsprechende Meldung ausgegeben.
-				if (myBook.getTitle().matches("")) {
+				if (myBook.getTitle().trim().isEmpty()) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
 					String errorText = "Bitte den Buch-Titel eingeben.";
@@ -155,17 +155,12 @@ public class BookGUIActionListener implements ActionListener {
 				myBook.setRead(String.valueOf(guiBook.getReadCombo()
 						.getSelectedItem()));
 
-				// Wird der Buch-Titel und der Autor gelöscht, wird der
-				// Datenbank nicht abgespeichert. Es wird eine entsprechende
-				// Meldung ausgegeben.
-				if (myBook.getTitle().equals("")
-						& myBook.getAuthor().equals("")) {
-					// Ein Dialogfenster mit folgender Meldung soll erzeugt
-					// werden
+				// Wird der Buch-Titel gelöscht, wird der Datenbank nicht
+				// abgespeichert. Es wird eine entsprechende Meldung ausgegeben.
+				if (myBook.getTitle().trim().isEmpty()) {
 					String errorText = "Bitte den Buch-Titel eingeben.";
 					InfoError.showMessage(errorText);
 					return;
-
 				} else {
 					// Eine Verbindung zur Datenbank wird aufgebaut und der
 					// Datensatz wird in die Datenbank gespeichert
@@ -199,7 +194,7 @@ public class BookGUIActionListener implements ActionListener {
 			// Suchbegriff wird zurückgesetzt
 			guiBook.getSearchText().setText("");
 
-			// Selektion in der Usertabelle wird aufgehoben
+			// Selektion in der Büchertabelle wird aufgehoben
 			guiBook.getBookTable().putClientProperty(
 					"terminateEditOnFocusLost", Boolean.TRUE);
 		}

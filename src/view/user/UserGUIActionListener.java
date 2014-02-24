@@ -61,8 +61,9 @@ public class UserGUIActionListener implements ActionListener {
 			// EastTable wird zurückgesetzt
 			guiUser.resetTableEast();
 
-			// Die Button "löschen", "Neues Passwort" und "Passwort setzen"
-			// werden deaktiviert
+			// Die Button "löschen", "speichern", "Neues Passwort" und
+			// "Passwort setzen" werden deaktiviert
+			guiUser.getSaveButton().setEnabled(false);
 			guiUser.getDeleteButton().setEnabled(false);
 			guiUser.getCreatePWButton().setEnabled(false);
 			guiUser.getSavePWButton().setEnabled(false);
@@ -123,7 +124,7 @@ public class UserGUIActionListener implements ActionListener {
 		if (event.getActionCommand().contains("speichern")) {
 			// Ist die User-ID leer, wird ein neuer Datensatz angelegt und in
 			// die Datenbank gespeichert
-			if (guiUser.getUserIDText().getText().matches("")) {
+			if (guiUser.getUserIDText().getText().trim().isEmpty()) {
 
 				User myUser = new User(String.valueOf(guiUser.getUserNameText()
 						.getText()), String.valueOf(guiUser
@@ -133,7 +134,7 @@ public class UserGUIActionListener implements ActionListener {
 
 				// Wird der Benutzername leer gelassen, wird der Datenbank nicht
 				// abgespeichert. Es wird eine entsprechende Meldung ausgegeben.
-				if (myUser.getUserName().matches("")) {
+				if (myUser.getUserName().trim().isEmpty()) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
 					String errorText = "Bitte Benutzernamen eingeben.";
@@ -163,7 +164,7 @@ public class UserGUIActionListener implements ActionListener {
 				// Wird der Benutzername gelöscht und nicht neu eingegeben, wird
 				// der Datenbank nicht abgespeichert. Es wird eine entsprechende
 				// Meldung ausgegeben.
-				if (myUser.getUserName().equals("")) {
+				if (myUser.getUserName().trim().isEmpty()) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
 					String errorText = "Bitte Benutzernamen eingeben.";
