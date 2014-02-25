@@ -11,34 +11,12 @@
     </coordinates>
     <panel_attributes>model.login::LoginDB
 --
-_-myResultSet = null: ResultSet_
+-myResultSet = null: ResultSet
 --
-_+login(User loginUser): int_
-_+loginuser(User loginUser): User_
++login(User loginUser): int
++loginuser(User loginUser): User
 bg=#3c7a00
 
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <type>com.umlet.element.Class</type>
-    <coordinates>
-      <x>364</x>
-      <y>63</y>
-      <w>231</w>
-      <h>119</h>
-    </coordinates>
-    <panel_attributes>model::SQLDatabase
---
-_-connect = null: Connection_
-_-myPreparedStatement = null: PreparedStatement_
-_-myResultSet = null: ResultSet_
-_-successful = 0: int_
---
-_-connectDB(): Connection_
-_+executeSQLQuery(String sqlStatement): ResultSet_
-_+executeSQLUpdate(String sqlStatement): int_
-_+closeConnections(): void_
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -152,7 +130,7 @@ bg=#3c7a00
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>259</x>
-      <y>119</y>
+      <y>126</y>
       <w>118</w>
       <h>34</h>
     </coordinates>
@@ -286,12 +264,12 @@ bg=light_gray</panel_attributes>
     <type>com.umlet.element.Relation</type>
     <coordinates>
       <x>539</x>
-      <y>161</y>
+      <y>168</y>
       <w>34</w>
-      <h>132</h>
+      <h>125</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>21;119;21;21</additional_attributes>
+    <additional_attributes>21;112;21;21</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -338,7 +316,7 @@ bg=light_gray</panel_attributes>
 --
 _-serialVersionUID = 4074118514759731523L: long_
 --
-_+showMessage(String errorText): void_
++showMessage(String errorText): void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -374,5 +352,29 @@ _+showMessage(String errorText): void_
     </coordinates>
     <panel_attributes/>
     <additional_attributes>91;21;21;105</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>364</x>
+      <y>63</y>
+      <w>238</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>model::SQLDatabase
+--
+-connect = null: Connection
+-myPreparedStatement = null: PreparedStatement
+-myResultSet = null: ResultSet
+-successful = 0: int
+-errorMessage = new InfoError(): InfoError
+--
+-connectDB(): Connection
++executeSQLQuery(String sqlStatement): ResultSet
++executeSQLUpdate(String sqlStatement): int
++closeConnections(): void
+
+</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
