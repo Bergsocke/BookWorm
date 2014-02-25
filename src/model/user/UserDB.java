@@ -104,19 +104,29 @@ public class UserDB {
 	}
 
 	/**
-	 * Methode zum Suchen nach dem Usernamen in der Tabelle "Users"
+	 * Methode zum Suchen nach einem bestimmten Suchkriterium (Anwender, Rolle)
+	 * in der Tabelle "Users
 	 * 
-	 * @param userName
+	 * @param searchKey
+	 * @param searchText
 	 * @return userList
 	 */
-	public List<User> findByUserName(String userName) {
+	public List<User> findUser(String searchKey, String searchText) {
 
 		List<User> userList = new ArrayList<User>();
+		String key = "";
+
+		// SQL-Tabellenspalte
+		if (searchKey == "Anwender") {
+			key = "username";
+		} else if (searchKey == "Rolle") {
+			key = "userrole";
+		}
 
 		try {
 			// Erforderlicher SQL-Befehl
-			String sqlStatement = "SELECT * FROM bookworm_database.users WHERE username LIKE '%"
-					+ userName + "%';";
+			String sqlStatement = "SELECT * FROM bookworm_database.users WHERE "
+					+ key + " LIKE '%" + searchText + "%';";
 
 			// SQL-Befehl wird ausgeführt
 			myResultSet = mySQLDatabase.executeSQLQuery(sqlStatement);

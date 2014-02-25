@@ -11,15 +11,15 @@
     </coordinates>
     <panel_attributes>model::SQLDatabase
 --
-_-connect = null: Connection_
-_-myPreparedStatement = null: PreparedStatement_
-_-myResultSet = null: ResultSet_
-_-successful = 0: int_
+-connect = null: Connection
+-myPreparedStatement = null: PreparedStatement
+-myResultSet = null: ResultSet
+-successful = 0: int
 --
-_-connectDB(): Connection_
-_+executeSQLQuery(String sqlStatement): ResultSet_
-_+executeSQLUpdate(String sqlStatement): int_
-_+closeConnections(): void_
+-connectDB(): Connection
++executeSQLQuery(String sqlStatement): ResultSet
++executeSQLUpdate(String sqlStatement): int
++closeConnections(): void
 
 
 </panel_attributes>
@@ -28,8 +28,8 @@ _+closeConnections(): void_
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>371</x>
-      <y>532</y>
+      <x>364</x>
+      <y>525</y>
       <w>231</w>
       <h>56</h>
     </coordinates>
@@ -37,7 +37,7 @@ _+closeConnections(): void_
 --
 _-serialVersionUID = 4074118514759731523L: long_
 --
-_+showMessage(String errorText): void_
++showMessage(String errorText): void
 
 
 </panel_attributes>
@@ -46,7 +46,7 @@ _+showMessage(String errorText): void_
   <element>
     <type>com.umlet.element.Class</type>
     <coordinates>
-      <x>693</x>
+      <x>686</x>
       <y>42</y>
       <w>238</w>
       <h>56</h>
@@ -55,7 +55,7 @@ _+showMessage(String errorText): void_
 --
 _-serialVersionUID = -8551295904949148610L: long_
 --
-_+showMessage(String successText): void_
++showMessage(String successText): void
 
 
 </panel_attributes>
@@ -163,16 +163,16 @@ bg=yellow</panel_attributes>
     </coordinates>
     <panel_attributes>model.user::UserDB
 --
-_-myResultSet = null: ResultSet_
-_-successful = 0: int_
+-myResultSet = null: ResultSet
+-successful = 0: int
 --
-_+displayAll(): List&lt;User&gt;_
-_+findByID(String userID): User_
-_+findByUserName(String userName): List&lt;User&gt;_
-_+saveUser(User userToSave): int_
-_+updateUser(User userToUpdate): int_
-_+newPassword(User userToUpdate): int_
-_+deleteUser(String userID): int_
++displayAll(): List&lt;User&gt;
++findByID(String userID): User
++findByUserName(String userName): List&lt;User&gt;
++saveUser(User userToSave): int
++updateUser(User userToUpdate): int
++newPassword(User userToUpdate): int
++deleteUser(String userID): int
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
@@ -369,26 +369,26 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>385</x>
-      <y>567</y>
-      <w>34</w>
-      <h>153</h>
+      <x>378</x>
+      <y>560</y>
+      <w>41</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>21;21;21;140</additional_attributes>
+    <additional_attributes>21;21;28;147</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>553</x>
+      <x>546</x>
       <y>343</y>
-      <w>223</w>
-      <h>202</h>
+      <w>230</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>210;21;21;189</additional_attributes>
+    <additional_attributes>217;21;21;182</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -465,14 +465,14 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>714</x>
+      <x>707</x>
       <y>77</y>
-      <w>34</w>
+      <w>41</w>
       <h>216</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>21;203;21;21</additional_attributes>
+    <additional_attributes>28;203;21;21</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>
@@ -537,14 +537,14 @@ bg=light_gray</panel_attributes>
   <element>
     <type>com.umlet.element.Relation</type>
     <coordinates>
-      <x>413</x>
+      <x>406</x>
       <y>483</y>
-      <w>34</w>
-      <h>62</h>
+      <w>41</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=-
 </panel_attributes>
-    <additional_attributes>21;49;21;21</additional_attributes>
+    <additional_attributes>21;42;28;21</additional_attributes>
   </element>
   <element>
     <type>com.umlet.element.Relation</type>

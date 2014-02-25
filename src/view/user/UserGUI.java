@@ -58,6 +58,7 @@ public class UserGUI extends JFrame {
 	private JLabel searchLabel;
 	private JTextField searchText;
 	private JButton searchButton;
+	private JComboBox<String> searchCombo;
 
 	private JButton allButton;
 
@@ -208,8 +209,18 @@ public class UserGUI extends JFrame {
 		ActionListener myActionListener = new UserGUIActionListener(this,
 				loginUser);
 
-		searchLabel = new JLabel("Nach Anwender suchen: ");
+		searchLabel = new JLabel("Suchkriterium auswählen ");
 		searchLabel.setFont(new Font(textFont, labelStyle, 14));
+
+		searchCombo = new JComboBox<String>();
+		searchCombo.setBackground(Color.white);
+		searchCombo.setFont(new Font(textFont, textStyle, textSize));
+		// Festlegung des Inhalts der Combo-Box "searchCombo"
+		String[] search = { "Anwender", "Rolle" };
+		for (int i = 0; i < search.length; i++) {
+			searchCombo.addItem(search[i]);
+		}
+		searchCombo.addActionListener(myActionListener);
 
 		searchText = new JTextField("Bitte Suchbegriff eingeben", 20);
 		searchText.setFont(new Font(textFont, textStyle, textSize));
@@ -236,6 +247,7 @@ public class UserGUI extends JFrame {
 
 		// Hinzufügen der einzelnen Komponenten zum NorthPanel
 		northPanel.add(searchLabel);
+		northPanel.add(searchCombo);
 		northPanel.add(searchText);
 		northPanel.add(searchButton);
 		northPanel.add(allButton);
@@ -473,8 +485,13 @@ public class UserGUI extends JFrame {
 			// Datenbankfeld "username") und am Ende werden die Suchergebnisse
 			// in einer neu erstellten Tabelle angezeigt
 			this.getContentPane().remove(westPanel);
-			userTable = new JTable(new UserTable(
-					myUserDB.findByUserName(getSearchText().getText())));
+
+			// Einlesen des Suchkriteriums (Anwender, Rolle)
+			String searchKey = String.valueOf(this.getSearchCombo()
+					.getSelectedItem());
+
+			userTable = new JTable(new UserTable(myUserDB.findUser(searchKey,
+					getSearchText().getText())));
 		}
 		// WestPanel wird aufgebaut
 		this.createteWestTable();
@@ -617,6 +634,14 @@ public class UserGUI extends JFrame {
 
 	public void setSearchButton(JButton searchButton) {
 		this.searchButton = searchButton;
+	}
+
+	public JComboBox<String> getSearchCombo() {
+		return searchCombo;
+	}
+
+	public void setSearchCombo(JComboBox<String> searchCombo) {
+		this.searchCombo = searchCombo;
 	}
 
 	public JButton getAllButton() {
