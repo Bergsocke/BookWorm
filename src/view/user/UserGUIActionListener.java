@@ -142,7 +142,7 @@ public class UserGUIActionListener implements ActionListener {
 				if (myUser.getUserName().trim().isEmpty()) {
 					// Ein Dialogfenster mit folgender Meldung soll erzeugt
 					// werden
-					String errorText = "Bitte Benutzernamen eingeben.";
+					String errorText = "Bitte Usernamen eingeben.";
 					errorMessage.showMessage(errorText);
 					return;
 

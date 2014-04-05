@@ -231,7 +231,6 @@ public class BookGUIActionListener implements ActionListener {
 
 					// Folgende Meldung wird ausgegeben
 					String successText = "Datensatz wurde erfolgreich gelöscht!";
-					new InfoSuccess().showMessage(successText);
 					successMessage.showMessage(successText);
 
 					// Wenn der Datensatz nicht gelöscht werden konnte, wird

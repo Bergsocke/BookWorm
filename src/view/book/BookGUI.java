@@ -143,17 +143,17 @@ public class BookGUI extends JFrame {
 		// Überschrift
 		BookGUI gui = new BookGUI("BOOKWORM - BÜCHERVERWALTUNG", loginUser);
 
-		// Fenstergröße wird automatisch an den Inhalt angepasst
-		gui.pack();
+		// Window-Close-Funktion
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Fenstergröße soll nicht verändert werden können
 		gui.setResizable(false);
 
+		// Fenstergröße wird automatisch an den Inhalt angepasst
+		gui.pack();
+
 		// Positionierung am Desktop
 		gui.setLocation(100, 150);
-
-		// Window-Close-Funktion
-		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Fenster wird auf sichtbar gesetzt
 		gui.setVisible(true);
